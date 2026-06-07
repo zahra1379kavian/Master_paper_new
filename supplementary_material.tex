@@ -1,0 +1,772 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Frontiers Supplementary Material file prepared from the original appendix source.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[utf8]{frontiers_suppmat}
+
+\usepackage{url,hyperref,microtype}
+\usepackage{booktabs,longtable,tabularx,threeparttable}
+\usepackage{rotating,pdflscape,adjustbox,makecell}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\newcommand{\offroi}[1]{\textcolor{black}{#1}}
+\newcommand{\onroi}[1]{\textcolor{black}{#1}}
+\newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
+
+\begin{document}
+\onecolumn
+\firstpage{1}
+
+\title[Supplementary Material]{{\helveticaitalic{Supplementary Material}}}
+\maketitle
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+
+
+%##########################################################################################
+\section{Participants information}
+
+\begin{table}[htbp]
+\centering
+\caption{Clinical characteristics and MDS-UPDRS Part III scores obtained during the recording sessions across 18 participants.}
+\label{tab:supp-clinical-updrs}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.30}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+\begin{threeparttable}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}m{4.5cm} Y Y Y @{}}
+\toprule
+\textbf{Measure} 
+& \textbf{OFF medication} 
+& \textbf{ON medication} 
+& \textbf{OFF--ON change} \\
+\midrule
+
+\makecell[l]{MDS-UPDRS Part, \\mean $\pm$ SD (range)}
+& \makecell[c]{$37.3 \pm 17.3$\\(10--75)}
+& \makecell[c]{$28.0 \pm 15.0$\\(7--61)}
+& \makecell[c]{$9.3 \pm 4.2$\\(3--17)} \\
+
+\addlinespace[8pt]
+
+\makecell[l]{Hoehn \& Yahr stage, \\ median (range)}
+& \makecell[c]{ 2 (1--4)}
+& \makecell[c]{2 (0--3)}
+& \makecell[c]{--} \\
+
+\addlinespace[8pt]
+
+\makecell[l]{Time since last \\ dopaminergic dose, \\ mean $\pm$ SD (range)}
+& \makecell[c]{$1033.6 \pm 514.3$\\(720--3006)}
+& \makecell[c]{$68.2 \pm 16.0$\\(36--102)}
+& -- \\
+
+\addlinespace[6pt]
+
+Dyskinesias present during rating,
+& 1/18
+& 3/18
+& -- \\
+
+\bottomrule
+\end{tabularx}
+\end{threeparttable}
+\endgroup
+\end{table}
+%#####################################
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.30}
+
+\caption{Behavioral descriptive summary by medication and run. Raw trials were 90 per subject per run. The number of subjects was X. Retained trials are reported as median [range] across subjects; RT measures are reported as mean $\pm$ SD across subjects.}
+\label{tab:behavioral_summary_compact}
+
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Medication & Run &
+\makecell[c]{Retained trials} &
+\makecell[c]{Mean RT (ms)} &
+RT CV &
+\makecell[c]{Consecutive RT variability} \\
+\midrule
+OFF & 1 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
+OFF & 2 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
+ON  & 1 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
+ON  & 2 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+%####################################
+\begin{table}[htbp]
+\centering
+\small
+\caption{Fixed-effect estimates from the linear mixed-effects model predicting reaction time.}
+\label{tab:lme_rt}
+
+\begingroup
+\renewcommand{\arraystretch}{1.30}
+\setlength{\tabcolsep}{12pt}
+
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Predictor & Contrast / unit & Estimate $\beta$ & 95\% CI & p-value \\
+\midrule
+Medication   & ON -- OFF          & X ms & [X, X] & X \\
+GVS pooled   & Active -- Sham     & X ms & [X, X] & X \\
+Run          & Run 2 -- Run 1     & X ms & [X, X] & X \\
+Trial number & Per trial increase & X ms & [X, X] & X \\
+\bottomrule
+\end{tabular}
+
+\endgroup
+\end{table}
+
+
+%##########################################################################################
+\subsection{Reward Effects on Reaction Time}
+
+We examined whether the reward condition was associated with reaction time (RT).
+High-reward trials were those assigned a reward value of 5. Low-reward trials
+were the lower non-negative reward condition, coded as 0 for 5 participants and
+1 for 13 participants. Because this low-reward value varied across
+participants, reward was analyzed as a within-participant categorical contrast
+between low- and high-reward trials. For each participant, mean RT was
+estimated separately for the two reward conditions, and the high-minus-low 
+difference was tested at the group level with a two-sided paired-samples
+\(t\)-test.
+
+High-reward trials were not associated with a reliable change in raw RT.
+Participants were numerically slower on high-reward than on low-reward trials
+(\(M_{\mathrm{diff}}=+0.029~\mathrm{s}\)), but this difference was not
+statistically significant, \(t(17)=0.59\), \(p=.565\).
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.85\linewidth]{FigureS6.pdf}
+    \caption{
+    Reward effects on raw RT. Paired participant-level mean RTs are shown for
+    low- and high-reward trials, with black diamonds indicating the group mean
+    \(\pm\) SEM. The high-minus-low reward differences are shown alongside the
+    group mean difference and 95\% confidence interval. The raw RT contrast did
+    not show a significant reward effect, \(M_{\mathrm{diff}}=+0.029~\mathrm{s}\),
+    \(t(17)=0.59\), \(p=.565\).
+    }
+    \label{fig:reward-rt}
+\end{figure}
+
+
+
+
+
+
+%##########################################################################################
+\section{Validation of the optimization framework}
+\label{app:model_validation}
+
+% \subsection{Model-ablation analysis}
+% Figure~\ref{figourS1} compares ablation models using a balanced evaluation criterion that rewards high held-out correlation with behaviour and penalizes instability between train and test. The task term favours components with stronger task-related beta magnitude, the bold and beta terms penalize trial-to-trial variability in BOLD and beta representations, and the smooth term penalizes spatially rough weight maps.
+
+% The best overall model has four terms, with the lowest mean evaluation score ($S = 0.0164$). The evaluation score is:
+% \begin{equation*}
+% \begin{aligned}
+% S \;=\;&
+% -\,w_1 \,\bigl\lVert \mathrm{corr}_{\text{test}} \bigr\rVert
+% +\, w_2 \,\bigl\lVert \,|\mathrm{corr}_{\text{train}}| - |\mathrm{corr}_{\text{test}}| \,\bigr\rVert
+% +\, w_3 \,\Biggl\lVert
+% \frac{\bigl|\mathrm{loss}_{\text{test}} - \mathrm{loss}_{\text{train}}\bigr|}
+% {|\mathrm{loss}_{\text{train}}| + \varepsilon}
+% \Biggr\rVert
+% \end{aligned}
+% \end{equation*}
+% The weights $w_1, w_2$ and $w_3$ are chosen as the inverses of the mean ranges of the corresponding terms, so that each term contributes approximately equally to the final score.
+% Importantly, it is not the model with the highest mean test correlation; the task-only model (task $= 0.8$, bold $= 0$, beta $= 0$, smooth $= 0$) had the highest test correlation ($0.1918$) but a much larger relative train--test loss gap ($0.2844$ vs.\ $0.1257$). The winning model is therefore best interpreted as the most balanced and most stable setting, not simply the strongest correlation setting. Statistically, it was significantly better than $8$ of the $11$ alternatives, but it was not significantly different from the top three single-term baselines after Bonferroni correction. The combined setting therefore gives the best overall trade-off between behavioural relevance and cross-fold stability, while the advantage over the strongest single-penalty baselines is modest.
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=\textwidth]{FigureS1.pdf}
+%     \caption{Comparison of objective values and term contributions across ablation settings using the balanced weighting scheme.  Left: fold-level distribution of the objective score S for each optimization term, where lower values indicate stronger test correlation with smaller train-test correlation and loss gaps. Right: mean contribution of the three weighted objective terms for each setting. Asterisks denote Bonferroni-corrected Mann-Whitney U comparisons against the pinned reference full setting.}
+%     \label{figourS1}
+% \end{figure}
+
+\subsection{Projection stability relative to behaviour}
+To further test the main hypothesis, Figure~\ref{figourS2} evaluates whether the optimized network output was more stable across trials than the behavioural signal. We compared, at the run level, the variability of the projection with the variability of behaviour using a consecutive-trial metric,
+\[
+\sum_i \frac{(x_i - x_{i+1})^2}{x_i^2 + x_{i+1}^2},
+\]
+The projection was consistently less variable than reaction time across subjects, sessions, and runs, indicating that the identified network expresses a relatively stable neural signal compared with noisy behaviour.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Sup_Figure1.pdf}
+    \caption{Comparison of trial-to-trial variability in reaction time and the projection signal. Each colored pair represents one run, with colors indicating subjects. Across 56 runs from 14 subjects, the optimized network score showed lower variability than reaction time (linear mixed-effects model with subject as a random intercept: $\beta = -43.94$, $z = -16.52$, $p = 2.55 \times 10^{-61}$).}
+    \label{figourS1}
+\end{figure}
+
+\subsection{Selected voxels are more stable than the motor-area comparison pool}
+Figure~\ref{figourS3} tests whether the optimized network is not only related to motor vigour, but also more stable across trials than the broader motor system. This analysis addresses whether the selected voxels are merely an arbitrary sample of motor-area voxels or instead a meaningful subset identified by a distinctive stability profile. Here, the non-selected voxels are the comparison pool of motor-area voxels that were not included in the optimized network. They were defined from an atlas-based motor mask including the precentral gyrus, postcentral gyrus, medial frontal cortex (SMA region), bilateral thalamus, putamen, pallidum, and cerebellum. After excluding the selected set, this left 43,711 motor-area non-selected voxels for comparison. The average absolute change between consecutive trial-wise beta values was then measured after dividing by each voxel's mean response magnitude, so lower values indicate lower trial-to-trial variability independent of signal amplitude. The left panel shows that selected voxels are consistently overrepresented among low-variability voxels, with enrichment ratios above 1 across percentile thresholds. The right panel shows the same effect at the network level: the observed mean variability of the selected voxels ($2.11$) is lower than the mean from size-matched resamples of the motor-area non-selected pool ($2.95$, $95\%$ CI $2.37$--$4.44$, empirical $p \approx 0.001$). Together, these results support the claim that the selected network exhibits unusually stable trial-by-trial responses relative to the rest of the motor system.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{FigureS3.pdf}
+    \caption{Trial-to-trial variability in the selected voxel network relative to motor-area non-selected voxels. Left, the ratio of voxels falling below pooled percentile thresholds of normalized consecutive-trial difference (selected / non-selected), where values above 1 indicate enrichment of selected voxels in the low-variability tail. Right, the null distribution of variability from 1,000 size-matched resamples of motor-area non-selected voxels, with the observed selected-network mean marked for comparison.}
+    \label{figourS3}
+\end{figure}
+
+\section{Anatomical characterization of the final vigour-related network}
+\label{app:anatomy}
+
+\subsection{ROI-wise composition of the final network}
+Anatomical labels correspond to the three Harvard--Oxford labels.
+
+\begin{longtable}{@{} p{5.2cm} r r r r @{}}
+\caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:voxel_weights_task1}. ROIs are ranked by their contribution to the selected map. The listed anatomical ROIs account for 95.27\% of selected voxels; the remaining 4.73\% are unlisted or outside the reported ROIs.\label{tab:roi_vigour_network}}\\
+\toprule
+ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
+\midrule
+\endfirsthead
+
+\toprule
+ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+Left Middle Temporal Gyrus & 2123 & 398 & 18.75 & 14.88 \\
+Left Frontal Pole & 7061 & 237 & 3.36 & 8.86 \\
+Left Inferior Temporal Gyrus & 1691 & 227 & 13.42 & 8.49 \\
+Right Frontal Pole & 8196 & 194 & 2.37 & 7.26 \\
+Left Amygdala & 306 & 147 & 48.04 & 5.50 \\
+Left Superior Parietal Lobule & 1449 & 129 & 8.90 & 4.82 \\
+Left Hippocampus & 691 & 127 & 18.38 & 4.75 \\
+Left Parahippocampal Gyrus & 978 & 125 & 12.78 & 4.67 \\
+Left Putamen & 799 & 116 & 14.52 & 4.34 \\
+Right Crus II & 1765 & 108 & 6.12 & 4.04 \\
+Left Temporal Fusiform Cortex & 873 & 96 & 11.00 & 3.59 \\
+Left Temporal Pole & 2350 & 84 & 3.57 & 3.14 \\
+Left Postcentral Gyrus & 3628 & 79 & 2.18 & 2.95 \\
+Right Hippocampus & 700 & 77 & 11.00 & 2.88 \\
+Right Amygdala & 366 & 74 & 20.22 & 2.77 \\
+Right Parahippocampal Gyrus & 980 & 56 & 5.71 & 2.09 \\
+Left Precuneus Cortex & 2478 & 53 & 2.14 & 1.98 \\
+Left Lateral Occipital Cortex & 4955 & 46 & 0.93 & 1.72 \\
+Right Frontal Medial Cortex & 444 & 46 & 10.36 & 1.72 \\
+Right VIIb & 878 & 43 & 4.90 & 1.61 \\
+Left Precentral Gyrus & 4296 & 42 & 0.98 & 1.57 \\
+Left Frontal Medial Cortex & 424 & 21 & 4.95 & 0.79 \\
+Left Superior Temporal Gyrus & 877 & 11 & 1.25 & 0.41 \\
+Right VIIIa & 853 & 10 & 1.17 & 0.37 \\
+Left Insular Cortex & 1160 & 2 & 0.17 & 0.07 \\
+\end{longtable}
+After normalizing by ROI size, the strongest selection is concentrated in temporal--limbic regions and the left putamen, while motor-related regions such as the superior parietal lobule, cerebellum, and peri-central cortex are also represented but with lower ROI-normalized coverage. In other words, the network has a motor-related core, but its strongest ROI-level enrichment is not confined to the primary motor cortex. It is a distributed, left-biased vigour-related system rather than a purely focal motor map.
+
+\subsection{Comparison with the task-engagement reference map}
+The tables below provide a compact summary of the limited overlap between the final vigour-related network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of the full-constraint network and the task-engagement reference map.\label{tab:two_networks}}
+\small
+\begin{threeparttable}
+
+\begin{tabularx}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3.1cm}
+    >{\centering\arraybackslash}p{1.6cm}
+    >{\centering\arraybackslash}p{2.8cm}
+    >{\raggedright\arraybackslash}X
+}
+\toprule
+\textbf{Network} & \textbf{Voxel count} & \textbf{Shared voxels (\% of network)} & \textbf{Main anatomical labels} \\
+\midrule
+Reference map & 2674 & 102 (3.81\%) &
+Frontal Pole; Middle Temporal Gyrus, posterior division; Inferior Temporal Gyrus, posterior division \\
+
+Postcentral-boosted map & 1505 & 102 (6.78\%) &
+Lateral Occipital Cortex, superior division; Occipital Pole; Cingulate Gyrus, posterior division \\
+\bottomrule
+\end{tabularx}
+
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Pairwise metrics: Dice coefficient $= 0.049$; center-of-mass distance $= 47.3$ mm.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{ROI-level voxel overlap between the full model and task-only activation network.}
+\label{tab:ablation_full_vs_task_only_roi}
+
+\begin{tabularx}{\textwidth}{@{}lccc>{\raggedright\arraybackslash}X@{}}
+\toprule
+ROI &
+\makecell{Shared voxel\\n (\% ROI)} &
+\makecell{Vigour network\\n (\% ROI)} &
+\makecell{Task activation\\network n (\% ROI)} &
+Voxel-level relation \\
+\midrule
+Putamen & 90 (6.03\%) & 22 (1.47\%) & 620 (41.55\%) & Shared voxels present \\
+Pallidum & 0 (0.00\%) & 2 (0.38\%) & 171 (32.70\%) & Both maps in ROI, no shared voxels \\
+Fusiform & 9 (0.20\%) & 294 (6.62\%) & 970 (21.83\%) & Shared voxels present \\
+Parietal & 51 (0.28\%) & 607 (3.37\%) & 4,301 (23.87\%) & Shared voxels present \\
+Insula & 0 (0.00\%) & 13 (0.37\%) & 908 (25.73\%) & Both maps in ROI, no shared voxels \\
+Postcentral & 20 (0.29\%) & 50 (0.73\%) & 1,659 (24.16\%) & Shared voxels present \\
+ParaHippocampal & 0 (0.00\%) & 278 (20.87\%) & 5 (0.38\%) & Both maps in ROI, no shared voxels \\
+Amygdala & 0 (0.00\%) & 86 (20.92\%) & 0 (0.00\%) & Vigour network only in ROI \\
+Occipital & 64 (0.35\%) & 89 (0.49\%) & 3,474 (19.14\%) & Shared voxels present \\
+Cerebellum & 225 (0.98\%) & 250 (1.09\%) & 4,034 (17.65\%) & Shared voxels present \\
+Temporal & 8 (0.03\%) & 1,769 (7.43\%) & 2,007 (8.43\%) & Shared voxels present \\
+Paracentral\_Lobule & 19 (1.18\%) & 127 (7.86\%) & 103 (6.37\%) & Shared voxels present \\
+Cingulate & 0 (0.00\%) & 20 (0.35\%) & 724 (12.77\%) & Both maps in ROI, no shared voxels \\
+Rolandic\_Oper & 0 (0.00\%) & 3 (0.16\%) & 239 (12.63\%) & Both maps in ROI, no shared voxels \\
+Precentral & 15 (0.27\%) & 225 (3.99\%) & 420 (7.46\%) & Shared voxels present \\
+Orbitofrontal & 0 (0.00\%) & 466 (9.94\%) & 15 (0.32\%) & Both maps in ROI, no shared voxels \\
+Caudate & 0 (0.00\%) & 121 (10.04\%) & 0 (0.00\%) & Vigour network only in ROI \\
+Supp\_Motor\_Area & 2 (0.06\%) & 282 (8.31\%) & 41 (1.21\%) & Shared voxels present \\
+Thalamus & 0 (0.00\%) & 9 (1.22\%) & 57 (7.70\%) & Both maps in ROI, no shared voxels \\
+Hippocampus & 0 (0.00\%) & 66 (6.07\%) & 29 (2.67\%) & Both maps in ROI, no shared voxels \\
+Olfactory & 0 (0.00\%) & 36 (7.83\%) & 0 (0.00\%) & Vigour network only in ROI \\
+Frontal & 0 (0.00\%) & 632 (2.15\%) & 1,258 (4.29\%) & Both maps in ROI, no shared voxels \\
+Cerebral\_Cortex & 0 (0.00\%) & 7 (0.20\%) & 72 (2.04\%) & Both maps in ROI, no shared voxels \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Medication-state analyses}
+\label{app:medication}
+
+\subsection{Subject-wise between-session changes in ROI-edge connectivity}
+This heatmap shows how the strongest connectivity changes vary across subjects for the most changed ROI edges. Warm colors indicate positive values, meaning higher mutual information in the ON-medication session than in the OFF-medication session, whereas cool colors indicate negative values, meaning lower mutual information in the ON-medication session. The selected edges were ranked by mean absolute between-session change across the $14$ paired subjects, so the figure emphasizes edges with the largest subject-level modulation.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{FigureS4.pdf}
+    \caption{Subject-wise heatmap of the top between-session changes in region-of-interest (ROI) edge connectivity, measured with continuous mutual information estimated using the Kraskov-Stogbauer-Grassberger (KSG) nearest-neighbor estimator. Each row represents one participant, and each column represents one of the top ROI-to-ROI edges selected based on the largest mean absolute change between sessions across all subjects. Values show session 2 minus session 1. Abbreviations: L, left; R, right; DLPFC, dorsolateral prefrontal cortex; vmPFC, ventromedial prefrontal cortex; dmPFC, dorsomedial prefrontal cortex; IFG, inferior frontal gyrus; ctx, cortex.}
+    \label{figourS4}
+\end{figure}
+
+\subsection{Control analysis: no evidence for preferential ON-state stabilization}
+To test whether the higher ON--ON similarity could be explained by the optimization favouring voxel populations that were intrinsically more stable in the ON state, we examined subject-level normalized absolute consecutive-trial beta differences $\left(|\Delta|/|\mathrm{mean}|\right)$, where lower values indicate greater stability. In the paired sample ($n = 14$; Figure~\ref{figourS5}), the selected voxel set showed lower variability than the motor control pool in both OFF ($2.00$ vs.\ $2.52$) and ON ($2.31$ vs.\ $3.52$). Crucially, the selected set did not show preferential stabilization in the ON state; instead, its variability increased only modestly from OFF to ON ($\Delta_{\mathrm{sel}} = +0.308$, paired $t = 0.669$, $p = 0.515$). The control pool showed a larger increase ($\Delta_{\mathrm{ctl}} = +0.998$, paired $t = 1.813$, $p = 0.093$), and the difference in OFF-to-ON change between the two sets was significant ($\Delta_{\mathrm{sel}} - \Delta_{\mathrm{ctl}} = -0.690$, $p = 0.046$). These results suggest that the optimization procedure favours generally stable voxels, but not voxels that are selectively stabilized in the ON state. Therefore, the stronger ON--ON similarity is unlikely to be explained mainly by an ON-state stability bias and is more consistent with dopaminergic reorganization across patients.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{FigureS5.pdf}
+    \caption{Subject-level OFF and ON values of normalized absolute consecutive-trial beta difference $\left(|\Delta|/|\mathrm{mean}|\right)$ for the control and selected voxel sets. Lower values indicate greater stability. Gray lines show individual subjects; colored markers and error bars show mean $\pm$ SEM. The selected set remained less variable than the control set in both states, but did not show preferential stabilization in ON. Instead, the OFF-to-ON increase in variability was smaller in the selected set ($\Delta sel = +0.308$) than in the control set ($\Delta ctl = +0.998$), yielding a significant interaction ($\Delta sel - \Delta ctl = -0.690$, $p = 0.046$).}
+    \label{figourS5}
+\end{figure}
+
+\section{Supplementary GVS-related ROI analyses}
+\label{app:gvs}
+
+\subsection{Significant ROI changes by subject and stimulation waveform}
+This section reports the subject-level sham-referenced ROI effects of active GVS within the final network.
+
+\clearpage
+\begingroup
+\centering
+\makebox[\textwidth][c]{%
+\rotatebox{90}{%
+\begin{minipage}{\textheight}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.06}
+\captionof{table}{Significant ROIs by subject and GVS session in the OFF-sham OFF comparison $(FDR < 0.05)$, excluding Unassigned Active Voxels. \commonroi{Purple} text indicates ROIs also significant in the ON-sham ON comparison. DLPC = dorsolateral prefrontal cortex.}
+\label{tab:significant_rois_off}
+\vspace{0.4em}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{c*{8}{c}}
+\hline
+\textbf{Subject} & \textbf{GVS1} & \textbf{GVS2} & \textbf{GVS3} & \textbf{GVS4} & \textbf{GVS5} & \textbf{GVS6} & \textbf{GVS7} & \textbf{GVS8} \\
+\hline
+
+\textbf{sub-pd004}
+& \makecell[l]{\offroi{Cingulate Cortex}\\\offroi{Precentral}}
+& \makecell[l]{\offroi{Precentral}\\\offroi{Occipital Cortex}}
+& -
+& \offroi{Precentral}
+& \makecell[l]{\offroi{Cingulate Cortex}\\\offroi{DLPC}}
+& \offroi{Basal Ganglia}
+& \makecell[l]{\offroi{DLPC}\\\offroi{Parietal Cortex}\\\offroi{Precentral}\\\offroi{Basal Ganglia}}
+& \makecell[l]{\offroi{Amygdala}\\\offroi{Occipital Cortex}} \\
+\hline
+
+\textbf{sub-pd007}
+& -
+& \makecell[l]{\commonroi{Inferior Frontal Gyrus}\\\offroi{DLPC}\\\offroi{Temporal Cortex}\\\commonroi{Occipital Cortex}}
+& \offroi{DLPC}
+& -
+& \makecell[l]{\commonroi{Cerebellum}\\\offroi{DLPC}}
+& \makecell[l]{\offroi{Amygdala}\\\offroi{vmPFC/dmPFC}}
+& \makecell[l]{\commonroi{Cerebellum}\\\offroi{Parietal Cortex}\\\commonroi{Insular/Opercular Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\commonroi{Inferior Frontal Gyrus}\\\offroi{Insular/Opercular Cortex}} \\
+\hline
+
+\textbf{sub-pd009}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Inferior Frontal Gyrus}\\\offroi{DLPC}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{DLPC}\\\offroi{Parietal Cortex}\\\offroi{Precentral}\\\offroi{Temporal Cortex}\\\offroi{Basal Ganglia}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{DLPC}\\\offroi{vmPFC/dmPFC}\\\offroi{Precentral}\\\offroi{Basal Ganglia}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{DLPC}\\\offroi{vmPFC/dmPFC}\\\offroi{Temporal Cortex}\\\offroi{Basal Ganglia}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Parietal Cortex}\\\offroi{Temporal Cortex}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{DLPC}\\\offroi{Temporal Cortex}\\\offroi{Basal Ganglia}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{Temporal Cortex}\\\offroi{Basal Ganglia}} \\
+\hline
+
+\textbf{sub-pd010}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd011}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd012}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd013}
+& \makecell[l]{\offroi{Cingulate Cortex}\\\offroi{Thalamus}\\\offroi{Occipital Cortex}\\\offroi{Insular/Opercular Cortex}}
+& \makecell[l]{\offroi{vmPFC/dmPFC}\\\offroi{Thalamus}\\\offroi{Occipital Cortex}}
+& \makecell[l]{\offroi{Precentral}\\\offroi{Insular/Opercular Cortex}\\\offroi{Basal Ganglia}}
+& \offroi{Insular/Opercular Cortex}
+& -
+& -
+& \offroi{Cingulate Cortex}
+& \offroi{Insular/Opercular Cortex} \\
+\hline
+
+\textbf{sub-pd014}
+& \makecell[l]{\commonroi{Precentral}\\\offroi{Occipital Cortex}}
+& \makecell[l]{\commonroi{vmPFC/dmPFC}\\\offroi{Occipital Cortex}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{Inferior Frontal Gyrus}\\\commonroi{Precentral}\\\offroi{Thalamus}\\\commonroi{Occipital Cortex}\\\offroi{Insular/Opercular Cortex}\\\commonroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\commonroi{Occipital Cortex}\\\offroi{Insular/Opercular Cortex}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{vmPFC/dmPFC}\\\offroi{Precentral}\\\offroi{Temporal Cortex}\\\offroi{Occipital Cortex}\\\offroi{Insular/Opercular Cortex}\\\offroi{Basal Ganglia}\\\commonroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Inferior Frontal Gyrus}\\\offroi{DLPC}\\\offroi{Precentral}\\\offroi{Occipital Cortex}\\\offroi{Insular/Opercular Cortex}\\\offroi{Basal Ganglia}\\\commonroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cingulate Cortex}\\\offroi{Inferior Frontal Gyrus}\\\offroi{DLPC}\\\commonroi{Precentral}\\\commonroi{Occipital Cortex}\\\offroi{Insular/Opercular Cortex}\\\offroi{Basal Ganglia}\\\offroi{Other Cerebral Cortex}} \\
+\hline
+
+\textbf{sub-pd015}
+& -
+& -
+& \offroi{Occipital Cortex}
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd017}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd018}
+& \makecell[l]{\offroi{vmPFC/dmPFC}\\\offroi{Occipital Cortex}}
+& -
+& \makecell[l]{\offroi{vmPFC/dmPFC}\\\offroi{Parietal Cortex}\\\offroi{Precentral}}
+& -
+& \makecell[l]{\offroi{Inferior Frontal Gyrus}\\\offroi{Precentral}\\\offroi{Occipital Cortex}}
+& -
+& -
+& \offroi{Occipital Cortex} \\
+\hline
+
+\textbf{sub-pd020}
+& -
+& -
+& \offroi{Thalamus}
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd023}
+& \makecell[l]{\offroi{Inferior Frontal Gyrus}\\\offroi{DLPC}\\\offroi{Precentral}\\\offroi{Temporal Cortex}\\\offroi{Thalamus}\\\offroi{Insular/Opercular Cortex}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Thalamus}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Amygdala}\\\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{Inferior Frontal Gyrus}\\\offroi{DLPC}\\\offroi{Precentral}\\\offroi{Temporal Cortex}\\\offroi{Thalamus}\\\offroi{Insular/Opercular Cortex}}
+& \makecell[l]{\offroi{Inferior Frontal Gyrus}\\\offroi{Precentral}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Amygdala}\\\offroi{Cerebellum}\\\offroi{DLPC}\\\offroi{Precentral}\\\offroi{Hippocampus}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Amygdala}\\\offroi{Cerebellum}\\\offroi{Cingulate Cortex}\\\offroi{DLPC}\\\offroi{Thalamus}\\\offroi{Hippocampus}\\\offroi{Other Cerebral Cortex}}
+& \makecell[l]{\offroi{Cerebellum}\\\offroi{Inferior Frontal Gyrus}\\\offroi{DLPC}\\\offroi{Precentral}\\\offroi{Temporal Cortex}}
+& \makecell[l]{\offroi{DLPC}\\\offroi{Precentral}\\\offroi{Thalamus}} \\
+\hline
+
+\textbf{sub-pd024}
+& \offroi{Precentral}
+& \makecell[l]{\offroi{Thalamus}\\\offroi{Hippocampus}}
+& \offroi{Precentral}
+& -
+& -
+& -
+& \makecell[l]{\offroi{Precentral}\\\commonroi{Occipital Cortex}}
+& - \\
+\hline
+
+\textbf{sub-pd028}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\end{tabular}%
+}
+\end{minipage}%
+}
+}
+\par
+\endgroup
+
+\clearpage
+\begingroup
+\centering
+\makebox[\textwidth][c]{%
+\rotatebox{90}{%
+\begin{minipage}{\textheight}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.06}
+\captionof{table}{Significant ROIs by subject and GVS session in the ON-sham ON comparison $(FDR < 0.05)$. \commonroi{Purple} text indicates ROIs also significant in the OFF-sham OFF comparison. DLPC = dorsolateral prefrontal cortex.}
+\label{tab:significant_rois_on}
+\vspace{0.4em}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{c*{8}{c}}
+\hline
+\textbf{Subject} & \textbf{GVS1} & \textbf{GVS2} & \textbf{GVS3} & \textbf{GVS4} & \textbf{GVS5} & \textbf{GVS6} & \textbf{GVS7} & \textbf{GVS8} \\
+\hline
+
+\textbf{sub-pd004}
+& -
+& -
+& \onroi{Parietal Cortex}
+& \onroi{Amygdala}
+& -
+& \onroi{Hippocampus}
+& -
+& \onroi{Hippocampus} \\
+\hline
+
+\textbf{sub-pd007}
+& \makecell[l]{\onroi{Cerebellum}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{DLPC}\\\onroi{Temporal Cortex}\\\onroi{Occipital Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Hippocampus}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\commonroi{Inferior Frontal Gyrus}\\\commonroi{Occipital Cortex}\\\onroi{Cerebellum}\\\onroi{Parietal Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Hippocampus}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{Temporal Cortex}\\\onroi{Occipital Cortex}\\\onroi{Hippocampus}\\\onroi{Other Cerebral Cortex}}
+& \onroi{Hippocampus}
+& \makecell[l]{\commonroi{Cerebellum}\\\onroi{Thalamus}\\\onroi{Hippocampus}\\\onroi{Other Cerebral Cortex}}
+& \onroi{Hippocampus}
+& \makecell[l]{\commonroi{Cerebellum}\\\commonroi{Insular/Opercular Cortex}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{vmPFC/dmPFC}\\\onroi{Hippocampus}}
+& \makecell[l]{\commonroi{Inferior Frontal Gyrus}\\\onroi{Amygdala}\\\onroi{Temporal Cortex}\\\onroi{Occipital Cortex}\\\onroi{Hippocampus}} \\
+\hline
+
+\textbf{sub-pd009}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd010}
+& -
+& -
+& -
+& \onroi{Thalamus}
+& \onroi{Occipital Cortex}
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd011}
+& \makecell[l]{\onroi{vmPFC/dmPFC}\\\onroi{Parietal Cortex}\\\onroi{Temporal Cortex}\\\onroi{Occipital Cortex}\\\onroi{Insular/Opercular Cortex}}
+& \makecell[l]{\onroi{Thalamus}\\\onroi{Occipital Cortex}}
+& \makecell[l]{\onroi{vmPFC/dmPFC}\\\onroi{Parietal Cortex}\\\onroi{Temporal Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Parietal Cortex}\\\onroi{Insular/Opercular Cortex}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cerebellum}\\\onroi{Occipital Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Basal Ganglia}}
+& \onroi{Occipital Cortex}
+& \makecell[l]{\onroi{Cingulate Cortex}\\\onroi{vmPFC/dmPFC}\\\onroi{Parietal Cortex}\\\onroi{Temporal Cortex}}
+& \onroi{vmPFC/dmPFC} \\
+\hline
+
+\textbf{sub-pd012}
+& \makecell[l]{\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{Parietal Cortex}\\\onroi{Hippocampus}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Cingulate Cortex}\\\onroi{DLPC}\\\onroi{Parietal Cortex}\\\onroi{Hippocampus}\\\onroi{Basal Ganglia}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{Parietal Cortex}\\\onroi{Occipital Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Hippocampus}\\\onroi{Basal Ganglia}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{vmPFC/dmPFC}\\\onroi{Thalamus}\\\onroi{Occipital Cortex}\\\onroi{Hippocampus}\\\onroi{Basal Ganglia}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{Occipital Cortex}\\\onroi{Hippocampus}\\\onroi{Basal Ganglia}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{DLPC}\\\onroi{Precentral}\\\onroi{Hippocampus}\\\onroi{Basal Ganglia}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{vmPFC/dmPFC}\\\onroi{Precentral}\\\onroi{Occipital Cortex}\\\onroi{Hippocampus}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Inferior Frontal Gyrus}\\\onroi{DLPC}\\\onroi{vmPFC/dmPFC}\\\onroi{Parietal Cortex}\\\onroi{Precentral}\\\onroi{Occipital Cortex}\\\onroi{Hippocampus}\\\onroi{Basal Ganglia}} \\
+\hline
+
+\textbf{sub-pd013}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd014}
+& \makecell[l]{\commonroi{Precentral}\\\onroi{Parietal Cortex}\\\onroi{Insular/Opercular Cortex}}
+& \makecell[l]{\commonroi{vmPFC/dmPFC}\\\onroi{Precentral}\\\onroi{Insular/Opercular Cortex}}
+& \makecell[l]{\commonroi{Precentral}\\\commonroi{Occipital Cortex}\\\commonroi{Other Cerebral Cortex}\\\onroi{Parietal Cortex}\\\onroi{Temporal Cortex}}
+& \makecell[l]{\commonroi{Occipital Cortex}\\\onroi{Parietal Cortex}}
+& \makecell[l]{\commonroi{Other Cerebral Cortex}\\\onroi{Parietal Cortex}}
+& \makecell[l]{\commonroi{Other Cerebral Cortex}\\\onroi{Parietal Cortex}}
+& -
+& \makecell[l]{\commonroi{Precentral}\\\commonroi{Occipital Cortex}\\\onroi{Parietal Cortex}} \\
+\hline
+
+\textbf{sub-pd015}
+& -
+& -
+& -
+& \onroi{Insular/Opercular Cortex}
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd017}
+& -
+& \makecell[l]{\onroi{Occipital Cortex}\\\onroi{Other Cerebral Cortex}}
+& -
+& \makecell[l]{\onroi{DLPC}\\\onroi{Insular/Opercular Cortex}}
+& -
+& -
+& \onroi{DLPC}
+& - \\
+\hline
+
+\textbf{sub-pd018}
+& -
+& -
+& -
+& -
+& -
+& -
+& \onroi{Other Cerebral Cortex}
+& \onroi{Other Cerebral Cortex} \\
+\hline
+
+\textbf{sub-pd020}
+& -
+& -
+& -
+& -
+& -
+& -
+& \onroi{Cerebellum}
+& - \\
+\hline
+
+\textbf{sub-pd023}
+& -
+& -
+& -
+& -
+& -
+& -
+& -
+& - \\
+\hline
+
+\textbf{sub-pd024}
+& \onroi{Occipital Cortex}
+& -
+& \makecell[l]{\onroi{Occipital Cortex}\\\onroi{Other Cerebral Cortex}}
+& -
+& -
+& -
+& \commonroi{Occipital Cortex}
+& \makecell[l]{\onroi{Occipital Cortex}\\\onroi{Other Cerebral Cortex}} \\
+\hline
+
+\textbf{sub-pd028}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}}
+& \makecell[l]{\onroi{Insular/Opercular Cortex}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Cingulate Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Precentral}\\\onroi{Insular/Opercular Cortex}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Cingulate Cortex}\\\onroi{Insular/Opercular Cortex}}
+& \makecell[l]{\onroi{Inferior Frontal Gyrus}\\\onroi{Insular/Opercular Cortex}\\\onroi{Other Cerebral Cortex}}
+& \makecell[l]{\onroi{Amygdala}\\\onroi{Cingulate Cortex}\\\onroi{Insular/Opercular Cortex}\\\onroi{Other Cerebral Cortex}} \\
+\hline
+
+\end{tabular}%
+}
+\end{minipage}%
+}
+}
+\par
+\endgroup
+
+\end{document}
