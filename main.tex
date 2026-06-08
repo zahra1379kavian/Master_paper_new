@@ -27,6 +27,7 @@
 \newcommand{\offroi}[1]{\textcolor{black}{#1}}
 \newcommand{\onroi}[1]{\textcolor{black}{#1}}
 \newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
+\newlength{\combinedfigheight}
 
 \begin{document}
 \raggedbottom
@@ -633,13 +634,16 @@ Supplementary material for this article is provided in the accompanying Suppleme
 
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}[t]{0.48\textwidth}
+    \setlength{\combinedfigheight}{0.32\textwidth}
+    \begin{minipage}[t]{0.60\textwidth}
+        \noindent\textbf{A}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=\textwidth]{Figure4.pdf}
+        \includegraphics[height=\combinedfigheight]{Figure4.pdf}
     \end{minipage}\hfill
-    \begin{minipage}[t]{0.48\textwidth}
+    \begin{minipage}[t]{0.38\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=\textwidth]{Figure3.pdf}
+        \includegraphics[height=\combinedfigheight]{Figure3.pdf}
     \end{minipage}
     \caption{Medication increases intra-ROI functional connectivity and reduces cross-subject network distance. (A) Mean functional connectivity is shown within ROIs and between ROIs for OFF and ON medication states; lines indicate paired subjects. ON medication increased intra-ROI connectivity, whereas between-ROI connectivity did not change significantly. (B) Cross-subject Laplacian spectral distance was lower ON medication, indicating greater similarity of network structure across subjects.}
     \label{figour3}
@@ -648,15 +652,16 @@ Supplementary material for this article is provided in the accompanying Suppleme
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{Figure5.pdf}
-    \caption{}
+    \begin{minipage}{0.7\textwidth}
+        \textbf{A}\par\vspace{0.2em}
+        \includegraphics[width=\textwidth]{Figure5.pdf}
+    \end{minipage}\\[1em]
+    \begin{minipage}{\textwidth}
+        \textbf{B}\par\vspace{0.2em}
+        \includegraphics[width=\textwidth]{Figure6.pdf}
+    \end{minipage}
+    \caption{Group-level GVS effects on functional connectivity estimated with the mutual-information quantile metric. Connectograms show statistically significant GVS-related increases (left/orange) and decreases (right/blue) in connectivity across pooled subjects and stimulation blocks; edge color intensity indicates effect magnitude. Heatmaps summarize the number of significant edges between large-scale anatomical network groups, showing that GVS-related effects are distributed across cortical, subcortical, limbic-olfactory, and somatosensory/cerebellar systems, with the strongest concentration of altered edges involving limbic-olfactory and somatosensory/cerebellar regions.}
     \label{figour5}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{Figure6.pdf}
-    \caption{}
     \label{figour6}
 \end{figure}
 
