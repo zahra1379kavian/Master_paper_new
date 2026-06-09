@@ -41,6 +41,31 @@ Behaviour trial flow and quality-control summary. Each subject/session/run has a
 
 Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT ON medication. The paired subject-level test showed a mean ON-OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggest a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation. 
 
+\begin{figure}[h]
+    \centering
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \textbf{A}\\[-0.5em]
+        \includegraphics[width=\linewidth]{Sup_Figure26.pdf}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \textbf{B}\\[-0.5em]
+        \includegraphics[width=\linewidth]{Sup_Figure27.pdf}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{minipage}[t]{\textwidth}
+        \centering
+        \textbf{C}\\[-0.5em]
+        \includegraphics[width=\linewidth]{Sup_Figure28.pdf}
+    \end{minipage}
+    \caption{Supplementary behavioural reaction-time analyses. \textbf{A}, Trial-wise reaction-time distributions for OFF- and ON-medication sessions. \textbf{B}, Participant-level mean reaction times in the OFF- and ON-medication sessions. \textbf{C}, Mean reaction time across run, block position, and trial position within block, showing only modest temporal variation within the task.}
+    \label{fig:supp-behavioural-rt}
+\end{figure}
+
 4. Medication effects on behaviour, beyond mean RT:
 You should include a mixed-effects behavioural model such as:
 RT ~ medication + reward + GVS + run + block + trial\_index + medication × reward + medication × GVS+ (1 | subject)
