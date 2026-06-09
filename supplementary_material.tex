@@ -29,61 +29,152 @@
 
 
 %##########################################################################################
+Behaviour trial flow and quality-control summary. Each subject/session/run has a total.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=\linewidth]{Sup_Figure25.pdf}
+    \caption{Reaction-time quality-control summary. Stacked bars show trial information for each subject, medication session, and run; top and bottom panels show OFF and ON medication, respectively. Within each subject, the left and right bars correspond to runs 1 and 2. Each run contained 90 trials, including 9 catch trials not shown here and 81 go trials, marked by the dashed horizontal line. Valid RT trials were go trials with finite positive \(1/\mathrm{RT}\) values; missed trials were go trials flagged as no-squeeze trials \(1/\mathrm{RT}\). The gray color shows a subject for whom we don't have fMRI data.}
+    \label{fig:RT_information}
+\end{figure}
+
+
+Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT ON medication. The paired subject-level test showed a mean ON-OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggest a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation. 
+
+4. Medication effects on behaviour, beyond mean RT:
+You should include a mixed-effects behavioural model such as:
+RT ~ medication + reward + GVS + run + block + trial\_index + medication × reward + medication × GVS+ (1 | subject)
+
+For variability:
+RT\_MSSD ~ medication + run + block + reward + GVS + (1 | subject)
+
+Important: define the variability measure clearly. Is “3.50” the mean squared successive difference? Is it computed in milliseconds, normalized RT units, z-scored RT, or another scale? Right now the number is hard to interpret.
+
+
+I would also include subject-level plots of medication-induced change:
+delta RT = RT-ON − RT-OFF
+delta RT variability = variability-ON − variability-OFF
+
+5. Reward manipulation check:
+RT by high vs low reward.
+Force by high vs low reward.
+Reward effects separately in OFF and ON medication.
+Reward effects on RT variability, not just mean RT.
+A model showing that the neural vigour result is not simply a reward effect.
+
+“Is the vigour network actually tracking reward-driven faster responses?” You can answer that by showing a sensitivity analysis using reward-residualized RT:
+RT\_residual = RT after removing reward, medication, GVS, run, and block effects
+Then show whether the main neural projection still relates to residual RT.
+
+6. GVS behavioural analysis:
+GVS condition	Carrier	Envelope	RT change vs sham OFF	RT change vs sham ON	p-value	qFDR
+
+And plots for:
+RT by GVS condition.
+RT variability by GVS condition.
+Subject-level sham-referenced RT changes.
+GVS effects separated by OFF and ON medication.
+
+
+
+7. Temporal structure of RT variability
+
+So the behaviour supplement should show the temporal structure of RT itself:
+RT standard deviation.
+RT coefficient of variation.
+RT mean squared successive difference, or your exact consecutive-trial variability measure.
+Lag-1 autocorrelation.
+Autocorrelation function across several lags.
+RT drift across trial number.
+RT variability excluding run and block boundaries, matching the neural analysis.
+
+
+
+10. Subject-level behavioural heterogeneity
+Because this is a small PD sample, I would expect subject-level behavioural plots. Group averages alone are not enough.
+Include:
+One row per subject showing mean RT OFF/ON.
+One row per subject showing RT variability OFF/ON.
+One row per subject showing reward effect.
+One row per subject showing GVS sensitivity.
+Mark the subject who performed with the non-dominant hand because of tremor.
+Mark the missing/excluded session.
+
+The paper notes that one right-handed participant used the left hand because tremor in the dominant hand was severe, and that Subject 17 session 1 was excluded because one run was noisy. Those details should be visible in the behavioural supplement, because both could affect RT and force measures.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%###########################################################################################
 \section{Participants information}
 
-\begin{table}[htbp]
+\begin{table}[ht]
 \centering
-\caption{Clinical characteristics and MDS-UPDRS Part III scores obtained during the recording sessions across 18 participants.}
-\label{tab:supp-clinical-updrs}
+\caption{Clinical motor severity by medication state. MDS-UPDRS Part III ratings were available for all 18 participants. Values are reported as mean $\pm$ SD, median [range], or n/N.}
+\label{tab:updrs_summary}
 
-\begingroup
-\small
-\setlength{\tabcolsep}{8pt}
-\renewcommand{\arraystretch}{1.30}
+\renewcommand{\arraystretch}{1.3} % increase row spacing
 
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
-\renewcommand{\tabularxcolumn}[1]{m{#1}}
-
-\begin{threeparttable}
-\begin{tabularx}{\textwidth}{@{}
->{\raggedright\arraybackslash}m{4.5cm} Y Y Y @{}}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Measure} 
-& \textbf{OFF medication} 
-& \textbf{ON medication} 
-& \textbf{OFF--ON change} \\
+Measure & OFF medication & ON medication & ON--OFF \\
 \midrule
+MDS-UPDRS Part III total, mean $\pm$ SD 
+& $37.3 \pm 17.3$ & $28.0 \pm 15.0$ & $-9.3 \pm 4.2$ \\
 
-\makecell[l]{MDS-UPDRS Part, \\mean $\pm$ SD (range)}
-& \makecell[c]{$37.3 \pm 17.3$\\(10--75)}
-& \makecell[c]{$28.0 \pm 15.0$\\(7--61)}
-& \makecell[c]{$9.3 \pm 4.2$\\(3--17)} \\
+MDS-UPDRS Part III total, median [range] 
+& $35.0$ [$10$, $75$] & $22.0$ [$7$, $61$] & $-9.0$ [$-17$, $-3$] \\
 
-\addlinespace[8pt]
+Improvement from OFF, \%, mean $\pm$ SD 
+& -- & $26.6 \pm 9.1$ & -- \\
 
-\makecell[l]{Hoehn \& Yahr stage, \\ median (range)}
-& \makecell[c]{ 2 (1--4)}
-& \makecell[c]{2 (0--3)}
-& \makecell[c]{--} \\
+Minutes since last dose, median [range] 
+& $931.5$ [$720$, $3006$] & $71.0$ [$36$, $102$] & -- \\
 
-\addlinespace[8pt]
+H\&Y stage, median [range] 
+& $2$ [$1$, $4$] & $2$ [$0$, $3$] & -- \\
 
-\makecell[l]{Time since last \\ dopaminergic dose, \\ mean $\pm$ SD (range)}
-& \makecell[c]{$1033.6 \pm 514.3$\\(720--3006)}
-& \makecell[c]{$68.2 \pm 16.0$\\(36--102)}
-& -- \\
+Dyskinesias present, n/N 
+& $1/18$ & $3/18$ & -- \\
 
-\addlinespace[6pt]
-
-Dyskinesias present during rating,
-& 1/18
-& 3/18
-& -- \\
-
+Dyskinesias interfered with ratings, n/N 
+& $1/18$ & $0/18$ & -- \\
 \bottomrule
-\end{tabularx}
-\end{threeparttable}
-\endgroup
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{MDS-UPDRS Part III domain scores by medication state. Domain groupings are descriptive and are defined by the item numbers listed in the table. Values are reported as mean $\pm$ SD.}
+\label{tab:updrs_domains}
+\renewcommand{\arraystretch}{1.3} % increase row spacing
+\begin{tabular}{llccc}
+\toprule
+Domain & Items included & OFF mean $\pm$ SD & ON mean $\pm$ SD & ON-OFF mean $\pm$ SD \\
+\midrule
+Axial/signs & 3.1, 3.2, 3.9--3.14 
+& $8.4 \pm 4.6$ & $7.3 \pm 4.5$ & $-1.2 \pm 1.3$ \\
+
+Rigidity & 3.3A--3.3E 
+& $6.5 \pm 3.9$ & $5.8 \pm 3.6$ & $-0.7 \pm 1.0$ \\
+
+Limb bradykinesia & 3.4A--3.8B 
+& $15.1 \pm 7.6$ & $11.3 \pm 7.8$ & $-3.8 \pm 3.3$ \\
+
+Tremor & 3.15A--3.18 
+& $7.2 \pm 5.3$ & $3.6 \pm 3.1$ & $-3.6 \pm 3.3$ \\
+\bottomrule
+\end{tabular}
 \end{table}
 %#####################################
 
