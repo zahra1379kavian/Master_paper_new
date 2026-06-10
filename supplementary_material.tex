@@ -11,11 +11,10 @@
 \usepackage{rotating,pdflscape,adjustbox,makecell}
 \usepackage{array}
 \usepackage{caption}
-\usepackage[usenames,dvipsnames]{xcolor}
-
-\newcommand{\offroi}[1]{\textcolor{black}{#1}}
-\newcommand{\onroi}[1]{\textcolor{black}{#1}}
-\newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
+% \usepackage[usenames,dvipsnames]{xcolor}
+% \newcommand{\offroi}[1]{\textcolor{black}{#1}}
+% \newcommand{\onroi}[1]{\textcolor{black}{#1}}
+% \newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
 
 \begin{document}
 \onecolumn
@@ -38,6 +37,68 @@
 
 
 %##########################################################################################
+\section{Participants information}
+
+\begin{table}[h]
+\centering
+\caption{Clinical motor severity by medication state. MDS-UPDRS Part III ratings were available for all 18 participants. Values are reported as mean $\pm$ SD, median [range], or n/N.}
+\label{tab:updrs_summary}
+
+\renewcommand{\arraystretch}{1.3} % increase row spacing
+
+\begin{tabular}{lccc}
+\toprule
+Measure & OFF medication & ON medication & ON--OFF \\
+\midrule
+MDS-UPDRS Part III total, mean $\pm$ SD 
+& $37.3 \pm 17.3$ & $28.0 \pm 15.0$ & $-9.3 \pm 4.2$ \\
+
+MDS-UPDRS Part III total, median [range] 
+& $35.0$ [$10$, $75$] & $22.0$ [$7$, $61$] & $-9.0$ [$-17$, $-3$] \\
+
+Improvement from OFF, \%, mean $\pm$ SD 
+& -- & $26.6 \pm 9.1$ & -- \\
+
+Minutes since last dose, median [range] 
+& $931.5$ [$720$, $3006$] & $71.0$ [$36$, $102$] & -- \\
+
+H\&Y stage, median [range] 
+& $2$ [$1$, $4$] & $2$ [$0$, $3$] & -- \\
+
+Dyskinesias present, n/N 
+& $1/18$ & $3/18$ & -- \\
+
+Dyskinesias interfered with ratings, n/N 
+& $1/18$ & $0/18$ & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{MDS-UPDRS Part III domain scores by medication state. Domain groupings are descriptive and are defined by the item numbers listed in the table. Values are reported as mean $\pm$ SD.}
+\label{tab:updrs_domains}
+\renewcommand{\arraystretch}{1.3} % increase row spacing
+\begin{tabular}{llccc}
+\toprule
+Domain & Items included & OFF mean $\pm$ SD & ON mean $\pm$ SD & ON-OFF mean $\pm$ SD \\
+\midrule
+Axial/signs & 3.1, 3.2, 3.9--3.14 
+& $8.4 \pm 4.6$ & $7.3 \pm 4.5$ & $-1.2 \pm 1.3$ \\
+
+Rigidity & 3.3A--3.3E 
+& $6.5 \pm 3.9$ & $5.8 \pm 3.6$ & $-0.7 \pm 1.0$ \\
+
+Limb bradykinesia & 3.4A--3.8B 
+& $15.1 \pm 7.6$ & $11.3 \pm 7.8$ & $-3.8 \pm 3.3$ \\
+
+Tremor & 3.15A--3.18 
+& $7.2 \pm 5.3$ & $3.6 \pm 3.1$ & $-3.6 \pm 3.3$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%###########################################################################################
 \section{Behaviour Information}
 Behaviour trial flow and quality-control summary. Each subject/session/run has a total.
 
@@ -114,69 +175,17 @@ The main observation is that medication ON significantly reduced RT relative to 
 
 
 %###########################################################################################
-\section{Participants information}
 
-\begin{table}[h]
-\centering
-\caption{Clinical motor severity by medication state. MDS-UPDRS Part III ratings were available for all 18 participants. Values are reported as mean $\pm$ SD, median [range], or n/N.}
-\label{tab:updrs_summary}
-
-\renewcommand{\arraystretch}{1.3} % increase row spacing
-
-\begin{tabular}{lccc}
-\toprule
-Measure & OFF medication & ON medication & ON--OFF \\
-\midrule
-MDS-UPDRS Part III total, mean $\pm$ SD 
-& $37.3 \pm 17.3$ & $28.0 \pm 15.0$ & $-9.3 \pm 4.2$ \\
-
-MDS-UPDRS Part III total, median [range] 
-& $35.0$ [$10$, $75$] & $22.0$ [$7$, $61$] & $-9.0$ [$-17$, $-3$] \\
-
-Improvement from OFF, \%, mean $\pm$ SD 
-& -- & $26.6 \pm 9.1$ & -- \\
-
-Minutes since last dose, median [range] 
-& $931.5$ [$720$, $3006$] & $71.0$ [$36$, $102$] & -- \\
-
-H\&Y stage, median [range] 
-& $2$ [$1$, $4$] & $2$ [$0$, $3$] & -- \\
-
-Dyskinesias present, n/N 
-& $1/18$ & $3/18$ & -- \\
-
-Dyskinesias interfered with ratings, n/N 
-& $1/18$ & $0/18$ & -- \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{MDS-UPDRS Part III domain scores by medication state. Domain groupings are descriptive and are defined by the item numbers listed in the table. Values are reported as mean $\pm$ SD.}
-\label{tab:updrs_domains}
-\renewcommand{\arraystretch}{1.3} % increase row spacing
-\begin{tabular}{llccc}
-\toprule
-Domain & Items included & OFF mean $\pm$ SD & ON mean $\pm$ SD & ON-OFF mean $\pm$ SD \\
-\midrule
-Axial/signs & 3.1, 3.2, 3.9--3.14 
-& $8.4 \pm 4.6$ & $7.3 \pm 4.5$ & $-1.2 \pm 1.3$ \\
-
-Rigidity & 3.3A--3.3E 
-& $6.5 \pm 3.9$ & $5.8 \pm 3.6$ & $-0.7 \pm 1.0$ \\
-
-Limb bradykinesia & 3.4A--3.8B 
-& $15.1 \pm 7.6$ & $11.3 \pm 7.8$ & $-3.8 \pm 3.3$ \\
-
-Tremor & 3.15A--3.18 
-& $7.2 \pm 5.3$ & $3.6 \pm 3.1$ & $-3.6 \pm 3.3$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-%###########################################################################################
 \section{GLM and GLMsingle analysis}
+Spatial distribution of Standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{supplementary_figures/Sup_Figure30.pdf}
+    \caption{Group-level mixed-effects map. Axial brain slices show thresholded positive z-statistic values overlaid on the anatomical reference image. Warm colors indicate suprathreshold effects from the FEAT thresholded z-statistic image, with brighter colors reflecting higher z-values. The map is displayed at a cluster-forming threshold of Z > 3.1; R labels indicate image orientation.}
+    \label{fig:standard_glm}
+\end{figure}
+
 Spatial similarity between networks:
 
 \begin{figure}[h]
