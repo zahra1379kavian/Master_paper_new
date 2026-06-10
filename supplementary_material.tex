@@ -107,7 +107,7 @@ The main observation is that medication ON significantly reduced RT relative to 
 %###########################################################################################
 \section{Participants information}
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
 \caption{Clinical motor severity by medication state. MDS-UPDRS Part III ratings were available for all 18 participants. Values are reported as mean $\pm$ SD, median [range], or n/N.}
 \label{tab:updrs_summary}
@@ -142,7 +142,7 @@ Dyskinesias interfered with ratings, n/N
 \end{tabular}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
 \caption{MDS-UPDRS Part III domain scores by medication state. Domain groupings are descriptive and are defined by the item numbers listed in the table. Values are reported as mean $\pm$ SD.}
 \label{tab:updrs_domains}
@@ -166,15 +166,44 @@ Tremor & 3.15A--3.18
 \end{tabular}
 \end{table}
 
+%###########################################################################################
+\section{GLM and GLMsingle analysis}
+Spatial similarity between networks:
 
-\section{Anatomical characterization of the final vigour-related network}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{supplementary_figures/Sup_Figure7.pdf}
+    \includegraphics[width=0.5\linewidth]{supplementary_figures/Sup_Figure8.pdf}
+    \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+
+%###########################################################################################
+\section{Anatomical characterization of the vigour network}
 \label{app:anatomy}
 
 \subsection{ROI-wise composition of the final network}
-Anatomical labels correspond to the three Harvard--Oxford labels.
+I used this atlas to define ROIs in this study:
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure4.pdf}
+    \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+The vigour-network is marked by regions' function in the figure below:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure5.pdf}
+    \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
 
 \begin{longtable}{@{} p{5.2cm} r r r r @{}}
-\caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:voxel_weights_task1}. ROIs are ranked by their contribution to the selected map. The listed anatomical ROIs account for 95.27\% of selected voxels; the remaining 4.73\% are unlisted or outside the reported ROIs.\label{tab:roi_vigour_network}}\\
+\caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:voxel_weights_task1}. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed anatomical ROIs account for 97.03\% of selected voxels; the remaining 2.97\% fall outside the AAL3 labels used for this summary.\label{tab:roi_vigour_network}}\\
 \toprule
 ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
 \midrule
@@ -191,40 +220,38 @@ ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
 \bottomrule
 \endlastfoot
 
-Left Middle Temporal Gyrus & 2123 & 398 & 18.75 & 14.88 \\
-Left Frontal Pole & 7061 & 237 & 3.36 & 8.86 \\
-Left Inferior Temporal Gyrus & 1691 & 227 & 13.42 & 8.49 \\
-Right Frontal Pole & 8196 & 194 & 2.37 & 7.26 \\
-Left Amygdala & 306 & 147 & 48.04 & 5.50 \\
-Left Superior Parietal Lobule & 1449 & 129 & 8.90 & 4.82 \\
-Left Hippocampus & 691 & 127 & 18.38 & 4.75 \\
-Left Parahippocampal Gyrus & 978 & 125 & 12.78 & 4.67 \\
-Left Putamen & 799 & 116 & 14.52 & 4.34 \\
-Right Crus II & 1765 & 108 & 6.12 & 4.04 \\
-Left Temporal Fusiform Cortex & 873 & 96 & 11.00 & 3.59 \\
-Left Temporal Pole & 2350 & 84 & 3.57 & 3.14 \\
-Left Postcentral Gyrus & 3628 & 79 & 2.18 & 2.95 \\
-Right Hippocampus & 700 & 77 & 11.00 & 2.88 \\
-Right Amygdala & 366 & 74 & 20.22 & 2.77 \\
-Right Parahippocampal Gyrus & 980 & 56 & 5.71 & 2.09 \\
-Left Precuneus Cortex & 2478 & 53 & 2.14 & 1.98 \\
-Left Lateral Occipital Cortex & 4955 & 46 & 0.93 & 1.72 \\
-Right Frontal Medial Cortex & 444 & 46 & 10.36 & 1.72 \\
-Right VIIb & 878 & 43 & 4.90 & 1.61 \\
-Left Precentral Gyrus & 4296 & 42 & 0.98 & 1.57 \\
-Left Frontal Medial Cortex & 424 & 21 & 4.95 & 0.79 \\
-Left Superior Temporal Gyrus & 877 & 11 & 1.25 & 0.41 \\
-Right VIIIa & 853 & 10 & 1.17 & 0.37 \\
-Left Insular Cortex & 1160 & 2 & 0.17 & 0.07 \\
+Temporal cortex & 26584 & 1916 & 7.21 & 28.86 \\
+Parietal cortex & 21027 & 685 & 3.26 & 10.32 \\
+Frontal cortex & 34869 & 638 & 1.83 & 9.61 \\
+Orbitofrontal cortex & 5372 & 518 & 9.64 & 7.80 \\
+Cerebellum & 24414 & 489 & 2.00 & 7.37 \\
+Parahippocampal gyrus & 2110 & 406 & 19.24 & 6.12 \\
+Fusiform gyrus & 4827 & 291 & 6.03 & 4.38 \\
+Supplementary motor area & 4518 & 286 & 6.33 & 4.31 \\
+Precentral gyrus & 6907 & 252 & 3.65 & 3.80 \\
+Caudate & 1666 & 163 & 9.78 & 2.46 \\
+Occipital cortex & 21531 & 157 & 0.73 & 2.37 \\
+Paracentral lobule & 2185 & 153 & 7.00 & 2.30 \\
+Hippocampus & 1878 & 122 & 6.50 & 1.84 \\
+Putamen & 2061 & 112 & 5.43 & 1.69 \\
+Amygdala & 468 & 88 & 18.80 & 1.33 \\
+Postcentral gyrus & 7715 & 72 & 0.93 & 1.08 \\
+Olfactory cortex & 579 & 42 & 7.25 & 0.63 \\
+Cingulate cortex & 7655 & 22 & 0.29 & 0.33 \\
+Insular cortex & 3628 & 13 & 0.36 & 0.20 \\
+Thalamus & 2213 & 11 & 0.50 & 0.17 \\
+Rolandic operculum & 2319 & 3 & 0.13 & 0.05 \\
+Pallidum & 573 & 2 & 0.35 & 0.03 \\
 \end{longtable}
-After normalizing by ROI size, the strongest selection is concentrated in temporal--limbic regions and the left putamen, while motor-related regions such as the superior parietal lobule, cerebellum, and peri-central cortex are also represented but with lower ROI-normalized coverage. In other words, the network has a motor-related core, but its strongest ROI-level enrichment is not confined to the primary motor cortex. It is a distributed, left-biased vigour-related system rather than a purely focal motor map.
+
+After normalizing by ROI size, the strongest selection is concentrated in temporal-limbic and striatal regions, particularly the parahippocampal gyrus, amygdala, caudate, orbitofrontal cortex, and temporal cortex. Motor-related regions are also represented, including the supplementary motor area, paracentral lobule, precentral gyrus, parietal cortex, and cerebellum, but they do not dominate the ROI-normalized profile. Thus, the map contains a motor-related component, but its strongest ROI-level enrichment is distributed across temporal-limbic and associative regions rather than being confined to primary motor cortex.
 
 \subsection{Comparison with the task-engagement reference map}
 The tables below provide a compact summary of the limited overlap between the final vigour-related network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
 
 \begin{table}[h]
 \centering
-\caption{Comparison of the full-constraint network and the task-engagement reference map.\label{tab:two_networks}}
+\caption{Comparison of the full-constraint vigour network and the task-activation reference map.\label{tab:two_networks}}
 \small
 \begin{threeparttable}
 
@@ -237,17 +264,19 @@ The tables below provide a compact summary of the limited overlap between the fi
 \toprule
 \textbf{Network} & \textbf{Voxel count} & \textbf{Shared voxels (\% of network)} & \textbf{Main anatomical labels} \\
 \midrule
-Reference map & 2674 & 102 (3.81\%) &
-Frontal Pole; Middle Temporal Gyrus, posterior division; Inferior Temporal Gyrus, posterior division \\
+Task-activation map & 21,610 & 503 (2.33\%) &
+Cerebellum/vermis and thalamic nuclei; supramarginal cortex; occipital, parietal, and insular cortex \\
 
-Postcentral-boosted map & 1505 & 102 (6.78\%) &
-Lateral Occipital Cortex, superior division; Occipital Pole; Cingulate Gyrus, posterior division \\
+Full-constraint vigour network & 5,957 & 503 (8.44\%) &
+Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex; rectus and medial/posterior orbitofrontal cortex \\
 \bottomrule
 \end{tabularx}
 
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item Pairwise metrics: Dice coefficient $= 0.049$; center-of-mass distance $= 47.3$ mm.
+\item ROI metrics: same-voxel overlap $=503$ voxels; Dice coefficient $=0.036$; Jaccard index $=0.019$.
+\item The shared voxels were concentrated most in putamen, cerebellar lobules 6/8, middle occipital cortex, paracentral lobule, superior parietal cortex, and postcentral gyrus.
+\item In the GLM/GLMsingle comparison, the vigour network showed low overlap with each activation map: Dice $=0.09$ with standard GLM, $0.11$ with GLMsingle A, and $0.10$ with GLMsingle D.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -293,33 +322,15 @@ Cerebral\_Cortex & 0 (0.00\%) & 7 (0.20\%) & 72 (2.04\%) & Both maps in ROI, no 
 \end{tabularx}
 \end{table}
 
+%###########################################################################################
 \section{Medication-state analyses}
-\label{app:medication}
-
-\subsection{Subject-wise between-session changes in ROI-edge connectivity}
-This heatmap shows how the strongest connectivity changes vary across subjects for the most changed ROI edges. Warm colors indicate positive values, meaning higher mutual information in the ON-medication session than in the OFF-medication session, whereas cool colors indicate negative values, meaning lower mutual information in the ON-medication session. The selected edges were ranked by mean absolute between-session change across the $14$ paired subjects, so the figure emphasizes edges with the largest subject-level modulation.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{supplementary_figures/Sup_Figure4.pdf}
-    \caption{Subject-wise heatmap of the top between-session changes in region-of-interest (ROI) edge connectivity, measured with continuous mutual information estimated using the Kraskov-Stogbauer-Grassberger (KSG) nearest-neighbor estimator. Each row represents one participant, and each column represents one of the top ROI-to-ROI edges selected based on the largest mean absolute change between sessions across all subjects. Values show session 2 minus session 1. Abbreviations: L, left; R, right; DLPFC, dorsolateral prefrontal cortex; vmPFC, ventromedial prefrontal cortex; dmPFC, dorsomedial prefrontal cortex; IFG, inferior frontal gyrus; ctx, cortex.}
-    \label{figourS4}
-\end{figure}
-
 \subsection{Control analysis: no evidence for preferential ON-state stabilization}
-To test whether the higher ON--ON similarity could be explained by the optimization favouring voxel populations that were intrinsically more stable in the ON state, we examined subject-level normalized absolute consecutive-trial beta differences $\left(|\Delta|/|\mathrm{mean}|\right)$, where lower values indicate greater stability. In the paired sample ($n = 14$; Figure~\ref{figourS5}), the selected voxel set showed lower variability than the motor control pool in both OFF ($2.00$ vs.\ $2.52$) and ON ($2.31$ vs.\ $3.52$). Crucially, the selected set did not show preferential stabilization in the ON state; instead, its variability increased only modestly from OFF to ON ($\Delta_{\mathrm{sel}} = +0.308$, paired $t = 0.669$, $p = 0.515$). The control pool showed a larger increase ($\Delta_{\mathrm{ctl}} = +0.998$, paired $t = 1.813$, $p = 0.093$), and the difference in OFF-to-ON change between the two sets was significant ($\Delta_{\mathrm{sel}} - \Delta_{\mathrm{ctl}} = -0.690$, $p = 0.046$). These results suggest that the optimization procedure favours generally stable voxels, but not voxels that are selectively stabilized in the ON state. Therefore, the stronger ON--ON similarity is unlikely to be explained mainly by an ON-state stability bias and is more consistent with dopaminergic reorganization across patients.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{supplementary_figures/Sup_Figure5.pdf}
-    \caption{Subject-level OFF and ON values of normalized absolute consecutive-trial beta difference $\left(|\Delta|/|\mathrm{mean}|\right)$ for the control and selected voxel sets. Lower values indicate greater stability. Gray lines show individual subjects; colored markers and error bars show mean $\pm$ SEM. The selected set remained less variable than the control set in both states, but did not show preferential stabilization in ON. Instead, the OFF-to-ON increase in variability was smaller in the selected set ($\Delta sel = +0.308$) than in the control set ($\Delta ctl = +0.998$), yielding a significant interaction ($\Delta sel - \Delta ctl = -0.690$, $p = 0.046$).}
-    \label{figourS5}
-\end{figure}
 
-\section{Supplementary GVS-related ROI analyses}
+
+%###########################################################################################
+\section{GVS-related analyses}
 \label{app:gvs}
 
-\subsection{Significant ROI changes by subject and stimulation waveform}
-This section reports the subject-level sham-referenced ROI effects of active GVS within the final network.
 
 \end{document}
