@@ -201,7 +201,18 @@ Spatial similarity between networks:
 \section{Anatomical characterization of the vigour network}
 \label{app:anatomy}
 \subsection{Threshold Robustness Analysis}
+\label{app:threshold_robustness}
 
+We tested whether the final network definition depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarize the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimization result. A region was counted as present when it contained at least \(25\) suprathreshold voxels.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/OptimizationValidation_thresholds.pdf}
+    \caption{Threshold robustness analysis for the optimized vigour-related network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
+    \label{fig:threshold_robustness}
+\end{figure}
+
+The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(9{,}189\) suprathreshold voxels and \(19\) reportable anatomical groups. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
 
 \subsection{ROI-wise composition of the final network}
 I used this atlas to define ROIs in this study:

@@ -483,9 +483,7 @@ Behaviour-minus-projection variability was positive across \(70\) runs from \(18
 
 We also tested whether the selected voxels had lower variability than a relevant motor-area comparison pool. Within motor areas, selected voxels were enriched in the low-variability tail across percentile cutoffs (Figure~\ref{fig:optimization_validation}B). Their mean consecutive-trial variability was \(2.50\), whereas \(1{,}000\) size-matched samples drawn from the motor-area control pool had a mean variability of \(3.46\) and a \(95\%\) CI of \([2.76, 4.38]\) (Figure~\ref{fig:optimization_validation}B). This shows that the optimized network was enriched for stable motor-related voxels, rather than being an arbitrary subset of the motor mask.
 
-Finally, we tested whether the final network definition depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:optimization_validation}C). To summarize the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimization result. A region was counted as present when it contained at least \(25\) suprathreshold voxels.
-
-The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(9{,}189\) suprathreshold voxels and \(19\) reportable anatomical groups. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
+Threshold robustness analyses are reported in Supplementary Section~\ref{app:threshold_robustness} and Supplementary Figure~\ref{fig:threshold_robustness}. Briefly, the p90 threshold provided a balance between reducing the voxel set and preserving the main anatomical pattern across neighbouring thresholds.
 
 Together, these analyses show that the optimization recovered a reproducible, behaviour-linked neural projection with lower consecutive-trial variability than reaction time. The selected voxels were also less variable than a motor-area comparison pool. We therefore used the p90 threshold to define the final vigour network because it removed lower-weight voxels while preserving the main anatomical regions identified by more liberal thresholds.
 
@@ -618,14 +616,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
         \includegraphics[width=\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
     \end{minipage}
 
-    \vspace{1em}
-
-    \begin{minipage}[t]{\textwidth}
-        \noindent\textbf{C}\par\vspace{0.2em}
-        \centering
-        \includegraphics[width=\textwidth]{main_figures/OptimizationValidation_thresholds.pdf}
-    \end{minipage}
-    \caption{Validation of the optimization framework. (A) Consecutive-trial variability was lower for the optimized projection than for reaction time. Positive behaviour-minus-projection differences indicate that the projection changed less abruptly than behaviour. (B) Selected voxels showed lower consecutive-trial beta variability than size-matched samples from the motor-area control pool and were enriched among low-variability voxels. (C) Threshold-sensitivity analysis across voxel-weight percentiles shows the number of retained voxels, overlap with the p90 region set, and anatomical composition of thresholded maps.}
+    \caption{Validation of the optimization framework. (A) Consecutive-trial variability was lower for the optimized projection than for reaction time. Positive behaviour-minus-projection differences indicate that the projection changed less abruptly than behaviour. (B) Selected voxels showed lower consecutive-trial beta variability than size-matched samples from the motor-area control pool and were enriched among low-variability voxels.}
     \label{fig:optimization_validation}
 \end{figure}
 
