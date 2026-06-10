@@ -167,32 +167,6 @@ Tremor & 3.15A--3.18
 \end{table}
 
 
-%##########################################################################################
-\section{Validation of the optimization framework}
-\subsection{Projection stability relative to behaviour}
-To further test the main hypothesis, Figure~\ref{figourS2} evaluates whether the optimized network output was more stable across trials than the behavioural signal. We compared, at the run level, the variability of the projection with the variability of behaviour using a consecutive-trial metric,
-\[
-\sum_i \frac{(x_i - x_{i+1})^2}{x_i^2 + x_{i+1}^2},
-\]
-The projection was consistently less variable than reaction time across subjects, sessions, and runs, indicating that the identified network expresses a relatively stable neural signal compared with noisy behaviour.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\textwidth]{supplementary_figures/Sup_Figure1.pdf}
-    \caption{Comparison of trial-to-trial variability in reaction time and the projection signal. Each colored pair represents one run, with colors indicating subjects. Across 56 runs from 14 subjects, the optimized network score showed lower variability than reaction time (linear mixed-effects model with subject as a random intercept: $\beta = -43.94$, $z = -16.52$, $p = 2.55 \times 10^{-61}$).}
-    \label{figourS1}
-\end{figure}
-
-\subsection{Selected voxels are more stable than the motor-area comparison pool}
-Figure~\ref{figourS3} tests whether the optimized network is not only related to motor vigour, but also more stable across trials than the broader motor system. This analysis addresses whether the selected voxels are merely an arbitrary sample of motor-area voxels or instead a meaningful subset identified by a distinctive stability profile. Here, the non-selected voxels are the comparison pool of motor-area voxels that were not included in the optimized network. They were defined from an atlas-based motor mask including the precentral gyrus, postcentral gyrus, medial frontal cortex (SMA region), bilateral thalamus, putamen, pallidum, and cerebellum. After excluding the selected set, this left 43,711 motor-area non-selected voxels for comparison. The average absolute change between consecutive trial-wise beta values was then measured after dividing by each voxel's mean response magnitude, so lower values indicate lower trial-to-trial variability independent of signal amplitude. The left panel shows that selected voxels are consistently overrepresented among low-variability voxels, with enrichment ratios above 1 across percentile thresholds. The right panel shows the same effect at the network level: the observed mean variability of the selected voxels ($2.11$) is lower than the mean from size-matched resamples of the motor-area non-selected pool ($2.95$, $95\%$ CI $2.37$--$4.44$, empirical $p \approx 0.001$). Together, these results support the claim that the selected network exhibits unusually stable trial-by-trial responses relative to the rest of the motor system.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{supplementary_figures/Sup_Figure2.pdf}
-    \caption{Trial-to-trial variability in the selected voxel network relative to motor-area non-selected voxels. Left, the ratio of voxels falling below pooled percentile thresholds of normalized consecutive-trial difference (selected / non-selected), where values above 1 indicate enrichment of selected voxels in the low-variability tail. Right, the null distribution of variability from 1,000 size-matched resamples of motor-area non-selected voxels, with the observed selected-network mean marked for comparison.}
-    \label{figourS3}
-\end{figure}
-
 \section{Anatomical characterization of the final vigour-related network}
 \label{app:anatomy}
 
