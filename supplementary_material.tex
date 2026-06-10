@@ -29,6 +29,7 @@
 
 
 %##########################################################################################
+\section{Behaviour Information}
 Behaviour trial flow and quality-control summary. Each subject/session/run has a total.
 
 \begin{figure} [h]
@@ -43,101 +44,64 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 
 \begin{figure}[h]
     \centering
-    \begin{minipage}[t]{0.49\textwidth}
+    \begin{minipage}[h]{0.4\textwidth}
         \centering
-        \textbf{A}\\[-0.5em]
-        \includegraphics[height=0.30\textwidth,keepaspectratio]{Sup_Figure26.pdf}
+        \textbf{A}\\[-0.1em]
+        \includegraphics[height=0.9\textwidth,keepaspectratio]{Sup_Figure26.pdf}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.49\textwidth}
+    \begin{minipage}[h]{0.5\textwidth}
         \centering
-        \textbf{B}\\[-0.5em]
-        \includegraphics[height=0.30\textwidth,keepaspectratio]{Sup_Figure27.pdf}
+        \textbf{B}\\[-0.1em]
+        \includegraphics[height=0.7\textwidth,keepaspectratio]{Sup_Figure27.pdf}
     \end{minipage}
 
-    \vspace{1em}
+    \vspace{2em}
 
     \begin{minipage}[t]{\textwidth}
         \centering
-        \textbf{C}\\[-0.5em]
+        \textbf{C}\\[-0.1em]
         \includegraphics[width=\linewidth]{Sup_Figure28.pdf}
     \end{minipage}
     \caption{Supplementary behavioural reaction-time analyses. \textbf{A}, Trial-wise reaction-time distributions for OFF- and ON-medication sessions. \textbf{B}, Participant-level mean reaction times in the OFF- and ON-medication sessions. \textbf{C}, Mean reaction time across run, block position, and trial position within block, showing only modest temporal variation within the task.}
-    \label{fig:supp-behavioural-rt}
+    \label{fig:RT_changes}
 \end{figure}
 
-4. Medication effects on behaviour, beyond mean RT:
-You should include a mixed-effects behavioural model such as:
-RT ~ medication + reward + GVS + run + block + trial\_index + medication × reward + medication × GVS+ (1 | subject)
 
-For variability:
-RT\_MSSD ~ medication + run + block + reward + GVS + (1 | subject)
+Figure~\ref{fig:mixed_model} summarizes the main behavioural effects estimated from mixed-effects models of RT and RT variability. The trial-wise RT model included medication state, reward condition, their interaction, GVS condition and medication-by-GVS interactions, run, block position, trial position within run, and a random intercept for subject. 
+\[
+\begin{aligned}
+\mathrm{RT}_{ms} \sim {} &
+\mathrm{medication}_{on} \times \mathrm{reward}_{high}
++ \mathrm{medication}_{on} \times \mathrm{GVS}
++ \mathrm{run}
++ \mathrm{block\_position} \\
+& + \mathrm{trial\_in\_run}
++ (1 \mid \mathrm{subject})
+\end{aligned}
+\]
 
-Important: define the variability measure clearly. Is “3.50” the mean squared successive difference? Is it computed in milliseconds, normalized RT units, z-scored RT, or another scale? Right now the number is hard to interpret.
+RT variability was calculated as the root mean squared successive difference (RMSSD) between adjacent valid RTs within each subject, session, run, and GVS block, thereby avoiding transitions across stimulation blocks, rest periods, and run boundaries. The RT variability model included medication state, run, block position, high-reward fraction, GVS condition, and a random intercept for subject.
+\[
+\begin{aligned}
+\mathrm{RT\_RMSSD}_{ms} \sim {} &
+\mathrm{medication}_{on}
++ \mathrm{run}
++ \mathrm{block\_position}
++ \mathrm{reward\_high\_fraction} \\
+& + \mathrm{GVS}
++ (1 \mid \mathrm{subject})
+\end{aligned}
+\]
 
+The main observation is that medication ON significantly reduced RT relative to medication OFF, indicating faster responses under medication ($\beta = -26.37$ ms, 95\% CI $[-39.88, -12.86]$, $p < 0.001$). High reward also reduced RT ($\beta = -8.42$ ms, 95\% CI $[-14.50, -2.35]$, $p = 0.0066$), while the medication-by-reward interaction was not significant, suggesting that medication and reward effects were largely additive. Later block position was associated with slower RT ($\beta = 1.17$ ms per block, $p = 0.0059$). For GVS, the strongest mean-RT effect was observed for GVS7 relative to sham during medication OFF ($\beta = -18.21$ ms, $p = 0.0055$), but positive medication-by-GVS interactions indicated that this speeding effect was reduced or reversed during medication ON. For RT variability, medication and GVS condition did not show reliable effects, whereas run 2 and later block positions were associated with increased RT RMSSD. Overall, the figure suggests robust behavioural speeding by medication and high reward, weaker and medication-dependent GVS effects on mean RT, and a temporal increase in response variability across the task that likely reflects fatigue, instability, or changing engagement over time.
 
-I would also include subject-level plots of medication-induced change:
-delta RT = RT-ON − RT-OFF
-delta RT variability = variability-ON − variability-OFF
-
-5. Reward manipulation check:
-RT by high vs low reward.
-Force by high vs low reward.
-Reward effects separately in OFF and ON medication.
-Reward effects on RT variability, not just mean RT.
-A model showing that the neural vigour result is not simply a reward effect.
-
-“Is the vigour network actually tracking reward-driven faster responses?” You can answer that by showing a sensitivity analysis using reward-residualized RT:
-RT\_residual = RT after removing reward, medication, GVS, run, and block effects
-Then show whether the main neural projection still relates to residual RT.
-
-6. GVS behavioural analysis:
-GVS condition	Carrier	Envelope	RT change vs sham OFF	RT change vs sham ON	p-value	qFDR
-
-And plots for:
-RT by GVS condition.
-RT variability by GVS condition.
-Subject-level sham-referenced RT changes.
-GVS effects separated by OFF and ON medication.
-
-
-
-7. Temporal structure of RT variability
-
-So the behaviour supplement should show the temporal structure of RT itself:
-RT standard deviation.
-RT coefficient of variation.
-RT mean squared successive difference, or your exact consecutive-trial variability measure.
-Lag-1 autocorrelation.
-Autocorrelation function across several lags.
-RT drift across trial number.
-RT variability excluding run and block boundaries, matching the neural analysis.
-
-
-
-10. Subject-level behavioural heterogeneity
-Because this is a small PD sample, I would expect subject-level behavioural plots. Group averages alone are not enough.
-Include:
-One row per subject showing mean RT OFF/ON.
-One row per subject showing RT variability OFF/ON.
-One row per subject showing reward effect.
-One row per subject showing GVS sensitivity.
-Mark the subject who performed with the non-dominant hand because of tremor.
-Mark the missing/excluded session.
-
-The paper notes that one right-handed participant used the left hand because tremor in the dominant hand was severe, and that Subject 17 session 1 was excluded because one run was noisy. Those details should be visible in the behavioural supplement, because both could affect RT and force measures.
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Sup_Figure29.pdf}
+    \caption{Mixed-model behavioural effects on reaction time and RT variability. Upper left: fixed-effect estimates from a subject-random-intercept mixed model of valid trial-wise RT. Negative coefficients indicate faster responses. Upper right: active GVS minus sham RT differences, shown separately for medication OFF and ON sessions. Lower left: fixed-effect estimates from a subject-random-intercept mixed model of within-block RT variability, defined as RT RMSSD. Lower right: descriptive mean RT RMSSD by block position in run. Coefficient plots show model estimates with $95\%$ confidence intervals; filled colored markers and stars indicate nominally significant model terms (*$p \leq 0.05$, **$p \leq 0.01$, ***$p \leq 0.001$). Descriptive panels show mean $\pm$ SEM.}
+    \label{fig:mixed_model}
+\end{figure}
 
 
 %###########################################################################################
@@ -201,127 +165,10 @@ Tremor & 3.15A--3.18
 \bottomrule
 \end{tabular}
 \end{table}
-%#####################################
-
-\begin{table}[htbp]
-\centering
-\small
-\setlength{\tabcolsep}{8pt}
-\renewcommand{\arraystretch}{1.30}
-
-\caption{Behavioral descriptive summary by medication and run. Raw trials were 90 per subject per run. The number of subjects was X. Retained trials are reported as median [range] across subjects; RT measures are reported as mean $\pm$ SD across subjects.}
-\label{tab:behavioral_summary_compact}
-
-\begin{tabular}{@{}llcccc@{}}
-\toprule
-Medication & Run &
-\makecell[c]{Retained trials} &
-\makecell[c]{Mean RT (ms)} &
-RT CV &
-\makecell[c]{Consecutive RT variability} \\
-\midrule
-OFF & 1 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
-OFF & 2 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
-ON  & 1 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
-ON  & 2 & X [X, X] & X $\pm$ X & X $\pm$ X & X $\pm$ X \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-
-%####################################
-\begin{table}[htbp]
-\centering
-\small
-\caption{Fixed-effect estimates from the linear mixed-effects model predicting reaction time.}
-\label{tab:lme_rt}
-
-\begingroup
-\renewcommand{\arraystretch}{1.30}
-\setlength{\tabcolsep}{12pt}
-
-\begin{tabular}{@{}llccc@{}}
-\toprule
-Predictor & Contrast / unit & Estimate $\beta$ & 95\% CI & p-value \\
-\midrule
-Medication   & ON -- OFF          & X ms & [X, X] & X \\
-GVS pooled   & Active -- Sham     & X ms & [X, X] & X \\
-Run          & Run 2 -- Run 1     & X ms & [X, X] & X \\
-Trial number & Per trial increase & X ms & [X, X] & X \\
-\bottomrule
-\end{tabular}
-
-\endgroup
-\end{table}
-
-
-%##########################################################################################
-\subsection{Reward Effects on Reaction Time}
-
-We examined whether the reward condition was associated with reaction time (RT).
-High-reward trials were those assigned a reward value of 5. Low-reward trials
-were the lower non-negative reward condition, coded as 0 for 5 participants and
-1 for 13 participants. Because this low-reward value varied across
-participants, reward was analyzed as a within-participant categorical contrast
-between low- and high-reward trials. For each participant, mean RT was
-estimated separately for the two reward conditions, and the high-minus-low 
-difference was tested at the group level with a two-sided paired-samples
-\(t\)-test.
-
-High-reward trials were not associated with a reliable change in raw RT.
-Participants were numerically slower on high-reward than on low-reward trials
-(\(M_{\mathrm{diff}}=+0.029~\mathrm{s}\)), but this difference was not
-statistically significant, \(t(17)=0.59\), \(p=.565\).
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.85\linewidth]{FigureS6.pdf}
-    \caption{
-    Reward effects on raw RT. Paired participant-level mean RTs are shown for
-    low- and high-reward trials, with black diamonds indicating the group mean
-    \(\pm\) SEM. The high-minus-low reward differences are shown alongside the
-    group mean difference and 95\% confidence interval. The raw RT contrast did
-    not show a significant reward effect, \(M_{\mathrm{diff}}=+0.029~\mathrm{s}\),
-    \(t(17)=0.59\), \(p=.565\).
-    }
-    \label{fig:reward-rt}
-\end{figure}
-
-
-
-
 
 
 %##########################################################################################
 \section{Validation of the optimization framework}
-\label{app:model_validation}
-
-% \subsection{Model-ablation analysis}
-% Figure~\ref{figourS1} compares ablation models using a balanced evaluation criterion that rewards high held-out correlation with behaviour and penalizes instability between train and test. The task term favours components with stronger task-related beta magnitude, the bold and beta terms penalize trial-to-trial variability in BOLD and beta representations, and the smooth term penalizes spatially rough weight maps.
-
-% The best overall model has four terms, with the lowest mean evaluation score ($S = 0.0164$). The evaluation score is:
-% \begin{equation*}
-% \begin{aligned}
-% S \;=\;&
-% -\,w_1 \,\bigl\lVert \mathrm{corr}_{\text{test}} \bigr\rVert
-% +\, w_2 \,\bigl\lVert \,|\mathrm{corr}_{\text{train}}| - |\mathrm{corr}_{\text{test}}| \,\bigr\rVert
-% +\, w_3 \,\Biggl\lVert
-% \frac{\bigl|\mathrm{loss}_{\text{test}} - \mathrm{loss}_{\text{train}}\bigr|}
-% {|\mathrm{loss}_{\text{train}}| + \varepsilon}
-% \Biggr\rVert
-% \end{aligned}
-% \end{equation*}
-% The weights $w_1, w_2$ and $w_3$ are chosen as the inverses of the mean ranges of the corresponding terms, so that each term contributes approximately equally to the final score.
-% Importantly, it is not the model with the highest mean test correlation; the task-only model (task $= 0.8$, bold $= 0$, beta $= 0$, smooth $= 0$) had the highest test correlation ($0.1918$) but a much larger relative train--test loss gap ($0.2844$ vs.\ $0.1257$). The winning model is therefore best interpreted as the most balanced and most stable setting, not simply the strongest correlation setting. Statistically, it was significantly better than $8$ of the $11$ alternatives, but it was not significantly different from the top three single-term baselines after Bonferroni correction. The combined setting therefore gives the best overall trade-off between behavioural relevance and cross-fold stability, while the advantage over the strongest single-penalty baselines is modest.
-
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=\textwidth]{FigureS1.pdf}
-%     \caption{Comparison of objective values and term contributions across ablation settings using the balanced weighting scheme.  Left: fold-level distribution of the objective score S for each optimization term, where lower values indicate stronger test correlation with smaller train-test correlation and loss gaps. Right: mean contribution of the three weighted objective terms for each setting. Asterisks denote Bonferroni-corrected Mann-Whitney U comparisons against the pinned reference full setting.}
-%     \label{figourS1}
-% \end{figure}
-
 \subsection{Projection stability relative to behaviour}
 To further test the main hypothesis, Figure~\ref{figourS2} evaluates whether the optimized network output was more stable across trials than the behavioural signal. We compared, at the run level, the variability of the projection with the variability of behaviour using a consecutive-trial metric,
 \[
@@ -341,7 +188,7 @@ Figure~\ref{figourS3} tests whether the optimized network is not only related to
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{FigureS3.pdf}
+    \includegraphics[width=0.8\textwidth]{Sup_Figure2.pdf}
     \caption{Trial-to-trial variability in the selected voxel network relative to motor-area non-selected voxels. Left, the ratio of voxels falling below pooled percentile thresholds of normalized consecutive-trial difference (selected / non-selected), where values above 1 indicate enrichment of selected voxels in the low-variability tail. Right, the null distribution of variability from 1,000 size-matched resamples of motor-area non-selected voxels, with the observed selected-network mean marked for comparison.}
     \label{figourS3}
 \end{figure}
