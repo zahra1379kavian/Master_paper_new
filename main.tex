@@ -135,19 +135,19 @@ A group-level optimization procedure was used to identify a vigour-related brain
 (Figure~\ref{figure0}.B and C). The aim of the optimization framework was to identify a
 voxel-weight vector that produced a projected neural signal related to trial-wise motor
 vigour while satisfying constraints on task engagement, spatial coherence, and low
-consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}_{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
-\(\mathbf{X}_{\mathrm{org}} \in \mathbb{R}^{N_v \times N_s}\), where columns are samples, the projected signal is
+consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}^{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
+\(\mathbf{X}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_s}\), where columns are samples, the projected signal is
 
 \begin{equation*}
 \begin{aligned}
-\mathbf{y}_{\mathrm{org}}
+\mathbf{y}^{\mathrm{org}}
 &=
-\mathbf{w}_{\mathrm{org}}^\top
-\mathbf{X}_{\mathrm{org}},
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}^{\mathrm{org}},
 \qquad
-\mathbf{w}_{\mathrm{org}}
+\mathbf{w}^{\mathrm{org}}
 &\in \mathbb{R}^{N_v \times 1},
-\mathbf{y}_{\mathrm{org}}
+\mathbf{y}^{\mathrm{org}}
 \in \mathbb{R}^{1 \times N_s}.
 \end{aligned}
 \label{eq:generic_projection}
@@ -158,13 +158,13 @@ neural data matrix. In this study, the same projection can be applied to two for
 data: single-trial beta estimates and trial-window BOLD time courses:
 \begin{equation*}
 \begin{aligned}
-\mathbf{y}_{\beta,\mathrm{org}}
+\mathbf{y}_{\beta}^{\mathrm{org}}
 &=
-\mathbf{w}_{\mathrm{org}}^\top
-\mathbf{X}_{\beta,\mathrm{org}},
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}_{\beta}^{\mathrm{org}},
 \qquad
-\mathbf{X}_{\beta,\mathrm{org}} \in \mathbb{R}^{N_v \times N_{\mathrm{tr}}},
-\mathbf{y}_{\beta,\mathrm{org}}
+\mathbf{X}_{\beta}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_{\mathrm{tr}}},
+\mathbf{y}_{\beta}^{\mathrm{org}}
 &\in \mathbb{R}^{1 \times N_{\mathrm{tr}}}.
 \end{aligned}
 \label{eq:y_beta_org}
@@ -172,22 +172,22 @@ data: single-trial beta estimates and trial-window BOLD time courses:
 
 \begin{equation*}
 \begin{aligned}
-\mathbf{y}_{\mathrm{BOLD},\mathrm{org}}
+\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
 &=
-\mathbf{w}_{\mathrm{org}}^\top
-\mathbf{X}_{\mathrm{BOLD},\mathrm{org}},
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
 \qquad
-\mathbf{X}_{\mathrm{BOLD},\mathrm{org}} \in
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}} \in
 \mathbb{R}^{N_v \times N_{\mathrm{tp}}}, 
-\mathbf{y}_{\mathrm{BOLD},\mathrm{org}}
+\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
 &\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
 \end{aligned}
 \label{eq:y_bold_org}
 \end{equation*}
 
 Here, $N_{\mathrm{tr}}$ is the number of trials, and \(N_{\tau}\) is the number of time
-samples. \(\mathbf{X}_{\beta,\mathrm{org}}\) and
-\(\mathbf{X}_{\mathrm{BOLD},\mathrm{org}}\) were not separate models; they were two
+samples. \(\mathbf{X}_{\beta}^{\mathrm{org}}\) and
+\(\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}}\) were not separate models; they were two
 representations of the neural data used by the same projection framework.
 
 Although the framework is defined in voxel space, direct optimization over all voxels was impractical because of the high dimensionality of the data and memory limitations. In addition, the task was not a simple motor task and included several task-related and non-motor processes. Therefore, reducing components that were unlikely to reflect the motor-vigour-related signal was important before optimization. Because missing values remained after beta-estimate preprocessing, the neural data were reduced using expectation-maximization principal component analysis (EMPCA) \citep{roweis1997algorithms}. A \(99\%\) cumulative explained-variance threshold initially retained (100) components. However, using the first (14) components produced a clearer motor-area activation pattern than using all (100) components (see Supplementary Materials). Therefore, the subsequent optimization analyses were performed using the first (14) components, which explained \(79\%\) of the total variance in the data.
@@ -201,7 +201,7 @@ data matrices were projected into this common PCA space:
 \mathbf{X}_{\beta}
 &=
 \mathbf{W}_{\mathrm{pca}}^\top
-\mathbf{X}_{\beta,\mathrm{org}},
+\mathbf{X}_{\beta}^{\mathrm{org}},
 &
 \mathbf{X}_{\beta}
 &\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tr}}},
@@ -209,7 +209,7 @@ data matrices were projected into this common PCA space:
 \mathbf{X}_{\mathrm{BOLD}}
 &=
 \mathbf{W}_{\mathrm{pca}}^\top
-\mathbf{X}_{\mathrm{BOLD},\mathrm{org}},
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
 &
 \mathbf{X}_{\mathrm{BOLD}}
 &\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tp}}}.
@@ -244,7 +244,7 @@ beta and BOLD signals were
 The total loss was defined using these two projected signals: the beta projection was used
 for the trial-wise beta-based terms, including behavioural relevance to motor vigour, and
 the BOLD projection was used for the consecutive-trial variability term. After
-optimization, the PCA-space weights were projected back to voxel space as $\mathbf{w}_{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour-related network.
+optimization, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour-related network.
 
 The optimization model was based on four assumptions about the neural representation of motor vigour. First, the target network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
 
