@@ -8,6 +8,8 @@ Prepared for the Research Topic **Brain imaging and stimulation for motor contro
 - `supplementary_material.tex`: separate supplementary material file, using the Frontiers supplementary class.
 - `references.bib`: bibliography file.
 - `main.pdf` and `supplementary_material.pdf`: compiled PDFs, if compilation succeeded.
+- `main_figures/`: graphical abstract and main manuscript figure PDFs.
+- `supplementary_figures/`: supplementary figure PDFs.
 
 ## Items the author must complete before submission
 
@@ -19,8 +21,7 @@ Prepared for the Research Topic **Brain imaging and stimulation for motor contro
 6. Add funding sources and grant numbers, or state that no specific funding was received.
 7. Complete the Data Availability Statement with repository/link or an appropriate access restriction.
 8. Add acknowledgments if applicable, including any required AI-use disclosure.
-9. Upload figures individually during Frontiers submission; the PDFs are included here for compilation, but Frontiers may request high-resolution EPS/JPEG/TIFF files after acceptance.
-10. `Figure4.pdf` was present in the original ZIP but was not referenced in `main.tex`; it is copied here so it is not lost, but you should decide whether it should be used, renamed, or removed.
+9. Upload figures individually during Frontiers submission; the PDFs are included in the figure folders for compilation, but Frontiers may request high-resolution EPS/JPEG/TIFF files after acceptance.
 
 ## Compile locally
 
