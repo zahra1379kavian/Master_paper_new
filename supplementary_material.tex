@@ -11,12 +11,30 @@
 \usepackage{rotating,pdflscape,adjustbox,makecell}
 \usepackage{array}
 \usepackage{caption}
+\usepackage{placeins}
 % \usepackage[usenames,dvipsnames]{xcolor}
 % \newcommand{\offroi}[1]{\textcolor{black}{#1}}
 % \newcommand{\onroi}[1]{\textcolor{black}{#1}}
 % \newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
 
+% Compact float spacing for dense supplementary figures and tables.
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\belowcaptionskip}{4pt}
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{6pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+
 \begin{document}
+\raggedbottom
 \onecolumn
 \firstpage{1}
 \fi
@@ -39,7 +57,7 @@
 %##########################################################################################
 \section{Participants information}
 
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{Clinical motor severity by medication state. MDS-UPDRS Part III ratings were available for all 18 participants. Values are reported as mean $\pm$ SD, median [range], or n/N.}
 \label{tab:updrs_summary}
@@ -74,7 +92,7 @@ Dyskinesias interfered with ratings, n/N
 \end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{MDS-UPDRS Part III domain scores by medication state. Domain groupings are descriptive and are defined by the item numbers listed in the table. Values are reported as mean $\pm$ SD.}
 \label{tab:updrs_domains}
@@ -99,42 +117,42 @@ Tremor & 3.15A--3.18
 \end{table}
 
 %###########################################################################################
-\clearpage
+\FloatBarrier
 \section{Behaviour Information}
 Behaviour trial flow and quality-control summary. Each subject/session/run has a total.
 
-\begin{figure} [h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure25.pdf}
-    \caption{Reaction-time quality-control summary. Stacked bars show trial information for each subject, medication session, and run; top and bottom panels show OFF and ON medication, respectively. Within each subject, the left and right bars correspond to runs 1 and 2. Each run contained 90 trials, including 9 catch trials not shown here and 81 go trials, marked by the dashed horizontal line. Valid RT trials were go trials with finite positive \(1/\mathrm{RT}\) values; missed trials were go trials flagged as no-squeeze trials \(1/\mathrm{RT}\). The gray color shows a subject for whom we don't have fMRI data.}
+    \caption{Reaction-time quality-control summary by participant, medication session, and run. Stacked bars show valid, missed, and invalid go trials; top and bottom panels show OFF- and ON-medication sessions, respectively. Within each participant, the left and right bars correspond to runs 1 and 2. Each run contained 90 trials, including 9 catch trials not shown here and 81 go trials, marked by the dashed horizontal line. Valid RT trials were go trials with finite positive \(1/\mathrm{RT}\) values; missed trials were go trials flagged as no-squeeze events. Gray bars indicate data without corresponding fMRI data.}
     \label{fig:RT_information}
 \end{figure}
 
 
 Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT ON medication. The paired subject-level test showed a mean ON-OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggest a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation. 
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
-    \begin{minipage}[h]{0.4\textwidth}
+    \begin{minipage}[t]{0.55\textwidth}
         \centering
-        \textbf{A}\\[-0.1em]
-        \includegraphics[height=0.9\textwidth,keepaspectratio]{supplementary_figures/Sup_Figure26.pdf}
+        \textbf{A}\par\vspace{0.1em}
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure26.pdf}
     \end{minipage}
     \hfill
-    \begin{minipage}[h]{0.5\textwidth}
+    \begin{minipage}[t]{0.32\textwidth}
         \centering
-        \textbf{B}\\[-0.1em]
-        \includegraphics[height=0.7\textwidth,keepaspectratio]{supplementary_figures/Sup_Figure27.pdf}
+        \textbf{B}\par\vspace{0.1em}
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure27.pdf}
     \end{minipage}
 
-    \vspace{2em}
+    \vspace{0.75em}
 
     \begin{minipage}[t]{\textwidth}
         \centering
-        \textbf{C}\\[-0.1em]
+        \textbf{C}\par\vspace{0.1em}
         \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure28.pdf}
     \end{minipage}
-    \caption{Supplementary behavioural reaction-time analyses. \textbf{A}, Trial-wise reaction-time distributions for OFF- and ON-medication sessions. \textbf{B}, Participant-level mean reaction times in the OFF- and ON-medication sessions. \textbf{C}, Mean reaction time across run, block position, and trial position within block, showing only modest temporal variation within the task.}
+    \caption{Supplementary behavioural reaction-time analyses. \textbf{A}, Trial-wise reaction-time distributions for OFF- and ON-medication sessions. \textbf{B}, Participant-level mean reaction times in the OFF- and ON-medication sessions. \textbf{C}, Mean reaction time by run, block position, and trial position within block, showing only modest temporal variation within the task.}
     \label{fig:RT_changes}
 \end{figure}
 
@@ -166,7 +184,7 @@ RT variability was calculated as the root mean squared successive difference (RM
 
 The main observation is that medication ON significantly reduced RT relative to medication OFF, indicating faster responses under medication ($\beta = -26.37$ ms, 95\% CI $[-39.88, -12.86]$, $p < 0.001$). High reward also reduced RT ($\beta = -8.42$ ms, 95\% CI $[-14.50, -2.35]$, $p = 0.0066$), while the medication-by-reward interaction was not significant, suggesting that medication and reward effects were largely additive. Later block position was associated with slower RT ($\beta = 1.17$ ms per block, $p = 0.0059$). For GVS, the strongest mean-RT effect was observed for GVS7 relative to sham during medication OFF ($\beta = -18.21$ ms, $p = 0.0055$), but positive medication-by-GVS interactions indicated that this speeding effect was reduced or reversed during medication ON. For RT variability, medication and GVS condition did not show reliable effects, whereas run 2 and later block positions were associated with increased RT RMSSD. Overall, the figure suggests robust behavioural speeding by medication and high reward, weaker and medication-dependent GVS effects on mean RT, and a temporal increase in response variability across the task that likely reflects fatigue, instability, or changing engagement over time.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure29.pdf}
     \caption{Mixed-model behavioural effects on reaction time and RT variability. Upper left: fixed-effect estimates from a subject-random-intercept mixed model of valid trial-wise RT. Negative coefficients indicate faster responses. Upper right: active GVS minus sham RT differences, shown separately for medication OFF and ON sessions. Lower left: fixed-effect estimates from a subject-random-intercept mixed model of within-block RT variability, defined as RT RMSSD. Lower right: descriptive mean RT RMSSD by block position in run. Coefficient plots show model estimates with $95\%$ confidence intervals; filled colored markers and stars indicate nominally significant model terms (*$p \leq 0.05$, **$p \leq 0.01$, ***$p \leq 0.001$). Descriptive panels show mean $\pm$ SEM.}
@@ -174,11 +192,11 @@ The main observation is that medication ON significantly reduced RT relative to 
 \end{figure}
 
 %###########################################################################################
-\clearpage
+\FloatBarrier
 \section{GLM and GLMsingle analysis}
 Spatial distribution of Standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.8\linewidth]{supplementary_figures/Sup_Figure30.pdf}
     \caption{Group-level mixed-effects map. Axial brain slices show thresholded positive z-statistic values overlaid on the anatomical reference image. Warm colors indicate suprathreshold effects from the FEAT thresholded z-statistic image, with brighter colors reflecting higher z-values. The map is displayed at a cluster-forming threshold of Z > 3.1; R labels indicate image orientation.}
@@ -187,17 +205,26 @@ Spatial distribution of Standard GLM from the group-level mixed-effects analysis
 
 Spatial similarity between networks:
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.4\linewidth]{supplementary_figures/Sup_Figure7.pdf}
-    \includegraphics[width=0.5\linewidth]{supplementary_figures/Sup_Figure8.pdf}
-    \caption{Caption}
-    \label{fig:models_comparsion}
+    \begin{minipage}[t]{0.39\textwidth}
+        \centering
+        \textbf{A}\par\vspace{0.1em}
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure7.pdf}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.56\textwidth}
+        \centering
+        \textbf{B}\par\vspace{0.1em}
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure8.pdf}
+    \end{minipage}
+    \caption{Spatial similarity between activation-derived maps and the optimized vigour network. \textbf{A}, Dice coefficient matrix comparing the standard GLM map, two GLMsingle activation maps, and the optimized vigour network. \textbf{B}, Regional composition of each map, expressed as the percentage of suprathreshold voxels assigned to each anatomical group. The vigour network showed low spatial overlap with activation-derived maps and a distinct regional profile.}
+    \label{fig:model_spatial_similarity}
 \end{figure}
 
 
 %###########################################################################################
-\clearpage
+\FloatBarrier
 \section{Anatomical characterization of the vigour network}
 \label{app:anatomy}
 \subsection{Threshold Robustness Analysis}
@@ -205,7 +232,7 @@ Spatial similarity between networks:
 
 We tested whether the final network definition depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarize the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimization result. A region was counted as present when it contained at least \(25\) suprathreshold voxels.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/OptimizationValidation_thresholds.pdf}
     \caption{Threshold robustness analysis for the optimized vigour-related network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
@@ -217,24 +244,24 @@ The p90 threshold provided the best balance between reducing the voxel set and p
 \subsection{ROI-wise composition of the final network}
 I used this atlas to define ROIs in this study:
 
-\begin{figure} [h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure4.pdf}
-    \caption{Caption}
-    \label{fig:atlas}
+    \caption{AAL3-derived bilateral ROI atlas used for anatomical summaries and ROI-level signal extraction. Axial, coronal, and sagittal projections show the grouped anatomical labels used in the network, medication-state, and connectivity analyses. Colors identify the broad bilateral ROI groups used for visualization and summary statistics.}
+    \label{fig:roi_atlas}
 \end{figure}
 
 The vigour-network is marked by regions' function in the figure below:
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure5.pdf}
-    \caption{Caption}
-    \label{fig:supp_vigour_network}
+    \caption{Anatomical-sector view of the optimized vigour-related network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and colored by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
+    \label{fig:supp_vigour_network_anatomy}
 \end{figure}
 
 \begin{longtable}{@{} p{5.2cm} r r r r @{}}
-\caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:voxel_weights_task1}. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed anatomical ROIs account for 97.03\% of selected voxels; the remaining 2.97\% fall outside the AAL3 labels used for this summary.\label{tab:roi_vigour_network}}\\
+\caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed anatomical ROIs account for 97.03\% of selected voxels; the remaining 2.97\% fall outside the AAL3 labels used for this summary.\label{tab:roi_vigour_network}}\\
 \toprule
 ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
 \midrule
@@ -280,7 +307,7 @@ After normalizing by ROI size, the strongest selection is concentrated in tempor
 \subsection{Comparison with the task-engagement reference map}
 The tables below provide a compact summary of the limited overlap between the final vigour-related network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
 
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{Comparison of the full-constraint vigour network and the task-activation reference map.\label{tab:two_networks}}
 
@@ -313,7 +340,7 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
 \end{threeparttable}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[!htbp]
 \centering
 \scriptsize
 \caption{ROI-level voxel overlap between the full model and task-only activation network.}
@@ -356,18 +383,18 @@ Cerebral\_Cortex & 0 (0.00\%) & 7 (0.20\%) & 72 (2.04\%) & Both maps in ROI, no 
 
 \subsection{Vigour-network with 100 components}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure31.pdf}
     \caption{Vigour-network for the 100-component model. Thresholded voxel weights are shown across sagittal, coronal, and axial MNI slices; warmer colors indicate larger weights scaled by \(10^{-3}\).}
     \label{fig:vigour_100com}
 \end{figure}
 %###########################################################################################
-\clearpage
+\FloatBarrier
 \section{Medication-state analyses}
 \subsection{Control analysis: no evidence for preferential ON-state stabilization}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure32.pdf}
     \caption{Medication-state control analysis for voxel-pattern stability. Subject-level paired correlation distances compare within-state run 1 versus run 2 distances with ON- versus OFF-medication distances. Lines connect paired estimates from the same participant. The ON-versus-OFF distance exceeded run-to-run distance in both panels, indicating that medication state changed voxel-pattern structure relative to within-state reliability but did not provide evidence for preferential ON-state stabilization of the selected voxels.}
@@ -377,7 +404,7 @@ Cerebral\_Cortex & 0 (0.00\%) & 7 (0.20\%) & 72 (2.04\%) & Both maps in ROI, no 
 
 
 %###########################################################################################
-\clearpage
+\FloatBarrier
 \section{GVS-related analyses}
 \label{app:gvs}
 
