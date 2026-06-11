@@ -156,43 +156,12 @@ Reaction times were modestly faster in the ON-medication condition than in the O
     \label{fig:RT_changes}
 \end{figure}
 
-% Figure S3 and its accompanying text have been commented out.
-\iffalse
-Figure~\ref{fig:mixed_model} summarizes the main behavioural effects estimated from mixed-effects models of RT and RT variability. The trial-wise RT model included medication state, reward condition, their interaction, GVS condition and medication-by-GVS interactions, run, block position, trial position within run, and a random intercept for subject. 
-\[
-\begin{aligned}
-\mathrm{RT}_{ms} \sim {} &
-\mathrm{medication}_{on} \times \mathrm{reward}_{high}
-+ \mathrm{medication}_{on} \times \mathrm{GVS}
-+ \mathrm{run}
-+ \mathrm{block\_position} \\
-& + \mathrm{trial\_in\_run}
-+ (1 \mid \mathrm{subject})
-\end{aligned}
-\]
-
-RT variability was calculated as the root mean squared successive difference (RMSSD) between adjacent valid RTs within each subject, session, run, and GVS block, thereby avoiding transitions across stimulation blocks, rest periods, and run boundaries. The RT variability model included medication state, run, block position, high-reward fraction, GVS condition, and a random intercept for subject.
-\[
-\begin{aligned}
-\mathrm{RT\_RMSSD}_{ms} \sim {} &
-\mathrm{medication}_{on}
-+ \mathrm{run}
-+ \mathrm{block\_position}
-+ \mathrm{reward\_high\_fraction} \\
-& + \mathrm{GVS}
-+ (1 \mid \mathrm{subject})
-\end{aligned}
-\]
-
-The main observation is that medication ON significantly reduced RT relative to medication OFF, indicating faster responses under medication ($\beta = -26.37$ ms, 95\% CI $[-39.88, -12.86]$, $p < 0.001$). High reward also reduced RT ($\beta = -8.42$ ms, 95\% CI $[-14.50, -2.35]$, $p = 0.0066$), while the medication-by-reward interaction was not significant, suggesting that medication and reward effects were largely additive. Later block position was associated with slower RT ($\beta = 1.17$ ms per block, $p = 0.0059$). For GVS, the strongest mean-RT effect was observed for GVS7 relative to sham during medication OFF ($\beta = -18.21$ ms, $p = 0.0055$), but positive medication-by-GVS interactions indicated that this speeding effect was reduced or reversed during medication ON. For RT variability, medication and GVS condition did not show reliable effects, whereas run 2 and later block positions were associated with increased RT RMSSD. Overall, the figure suggests robust behavioural speeding by medication and high reward, weaker and medication-dependent GVS effects on mean RT, and a temporal increase in response variability across the task that likely reflects fatigue, instability, or changing engagement over time.
-
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure29.pdf}
-    \caption{Mixed-model behavioural effects on reaction time and RT variability. Upper left: fixed-effect estimates from a subject-random-intercept mixed model of valid trial-wise RT. Negative coefficients indicate faster responses. Upper right: active GVS minus sham RT differences, shown separately for medication OFF and ON sessions. Lower left: fixed-effect estimates from a subject-random-intercept mixed model of within-block RT variability, defined as RT RMSSD. Lower right: descriptive mean RT RMSSD by block position in run. Coefficient plots show model estimates with $95\%$ confidence intervals; filled colored markers and stars indicate nominally significant model terms (*$p \leq 0.05$, **$p \leq 0.01$, ***$p \leq 0.001$). Descriptive panels show mean $\pm$ SEM.}
-    \label{fig:mixed_model}
+    \caption{Reward effects on reaction time by subject. Bars show mean reaction time for low- and high-reward trials within each subject. Error bars indicate the full observed RT range from minimum to maximum. Asterisks mark significant high- versus low-reward differences from Welch two-sample tests across trials within subject ($p < 0.05$, *$p < 0.01$, **$p < 0.001$).}
+    \label{fig:reward_rt_by_subject}
 \end{figure}
-\fi
 
 %###########################################################################################
 \FloatBarrier
