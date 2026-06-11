@@ -239,7 +239,7 @@ We tested whether the final network definition depended strongly on the voxel-we
     \label{fig:threshold_robustness}
 \end{figure}
 
-The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(9{,}189\) suprathreshold voxels and \(19\) reportable anatomical groups. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
+The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(8{,}182\) suprathreshold voxels. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
 
 \subsection{ROI-wise composition of the final network}
 I used this atlas to define ROIs in this study:
@@ -261,7 +261,7 @@ The vigour-network is marked by regions' function in the figure below:
 \end{figure}
 
 \begin{longtable}{@{} p{5.2cm} r r r r @{}}
-    \caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed anatomical ROIs account for 69.90\% of selected voxels; the remaining 30.10\% fall outside the AAL3 labels used for this summary.\label{tab:roi_vigour_network}}\\
+    \caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. The table uses the analysis-space NIfTI p90 source mask, which contains 8,182 selected voxels after excluding cerebral white matter and brainstem voxels. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed ROI rows account for 100.00\% of selected voxels.\label{tab:roi_vigour_network}}\\
     \toprule
     ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
     \midrule
@@ -278,26 +278,31 @@ The vigour-network is marked by regions' function in the figure below:
     \bottomrule
     \endlastfoot
 
-    Temporal cortex & 26584 & 1916 & 7.21 & 20.85 \\
-    Parietal cortex & 21027 & 685 & 3.26 & 7.45 \\
-    Frontal cortex & 34869 & 638 & 1.83 & 6.94 \\
-    Orbitofrontal cortex & 5372 & 518 & 9.64 & 5.64 \\
-    Cerebellum & 24414 & 489 & 2.00 & 5.32 \\
-    Parahippocampal gyrus & 2110 & 406 & 19.24 & 4.42 \\
-    Fusiform gyrus & 4827 & 291 & 6.03 & 3.17 \\
-    Supplementary motor area & 4518 & 286 & 6.33 & 3.11 \\
-    Precentral gyrus & 6907 & 252 & 3.65 & 2.74 \\
-    Caudate & 1666 & 163 & 9.78 & 1.77 \\
-    Occipital cortex & 21531 & 157 & 0.73 & 1.71 \\
-    Paracentral lobule & 2185 & 153 & 7.00 & 1.67 \\
-    Hippocampus & 1878 & 122 & 6.50 & 1.33 \\
-    Putamen & 2061 & 112 & 5.43 & 1.22 \\
-    Amygdala & 468 & 88 & 18.80 & 0.96 \\
-    Postcentral gyrus & 7715 & 72 & 0.93 & 0.78 \\
-    Olfactory cortex & 579 & 42 & 7.25 & 0.46 \\
-    Cingulate cortex & 7655 & 22 & 0.29 & 0.24 \\
-    Thalamus & 2213 & 11 & 0.50 & 0.12 \\
-    \end{longtable}
+    Temporal cortex & 23811 & 2,068 & 8.69 & 25.27 \\
+    Parietal cortex & 18024 & 1,101 & 6.11 & 13.46 \\
+    Frontal cortex & 29358 & 931 & 3.17 & 11.38 \\
+    Cerebellum & 22855 & 646 & 2.83 & 7.90 \\
+    Orbitofrontal cortex & 4689 & 591 & 12.60 & 7.22 \\
+    Fusiform gyrus & 4445 & 364 & 8.19 & 4.45 \\
+    Parahippocampal gyrus & 1378 & 342 & 24.82 & 4.18 \\
+    Precentral gyrus & 5632 & 339 & 6.02 & 4.14 \\
+    Supplementary motor area & 3394 & 310 & 9.13 & 3.79 \\
+    Occipital cortex & 18157 & 278 & 1.53 & 3.40 \\
+    Postcentral gyrus & 6867 & 237 & 3.45 & 2.90 \\
+    Caudate & 1205 & 172 & 14.27 & 2.10 \\
+    Paracentral lobule & 1615 & 169 & 10.46 & 2.07 \\
+    Putamen & 1492 & 154 & 10.32 & 1.88 \\
+    Hippocampus & 1088 & 116 & 10.66 & 1.42 \\
+    Cerebral cortex & 3610 & 113 & 3.13 & 1.38 \\
+    Amygdala & 411 & 109 & 26.52 & 1.33 \\
+    Cingulate cortex & 5668 & 38 & 0.67 & 0.46 \\
+    Olfactory cortex & 460 & 38 & 8.26 & 0.46 \\
+    Thalamus & 740 & 25 & 3.38 & 0.31 \\
+    Nucleus accumbens & 224 & 14 & 6.25 & 0.17 \\
+    Insula & 3529 & 13 & 0.37 & 0.16 \\
+    Rolandic operculum & 1892 & 9 & 0.48 & 0.11 \\
+    Pallidum & 523 & 5 & 0.96 & 0.06 \\
+\end{longtable}
 
 After normalizing by ROI size, the strongest selection is concentrated in temporal-limbic and striatal regions, particularly the parahippocampal gyrus, amygdala, caudate, orbitofrontal cortex, and temporal cortex. Motor-related regions are also represented, including the supplementary motor area, paracentral lobule, precentral gyrus, parietal cortex, and cerebellum, but they do not dominate the ROI-normalized profile. Thus, the map contains a motor-related component, but its strongest ROI-level enrichment is distributed across temporal-limbic and associative regions rather than being confined to primary motor cortex.
 
@@ -320,17 +325,17 @@ The tables below provide a compact summary of the limited overlap between the fi
 \toprule
 \textbf{Network} & \textbf{Voxel count} & \textbf{Shared voxels (\% of network)} & \textbf{Main anatomical labels} \\
 \midrule
-Task-activation map & 32,744 & 524 (1.6\%) &
+Task-activation map & 21,610 & 835 (3.86\%) &
 Cerebellum/vermis and thalamic nuclei; supramarginal cortex; occipital, parietal, and insular cortex \\
 
-Full-constraint vigour network & 9,189 & 524 (5.70\%) &
+Full-constraint vigour network & 8,182 & 835 (10.21\%) &
 Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex; rectus and medial/posterior orbitofrontal cortex \\
 \bottomrule
 \end{tabularx}
 
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item ROI metrics: same-voxel overlap $=524$ voxels; Dice coefficient $=0.025$; Jaccard index $=0.013$.
+\item ROI metrics: same-voxel overlap $=835$ voxels; Dice coefficient $=0.056$; Jaccard index $=0.029$.
 \item The shared voxels were concentrated most in putamen, cerebellar lobules 6/8, middle occipital cortex, paracentral lobule, superior parietal cortex, and postcentral gyrus.
 \item In the GLM/GLMsingle comparison, the vigour network showed low overlap with each activation map: Dice $=0.09$ with standard GLM, $0.11$ with GLMsingle A, and $0.10$ with GLMsingle D.
 \end{tablenotes}
@@ -340,49 +345,43 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
 
 \begin{table}
     \centering
-    \caption{ROI-level distribution of the vigour network, task-activation map, and their voxelwise overlap. ROI rows report total voxels in each map within each ROI, including shared voxels. Bottom reconciliation rows account for voxels excluded from the ROI rows so that totals match 9,189 vigour voxels, 32,744 task-activation voxels, and 524 common voxels.}
+    \caption{ROI-level distribution of the vigour network, task-activation map, and their voxelwise overlap. The vigour network uses the NIfTI p90 source mask with 8,182 voxels; the task-activation map contains 21,610 voxels. ROI rows report total voxels in each map within each ROI, including shared voxels; these rows sum to 8,182 vigour voxels, 21,610 task-activation voxels, and 835 common voxels.}
     \label{tab:ablation_full_vs_task_only_roi}
     \begin{tabularx}{\textwidth}{@{}lccc>{\raggedright\arraybackslash}X@{}}
     \toprule
     ROI &
     \makecell{Shared voxel\\n (\% ROI)} &
     \makecell{Vigour network\\n (\% ROI)} &
-    \makecell{Task activation\\network n (\% ROI)} &
+    \makecell{Task activation\\n (\% ROI)} &
     Voxel-level relation \\
     \midrule
-    Putamen & 90 (6.03\%) & 112 (7.51\%) & 710 (47.59\%) & Shared voxels present \\
-    Pallidum & 0 (0.00\%) & 2 (0.38\%) & 171 (32.70\%) & Both maps in ROI, no shared voxels \\
-    Fusiform & 9 (0.20\%) & 303 (6.82\%) & 979 (22.03\%) & Shared voxels present \\
-    Parietal & 51 (0.28\%) & 658 (3.65\%) & 4,352 (24.15\%) & Shared voxels present \\
+    Putamen & 118 (7.91\%) & 154 (10.32\%) & 710 (47.59\%) & Shared voxels present \\
+    Pallidum & 1 (0.19\%) & 5 (0.96\%) & 171 (32.70\%) & Shared voxels present \\
+    Fusiform & 28 (0.63\%) & 364 (8.19\%) & 979 (22.02\%) & Shared voxels present \\
+    Parietal & 181 (1.00\%) & 1,101 (6.11\%) & 4,352 (24.15\%) & Shared voxels present \\
+    Postcentral & 81 (1.18\%) & 237 (3.45\%) & 1,679 (24.45\%) & Shared voxels present \\
+    Amygdala & 0 (0.00\%) & 109 (26.52\%) & 0 (0.00\%) & Vigour network only in ROI \\
     Insula & 0 (0.00\%) & 13 (0.37\%) & 908 (25.73\%) & Both maps in ROI, no shared voxels \\
-    Postcentral & 20 (0.29\%) & 70 (1.02\%) & 1,679 (24.45\%) & Shared voxels present \\
-    ParaHippocampal & 0 (0.00\%) & 278 (20.87\%) & 5 (0.38\%) & Both maps in ROI, no shared voxels \\
-    Amygdala & 0 (0.00\%) & 86 (20.92\%) & 0 (0.00\%) & Vigour network only in ROI \\
-    Occipital & 64 (0.35\%) & 153 (0.84\%) & 3,538 (19.49\%) & Shared voxels present \\
-    Cerebellum & 225 (0.98\%) & 475 (2.08\%) & 4,259 (18.64\%) & Shared voxels present \\
-    Temporal & 8 (0.03\%) & 1,777 (7.46\%) & 2,015 (8.46\%) & Shared voxels present \\
-    Paracentral\_Lobule & 19 (1.18\%) & 146 (9.03\%) & 122 (7.55\%) & Shared voxels present \\
-    Cingulate & 0 (0.00\%) & 20 (0.35\%) & 724 (12.77\%) & Both maps in ROI, no shared voxels \\
-    Rolandic\_Oper & 0 (0.00\%) & 3 (0.16\%) & 239 (12.63\%) & Both maps in ROI, no shared voxels \\
-    Precentral & 15 (0.27\%) & 240 (4.26\%) & 435 (7.72\%) & Shared voxels present \\
-    Orbitofrontal & 0 (0.00\%) & 466 (9.94\%) & 15 (0.32\%) & Both maps in ROI, no shared voxels \\
-    Caudate & 0 (0.00\%) & 121 (10.04\%) & 0 (0.00\%) & Vigour network only in ROI \\
-    Supp\_Motor\_Area & 2 (0.06\%) & 284 (8.37\%) & 43 (1.27\%) & Shared voxels present \\
-    Thalamus & 0 (0.00\%) & 9 (1.22\%) & 57 (7.70\%) & Both maps in ROI, no shared voxels \\
-    Hippocampus & 0 (0.00\%) & 66 (6.07\%) & 29 (2.67\%) & Both maps in ROI, no shared voxels \\
-    Olfactory & 0 (0.00\%) & 36 (7.83\%) & 0 (0.00\%) & Vigour network only in ROI \\
-    Frontal & 0 (0.00\%) & 632 (2.15\%) & 1,258 (4.29\%) & Both maps in ROI, no shared voxels \\
-    Cerebral\_Cortex & 0 (0.00\%) & 7 (0.20\%) & 72 (2.04\%) & Both maps in ROI, no shared voxels \\
-    \midrule
-    ROI-assigned total & 503 & 5,957 & 21,610 & Sum of ROI rows above \\
-    Excluded cerebral white matter & 21 & 426 & 11,134 & Excluded from ROI rows \\
-    Brainstem voxels in vigour total & 0 & 255 & 0 & Included in the 9,189 vigour total \\
-    Display-only motor-overlap dilation & 0 & 159 & 0 & Visualization-only voxels included in the 9,189 vigour total \\
-    Additional vigour voxels outside listed summary rows & 0 & 2,392 & 0 & Needed to match the 9,189 vigour total \\
-    \textbf{Total} & \textbf{524} & \textbf{9,189} & \textbf{32,744} & Requested totals \\
+    ParaHippocampal & 0 (0.00\%) & 342 (24.82\%) & 5 (0.36\%) & Both maps in ROI, no shared voxels \\
+    Occipital & 86 (0.47\%) & 278 (1.53\%) & 3,538 (19.49\%) & Shared voxels present \\
+    Cerebellum & 233 (1.02\%) & 646 (2.83\%) & 4,259 (18.63\%) & Shared voxels present \\
+    Temporal & 43 (0.18\%) & 2,068 (8.69\%) & 2,015 (8.46\%) & Shared voxels present \\
+    Paracentral\_Lobule & 19 (1.18\%) & 169 (10.46\%) & 122 (7.55\%) & Shared voxels present \\
+    Caudate & 0 (0.00\%) & 172 (14.27\%) & 0 (0.00\%) & Vigour network only in ROI \\
+    Precentral & 18 (0.32\%) & 339 (6.02\%) & 435 (7.72\%) & Shared voxels present \\
+    Cingulate & 5 (0.09\%) & 38 (0.67\%) & 724 (12.77\%) & Shared voxels present \\
+    Hippocampus & 0 (0.00\%) & 116 (10.66\%) & 29 (2.67\%) & Both maps in ROI, no shared voxels \\
+    Rolandic\_Oper & 0 (0.00\%) & 9 (0.48\%) & 239 (12.63\%) & Both maps in ROI, no shared voxels \\
+    Orbitofrontal & 0 (0.00\%) & 591 (12.60\%) & 15 (0.32\%) & Both maps in ROI, no shared voxels \\
+    Thalamus & 0 (0.00\%) & 25 (3.38\%) & 57 (7.70\%) & Both maps in ROI, no shared voxels \\
+    Supp\_Motor\_Area & 2 (0.06\%) & 310 (9.13\%) & 43 (1.27\%) & Shared voxels present \\
+    Olfactory & 0 (0.00\%) & 38 (8.26\%) & 0 (0.00\%) & Vigour network only in ROI \\
+    Frontal & 19 (0.06\%) & 931 (3.17\%) & 1,258 (4.29\%) & Shared voxels present \\
+    N\_Acc & 0 (0.00\%) & 14 (6.25\%) & 0 (0.00\%) & Vigour network only in ROI \\
+    Cerebral\_Cortex & 1 (0.03\%) & 113 (3.13\%) & 72 (1.99\%) & Shared voxels present \\
     \bottomrule
     \end{tabularx}
-    \end{table}
+\end{table}
 
 \subsection{Vigour-network with 100 components}
 
