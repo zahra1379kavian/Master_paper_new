@@ -471,10 +471,23 @@ Finally, we tested whether medication preferentially affected local coupling wit
 A positive value indicated that medication increased local within-ROI coupling more than distributed between-ROI coupling. This contrast was tested across participants using a two-sided paired \(t\)-test, with a Wilcoxon signed-rank test used as a non-parametric check (Figure~\ref{fig:medication_local_distributed_fc}).
 
 \subsection{GVS-related network analysis}
-After medication effect, we want to see how GVS can change the network. The ROIs are defined the same as the previous section for medication, for both vigour-network and task-activation map. For each subject, session, medication state, run, and GVS condition, per-trial ROI beta values were grouped into condition blocks. The sham condition was used as the within-run baseline, and the active GVS conditions (GVS1 to GVS8) were compared against that matched sham block. For each block, functional connectivity was estimated for every ROI pair using mutual information. Specifically, each ROI beta series was discretized into three rank-based quantile bins, and mutual information was computed from the joint and marginal bin probabilities in natural-log units. ROI pairs with fewer than four finite paired observations were excluded, and zero-variance pairs were assigned zero mutual information. For each active GVS block, the edge-level change score was computed as:
-edge change = mutual information during active GVS - mutual information during matched sham
+Following the medication-related connectivity analysis, we examined whether galvanic vestibular stimulation (GVS) modulated functional connectivity within the same ROI sets. ROI definitions were identical to those used in the medication analysis and were applied separately to both the vigour network and the task-activation map.
 
-For visualization, all block-level edge changes were pooled across subjects, medication states, runs, and active GVS conditions. The statistical analysis unit was therefore the subject-session-medication-run-condition block. For each edge, the mean active-minus-sham change was tested against zero using a two-sided sign-flip permutation test with 5,000 permutations. False discovery rate correction was then applied within the same metric and analysis scope using q < 0.05. Only FDR-significant edges were plotted (Figure~\ref{fig:gvs_edge_changes}).
+For each subject, session, medication state, run, and GVS condition, trial-wise ROI beta estimates were grouped according to their corresponding stimulation block. The sham condition served as the within-run baseline. Each active GVS condition, from GVS1 to GVS8, was then compared with the matched sham block from the same run. For each block, functional connectivity was estimated for every pair of ROIs using mutual information. Specifically, each ROI beta series was discretized into three rank-based quantile bins, and mutual information was computed from the joint and marginal bin probabilities using natural-log units. ROI pairs with fewer than four finite paired observations were excluded from the analysis, and ROI pairs with zero variance were assigned a mutual information value of zero.
+
+For each active GVS block, the edge-level change score was defined as the difference between mutual information during active stimulation and mutual information during the matched sham condition:
+
+\begin{equation}
+\Delta I_{ij}^{(b,c)}
+=
+I_{ij}^{\mathrm{GVS}(b,c)}
+-
+I_{ij}^{\mathrm{sham}(b)} ,
+\end{equation}
+
+where \(I_{ij}^{\mathrm{GVS}(b,c)}\) denotes the mutual information between ROIs \(i\) and \(j\) during active GVS condition \(c\) in block \(b\), and \(I_{ij}^{\mathrm{sham}(b)}\) denotes the corresponding mutual information during the matched sham block.
+
+For visualization, block-level edge-change values were pooled across subjects, medication states, runs, and active GVS conditions. Thus, the statistical unit for this analysis was the subject--session--medication--run--condition block. For each edge, the mean active-minus-sham change was tested against zero using a two-sided sign-flip permutation test with \(5{,}000\) permutations. False discovery rate correction was then applied within the same metric and analysis scope, using a threshold of \(q < 0.05\). Only edges surviving FDR correction were visualized in Figure~\ref{fig:gvs_edge_changes}.
 
 
 \section{Results}
@@ -500,7 +513,7 @@ Together, these analyses show that the optimization recovered a reproducible, be
 % sup-figure 5, 
 The optimized vigour-network comprised $8,182$ voxels and was spread across both hemispheres. It was not limited to a single motor cluster. The largest parts of the map were in the temporal, parietal, and frontal cortex. A sensorimotor component was also present in precentral, postcentral, paracentral, and supplementary motor areas. Additional clusters extended into the orbitofrontal cortex, occipital cortex, fusiform and parahippocampal regions, hippocampus, amygdala, caudate, putamen, thalamus, and cerebellum (Figures~\ref{fig:main_vigour_network} and \ref{fig:supp_vigour_network_anatomy}).
 
-Overall, the optimized map reflected a distributed network. It included motor-related regions, but the pattern was broader than primary movement output alone. The strongest spatial coverage involved temporal, parietal, and frontal regions, together with limbic, subcortical, and cerebellar areas. (supplementary table)
+Overall, the optimized map reflected a distributed network. It included motor-related regions, but the pattern was broader than primary movement output alone. The strongest spatial coverage involved temporal, parietal, and frontal regions, together with limbic, subcortical, and cerebellar areas. (table \ref{tab:roi_vigour_network})
 
 Whether this pattern reflects vigour-specific coding rather than broader task-related activation is tested in the next section. 
 
