@@ -1,7 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Frontiers manuscript file prepared from the original manuscript source.
+% Revised Frontiers main manuscript.
 % Target: Frontiers in Human Neuroscience, Brain Imaging and Stimulation.
 % Research Topic: Brain imaging and stimulation for motor control and movement disorders.
+% This main file is intentionally substantive but does not include the supplementary
+% material at the end. Upload supplementary_material_revised.tex as a separate file.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[utf8]{FrontiersinHarvard}
@@ -13,6 +15,7 @@
 \usepackage{rotating,pdflscape,adjustbox,makecell}
 \usepackage{array}
 \usepackage{placeins}
+\usepackage{amsmath}
 
 % Compact float spacing for the manuscript figure-caption section.
 \setlength{\floatsep}{8pt plus 2pt minus 2pt}
@@ -33,7 +36,6 @@
 \linenumbers
 \singlespacing
 
-% Leave a blank line between paragraphs instead of using \\.
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Kavian {et~al.}}
 \def\Authors{Zahra Kavian\,$^{1,*}$, Second Author\,$^{1}$ and Third Author\,$^{1}$}
@@ -44,14 +46,13 @@
 \newcommand{\offroi}[1]{\textcolor{black}{#1}}
 \newcommand{\onroi}[1]{\textcolor{black}{#1}}
 \newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
-\newlength{\combinedfigheight}
 
 \begin{document}
 \raggedbottom
 \onecolumn
 \firstpage{1}
 
-\title[Low-variability vigour network in Parkinson's disease]{Beyond Task Activation: A Consistent vigour-Related Network in Parkinson's Disease}
+\title[Low-variability vigour network in Parkinson's disease]{A Low-Variability Vigour-Related fMRI Network in Parkinson's Disease Is Distinct From Task Activation and Sensitive to Dopaminergic State}
 
 \author[\firstAuthorLast ]{\Authors}
 \address{}
@@ -62,556 +63,168 @@
 
 \begin{abstract}
 \section{}
-
-Trial-wise variability in movement vigour is common in Parkinson's disease (PD), but behavioural variability alone cannot show whether instability arises in a central vigour-related signal or during its later translation into movement. We analysed trial-wise fMRI and reaction time (RT) from \(18\) participants with PD performing a ballistic hand-squeeze task. Single-trial responses were estimated with GLMsingle and entered into a constrained optimization model designed to recover a spatially coherent projection that was task-related, RT-linked, and stable across consecutive trials. The optimized projection was highly reproducible across cross-validation folds (ICC \(=0.978\)) and showed lower consecutive-trial variability than RT in subject-level summaries derived from \(70\) retained runs (mean behaviour-minus-projection difference \(=7.5\), \(95\%\) CI \([2.2, 12.8]\), \(p=.008\)). The final network contained \(8{,}182\) voxels and was distributed across motor, striatal, cerebellar, thalamic, temporal-limbic, orbitofrontal, parietal, and contextual regions. It overlapped only weakly with the task-activation map (\(835\) shared voxels; Dice \(=0.056\); Jaccard \(=0.029\)), indicating that the recovered signal was not simply general task activation. Dopaminergic medication altered network organization, increasing local within-ROI coupling in the vigour network (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=+0.0147\), \(p=0.006\)) without a reliable between-ROI change (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=-0.0006\), \(p=0.723\)). Exploratory GVS analyses showed heterogeneous sham-referenced connectivity changes within the network, including \(156\) mutual-information and \(194\) Spearman edge changes. These findings show that a relatively stable central vigour-related signal can be recovered in PD. They are consistent with the possibility that part of behavioural variability arises downstream of this central signal, while its translation into action remains state-dependent.
+Trial-wise variability in movement vigour is common in Parkinson's disease (PD), but behaviour alone cannot show whether this instability arises in a central vigour-related neural signal or during later translation into movement. We analysed trial-wise fMRI and reaction time (RT) from \(18\) participants with PD performing a reward-cued ballistic hand-squeeze task during OFF- and ON-medication sessions, with galvanic vestibular stimulation (GVS) delivered in randomized blocks. Single-trial neural responses were estimated with GLMsingle and entered into a constrained optimization model designed to recover a spatially coherent projection that was task engaged, RT linked, and stable across consecutive trials. The optimized projection was highly reproducible across cross-validation folds (ICC \(=0.978\)) and showed lower consecutive-trial variability than RT in subject-level summaries derived from \(70\) retained runs (mean behaviour-minus-projection difference \(=7.5\), \(95\%\) CI \([2.2, 12.8]\), \(p=.008\)). The final network contained \(8{,}182\) voxels and included motor, striatal, cerebellar, thalamic, temporal-limbic, orbitofrontal, parietal, and contextual regions. It overlapped weakly with the standard task-activation map (\(835\) shared voxels; Dice \(=0.056\); Jaccard \(=0.029\)), indicating that the recovered signal was not simply general task activation. Dopaminergic medication altered network organization, with a significant increase in local within-ROI coupling in the vigour network (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=+0.0147\), \(p=0.006\)) and no reliable between-ROI change (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=-0.0006\), \(p=0.723\)). Exploratory GVS analyses showed heterogeneous sham-referenced connectivity changes within the network, including \(156\) mutual-information and \(194\) Spearman edge changes. These findings show that a relatively stable central vigour-related signal can be recovered in PD, while dopaminergic state and vestibular stimulation modulate the network through which that signal is expressed.
 
 \tiny
-\keyFont{ \section{Keywords:} Parkinson's disease, fMRI, motor vigour, variability, functional connectivity}
+\keyFont{ \section{Keywords:} Parkinson's disease, fMRI, motor vigour, reaction-time variability, dopaminergic medication, galvanic vestibular stimulation, functional connectivity}
 \end{abstract}
 
-
 \section{Introduction}
-Movement vigour refers to how quickly and energetically an action is initiated and carried out. It is not fixed: the same person can perform the same action faster or slower across trials, and different people often express different levels of speed and force during the same task \citep{berret2018vigour}. Human fMRI work links reach movement speed to distributed cortical and subcortical regions, including motor and premotor areas, supplementary motor area, basal ganglia, thalamic, parietal, and cerebellar regions. \citep{shirinbayan2019cortical}. ECoG and basal-ganglia studies further support movement-related cortical activity and subcortical contributions to force amplitude.(\cite{anderson2012ecog,spraker2007basalganglia}) This suggests that vigour is not merely a behavioural outcome, but a regulated feature of movement controlled by interacting neural circuits.
+Movement vigour refers to how quickly and energetically an action is initiated and carried out. It is not a fixed property of the limb: the same person can perform the same action faster or slower across trials, and different people often express different levels of speed and force during the same task \citep{berret2018vigour}. Human fMRI work links reach speed to a distributed set of cortical and subcortical regions, including motor and premotor cortices, supplementary motor area, basal ganglia, thalamus, parietal cortex, and cerebellum \citep{shirinbayan2019cortical}. ECoG and basal-ganglia studies further support movement-related cortical activity and subcortical contributions to force amplitude \citep{anderson2012ecog,spraker2007basalganglia}. These findings suggest that vigour is not merely a behavioural output, but a regulated feature of action controlled by interacting neural circuits.
 
-Within this network, the basal ganglia play an important role in setting movement speed and amplitude, as well as in selecting which action to perform. Reducing basal ganglia output can make movements smaller and slower without changing the chosen action \citep{turner2010basal}, and manipulating striatal pathways can speed up or slow down movement in a dopamine-dependent way \citep{yttri2016opponent}. Reward and dopamine also influence vigour: actions linked to higher value are often initiated faster and executed with greater speed \citep{kawagoe1998expectation,reppert2015modulation,summerside2018vigor}. Together, these findings show that vigour is shaped by cortico-basal ganglia circuits and motivational context, and that dopamine is central to this regulation.
+Dopamine is central to this regulation. Basal-ganglia output can change movement speed and amplitude without necessarily changing which action is selected \citep{turner2010basal}, and striatal pathway manipulations can speed up or slow down movement in a dopamine-dependent manner \citep{yttri2016opponent}. Reward and motivational value also influence vigour: actions associated with higher value are often initiated faster and executed with greater speed \citep{kawagoe1998expectation,reppert2015modulation,summerside2018vigor}. Parkinson's disease (PD), which is characterized by dopaminergic loss in basal-ganglia circuits, is therefore a useful model for asking how dopaminergic state shapes the consistency of vigour expression.
 
-This role of dopamine makes Parkinson's disease (PD), which is characterised by dopaminergic loss in the basal ganglia, a useful model for studying vigour. A core motor symptom of PD is bradykinesia, typically described as slower and smaller movements. The problem, however, is not simply that patients move slowly. When speed is strongly encouraged, patients with PD can sometimes move quickly \citep{mazzoni2007parkinson}, indicating that the motor system is not fundamentally incapable of producing fast actions. Rather, PD may disrupt how vigour is regulated from one trial to the next. Several lines of evidence support this idea. Behavioural studies report larger short-term fluctuations in response time in PD \citep{macdonald2025capturing}, and earlier work found increased endpoint variability that can be partly reduced when patients slow down or rely on visual guidance \citep{sheridan1990bradykinesia}.
+A core motor symptom of PD is bradykinesia, usually described as slower and smaller movement. The problem, however, is not simply that patients cannot move quickly. When speed is strongly encouraged, patients with PD can sometimes produce rapid movements \citep{mazzoni2007parkinson}. This suggests that PD may disrupt how vigour is regulated and deployed from one trial to the next. Behavioural studies report larger short-term response-time fluctuations in PD \citep{macdonald2025capturing}, and earlier work found increased endpoint variability that could be partly reduced when participants slowed down or relied on visual guidance \citep{sheridan1990bradykinesia}. Motor output is also less stable: motor-unit discharge can become more variable in mild-to-moderate PD even when mean discharge rates are relatively preserved \citep{wilson2020motor}. Dopamine loss may therefore affect both average movement features and the consistency with which those features are expressed \citep{lee2015dopamine}.
 
-Motor output itself is also less stable in PD: motor unit discharge becomes more variable in mild-to-moderate disease, even when mean discharge rates remain relatively preserved \citep{wilson2020motor}. Beyond these output measures, dopamine loss appears to affect both average movement features and movement irregularity, with different striatal regions linked to speed, amplitude, and kinematic consistency \citep{lee2015dopamine}. Together, these findings suggest that dopamine shapes not only how much vigour is expressed, but also how consistently it is expressed across repeated actions.
+The key difficulty is that behavioural variability has several possible sources. Some movement variability is useful, helping the motor system explore actions, adapt after errors, and learn from reward \citep{pekny2015reward,wu2014variability}. Some variability reflects the neural state before movement; preparatory activity in motor and premotor cortex can predict the speed of the upcoming reach \citep{churchland2006preparatory}. Another source is motor noise \citep{faisal2008noise}, especially signal-dependent noise, where larger motor commands generate greater variability and make fast or forceful movements harder to control accurately \citep{harris1998signal}. In PD, such downstream noise may be behaviourally costly: signal-dependent noise has been linked to effort costs in the more affected arm, and reducing this noise increased patients' willingness to use that arm \citep{salimpour2015altering}. High motor noise can also weaken the link between an action and its outcome, impairing learning \citep{therrien2016cerebellar}.
 
-To understand where variability arises in PD, it is necessary to consider the broader sources of variability in motor control. Variability in movement can arise from several sources. Some of it is useful, helping the motor system explore actions, learn from reward, and adjust after errors \citep{pekny2015reward,wu2014variability}. Other variability reflects the neural state before movement; for example, preparatory activity in motor and premotor cortex can predict the speed of the upcoming reach \citep{churchland2006preparatory}. A further important source is motor noise \citep{faisal2008noise}, which is not always beneficial. This noise is signal-dependent, meaning that larger motor commands generate greater motor noise and variability, so faster or more forceful movements become harder to control accurately \citep{harris1998signal}. In PD, this issue is especially relevant because motor-unit discharge variability can be increased even when force variability is not yet clearly different from controls, suggesting that abnormal motor output may appear before it is fully expressed in behaviour \citep{wilson2020motor}. PD may also make noise behaviourally costly: signal-dependent noise has been linked to effort costs in the more affected arm, and reducing this noise increased patients' willingness to use that arm \citep{salimpour2015altering}. Thus, PD may not only increase motor noise itself, but may also amplify the behavioural consequences of noise added after a central movement-related signal has been formed. High motor noise can also impair learning by weakening the link between an action and its outcome, as shown in work on cerebellar damage \citep{therrien2016cerebellar}.
+Because these sources occur together, reaction time alone cannot reveal whether variable vigour reflects instability of a central neural signal or noise added later in the motor pathway. This distinction matters for PD. If the central vigour signal itself is unstable, then bradykinesia and inconsistency may reflect impaired neural coding. If a relatively stable central signal still tracks trial-wise behaviour while behavioural output fluctuates, then part of the instability may arise downstream of that signal or during its state-dependent translation into movement. Trial-wise fMRI provides a way to test this idea because it can estimate neural responses for individual trials and relate those responses to moment-to-moment behaviour rather than only to average task activation \citep{dinstein2015neural,garrett2013moment,haar2017individual}.
 
-Because these sources occur together, behaviour alone cannot reveal whether variable vigour reflects an unstable central signal or noise added later in the motor pathway. This distinction is important for PD: if the central vigour signal itself is unstable, then bradykinesia and inconsistency may reflect impaired neural encoding; if a relatively stable brain signal still tracks behaviour while behavioural output fluctuates, then part of the instability may arise downstream of that signal. Recent fMRI work speaks to this question \citep{dinstein2015neural,garrett2013moment,haar2017individual}, but it has focused mainly on average vigour, broad motor variability, or activity in single regions. Trial-wise fMRI methods are well suited to address this problem because trial-wise behavioural variability can be modelled in fMRI and can reliably modulate the BOLD signal across tasks \citep{yarkoni2009bold}. Beta-series and single-trial general linear model (GLM) approaches further allow trial-specific neural responses to be estimated and related to fluctuations across trials in activation or connectivity \citep{rissman2004measuring,mumford2012deconvolving,abdulrahman2016effect,prince2022improving}. A gap, therefore, remains in understanding whether trial-wise vigour fluctuations are represented by a stable network-level signal, or whether the apparent instability in behaviour reflects noise introduced downstream.
-
-To test this distinction, we analysed task-fMRI data from patients with Parkinson's disease performing a ballistic hand-squeeze task. We used reaction time (RT) as the main trial-wise index of movement vigour because it provided the most reliable behavioural measure across participants and runs. The novel contribution is the trial-wise identification of a vigour-related network using constrained optimization with a stability prior, which allows central vigour-related coding to be separated from variability that may be added later in the motor pathway.
-
-Here, we tested whether trial-wise vigour in PD is represented by a distributed neural projection that is behaviourally relevant but more stable than behavioural. We used constrained optimization to identify a task-engaged, spatially coherent, behaviour-linked, low-variability projection from single-trial fMRI estimates. We then asked whether this projection differed from standard task activation and whether its organization was modulated by dopaminergic medication and galvanic vestibular stimulation.
+The present study was designed for this central-versus-downstream question while also testing whether the recovered network is sensitive to dopaminergic and vestibular modulation. We analysed a reward-cued ballistic hand-squeeze task in PD participants scanned OFF and ON dopaminergic medication. During the task, participants also received block-wise galvanic vestibular stimulation (GVS), an exploratory perturbation relevant to motor-control and movement-disorder stimulation research. We developed a constrained optimization framework to recover a neural projection that was task engaged, linked to trial-wise RT, spatially coherent, and low in consecutive-trial variability. We then asked four questions: (i) whether the projection was reproducible and less variable than behaviour, (ii) whether its anatomical distribution was distinct from standard task activation, (iii) whether dopaminergic medication changed its network organization, and (iv) whether GVS perturbed connectivity within the recovered network.
 
 \section{Materials and Methods}
 
-\subsection{Participants}
-Eighteen participants with Parkinson's disease were included in the final analysis ($4$ female, $14$ male; mean age $67.22 \pm 7.03$ years, range $55$-$82$). Fourteen participants were right-handed, and four were left-handed. Participants performed the task with their dominant hand, except for one right-handed participant who used their left hand because tremor in the dominant hand was severe. Data from Subject 17, session 1 (off-medication), were excluded because one recording run was excessively noisy. Exclusion criteria included prior neurosurgical treatment for Parkinson's disease, other neurological or major medical conditions, dementia severe enough to preclude informed consent, severe levodopa-induced dyskinesia incompatible with MRI, and standard contraindications to MRI. Clinical severity was assessed using the MDS-UPDRS \citep{goetz2008movement} (table \ref{tab:updrs_summary} \& \ref{tab:updrs_domains}). All participants provided written informed consent, and the study was approved by the Clinical Research Ethics Board at the University of British Columbia.
+\subsection{Participants and medication-state design}
+Eighteen participants with Parkinson's disease were included in the final analysis (\(4\) female, \(14\) male; mean age \(67.22 \pm 7.03\) years, range \(55\)--\(82\)). Fourteen participants were right-handed, and four were left-handed. Participants performed the task with their dominant hand, except for one right-handed participant who used the left hand because tremor in the dominant hand was severe. Data from Subject 17, session 1 (OFF medication), were excluded because one recording run was excessively noisy. Exclusion criteria included prior neurosurgical treatment for PD, other neurological or major medical conditions, dementia severe enough to preclude informed consent, severe levodopa-induced dyskinesia incompatible with MRI, and standard contraindications to MRI. Clinical severity was assessed using the MDS-UPDRS Part III \citep{goetz2008movement}; detailed medication-state and domain summaries are reported in Supplementary Tables~S1 and S2. All participants provided written informed consent, and the study was approved by the Clinical Research Ethics Board at the University of British Columbia.
 
-\subsection{Behavioural task}
-During fMRI, participants performed a ballistic hand-squeeze task implemented in MATLAB with Psychtoolbox \citep{brainard1997psychophysics} while lying supine in the scanner and viewing the task through a mirror display (Figure~\ref{fig:task_analysis_overview}.A). On each trial, a visual cue indicating reward value was presented for $2$~s, followed by a variable delay of $2$-$3.5$~s. A moving balloon then appeared as the Go signal. Participants were instructed to squeeze a mechanical bulb as quickly and forcefully as possible when the Go signal appeared, and successful responses were followed by a visual burst of the balloon.
+Participants completed two medication sessions on the same day: OFF medication and ON medication. They were instructed to stop dopaminergic medication at least \(12\)~h before recording. The session order was fixed across participants: the OFF-medication session was always completed first, after which participants took their dopaminergic medication and completed the ON-medication session approximately \(1\)~h later. Because OFF sessions always preceded ON sessions, medication effects could be partly confounded with practice, fatigue, time-on-task, or scanner drift. We therefore treated medication results as state-associated effects rather than as effects from a fully randomized medication manipulation.
 
-Participants completed two medication sessions on the same day: OFF and ON  medication. They were instructed to stop their dopaminergic medication at least $12$~h before recording. The session order was fixed across participants: the OFF medication session was always completed first, after which participants took their dopaminergic medication and completed the ON-medication session approximately 1 h later. Because OFF sessions always preceded ON sessions, medication effects could be partially confounded with time-on-task, fatigue, or practice. We therefore included run/block/time covariates in behavioural analyses and interpreted medication effects as state-associated rather than fully randomized medication effects (figure \ref{fig:RT_changes}). Each medication session consisted of two task runs, and each run included nine blocks of $10$ trials ($90$ trials per run). Most trials were rewarded, with low- and high-reward conditions counterbalanced across runs, and $10\%$ were catch trials in which participants were required to withhold their response to avoid a penalty. A reward was included to maintain task engagement; however, analyses in the present study focused on motor vigour irrespective of reward condition. Task difficulty was adjusted online by varying the response window on the basis of recent performance, indexed by hit rate, to maintain an accuracy of at least $65\%$. A $20$~s rest period was provided after every three blocks.
+\subsection{Behavioural task and GVS protocol}
+During fMRI, participants performed a ballistic hand-squeeze task implemented in MATLAB with Psychtoolbox \citep{brainard1997psychophysics} while lying supine in the scanner and viewing the task through a mirror display (Figure~\ref{fig:task_analysis_overview}A). On each trial, a visual cue indicating reward value was presented for \(2\)~s, followed by a variable delay of \(2\)--\(3.5\)~s. A moving balloon then appeared as the Go signal. Participants were instructed to squeeze a mechanical bulb as quickly and forcefully as possible when the Go signal appeared, and successful responses were followed by a visual burst of the balloon. Reaction time (RT), defined as the interval between Go-signal onset and squeeze initiation, was used as the primary trial-wise index of motor vigour because it was the most robust behavioural measure in this dataset.
 
-Reaction time (RT), defined as the interval between Go-signal onset and squeeze initiation, was considered the primary trial-wise index of motor vigour because it was a robust candidate for behavioural measurement. Although reward effects were not central to the present analysis, high-reward trials were associated with slightly faster responses than low-reward trials (Figure~\ref{fig:reward_rt_by_subject}).
+Each medication session consisted of two task runs, and each run included nine blocks of \(10\) trials. Most trials were rewarded, with low- and high-reward conditions counterbalanced across runs, and \(10\%\) were catch trials in which participants were required to withhold their response to avoid a penalty. Task difficulty was adjusted online by varying the response window based on recent hit rate, with the aim of maintaining accuracy at or above \(65\%\). A \(20\)~s rest period was provided after every three blocks. Behavioural quality-control and reward-related RT summaries are reported in Supplementary Figures~S1--S3.
 
-\subsection{Galvanic vestibular stimulation}
-Galvanic vestibular stimulation (GVS) was delivered continuously throughout each run using an STMISOLA constant-current stimulator (BIOPAC Systems Inc.) through $41$-mm Ag/AgCl electrodes placed bilaterally over the mastoid processes. Stimulation began before the first trial of the run. Electrode placement was verified using a $1$~Hz sinusoidal stimulus, and stimulation amplitude was individualized using a staircase procedure to determine the highest current below the threshold for superficial cutaneous sensation at the electrode site \citep{nguyen2022thresholds}. Participants were monitored throughout stimulation for discomfort or adverse effects.
+GVS was delivered continuously throughout each run using bilateral mastoid electrodes. Each run contained one sham block and eight active amplitude-modulated GVS blocks. The active waveforms crossed carrier frequency (\(75\) or \(125\)~Hz) with envelope frequency (\(0\), \(10\), \(16\), or \(20\)~Hz), producing GVS1--GVS8. The order of the nine stimulation conditions was randomized independently for each run. The GVS analyses were considered exploratory because stimulation was presented in short blocks, observations from the same participant were repeated, and no dedicated washout interval separated every adjacent block. Full stimulation parameters, electrode placement, thresholding, and block-order details are provided in Supplementary Methods.
 
-Eight active amplitude-modulated waveforms were generated in MATLAB using suppressed-carrier modulation. The waveforms varied in carrier frequency ($75$ or $125$~Hz) and envelope frequency ($0$, $10$, $16$, or $20$~Hz). The resulting GVS stimuli were labeled as follows: GVS1, $75$~Hz carrier and $0$~Hz envelope; GVS2, $75$~Hz carrier and $10$~Hz envelope; GVS3, $75$~Hz carrier and $16$~Hz envelope; GVS4, $75$~Hz carrier and $20$~Hz envelope; GVS5, $125$~Hz carrier and $0$~Hz envelope; GVS6, $125$~Hz carrier and $10$~Hz envelope; GVS7, $125$~Hz carrier and $16$~Hz envelope; and GVS8, $125$~Hz carrier and $20$~Hz envelope. A sham condition, in which no current was delivered ($0$~mA), was also included. These frequencies were selected to approximate typical vestibular afferent firing rates and oscillatory bands implicated in motor planning and execution.
+\subsection{MRI acquisition, preprocessing, and trial-wise beta estimation}
+Structural and functional MRI data were acquired on a Philips \(3\)T Ingenia Elition X whole-body MRI scanner upgraded to an MR7700 system (Philips Healthcare, Best, The Netherlands) using a \(32\)-channel head coil. For each participant, a T1-weighted structural image was acquired, followed by two task-based fMRI scans per medication session. Functional MRI was acquired using EPI. The first three participants were scanned with a multi-echo EPI protocol, whereas the remaining participants were scanned with a single-echo EPI protocol. This protocol difference is reported explicitly because it may have affected signal-to-noise, temporal sampling, or trial-wise beta estimation. Full sequence parameters are provided in Supplementary Methods.
 
-Each run was divided into nine blocks, with every block corresponding to a single stimulation condition: one of the eight active GVS waveforms or the sham condition. Each block contained $10$ trials, and the assigned stimulation condition was active throughout the full block, including the cue, delay, Go-signal, and response periods. All nine conditions were presented exactly once per run. At block transitions, the next stimulation condition began immediately, except after every third block, when a $20~s$ rest period was provided before the next condition. The order of the nine blocks was randomized independently for each run, so that the sequence of conditions differed across runs, sessions, and subjects. Participants were not informed of the stimulation order. Because stimulation conditions were presented in a blocked sequence without a dedicated washout interval between all adjacent blocks, carryover effects between successive stimulation conditions cannot be fully excluded. Randomization of block order was used to reduce systematic order effects, and GVS-related results were therefore interpreted cautiously.
+Image preprocessing was performed in FSL \citep{smith2004advances}. Structural images underwent bias-field correction and brain extraction. Functional images were corrected for head motion and susceptibility-induced distortion, high-pass filtered, brain extracted, denoised using ICA-AROMA \citep{pruim2015ica}, spatially smoothed with a \(5\)~mm full-width at half-maximum Gaussian kernel, registered to each participant's structural image, and normalized to MNI152 space. The scanner automatically discarded four dummy volumes before saved image acquisition, so no additional initial volumes were removed during preprocessing.
 
-\subsection{MRI acquisition and preprocessing}
-Structural and functional MRI data were acquired on a Philips $3$T Ingenia Elition X whole-body MRI scanner upgraded to an MR7700 system (Philips Healthcare, Best, The Netherlands) using a $32$-channel head coil. For each participant, a T1-weighted structural image was acquired, followed by two task-based fMRI scans, one for each run of the behavioural task.
+Task-related responses for individual trials were estimated using GLMsingle \citep{kay2013glmdenoise,prince2022improving}. Analyses were performed separately for each subject-session, with the two task runs analysed jointly while preserving run identity in the design matrix. Go-signal onsets were modeled using \(2\)-s event regressors; catch trials were excluded because no squeeze response was required. The mean CSF time series was included as a nuisance regressor. GLMsingle was run with HRF fitting, GLMdenoise, and fractional ridge regression enabled. After robust beta-value cleaning and group-level coverage filtering, the final group beta matrix contained \(91{,}769\) voxels and \(5{,}463\) retained Go trials. Detailed beta-cleaning thresholds, outlier rules, and coverage calculations are reported in Supplementary Methods.
 
-T1-weighted images were acquired using a 3D MPRAGE sequence with the following parameters: flip angle = $8^\circ$, echo time (TE) = $3.6$~ms, repetition time/shot interval (TR) = $2400$~ms, inversion time = $950$~ms, $180$ slices, field of view (FOV) = $256 \times 256 \times 180$~mm$^3$, and spatial resolution = $1$~mm$^3$ isotropic. Images were acquired with a compressed SENSE factor of $3.6$, and the acquisition time was $3{:}42$~min.
+\subsection{Standard task-activation reference map}
+To provide a conventional task-engagement reference, we ran a standard FSL FEAT GLM separate from the trial-wise GLMsingle model. All valid Go trials were modeled with one event regressor defined at the Go-signal onset, with duration \(2\)~s and amplitude \(1\). First-level maps tested the positive effect of task activity, runs were combined within subject-session using fixed effects, and subject-session maps were entered into a group mixed-effects model using FLAME stage~1 \citep{woolrich2004multilevel,beckmann2003general}. Group maps were thresholded using clusters formed at \(Z \geq 3.1\) with corrected cluster significance \(p \leq 0.05\) \citep{worsley200114}. This thresholded map was used only as a standard task-activation reference, not as the main model. The full standard GLM map and comparisons with GLMsingle activation maps are shown in Supplementary Figures~S4 and S5.
 
-Functional MRI data were acquired using echo-planar imaging (EPI). The functional acquisition protocol differed for the first three participants compared with the rest of the sample. The first three participants were scanned with a multi-echo EPI protocol, with flip angle = $77^\circ$, TE = $12$~ms, TR = $2000$~ms, $48$ slices, FOV = $240 \times 144 \times 240$~mm$^3$, spatial resolution = $3$~mm$^3$ isotropic, SENSE factor = $2$, multiband factor = $2$, and acquisition time = $14{:}22$~min. The remaining participants were scanned with a single-echo EPI protocol, with flip angle = $77^\circ$, TE = $30$~ms, TR = $1000$~ms, $51$ slices, FOV = $240 \times 153 \times 240$~mm$^3$, spatial resolution = $3$~mm$^3$ isotropic, SENSE factor = $2$, multiband factor = $3$, and acquisition time = $14{:}17$~min. To support distortion correction, two spin-echo EPI images were acquired with opposite fat-shift directions, anterior--posterior and posterior--anterior. These spin-echo images were acquired with flip angle = $77^\circ$, TE = $55$~ms, TR = $2650$~ms, $51$ slices, FOV = $240 \times 153 \times 240$~mm$^3$, spatial resolution = $3$~mm$^3$ isotropic, SENSE factor = $2$, multiband factor = $3$, and acquisition time = $5.3$~s.
-
-Image preprocessing was performed in FSL \citep{smith2004advances}. Structural images underwent bias-field correction and brain extraction. Functional images were corrected for head motion and susceptibility-induced distortions, with distortion correction referring to the correction of susceptibility-related spatial distortions in the functional images using the spin-echo images acquired with opposite fat-shift directions. No initial functional volumes were discarded during preprocessing because the scanner automatically discarded four dummy volumes before the start of saved image acquisition. Functional images were then high-pass filtered using a $100$~s cutoff, brain extracted, denoised using ICA-AROMA \citep{pruim2015ica}, and spatially smoothed with a $5$~mm full-width at half-maximum Gaussian kernel. The preprocessed functional images were then registered to each participant's structural image and normalized to standard MNI152 space.
-
-\subsection{Standard GLM}
-To provide a brain map of task-evoked activation, we first ran a standard GLM using FSL FEAT version 6.00 \citep{jenkinson2012fsl}. This analysis was separate from the trial-wise GLM described below and was used only to generate the standard task-activation map shown in Figure~\ref{fig:standard_glm}.
-
-For each run, all valid Go trials (figure \ref{fig:RT_information}) were modeled with one event regressor. Event onsets were defined as the Go-signal times, with a duration of $2$ s and an amplitude of $1$. This regressor was convolved with FSL’s double-gamma hemodynamic response function, and a temporal derivative was included. 
-
-The first-level contrast tested the positive effect of task activity. The two runs from each subject-session were then combined using a fixed-effects model. The resulting subject-session maps were entered into a higher-level mixed-effects model using FLAME stage 1 \citep{woolrich2004multilevel, beckmann2003general}. The group model included one mean regressor and tested whether the average task response was greater than zero across the $35$ available subject-sessions. Group Z-statistic maps were thresholded using clusters formed at $Z \geq 3.1$ with a corrected cluster significance threshold of $p \leq 0.05$ \citep{worsley200114}. The thresholded group map was used as the standard task-activation map. (figure \ref{fig:standard_glm})
-
-
-\subsection{Trial-wise GLM estimation and beta preprocessing}
-Task-related BOLD responses for each trial were estimated using trial-wise general linear model (GLM) beta estimates with GLMsingle \citep{kay2013glmdenoise, prince2022improving}. Analyses were performed separately for each subject-session. Within each subject-session, the two task runs were analyzed jointly, while run identity was preserved in the design matrix and nuisance regressors.
-
-The GLM design matrix included Go-signal onset regressors with a fixed trial duration of $2$ s, corresponding to the period during which participants performed the task. Catch trials were not modeled as separate regressors and were excluded from the analysis because participants did not squeeze the bulb on these trials ($630$ of $6{,}300$ trials across all datasets). Reward-condition labels were also not included in the GLM design. To restrict the analysis to relevant tissue, background, cerebrospinal fluid (CSF), and white-matter voxels were masked out, retaining only gray-matter voxels. The initial MNI gray-matter, non-CSF candidate mask contained $91{,}781$ voxels. The mean CSF time series for each run was included as a nuisance regressor. 
-
-% Before applying GLMsingle, high-DVARS trials were identified from the preprocessed BOLD time series. For each file, the DVARS metric was robustly standardized using a median absolute deviation (MAD)-based score ($z_i$). Trials with $z_i > 3$ were labeled as high-outlier trials. The number of trials removed by this criterion was capped at $15\%$ per file to avoid excessive loss of trials while removing the largest signal-change outliers.
-
-GLMsingle was then run with HRF fitting, GLMdenoise, and fractional ridge regression enabled. HRF fitting used the default GLMsingle library of $20$ candidate HRFs, and the HRF yielding the highest variance explained was selected separately for each voxel. GLMdenoise derived additional nuisance regressors from low task-related-variance voxels using principal components analysis and selected the number of noise components by cross-validation. Fractional ridge regression was used to stabilize single-trial beta estimates. Shrinkage fractions from $0.05$ to $1.00$ in increments of $0.05$ were evaluated, and the optimal shrinkage level was selected separately for each voxel by cross-validation. Run-specific baseline terms were modeled using GLMsingle's run-wise polynomial regressors, including degree-0 intercepts and higher-order polynomial terms up to degree $\mathrm{round}(L/2)$ for a run of length $L$ minutes.
-
-A second cleaning step was then applied to the GLMsingle beta estimates. To detect outlier beta values, beta estimates were robustly normalized within each subject-session using the session-level median and MAD:
-
-\[
-\beta_{\mathrm{norm}} = \frac{\beta - \mathrm{median}(\beta)}{\mathrm{MAD}(\beta)} .
-\]
-
-Beta values with $|\beta_{\mathrm{norm}}|$ above the 99.9th percentile were flagged as beta outliers. For each voxel, the beta-outlier fraction was computed as the proportion of trials flagged as outliers. Voxels were retained when this fraction was $\leq 0.5$ and excluded when more than $50\%$ of their trials were beta outliers. This majority-trial threshold was used to remove voxels with persistently unstable beta estimates, rather than voxels with occasional large responses.
-
-This cleaning retained $91{,}701 \pm 54$ voxels on average. This corresponded to an average removal of $0.09\% \pm 0.06\%$. To assess whether this filtering disproportionately affected susceptibility-prone ventral regions, removal rates were summarized using atlas labels and ventral-position proxies. Average run-level removal was $0.20\%$ in frontal orbital cortex, $0.06\%$ in temporal pole, $0.76\%$ in inferior temporal gyrus, $0.25\%$ in the ventral bottom quartile, and $0.03\%$ in all other voxels. Thus, run-level cleaning removed very few voxels overall; removal was somewhat higher in inferior temporal and ventral-bottom voxels, but absolute removal rates remained below $1\%$ in all regions.
-
-The cleaned outputs from all subjects, sessions, and runs were then used to define a shared voxel space for group-level analysis. The coverage threshold was applied across all concatenated trial observations from all subjects, sessions, and runs, rather than separately within each subject or session. This approach was used because the group-level analysis required a common MNI-space voxel feature set across trials. Applying separate subject-level masks would have produced different voxel sets across subjects, whereas the shared mask allowed all valid trial-wise beta estimates to be aligned into one group-level matrix. The threshold was also permissive: voxels were retained if they had finite beta estimates for at least $70\%$ of all trial observations, so a voxel was not excluded simply because it was missing or unstable in a minority of subjects, sessions, or runs.
-
-The final group coverage mask contained $91{,}769$ voxels, yielding a final group beta matrix of $91{,}769$ voxels $\times$ $5{,}463$ retained trials (figure \ref{fig:RT_information}). This mask was generated using a $70\%$ finite-coverage criterion over the source trial slots, not by intersecting voxels across all runs. The filter excluded $12$ voxels from the $91{,}781$-voxel candidate mask, retaining $99.99\%$ of candidate voxels. Subsequent analyses used the concatenated cleaned beta data in this final group voxel space.
-
-\subsection{Optimization framework}
-
-A group-level optimization procedure was used to identify a vigour-related brain network
-(Figure~\ref{fig:task_analysis_overview}.B and C). The aim of the optimization framework was to identify a
-voxel-weight vector that produced a projected neural signal related to trial-wise motor
-vigour while satisfying constraints on task engagement, spatial coherence, and low
-consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}^{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
-\(\mathbf{X}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_s}\), where columns are samples, the projected signal is
-
-\begin{equation*}
-\begin{aligned}
-\mathbf{y}^{\mathrm{org}}
-&=
-\left(\mathbf{w}^{\mathrm{org}}\right)^\top
-\mathbf{X}^{\mathrm{org}},
-\qquad
-\mathbf{w}^{\mathrm{org}}
-&\in \mathbb{R}^{N_v \times 1},
-\mathbf{y}^{\mathrm{org}}
-\in \mathbb{R}^{1 \times N_s}.
-\end{aligned}
-\label{eq:generic_projection}
-\end{equation*}
-
-Here, \(N_v\) is the number of voxels and \(N_s\) denotes the time sample of the
-neural data matrix. In this study, the same projection can be applied to two forms of neural
-data: single-trial beta estimates and trial-window BOLD time courses:
-
-\begin{equation*}
-\begin{aligned}
-\mathbf{y}_{\beta}^{\mathrm{org}}
-&=
-\left(\mathbf{w}^{\mathrm{org}}\right)^\top
-\mathbf{X}_{\beta}^{\mathrm{org}},
-\qquad
-\mathbf{X}_{\beta}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_{\mathrm{tr}}},
-\mathbf{y}_{\beta}^{\mathrm{org}}
-&\in \mathbb{R}^{1 \times N_{\mathrm{tr}}}.
-\end{aligned}
-\label{eq:y_beta_org}
-\end{equation*}
-
-\begin{equation*}
-\begin{aligned}
-\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
-&=
-\left(\mathbf{w}^{\mathrm{org}}\right)^\top
-\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
-\qquad
-\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}} \in
-\mathbb{R}^{N_v \times N_{\mathrm{tp}}}, 
-\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
-&\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
-\end{aligned}
-\label{eq:y_bold_org}
-\end{equation*}
-
-Here, $N_{\mathrm{tr}}$ is the number of trials, and \(N_{\tau}\) is the number of time
-samples. \(\mathbf{X}_{\beta}^{\mathrm{org}}\) and
-\(\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}}\) were not separate models; they were two
-representations of the neural data used by the same projection framework.
-
-Although the framework is defined in voxel space, direct optimization over all voxels was impractical because of the high dimensionality of the data and memory limitations. In addition, the task was not a simple motor task and included several task-related and non-motor processes. Therefore, reducing components that were unlikely to reflect the motor-vigour-related signal was important before optimization. Because missing values remained after beta-estimate preprocessing, the neural data were reduced using expectation-maximization principal component analysis (EMPCA) \citep{roweis1997algorithms}. A \(80\%\) cumulative explained-variance threshold initially retained $14$ components.
-
-EMPCA provided voxel-to-PC weights,
-\(\mathbf{W}_{\mathrm{pca}} \in \mathbb{R}^{N_v \times N_{\mathrm{pc}}}\). Both neural
-data matrices were projected into this common PCA space:
-
-\begin{equation*}
-\begin{aligned}
-\mathbf{X}_{\beta}
-&=
-\mathbf{W}_{\mathrm{pca}}^\top
-\mathbf{X}_{\beta}^{\mathrm{org}},
-&
-\mathbf{X}_{\beta}
-&\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tr}}},
-\\[2pt]
-\mathbf{X}_{\mathrm{BOLD}}
-&=
-\mathbf{W}_{\mathrm{pca}}^\top
-\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
-&
-\mathbf{X}_{\mathrm{BOLD}}
-&\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tp}}}.
-\end{aligned}
-\label{eq:pca_inputs}
-\end{equation*}
-
-The optimization was then performed in PCA space using
-\(\mathbf{w} \in \mathbb{R}^{N_{\mathrm{pc}} \times 1}\). In this space, the projected
-beta and BOLD signals were
-
-\begin{equation*}
-\begin{aligned}
-\mathbf{y}_{\beta}
-&=
-\mathbf{w}^{\top}
-\mathbf{X}_{\beta},
-&
-\mathbf{y}_{\beta}
-&\in \mathbb{R}^{1 \times N_{\mathrm{tr}}},
-\\[2pt]
-\mathbf{y}_{\mathrm{BOLD}}
-&=
-\mathbf{w}^{\top}
-\mathbf{X}_{\mathrm{BOLD}},
-&
-\mathbf{y}_{\mathrm{BOLD}}
-&\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
-\end{aligned}
-\label{eq:y_beta_bold}
-\end{equation*}
-
-The total loss was defined using these two projected signals: the beta projection was used
-for the trial-wise beta-based terms, including behavioural relevance to motor vigour, and
-the BOLD projection was used for the consecutive-trial variability term. After
-optimization, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour-related network.
-
-The optimization model was based on four assumptions about the neural representation of motor vigour. First, the target network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
-
-\textbf{Condition 1: The projected signal should come from task-engaged voxels.}
-
-The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a high task-engaged region to contribute strongly to the projected signal:
-
-\begin{equation*}
-\begin{aligned}
-\min_{w} \sum_j \frac{w_j^2}{\left|X_{\beta,j}\right|}
-&=
-\min_{w} w^\top
-\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right)w.
-\end{aligned}
-\end{equation*}
-This gives the task-engagement loss term:
-\begin{equation*}
-\begin{aligned}
-L_{\mathrm{task}}(w)
-&= w^\top C_{\mathrm{task}}w,
-&
-C_{\mathrm{task}}
-&=
-\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right).
-\end{aligned}
-\end{equation*}
-
-Thus, $C_{\mathrm{task}}$ favours voxels with stronger task-related beta responses and discourages the model from selecting voxels with weak task engagement.
-
-\textbf{Condition 2: The projected signal should encode behavioural information.}
-
-The second condition was that the projected neural signal should be behaviourally relevant. In this study, the target behavioural variable was reaction time. Therefore, the model should find $w$ such that $y$ is strongly associated with the behavioural variable $X_{\mathrm{behav}}$:
-
-\begin{align*}
-\max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, y_{\beta}\right)^2
-&=
-\max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, w^\top X_{\beta}\right)^2
-\\[4pt]
-&=
-\max_w
-\frac{
-\left[(w^\top X_{\beta})X_{\mathrm{behav}}^\top\right]^2
-}{
-w^\top (X_{\beta}X_{\beta}^\top)w
-}
-\\[4pt]
-&=
-\max_w
-\frac{
-w^\top\left(X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top\right)w
-}{
-w^\top\left(X_{\beta}X_{\beta}^\top\right)w
-}
-\\[4pt]
-&=
-\max_w
-\frac{w^\top C_b w}{w^\top C_d w},
-\end{align*}
-where
-\begin{equation*}
-C_b = X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top,
-\qquad
-C_d = X_{\beta}X_{\beta}^\top.
-\end{equation*}
-
-Here, $C_b$ captures the component of the projected beta signal that is aligned with behaviour, while $C_d$ normalizes the association by the variance of the projected beta signal. Since the final optimization problem is written as a minimization problem, this behavioural-relevance term is later included with a negative sign.
-
-\textbf{Condition 3: The projected signal should come from a spatially coherent network.}
-
-The third condition was that the selected pattern should form a spatially coherent network rather than a scattered set of isolated voxels. It means neighbouring voxels were encouraged to have similar weights. If $E$ denotes the set of neighbouring voxel pairs, this penalty can be written as
-
+\subsection{Constrained optimization framework}
+We used a group-level optimization procedure to identify a vigour-related brain network (Figure~\ref{fig:task_analysis_overview}B,C). The purpose was to find a voxel-weight vector that combined whole-brain activity into one scalar neural projection per trial. For the trial-wise beta matrix \(X_{\beta}\), the projected signal was
 \begin{equation}
-\min_w \sum_{(p,q)\in E} (w_p-w_q)^2.
+y = w^\top X_{\beta},
 \end{equation}
-A spatial adjacency matrix was constructed from voxel anatomy, and its graph Laplacian was used to define the spatial smoothness penalty. This gives
+where \(w\) is the weight vector and \(y\) is the projected trial-wise neural signal. The same projection framework was also applied to trial-window BOLD features to constrain local trial-to-trial instability. Because direct optimization over all voxels was computationally impractical, beta and BOLD data were reduced with expectation-maximization principal component analysis (EMPCA) \citep{roweis1997algorithms}. An \(80\%\) cumulative explained-variance threshold retained \(14\) components for optimization; final weights were projected back to voxel space after model fitting.
 
-\begin{equation}
-L_{\mathrm{smooth}}(w) = w^\top C_{\mathrm{smooth}}w,
-\qquad
-C_{\mathrm{smooth}} = L_{\mathrm{graph}}.
-\end{equation}
+The model encoded four assumptions. First, the selected signal should come from voxels engaged by the task. Second, the projected beta signal should be behaviourally relevant to RT. Third, neighbouring voxels should have similar weights, producing a spatially coherent map rather than isolated scattered voxels. Fourth, the projected signal should show low consecutive-trial variability. Consecutive-trial variability was used rather than total variance because it preserves trial order and directly penalizes abrupt local jumps while allowing slower task-related changes across runs or blocks. Run and block boundaries were excluded from this penalty because they do not represent continuous local temporal dynamics.
 
-Thus, $C_{\mathrm{smooth}}$ enforces spatial smoothness across neighbouring voxels. When the optimization is performed in PCA space, this spatial smoothness penalty is expressed in the same reduced space before optimization.
-
-\textbf{Condition 4: The projected signal should show low consecutive-trial variability.}
-
-The fourth condition was that the selected signal should exhibit low consecutive-trial variability. Variability was therefore defined as the difference between consecutive trials, rather than as variance across the full time series. This distinction is important because variance captures the overall dispersion of a signal around its mean but does not account for trial order. As a result, two projected signals may have similar variance even if one evolves smoothly across trials while the other fluctuates sharply from one trial to the next. Consecutive-trial differences, in contrast, preserve the local temporal structure of the signal and directly measure abrupt changes between neighbouring trials.
-
-This definition is motivated by the behavioural structure of motor vigour. Vigour on trial $i$ is unlikely to be statistically independent from vigour on trial $i+1$, because consecutive trials are shaped by similar physiological, attentional, and task-related states. Trials that occur close in time are therefore expected to be more similar than trials separated by longer intervals. Accordingly, a stable vigour-related neural signal should not contain large unexplained jumps between consecutive trials. This reasoning is consistent with previous work on reaction-time variability showing that standard deviation alone does not capture temporal dependency, whereas measures such as lag-one autocorrelation and successive-trial differences reveal the local structure of performance fluctuations \citep{perquin2023temporal}.
-
-A similar principle has been applied in fMRI research using mean squared successive difference (MSSD) and related measures, which quantify moment-to-moment changes in BOLD activity rather than dispersion around a global mean \citep{garrett2011importance, wehrheim2024reliability, nomi2018resting}. This approach is particularly appropriate for task fMRI, where the expected signal may change gradually over time, across task conditions, or between blocks. A global variance measure could incorrectly treat such slow task-related changes as variability, whereas a consecutive-difference penalty specifically targets local instability between consecutive trials. Thus, the low-variability term in the present model penalized large consecutive-trial changes in the projected signal while allowing slower task-related changes to remain. Boundaries between runs and blocks were excluded from this penalty because trials across these boundaries do not reflect continuous local temporal dynamics and may contain artificial discontinuities introduced by changes in run structure or task context.
-
-We need to minimize variability between consecutive trials:
-
-\begin{align}
-\min_w \sum_{i\in I_c}
-\left\|y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right\|_2^2
-&=
-\min_w \sum_{i\in I_c}
-\left(y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right)
-\left(y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right)^\top
-\nonumber\\[4pt]
-&=
-\min_w \sum_{i\in I_c}
-\left(w^\top X_{\mathrm{bold},i}-w^\top X_{\mathrm{bold},i+1}\right)
-\left(w^\top X_{\mathrm{bold},i}-w^\top X_{\mathrm{bold},i+1}\right)^\top
-\nonumber\\[4pt]
-&=
-\min_w \sum_{i\in I_c}
-w^\top
-\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)
-\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top
-w.
-\end{align}
-
-Here, $I_c$ denotes the set of valid consecutive-trial pairs after excluding run and block boundaries. This gives the BOLD variability loss:
-
-\begin{equation}
-\begin{aligned}
-L_{\mathrm{bold}}(w)
-&= w^\top C_{\mathrm{bold}}w,
-\\
-C_{\mathrm{bold}}
-&= \sum_{i\in I_c}
-\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)
-\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top.
-\end{aligned}
-\end{equation}
-
-Therefore, $C_{\mathrm{bold}}$ penalizes large changes in BOLD activity between consecutive trials.
-
-The same low-variability condition was also applied to the beta estimates:
-
-\begin{align}
-\min_w \sum_{i\in I_c}
-\left\|y_{\beta,i}-y_{\beta,i+1}\right\|_2^2
-&=
-\min_w \sum_{i\in I_c}
-\left(y_{\beta,i}-y_{\beta,i+1}\right)
-\left(y_{\beta,i}-y_{\beta,i+1}\right)^\top
-\nonumber\\[4pt]
-&=
-\min_w \sum_{i\in I_c}
-\left(w^\top X_{\beta,i}-w^\top X_{\beta,i+1}\right)
-\left(w^\top X_{\beta,i}-w^\top X_{\beta,i+1}\right)^\top
-\nonumber\\[4pt]
-&=
-\min_w \sum_{i\in I_c}
-w^\top
-\left(X_{\beta,i}-X_{\beta,i+1}\right)
-\left(X_{\beta,i}-X_{\beta,i+1}\right)^\top
-w.
-\end{align}
-This gives the beta variability loss:
-\begin{equation}
-\begin{aligned}
-L_{\beta}(w)
-&= w^\top C_{\beta}w,
-\\
-C_{\beta}
-&= \sum_{i\in I_c}
-\left(X_{\beta,i}-X_{\beta,i+1}\right)
-\left(X_{\beta,i}-X_{\beta,i+1}\right)^\top.
-\end{aligned}
-\end{equation}
-
-Therefore, $C_{\beta}$ penalizes large changes in beta values between consecutive trials.
-
-Both BOLD and beta variability terms were included because they capture complementary sources of variability. The beta estimates reflect activation related to movement execution, so $L_{\beta}(w)$ constrains variability in the movement-related neural response. However, the task also includes other processes. These sources of variability can be encoded in the BOLD signal even when they are not fully captured by movement-related beta estimates. Therefore, $L_{\mathrm{bold}}(w)$ was also included to account for broader task-related variability encoded in the brain.
-
-\textbf{General loss function:} After defining the four conditions, the penalty terms were combined into a single total loss. The total penalty was defined as
-
-\begin{align}
-L_{\mathrm{total}}(w)
-&= \alpha_1 L_{\mathrm{task}}(w) + \alpha_2 L_{\mathrm{bold}}(w) + \alpha_3 L_{\beta}(w) + \alpha_4 L_{\mathrm{smooth}}(w)
-\nonumber = w^\top C_{\mathrm{total}}w,
-\end{align}
-where
+The optimization combined the task-engagement, BOLD variability, beta variability, and spatial-smoothness penalties into
 \begin{equation}
 C_{\mathrm{total}}
-= \alpha_1 C_{\mathrm{task}} + \alpha_2 C_{\mathrm{bold}} + \alpha_3 C_{\beta} + \alpha_4 C_{\mathrm{smooth}}.
+= \alpha_{\mathrm{task}} C_{\mathrm{task}}
++ \alpha_{\mathrm{BOLD}} C_{\mathrm{BOLD}}
++ \alpha_{\beta} C_{\beta}
++ \alpha_{\mathrm{smooth}} C_{\mathrm{smooth}} .
 \end{equation}
-
-The parameters $\alpha_1$, $\alpha_2$, $\alpha_3$, and $\alpha_4$ control the relative contributions of task engagement, BOLD variability, beta variability, and spatial smoothness, respectively.
-
-The final objective combined this total penalty with behavioural relevance. The model minimized the regularization penalties while maximizing the association between the projected beta signal and reaction time:
-
+Behavioural relevance was represented by a correlation-based term linking the projected beta signal to RT. The final objective minimized penalties while maximizing behavioural relevance:
 \begin{equation}
 \min_w
 \frac{\gamma w^\top C_{\mathrm{total}}w - w^\top C_b w}{w^\top C_d w}
 \quad
-\mathrm{s.t.}\ \|w\|_2=1.
+\mathrm{s.t.}\ \|w\|_2=1 .
 \end{equation}
+Here, \(C_b\) captures alignment between the projected beta signal and RT, \(C_d\) normalizes by the projected beta variance, the \(\alpha\) values control the four penalty weights, and \(\gamma\) controls the overall balance between regularization and behavioural relevance. Full definitions of all terms and derivations are provided in Supplementary Methods.
 
-Here, $\gamma$ controls the balance between satisfying the regularization criteria and maximizing behavioural relevance. The denominator $w^\top C_d w$ normalizes the objective by the variance of the projected beta signal.
+The constrained optimization was solved using Sequential Least Squares Programming (SLSQP) \citep{nocedal2006numerical,kraft1988software}. Hyperparameters were selected with a coarse-to-fine cross-validation procedure. In the coarse stage, candidate penalty-weight combinations were evaluated over contiguous folds using held-out absolute correlation between the optimized neural projection and behaviour. After the best coarse setting was identified, a fine search tested multiplicative perturbations around that setting. The final setting was chosen based on held-out correlation, stability across folds, and small train-test differences. For each fold, the model was fit on training data, weights were projected back into voxel space, and final voxel maps and projected signals were obtained by averaging across folds.
 
-The resulting projection was defined as
+\subsection{Network definition and validation}
+The final vigour network was defined as voxels with weights above the \(90\)th percentile. This threshold was chosen because it provided a stable compromise between spatial specificity and anatomical coverage: lower thresholds retained substantially more voxels, whereas stricter thresholds began to remove several anatomical groups. Threshold robustness is shown in Supplementary Figure~S6.
+
+We validated the solution in three ways. First, we assessed cross-validation reproducibility of the optimized voxel-weight maps using intraclass correlation (ICC). Second, we compared consecutive-trial variability of the projected neural signal with consecutive-trial variability of RT. The normalized consecutive-trial variability metric was
 \begin{equation}
-y = w^\top X_{\beta}.
+\sum_i \frac{(x_i-x_{i+1})^2}{x_i^2+x_{i+1}^2},
 \end{equation}
-
-% The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimization was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
-The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularization terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD trial-to-trial variability, beta trial-to-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimized neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimization was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
-
-Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. The reason we chose this threshold is that the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (figure \ref{fig:threshold_robustness}). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The 90th percentile retained a distributed network across the main contributing regions while showing maximal stability relative to the reference threshold, supporting it as an appropriate cutoff for defining the vigour network. 
-
-After identifying the vigour network, we then assessed whether medication state or GVS condition modulated activity within this network, as both variables had been excluded from the optimization procedure.
+computed after excluding run and block boundaries. Runs contributed to the variability estimates, but inferential statistics used subject-level summaries rather than treating runs as independent observations. Third, we tested whether selected voxels were less variable than a motor-area control pool. The control pool was defined from bilateral motor-area atlas labels after removing selected voxels, and \(1{,}000\) size-matched samples were drawn without replacement.
 
 \subsection{Medication-state network analysis}
-After defining the vigour network, we tested whether dopaminergic medication altered its organization. Medication state was not used during optimization, so this analysis served as an independent characterization of the final network. We also repeated the same analysis using the task-activation map, to determine whether medication-related effects were specific to the optimized vigour network.
+After defining the vigour network, we tested whether dopaminergic state altered its organization. Medication state was not used during optimization, so this analysis was an independent characterization of the final network. Only participants with data in both medication states were included in paired analyses (\(n=17\)). Selected voxels were assigned to atlas ROIs, and the original optimized voxel weights were retained when calculating ROI summaries so that voxels with larger model-derived weights contributed more strongly to the regional beta series. The same analysis was repeated using the standard task-activation map as a reference network.
 
-For each participant, trial-wise GLMsingle beta estimates were available for OFF- and ON-medication sessions. Only participants with data in both medication states were included in the paired analyses, yielding \(17\) participants. For the vigour-network analysis, selected voxels were assigned to the atlas ROIs (Figure~\ref{fig:roi_atlas}), yielding \(38\) ROIs. The original optimized voxel weights were retained when calculating ROI summaries, so voxels with larger model-derived weights contributed more strongly to the regional beta series. For the task-activation analysis, thresholded task-map voxels were assigned to the same atlas. ROIs containing fewer than \(30\) voxels were excluded, leaving \(35\) ROIs. Because the task-activation map was binary, all retained voxels contributed equally. For each participant, medication state, and run, beta values were extracted from the retained voxels and summarized as one trial-wise beta series per ROI.
+Functional connectivity was defined from trial-wise ROI beta series; therefore, connectivity here refers to task-based co-fluctuation across trials, not resting-state connectivity. Pearson correlation measured linear co-fluctuation, and mutual information measured more general statistical dependence. Both measures are symmetric and undirected, so medication-related changes were interpreted as changes in statistical coupling rather than causal influence. We quantified whether network topology differed more between medication states than between repeated runs within the same state using correlation distance between vectorized ROI-edge patterns. This topology-control analysis is reported in Supplementary Figure~S9.
 
-Functional connectivity was then defined from these trial-wise ROI beta series. Thus, connectivity in this analysis refers to task-based co-fluctuation across trials, not resting-state connectivity. Two complementary connectivity measures were used. Pearson correlation measured linear co-fluctuation between two ROI beta series. Higher Pearson correlation indicated that two ROIs tended to increase and decrease together across trials, whereas lower values indicated weaker coupling and negative values indicated opposite trial-wise fluctuations. Mutual information measured more general statistical dependence, including nonlinear relationships. Higher mutual information indicated that the trial-wise response in one ROI was more informative about the response in another ROI, whereas lower mutual information indicated weaker dependence. Both measures are symmetric and undirected; therefore, medication-related increases or decreases were interpreted as changes in statistical coupling, not as evidence for causal influence.
-
-For each participant, medication state, run, and connectivity measure, an ROI-by-ROI connectivity matrix was estimated. The upper-triangular ROI-pair values were vectorized to form an edge vector representing the network topology for that run. To compare network topology across runs or medication states, we used correlation distance, defined as \(1-r\), where \(r\) is the Pearson correlation between two edge vectors. A smaller distance indicated more similar connectivity topology, whereas a larger distance indicated more different topology. Within each participant, within-state run-to-run distance was calculated as the mean of the OFF run 1 versus OFF run 2 distance and the ON run 1 versus ON run 2 distance. Cross-state distance was calculated as the mean of the four OFF-run to ON-run distances. Medication-related excess distance was then defined as cross-state distance minus within-state run-to-run distance. A positive excess distance indicated that network topology differed more between medication states than expected from run-to-run variability alone. Group inference tested whether this value was greater than zero using a sign-flip permutation test, and Cohen's \(d\) was computed as the mean excess distance divided by its subject-level standard deviation (Figure~\ref{fig:medication_stability_control}).
-
-Finally, we tested whether medication preferentially affected local coupling within ROIs or distributed coupling between ROIs. Between-region connectivity was defined as the average Pearson correlation between all pairs of ROI beta series. Within-region connectivity was defined as the average Pearson correlation between voxel beta series inside the same ROI. All correlations were Fisher \(z\)-transformed before averaging. For within-region connectivity, voxel-pair correlations were first averaged within each ROI, and the resulting ROI-level values were then averaged equally across ROIs so that larger ROIs did not dominate the estimate. Medication effects were calculated within each participant as ON minus OFF. The primary contrast tested whether the medication-related change in within-region connectivity was larger than the medication-related change in between-region connectivity:
-\[
-\left(\mathrm{FC}^{\mathrm{ON}}_{\mathrm{within}} - \mathrm{FC}^{\mathrm{OFF}}_{\mathrm{within}}\right)
--
-\left(\mathrm{FC}^{\mathrm{ON}}_{\mathrm{between}} - \mathrm{FC}^{\mathrm{OFF}}_{\mathrm{between}}\right).
-\]
-A positive value indicated that medication increased local within-ROI coupling more than distributed between-ROI coupling. This contrast was tested across participants using a two-sided paired \(t\)-test, with a Wilcoxon signed-rank test used as a non-parametric check (Figure~\ref{fig:medication_local_distributed_fc}).
+The main medication analysis tested whether medication preferentially affected local within-ROI coupling or distributed between-ROI coupling. Between-region connectivity was the average Fisher-\(z\)-transformed Pearson correlation between all pairs of ROI beta series. Within-region connectivity was the average Fisher-\(z\)-transformed Pearson correlation between voxel beta series inside each ROI; ROI-level within-region values were averaged equally across ROIs so that larger ROIs did not dominate. The primary contrast tested whether the ON--OFF change in within-ROI connectivity was larger than the ON--OFF change in between-ROI connectivity.
 
 \subsection{GVS-related network analysis}
-Following the medication-related connectivity analysis, we examined whether galvanic vestibular stimulation (GVS) modulated functional connectivity within the same ROI sets. ROI definitions were identical to those used in the medication analysis and were applied separately to both the vigour network and the task-activation map.
+We next examined whether GVS modulated functional connectivity within the same ROI sets. For each subject, medication state, run, and GVS condition, trial-wise ROI beta estimates were grouped by stimulation block. The sham block served as the within-run baseline. Each active GVS condition was compared with the matched sham block from the same run.
 
-For each subject, session, medication state, run, and GVS condition, trial-wise ROI beta estimates were grouped according to their corresponding stimulation block. The sham condition served as the within-run baseline. Each active GVS condition, from GVS1 to GVS8, was then compared with the matched sham block from the same run. For each block, functional connectivity was estimated for every pair of ROIs using mutual information. Specifically, each ROI beta series was discretized into three rank-based quantile bins, and mutual information was computed from the joint and marginal bin probabilities using natural-log units. ROI pairs with fewer than four finite paired observations were excluded from the analysis, and ROI pairs with zero variance were assigned a mutual information value of zero.
-
-For each active GVS block, the edge-level change score was defined as the difference between mutual information during active stimulation and mutual information during the matched sham condition:
-
-\begin{equation}
-\Delta I_{ij}^{(b,c)}
-=
-I_{ij}^{\mathrm{GVS}(b,c)}
--
-I_{ij}^{\mathrm{sham}(b)} ,
-\end{equation}
-
-where \(I_{ij}^{\mathrm{GVS}(b,c)}\) denotes the mutual information between ROIs \(i\) and \(j\) during active GVS condition \(c\) in block \(b\), and \(I_{ij}^{\mathrm{sham}(b)}\) denotes the corresponding mutual information during the matched sham block.
-
-For visualization, block-level edge-change values were pooled across subjects, medication states, runs, and active GVS conditions. Thus, the statistical unit for this analysis was the subject--session--medication--run--condition block. For each edge, the mean active-minus-sham change was tested against zero using a two-sided sign-flip permutation test with \(5{,}000\) permutations. False discovery rate correction was then applied within the same metric and analysis scope, using a threshold of \(q < 0.05\). Only edges surviving FDR correction were visualized in Figure~\ref{fig:gvs_edge_changes}.
-
+Two complementary edge metrics were used. Quantile mutual information measured general statistical dependence after discretizing each ROI beta series into three rank-based quantile bins. Spearman's rank correlation measured monotonic rank-based association and provided a simpler, outlier-resistant comparison. For each active block, active-minus-sham edge changes were computed. For visualization and exploratory inference, block-level edge-change values were pooled across subjects, medication states, runs, and active GVS conditions. Each edge was tested against zero using a two-sided sign-flip permutation test with \(5{,}000\) permutations, followed by false-discovery-rate correction within metric and analysis scope. Because this analysis included repeated block-level observations from participants and each block contained few trials, GVS findings were treated as exploratory.
 
 \section{Results}
-We first tested whether the optimization recovered a behaviour-linked signal with low consecutive-trial variability, then characterized the anatomical distribution of the resulting network, compared it with the task-activation map, and finally examined medication- and GVS-related network effects.
+We first tested whether the optimization recovered a behaviour-linked signal with low consecutive-trial variability. We then characterized the anatomy of the resulting network, compared it with standard task activation, and examined medication- and GVS-related network effects.
 
-\subsection{Behavioural Performance}
-After trial- and run-level quality control, $18$ participants, $35$ sessions, $70$ runs, and $5{,}463$ Go trials were retained for behavioural and neural analyses. For the consecutive-trial variability comparison between reaction time and the optimized projection, the \(70\) retained runs contributed to the variability estimates, but runs were not treated as independent observations: the two runs within each available subject-session were combined while excluding the run-boundary transition between the last trial of run 1 and the first trial of run 2, and available session summaries were then averaged within participant before paired inference. Mean RT was $387.2 \pm 65.8$ ms in the OFF state and $375.5 \pm 64.7$ ms in the ON state. Consecutive-trial RT variability was $3.50$ in OFF and $4.04$ in ON. Subject-level reward summaries showed heterogeneous low- versus high-reward RT differences, with most participants showing similar mean RTs across reward conditions and only a subset showing significant within-subject differences (Figure~\ref{fig:reward_rt_by_subject}). GVS produced no consistent group-level RT effect.
+\subsection{Behavioural performance}
+After trial- and run-level quality control, \(18\) participants, \(35\) sessions, \(70\) runs, and \(5{,}463\) Go trials were retained for behavioural and neural analyses. Mean RT was \(387.2 \pm 65.8\)~ms in the OFF-medication state and \(375.5 \pm 64.7\)~ms in the ON-medication state. Consecutive-trial RT variability was \(3.50\) in the OFF state and \(4.04\) in the ON state. The subject-paired medication effect on mean RT was small and approached conventional significance in the supplementary analysis (mean ON--OFF difference \(=-13.6\)~ms, \(95\%\) CI \([-27.5,0.3]\), \(t(16)=-2.08\), \(p=.054\); Supplementary Figure~S2). Reward-condition effects were heterogeneous across subjects, and GVS produced no consistent group-level RT effect (Supplementary Figure~S3). These behavioural results supported using trial-wise RT as the behavioural vigour index while treating medication and GVS behavioural effects cautiously.
 
-\subsection{Optimization performance: identifies a behaviour-linked low-variability signal}
-As a first validation, we tested whether the optimization produced a signal with the expected low-variability profile. The optimized voxel-weight maps were highly consistent across cross-validation folds (ICC \(=0.978\)), indicating that the solution was not driven by a single fold. The resulting projection, \(y\), was a one-dimensional weighted summary of voxel activity that jointly reflected task engagement, behavioural relevance, spatial smoothness, and low consecutive-trial variability. We then asked whether this projected neural signal was less variable than the behavioural signal it was designed to track. We compared the variability of the projection with the variability of behaviour using a consecutive-trial metric:
+\subsection{The optimization identified a reproducible low-variability neural projection}
+The optimized voxel-weight maps were highly consistent across cross-validation folds (ICC \(=0.978\)), indicating that the solution was not driven by a single fold. The resulting projection, \(y\), was a one-dimensional weighted summary of voxel activity that jointly reflected task engagement, behavioural relevance, spatial coherence, and low consecutive-trial variability. We then asked whether this projected neural signal was less variable than the behaviour it was designed to track. Using subject-level summaries derived from the retained runs, behaviour-minus-projection variability was positive (mean difference \(=7.5\), \(95\%\) CI \([2.2,12.8]\), paired \(p=.008\); Figure~\ref{fig:optimization_validation}A). Thus, the model recovered a neural signal that remained behaviour linked while changing more smoothly from trial to trial than RT itself.
 
-\[
-\sum_i \frac{(x_i - x_{i+1})^2}{x_i^2 + x_{i+1}^2}
-\]
-Using these subject-level summaries, behaviour-minus-projection variability was positive (mean difference \(=7.5\), \(95\%\) CI \([2.2, 12.8]\), paired \(p=.008\); Figure~\ref{fig:optimization_validation}A). Thus, the model recovered a neural signal that remained linked to behaviour while changing more smoothly from trial to trial than the behaviour itself.
+We also tested whether the selected voxels had lower variability than a relevant motor-area comparison pool. The AAL3-derived motor control pool contained \(44{,}176\) voxels; after removing \(1{,}823\) overlapping selected voxels, \(42{,}353\) non-selected motor voxels remained before metric-validity filtering. The voxel-stability diagnostic used a metric-valid analysis mask and therefore was not expected to have exactly the same voxel count as the final p90 anatomical display mask. Within this diagnostic, the valid sets contained \(9{,}050\) selected voxels and \(22{,}544\) non-selected motor voxels, with no overlap. Selected voxels were enriched in the low-variability tail across percentile cutoffs (Figure~\ref{fig:optimization_validation}B). Their mean consecutive-trial variability was \(2.50\), whereas \(1{,}000\) size-matched samples from the non-selected motor pool had a mean variability of \(3.46\) and a \(95\%\) CI of \([2.76,4.38]\). The null sampling was matched by sample size only, not by hemisphere, ROI size, spatial location, or smoothness. This supports the conclusion that the optimized network was enriched for stable voxels relative to a motor-area control pool rather than being an arbitrary sample of motor activity.
 
-We also tested whether the selected voxels had lower variability than a relevant motor-area comparison pool. The AAL3-derived control pool was formed from bilateral motor-area labels, and selected voxels were excluded before sampling. The full anatomical motor mask contained \(44{,}176\) voxels; after removing \(1{,}823\) overlapping selected voxels, \(42{,}353\) non-selected motor voxels remained before metric-validity filtering. The plotted valid sets contained \(9{,}050\) selected voxels and \(22{,}544\) non-selected motor voxels, with no overlap. Selected voxels were enriched in the low-variability tail across percentile cutoffs (Figure~\ref{fig:optimization_validation}B). Their mean consecutive-trial variability was \(2.50\), whereas \(1{,}000\) size-matched samples drawn without replacement from the non-selected motor-area control pool had a mean variability of \(3.46\) and a \(95\%\) CI of \([2.76, 4.38]\) (Figure~\ref{fig:optimization_validation}B). The null sampling was matched by sample size only, not by hemisphere, ROI size, spatial location, or spatial smoothness. This shows that the optimized network was enriched for stable voxels relative to a motor-area control pool, rather than being an arbitrary sample of motor-area activity.
+Together, these analyses show that the model recovered a reproducible, behaviour-linked neural projection with lower consecutive-trial variability than RT. This does not prove that all behavioural variability is downstream of the recovered signal, but it does show that a stable central vigour-related component can be detected in PD even when behaviour itself fluctuates.
 
-Together, these analyses show that the optimization recovered a reproducible, behaviour-linked neural projection with lower consecutive-trial variability than reaction time. The selected voxels were also less variable than a motor-area comparison pool. We therefore used the p90 threshold to define the final vigour network (Figure~\ref{fig:threshold_robustness}) because it removed lower-weight voxels while preserving the main anatomical regions identified by more liberal thresholds.
+\subsection{The optimized vigour network was distributed across motor, associative, limbic, and subcortical regions}
+The final p90 vigour network contained \(8{,}182\) voxels and was distributed across both hemispheres (Figure~\ref{fig:main_vigour_network}). It was not limited to one primary motor cluster. The largest portions of the map were in temporal, parietal, and frontal cortex. A sensorimotor component was present in precentral, postcentral, paracentral, and supplementary motor areas. Additional clusters extended into orbitofrontal cortex, occipital cortex, fusiform and parahippocampal regions, hippocampus, amygdala, caudate, putamen, thalamus, and cerebellum.
 
-\subsection{Spatial distribution of the optimized vigour-related network}
-% Figures: figure 1
-% sup-figure 5, 
-The optimized vigour-network comprised $8,182$ voxels and was spread across both hemispheres. It was not limited to a single motor cluster. The largest parts of the map were in the temporal, parietal, and frontal cortex. A sensorimotor component was also present in precentral, postcentral, paracentral, and supplementary motor areas. Additional clusters extended into the orbitofrontal cortex, occipital cortex, fusiform and parahippocampal regions, hippocampus, amygdala, caudate, putamen, thalamus, and cerebellum (Figures~\ref{fig:main_vigour_network} and \ref{fig:supp_vigour_network_anatomy}).
+ROI summaries confirmed that the map included motor and non-motor components. Temporal cortex contributed \(25.27\%\) of selected voxels, parietal cortex \(13.46\%\), frontal cortex \(11.38\%\), cerebellum \(7.90\%\), and orbitofrontal cortex \(7.22\%\). After normalizing by ROI size, stronger enrichment appeared in temporal-limbic and striatal regions, including parahippocampal gyrus, amygdala, caudate, orbitofrontal cortex, and temporal cortex. Motor-related areas, including supplementary motor area, paracentral lobule, precentral gyrus, parietal cortex, and cerebellum, were clearly represented but did not dominate the ROI-normalized profile (Supplementary Table~S3 and Supplementary Figure~S8). This anatomy is consistent with a vigour-related signal that integrates motor preparation with cue value, context, salience, and action organization.
 
-Overall, the optimized map reflected a distributed network. It included motor-related regions, but the pattern was broader than primary movement output alone. The strongest spatial coverage involved temporal, parietal, and frontal regions, together with limbic, subcortical, and cerebellar areas. (table \ref{tab:roi_vigour_network})
+\subsection{The vigour network was not simply standard task activation}
+We compared the vigour network with the standard GLM task-activation map to test whether the optimized network was mainly a subset of general task activation (Figures~\ref{fig:main_network_task_overlap} and \ref{fig:roi_task_overlap_summary}). The two maps showed limited same-voxel overlap. The vigour network contained \(8{,}182\) voxels, whereas the task-activation map contained \(21{,}610\) voxels. Only \(835\) voxels were shared, giving a Dice coefficient of \(0.056\) and a Jaccard index of \(0.029\).
 
-Whether this pattern reflects vigour-specific coding rather than broader task-related activation is tested in the next section. 
+The task-activation map was broad and covered many regions involved in performing the task. In contrast, the vigour network was more selective. Some overlap appeared in motor-related regions, including pericentral cortex, supplementary/paracentral motor areas, putamen, cerebellum, and parietal cortex. However, several regions contained both maps with little or no same-voxel overlap, and temporal-limbic and orbitofrontal components were more prominent in the vigour network than in the task-activation reference (Figure~\ref{fig:roi_task_overlap_summary}; Supplementary Tables~S4 and S5).
 
-\subsection{Limited overlap with the task-engagement reference map}
-% Figures: Figure 2
-% sup-figure 6, 7, 8
-% table
+We also compared the vigour network with additional GLMsingle-derived activation maps. These analyses again showed low spatial overlap and distinct regional composition (Supplementary Figure~S5). Together, these results show that the recovered network is not simply a smaller version of the task-activation map. The optimization captured a trial-wise vigour-related projection whose anatomy differs from the regions most consistently activated by the task on average.
 
-We compared the vigour network with a standard GLM task-activation map to test whether the vigour network was mainly a subset of general task activation (Figure~\ref{fig:main_network_task_overlap}). The two maps showed very little overlap. The vigour network contained $8,182$ voxels, while the task-activation map contained $21,610$ voxels. Only $835$ voxels were shared between them, giving a Dice score of $0.056$ and a Jaccard score of $0.029$.
+\subsection{Medication altered local network coupling}
+After defining the vigour network, we tested whether medication altered its task-based functional connectivity. The topology-control analysis showed that connectivity patterns differed more between medication states than between repeated runs within the same state, for both Pearson-based and mutual-information-based edge patterns (Supplementary Figure~S9). This result indicates that medication state changed the organization of trial-wise coupling beyond ordinary run-to-run variability. It should not be interpreted as evidence that ON medication simply stabilized every selected voxel.
 
-The task-activation map was broad and covered many regions involved in performing the task. In contrast, the vigour network was more selective. Some overlap appeared in motor-related regions, including peri-central cortex, supplementary/paracentral motor areas, putamen, cerebellum, and parietal cortex. ROI-level summaries confirmed this pattern: several regions contained both maps, but often with little or no same-voxel overlap (Figure~\ref{fig:roi_task_overlap_summary}; Tables~\ref{tab:two_networks} and \ref{tab:ablation_full_vs_task_only_roi}).
+We next asked whether medication-related reorganization occurred locally within ROIs or between distinct ROIs (Figure~\ref{fig:medication_local_distributed_fc}). Medication primarily increased local connectivity within ROIs of the vigour network. Intra-ROI FC increased significantly from OFF to ON medication (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=+0.0147\), \(p=0.006\)), whereas between-ROI FC showed no reliable change and remained close to zero (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=-0.0006\), \(p=0.723\)). This pattern suggests that dopaminergic medication strengthened local functional coupling within the vigour network rather than broadly increasing distributed connectivity between ROIs.
 
-We also compared the vigour network with other GLM-based activation maps. These analyses showed that the vigour network had a different regional profile and low spatial overlap with standard GLM and GLMsingle maps (Figure~\ref{fig:model_spatial_similarity}). Together, these results show that the vigour network is not simply a smaller part of the task-activation map. Instead, it captures a more specific pattern related to trial-wise movement vigour and stability.
+To assess whether this pattern was specific to the optimized network, we repeated the same analysis using the standard GLM task-activation map. The task-activation map also showed a significant difference between intra-ROI and between-ROI medication-related changes (\(p=0.012\); Figure~\ref{fig:medication_local_distributed_fc}). However, the individual effects were weaker. In the vigour network, the effect was driven by a robust increase in intra-ROI FC. In the task-activation map, intra-ROI FC showed only a non-significant increase (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=+0.0081\), \(p=0.108\)), together with a non-significant tendency toward reduced between-ROI FC (\(\Delta_{\mathrm{ON}-\mathrm{OFF}}=-0.0098\), \(p=0.142\)). Thus, task-active regions also captured a local-versus-distributed medication contrast, but the optimized vigour network more clearly identified medication-related strengthening of local coupling.
 
-\subsection{Medication-related differences in network topology}
-% Figures: Figure 3, 4
-% sup-figure 9, 10, 11
-After defining the vigour network, we tested whether medication altered the organization of functional-connectivity (FC) changes within this network (Figure~\ref{fig:medication_stability_control}). To distinguish medication-related effects from ordinary run-to-run variability, we compared two correlation-distance measures. The first distance, `Run~1 vs.~Run~2'', quantified how much the estimated FC-change pattern varied across repeated runs within the same medication state. The second distance, `ON vs.~OFF'', quantified how much the FC-change pattern differed across medication states. Because larger correlation distance indicates lower similarity, a higher ``ON vs.~OFF'' distance means that FC-change patterns were less consistent across medication states than across repeated runs. Thus, medication status altered the organization of FC changes beyond the level expected from measurement or session variability alone. This effect was significant for both Pearson-based and mutual-information-based measures, indicating that the medication-related shift was present for both linear and more general dependency estimates.
+\subsection{GVS produced exploratory connectivity changes within the recovered network}
+We next asked whether GVS changed functional connectivity within the final vigour-related network. For each active GVS condition, each edge was compared with the matched sham edge from the same subject, medication state, and run. Because each participant contributed multiple GVS blocks, observations were not fully independent. We therefore used this analysis to describe stimulation-sensitive edges rather than to make a strong therapeutic or group-level causal claim.
 
-We next asked where this medication-related reorganization occurred within the network (Figure~\ref{fig:medication_local_distributed_fc}). Medication primarily increased local connectivity within ROIs of the vigour network. Intra-ROI FC increased significantly from OFF to ON medication (\(\Delta_{\mathrm{ON}-\mathrm{OFF}} = +0.0147\), \(p = 0.006\)), whereas between-ROI FC showed no reliable change and remained close to zero (\(\Delta_{\mathrm{ON}-\mathrm{OFF}} = -0.0006\), \(p = 0.723\)). These results suggest that medication mainly strengthened local functional coupling within the vigour network, rather than broadly increasing connectivity between distinct ROIs.
+Using quantile mutual information, active GVS produced \(156\) FDR-significant sham-referenced edge changes out of \(703\) tested edges. Of these, \(46\) increased and \(110\) decreased (minimum \(q_{\mathrm{FDR}}=0.0025\); Figure~\ref{fig:gvs_edge_changes}A). The strongest decreases involved Amygdala\_L--Thalamus\_L, Cerebellum\_L--Putamen\_L, and Cingulate\_L--Thalamus\_L. The strongest increases involved Parietal\_L--Thalamus\_L and Putamen\_L--Supplementary Motor Area\_L. At the anatomical-sector level, decreases were most concentrated between limbic/olfactory and somatomotor/cerebellar regions, with additional decreases linking subcortical, cingulate-temporal, and somatomotor/cerebellar sectors.
 
-To assess whether this pattern was specific to the optimized vigour network, we repeated the same analysis using the standard GLM task-activation map. The task-activation map also showed a significant difference between intra-ROI and between-ROI medication-related changes (\(p = 0.012\); Figure~\ref{fig:medication_local_distributed_fc}). However, the underlying pattern was weaker and less specific than in the vigour network. In the vigour network, the effect was driven by a robust increase in intra-ROI connectivity. In contrast, the task-activation map showed only a non-significant increase in intra-ROI FC (\(\Delta_{\mathrm{ON}-\mathrm{OFF}} = +0.0081\), \(p = 0.108\)), together with a non-significant tendency toward reduced between-ROI FC (\(\Delta_{\mathrm{ON}-\mathrm{OFF}} = -0.0098\), \(p = 0.142\)). Therefore, although task-active regions also captured a difference between local and distributed medication-related FC changes, the optimized vigour network more clearly identified a medication-related strengthening of local connectivity.
+Using Spearman's rank correlation, active GVS produced \(194\) FDR-significant edge changes (Supplementary Figure~S10). This pattern was more balanced, with \(103\) increases and \(91\) decreases (minimum \(q_{\mathrm{FDR}}=0.0022\)). The strongest increases involved Cingulate\_R--Temporal\_R, Fusiform\_L--Putamen\_L, and Fusiform\_L--Precentral\_R. The strongest decreases involved Amygdala\_R--Precentral\_L, Amygdala\_R--Frontal\_L, and Hippocampus\_L--Temporal\_L. The two metrics did not identify the same edge list, which is expected because they measure different forms of dependence. However, both analyses showed that GVS perturbed distributed interactions within the final network, repeatedly involving limbic/olfactory, medial-temporal, subcortical, visual, cingulate-temporal, and somatomotor/cerebellar components.
 
-
-\subsection{GVS-related effects in the final network}
-% Figures: 5, 6
-% sup-figure 12,13,14,15, 16, 17, 18, 19, 20, 21
-
-We next asked whether GVS changed functional connectivity within the final vigour-related network. For each active GVS condition, each edge was compared with the matching sham edge from the same subject, session, and run. Because each participant contributed more than one GVS block, the observations in this analysis were not fully independent. For this reason, we treated this analysis as exploratory. We used it to describe which network edges were most affected by GVS, rather than to make a strong group-level statistical claim.
-
-We used two complementary functional-connectivity metrics. The first was quantile mutual information. This metric measures statistical dependence between two ROI beta series and can capture nonlinear relationships. Because mutual information is unsigned, an increase means stronger dependence between two ROIs, and a decrease means weaker dependence. It does not indicate excitation, inhibition, or direction of influence. The second metric was Spearman's rank correlation. This metric measures monotonic rank-based association. It is simpler to interpret than mutual information, is less sensitive to outliers than Pearson correlation, and may be more reliable here because trial-wise beta values can be non-Gaussian. These two metrics, therefore, ask related but not identical questions.
-
-Using quantile mutual information, active GVS produced $156$ FDR-significant sham-referenced edge changes out of $703$ tested edges. Of these, $46$ increased, and $110$ decreased (minimum $q_{\mathrm{FDR}} = 0.0025$; Figure~\ref{fig:gvs_edge_changes}A). The strongest decreases involved Amygdala\_L-Thalamus\_L, Cerebellum\_L-Putamen\_L, and Cingulate\_L-Thalamus\_L. The strongest increases involved Parietal\_L-Thalamus\_L and Putamen\_L-Supp Motor Area\_L. At the anatomical-sector level, decreases were most concentrated between limbic/olfactory and somatomotor/cerebellar regions, with additional decreases linking subcortical, cingulate-temporal, and somatomotor/cerebellar sectors. Increases were fewer and most often involved subcortical-limbic/olfactory and subcortical-somatomotor/cerebellar pairs.
-
-Using Spearman's rank correlation, active GVS produced $194$ FDR-significant edge changes. This pattern was more balanced, with $103$ increases and $91$ decreases (minimum $q_{\mathrm{FDR}} = 0.0022$). The strongest increases involved Cingulate\_R-Temporal\_R, Fusiform\_L-Putamen\_L, and Fusiform\_L-Precentral\_R. The strongest decreases involved Amygdala\_R-Precentral\_L, Amygdala\_R-Frontal\_L, and Hippocampus\_L-Temporal\_L. At the sector level, increases were common between subcortical and limbic/olfactory regions, between limbic/olfactory and somatomotor/cerebellar regions, and between visual or cingulate-temporal regions and somatomotor/cerebellar regions. Decreases were strongest for limbic/olfactory-somatomotor/cerebellar, within-limbic/olfactory, and subcortical-somatomotor/cerebellar pairs.
-
-The two metrics did not identify exactly the same edge list. This is expected because they measure different forms of dependence. However, both analyses showed that GVS changed distributed interactions within the final network. The affected edges repeatedly involved limbic/olfactory, medial-temporal, subcortical, visual, cingulate-temporal, and somatomotor/cerebellar components. Thus, GVS did not produce one simple global increase or decrease in connectivity. Instead, it perturbed several parts of the final vigour-related network.
-
-As a sanity check, we repeated the same analysis using the task-activation map rather than the optimized vigour-related network. GVS also produced significant edge changes in this task-activation network (Supplementary Figures 16-18). This shows that GVS effects were not limited to the optimized network alone. However, the detailed pattern was different. The task-activation map showed $134$ significant mutual-information edges and $164$ significant Spearman edges, but only a small number of these overlapped with the significant edges from the vigour-related network ($14$ shared mutual-information edges and $16$ shared Spearman edges). The task-activation pattern was also more dominated by somatomotor/cerebellar, subcortical-somatomotor, and visual-somatomotor interactions. Therefore, the sanity check supports a cautious interpretation: GVS affects task-active circuitry in general, but the optimized vigour-related network shows a partly distinct pattern of GVS-sensitive edges.
+As a sanity check, we repeated the mutual-information analysis using the task-activation map instead of the optimized vigour network (Figure~\ref{fig:gvs_edge_changes}B). GVS also produced significant edge changes in this task-activation network. However, the detailed pattern was different: the task-activation map showed \(134\) significant mutual-information edges and \(164\) significant Spearman edges, with only \(14\) shared mutual-information edges and \(16\) shared Spearman edges overlapping the significant vigour-network edges. This supports a cautious interpretation: GVS affects task-active circuitry in general, but the optimized vigour-related network shows a partly distinct pattern of GVS-sensitive connectivity.
 
 \section{Discussion}
-This study asked whether trial-wise variability in motor vigour in Parkinson's disease reflects instability in a central vigour-related neural signal, or whether some of the behavioural variability arises downstream of a relatively stable central signal. The results support the second interpretation. Using fMRI during a ballistic hand-squeeze task, we identified a distributed neural projection that tracked reaction time while showing lower consecutive-trial variability than the behavioural signal itself. The selected voxels were also less variable than a broader motor-area comparison pool. Thus, the main finding is not simply that reaction time was associated with brain activity. Rather, the study recovered a behaviour-linked neural expression of vigour in Parkinson's disease that was more stable than the behaviour it tracked.
+This study asked whether trial-wise variability in motor vigour in PD reflects instability in a central vigour-related neural signal, or whether some behavioural variability arises downstream of a relatively stable central signal. The results support the second interpretation. Using fMRI during a ballistic hand-squeeze task, we identified a distributed neural projection that tracked RT while showing lower consecutive-trial variability than the behavioural signal itself. The selected voxels were also less variable than a broader motor-area comparison pool. The main finding is therefore not simply that RT was associated with brain activity. Rather, the study recovered a behaviour-linked neural expression of vigour in PD that was more stable than the behaviour it tracked.
 
-This dissociation is important because behavioural variability alone cannot reveal where instability enters the motor system. In Parkinson's disease, response times fluctuate from moment to moment, and motor-unit firing can be more variable even when average performance is partly preserved \citep{macdonald2025capturing, wilson2020motor}. More generally, movement variability can arise from multiple sources, including central preparatory states, adaptive exploration, and downstream motor noise \citep{churchland2006preparatory, faisal2008noise, harris1998signal, pekny2015reward, wu2014variability}. The present findings therefore argue against a simple interpretation in which variable vigour in Parkinson's disease directly reflects an unstable central vigour command. Instead, they suggest that a relatively stable central signal related to trial-wise vigour can still be recovered in Parkinson's disease, and that at least some behavioural fluctuation in when movements are initiated may arise downstream of this signal, or through its interaction with later motor processes.
+This dissociation is important because behavioural variability alone cannot reveal where instability enters the motor system. In PD, response times fluctuate from moment to moment, and motor-unit firing can be more variable even when average performance is partly preserved \citep{macdonald2025capturing,wilson2020motor}. More generally, movement variability can arise from central preparatory states, adaptive exploration, and downstream motor noise \citep{churchland2006preparatory,faisal2008noise,harris1998signal,pekny2015reward,wu2014variability}. The present findings argue against a simple interpretation in which variable vigour directly reflects an unstable central vigour command. Instead, they suggest that a relatively stable central signal related to trial-wise vigour can still be recovered in PD, and that at least some behavioural fluctuation in movement initiation may arise downstream of this signal or through its interaction with later motor processes.
 
-A potential concern is that this conclusion could appear circular, because low consecutive-trial variability was one of the optimization criteria. However, the analysis did not merely impose stability and then report the same property back as a result. The model was constrained not only by stability, but also by task engagement, behavioural relevance, and spatial coherence. We therefore tested whether the recovered solution showed a distinctive stability profile relative to meaningful baselines. It did. At the subject level, using summaries derived from the retained runs, the optimized projection was less variable than reaction time. At the voxel level, the selected voxels were concentrated among low-variability voxels and showed lower mean variability than size-matched samples drawn from non-selected motor-area voxels. These validation analyses show that the solution was not an arbitrary smooth sample of motor activity and was not simply a restatement of behavioural variability. Rather, the projection captured a stable, behaviour-linked neural component whose stability exceeded that of the behavioural signal itself.
+A potential concern is that this conclusion could appear circular because low consecutive-trial variability was one optimization criterion. However, the analysis did not merely impose stability and then report the same property as a result. The model was constrained not only by stability, but also by task engagement, behavioural relevance, and spatial coherence. We therefore tested the recovered solution against meaningful baselines. At the subject level, the optimized projection was less variable than RT. At the voxel level, the selected voxels were concentrated among low-variability voxels and showed lower mean variability than size-matched samples from non-selected motor-area voxels. These validation analyses show that the solution was not an arbitrary smooth sample of motor activity and was not simply a restatement of behavioural variability.
 
-The spatial organization of this projection further supports this interpretation. The recovered vigour-related network included a motor-related core, with contributions from pericentral cortex, superior parietal cortex, putamen, and cerebellar regions. This is consistent with previous work implicating motor cortical, basal ganglia, thalamic, and cerebellar systems in movement speed, force, amplitude, and vigour \citep{anderson2012ecog, dudman2016basal, shirinbayan2019cortical, spraker2007basalganglia, turner2010basal, yttri2016opponent}. However, the projection was not limited to execution-related motor regions. It also included the amygdala, hippocampus, parahippocampal cortex, temporal cortex, frontal pole, and putamen. This broader distribution is informative. A signal reflecting pure motor execution would be expected to localize more strongly to primary motor and adjacent execution-related areas. In contrast, the present projection was enriched in temporal--limbic and striatal regions that are well positioned to integrate cue value, context, salience, motivational state, and action readiness.
+The spatial organization of the projection further supports this interpretation. The recovered vigour-related network included a motor-related core with contributions from pericentral cortex, superior parietal cortex, putamen, and cerebellar regions. This is consistent with prior work implicating motor cortical, basal-ganglia, thalamic, and cerebellar systems in movement speed, force, amplitude, and vigour \citep{anderson2012ecog,dudman2016basal,shirinbayan2019cortical,spraker2007basalganglia,turner2010basal,yttri2016opponent}. However, the projection was not limited to execution-related motor regions. It also included amygdala, hippocampus, parahippocampal cortex, temporal cortex, frontal and orbitofrontal cortex, and striatum. A signal reflecting pure motor execution would be expected to localize more strongly to primary motor and adjacent execution-related areas. In contrast, the present projection was enriched in regions positioned to integrate cue value, context, salience, motivational state, and action readiness.
 
-This network organization fits the behavioural demands of the task. The putamen and broader basal ganglia are directly relevant to vigour because dopaminergic cortico-basal ganglia circuits regulate movement velocity and the energetic investment in action \citep{dudman2016basal, niv2007tonic, turner2010basal, yttri2016opponent, zenon2016dopamine}. The amygdala is also relevant in this context. Primate amygdala neurons encode positive and negative visual-stimulus value during learning \citep{paton2006primate}, and anatomical evidence supports a direct amygdala--motor pathway through which affective or salient cues can shape action \citep{grezes2014direct}. Hippocampal and parahippocampal involvement is similarly meaningful. Reward behaviour depends on hippocampus--nucleus accumbens synaptic strength \citep{legates2018reward}, and the hippocampus can organize upcoming skilled action sequences \citep{yewbrey2024hippocampus}. Together with evidence that the hippocampus supports visually cued contextual response selection \citep{kim2012hippocampus}, these findings suggest that the recovered vigour network integrates motor preparation with the contextual and motivational signals that determine whether an action is initiated quickly on a given trial.
+This network organization fits the behavioural demands of the task. The putamen and broader basal ganglia are directly relevant to vigour because dopaminergic cortico-basal-ganglia circuits regulate movement velocity and energetic investment in action \citep{dudman2016basal,niv2007tonic,turner2010basal,yttri2016opponent,zenon2016dopamine}. Amygdala involvement is also plausible because primate amygdala neurons encode positive and negative visual-stimulus value during learning \citep{paton2006primate}, and anatomical evidence supports an amygdala--motor pathway through which affective or salient cues can shape action \citep{grezes2014direct}. Hippocampal and parahippocampal involvement may reflect contextual organization of action: reward behaviour depends on hippocampus--nucleus accumbens synaptic strength \citep{legates2018reward}, the hippocampus can organize upcoming skilled action sequences \citep{yewbrey2024hippocampus}, and hippocampal mechanisms support visually cued contextual response selection \citep{kim2012hippocampus}. Together, these findings suggest that the recovered network integrates motor preparation with the contextual and motivational signals that determine whether an action is initiated quickly on a given trial.
 
-The limited overlap between this projection and the task-engagement reference map strengthens the same argument. A task-engagement map asks where activity is reliably evoked by performing the task. The present optimization asked a different question: which spatially coherent neural projection is linked to how quickly an action is initiated while maintaining a stable expression over consecutive trials? The low overlap indicates that the network most consistently activated by the task is not the same as the network that best captures stable trial-wise vigour-related coding. This distinction is important because it separates mean task activation from trial-wise vigour coding. Vigour is therefore not simply a property of task-evoked activation amplitude. It is expressed through the organization of a distributed neural signal that links preparatory, motivational, contextual, and motor systems.
+The limited overlap with the task-activation map strengthens this argument. A task-activation map asks where activity is reliably evoked by performing the task. The optimization asked a different question: which spatially coherent neural projection is linked to how quickly an action is initiated while maintaining a stable expression over consecutive trials? The low Dice and Jaccard values indicate that the network most consistently activated by the task is not the same as the network that best captures stable trial-wise vigour-related coding. This distinction matters because it separates mean task activation from trial-wise vigour coding. Vigour is therefore not simply a property of task-evoked activation amplitude; it is expressed through the organization of a distributed neural signal linking preparatory, motivational, contextual, and motor systems.
 
-The medication findings extend this central-versus-downstream interpretation. In the ON medication state, the selected ROI-edge network was more similar across subjects than in the OFF state, with OFF--ON comparisons falling between ON--ON and OFF--OFF comparisons. This pattern indicates that the ON-medication state was associated with greater cross-subject convergence in the organization of the recovered vigour-related network. Crucially, this effect was not explained by a simple increase in local voxel stability. The selected voxel set remained less variable than the motor comparison pool in both medication states, but it did not show preferential stabilization in the ON state. Thus, dopamine did not merely reduce consecutive-trial variability within the selected voxels. It changed the organization of the network.
+The medication findings add a state-dependent component to the same story. Dopaminergic medication changed trial-wise network organization and primarily strengthened local within-ROI coupling in the vigour network. This effect was stronger and clearer in the optimized network than in the standard task-activation reference. The result should not be overstated as proof that dopamine normalizes the network or increases cross-subject convergence, because the medication session order was not counterbalanced and no healthy-control group was included. A safer interpretation is that dopaminergic state alters the internal organization of the recovered vigour-related network, especially the local coherence of voxel-level responses within ROIs. This is consistent with prior work linking dopamine to movement vigour and with evidence that levodopa can alter functional network organization in PD \citep{niv2007tonic,berman2016levodopa,zenon2016dopamine,mazzoni2007parkinson}.
 
-This provides a stronger interpretation than saying that medication reduced neural noise. The data suggest that dopamine modulates the topology of the central vigour-related signal: the pattern of statistical dependence among network nodes became more consistent across patients when they were ON medication. This is consistent with prior work linking dopamine to movement vigour and with evidence that levodopa can alter functional network organization in Parkinson's disease \citep{niv2007tonic, berman2016levodopa, zenon2016dopamine, mazzoni2007parkinson}. It also yields a clear testable prediction. Dopaminergic medication should increase the reproducibility or convergence of vigour-related network topology even when voxel-level stability is controlled, and individual changes in this topology should predict behavioural changes in vigour or response-time variability.
+The medication result also shows why a purely downstream-noise account is incomplete. If behavioural variability arose only from noise added after a stable central command, dopaminergic medication might improve behavioural output without changing the central network that tracks trial-wise vigour. Instead, the ON-state result suggests that dopamine also acts on the organization of the behaviour-linked central signal itself. Thus, some behavioural variability may arise downstream of central vigour-related coding, but dopamine appears to shape the network through which that coding is expressed.
 
-The medication result also shows why a purely downstream-noise account is incomplete. If behavioural variability arose only from noise added after a stable central command, dopaminergic medication might improve behavioural output without systematically reorganizing the central network that tracks trial-wise vigour. Instead, the ON-state result suggests that dopamine acts on the organization of the behaviour-linked central signal itself. Thus, some behavioural variability may arise downstream of central vigour-related coding, but dopamine also appears to shape the central network through which that coding is expressed.
+The GVS findings provide exploratory perturbation evidence. Active stimulation produced sham-referenced connectivity changes within the final network, but the pattern was heterogeneous across stimulation waveforms, medication states, subjects, and edge metrics. The value of this result is not that GVS restored a common vigour-network configuration. It did not. Instead, GVS showed that components of the recovered network are perturbable by vestibular stimulation, and that this perturbation is state- and metric-dependent. This interpretation is consistent with previous work showing that GVS effects in PD depend on stimulation frequency, individual physiology, and parameter selection \citep{lee2021frequency,cai2018galvanic,menon2025individualising}. The practical implication is that future stimulation studies should move beyond testing whether stimulation changes mean activation in selected ROIs. A more informative approach would ask whether individualized stimulation parameters alter the stability, topology, or behavioural coupling of the vigour-related network.
 
-The GVS findings add a different piece to the same story. Active stimulation produced sham-referenced beta changes within parts of the final network, but the pattern was heterogeneous across subjects, stimulation waveforms, medication states, and ROIs. In the OFF state, significant effects most often involved precentral, dorsolateral prefrontal, hippocampal, basal ganglia, vmPFC/dmPFC, and occipital ROIs. In the ON state, effects more often involved other cerebral cortex, hippocampal, basal ganglia, parietal, dorsolateral prefrontal, and amygdalar ROIs. Many ON-state effects were concentrated in a subset of participants and often reflected decreases relative to sham. The value of this result is not that GVS restored a common vigour network configuration. It did not. Instead, GVS showed that components of the recovered vigour-related network are perturbable by vestibular stimulation, but that this perturbation is state-dependent and subject-specific. This interpretation is consistent with previous work showing that GVS effects in Parkinson's disease depend on stimulation frequency, individual physiology, and parameter selection \citep{lee2021frequency, cai2018galvanic, menon2025individualising}. The present data therefore separate two ideas that should not be conflated: a network can be modulated by stimulation without being reorganized into a common, dopaminergically supported configuration.
+Several limitations define the scope of this interpretation. First, the study did not include a healthy control group. The results therefore cannot determine whether the recovered network is specific to PD or whether it reflects a more general vigour-related signal that remains detectable in PD. Second, RT was used as the primary trial-wise index of vigour because it was the most robust behavioural measure in this dataset. RT is highly relevant to response initiation, but vigour also includes movement speed, force amplitude, force rise time, and movement duration. Future studies should test whether the same network tracks multiple components of vigour or whether distinct but overlapping networks support initiation speed and force production.
 
-This distinction has practical implications for future stimulation work. The present findings suggest that GVS studies should move beyond testing whether stimulation changes mean activation in selected ROIs. A more informative approach would ask whether individualized stimulation parameters can alter the stability, topology, or behavioural coupling of the vigour-related network. In this framework, the relevant target is not simply a region that responds to stimulation, but a network property that links stimulation-induced neural change to trial-wise vigour.
+Several design features limit causal interpretation. The medication sessions followed a fixed OFF-then-ON order; medication-related differences may therefore partly reflect practice, fatigue, time-on-task, scanner drift, or other session-order effects. We interpreted medication findings as state-associated rather than fully randomized medication effects, but a counterbalanced medication order would provide stronger evidence. The first three participants also had a different functional MRI acquisition protocol from the rest of the sample. This may have affected signal-to-noise, temporal sampling, or single-trial beta estimation. Future replication should use a single acquisition protocol across all participants.
 
-Several limitations define the scope of this interpretation. First, the study did not include a healthy control group. The results therefore cannot determine whether the recovered network is specific to Parkinson's disease or whether it reflects a more general vigour-related signal that remains detectable in Parkinson's disease. A control group would also help determine whether the neural-behavioural stability dissociation is exaggerated, preserved, or qualitatively altered in Parkinson's disease. Second, reaction time was used as the primary trial-wise index of vigour because it was the most robust behavioural measure in this dataset. Reaction time is highly relevant to response initiation, but vigour also includes movement speed, force amplitude, force rise time, and movement duration. Future studies should test whether the same network tracks multiple components of vigour, or whether distinct but overlapping networks support initiation speed and force production.
+The task structure also means that RT-linked neural signals cannot be attributed only to motor vigour. Reward cues, GVS condition, block context, and adaptation across the run may all influence both RT and trial-wise neural activity. These factors were part of the experimental context and were handled cautiously in the analysis, but they could still contribute to the recovered projection. The optimization framework was also linear. This improves interpretability and supports identification of a consistent low-variability axis, but nonlinear relationships between distributed brain activity and vigour may be missed. Finally, the same dataset was used both to identify the network and to characterize its properties. Cross-validation and control analyses reduce, but do not remove, the need for external validation in an independent PD cohort, healthy adults performing the same task, and PD participants performing a different motor task.
 
-Several design features also limit causal interpretation. The medication sessions followed a fixed OFF-then-ON order. Therefore, medication-related differences may partly reflect practice, fatigue, time-on-task, scanner drift, or other session-order effects. We included run, block, and time covariates and interpreted the medication findings as state-associated rather than fully randomized medication effects, but a counterbalanced medication order would provide stronger evidence. The first three participants also had a different functional MRI acquisition protocol from the rest of the sample. This protocol difference may have affected signal-to-noise, temporal sampling, or single-trial beta estimation. Future replication should use a single acquisition protocol across all participants.
-
-The task structure also means that RT-linked neural signals cannot be attributed only to motor vigour. Reward cues, GVS condition, block context, and adaptation across the run may all influence both reaction time and trial-wise neural activity. These factors were part of the experimental context and were handled cautiously in the analysis, but they could still contribute to the recovered projection. Future work should separate reward, stimulation, block, and vigour effects more directly, ideally with designs that vary these factors independently.
-
-A further limitation is that the optimization framework recovered the network through a linear projection of voxel-level activity. This approach is interpretable and well-suited to identifying a consistent low-variability axis across trials, but the relationship between distributed brain activity and trial-wise vigour is unlikely to be strictly linear. Neural contributions to movement initiation may combine multiplicatively, saturate at high activation levels, or depend on interactions between regions that a weighted sum cannot capture. The linear constraint, therefore, limits the model to the component of the brain-behaviour relationship that can be expressed as a fixed linear combination of ROI signals. Any nonlinear structure is necessarily absorbed into the residual rather than reflected directly in the recovered network. Future work should test whether nonlinear approaches, such as kernel-based projections, manifold-learning methods, or neural-network models trained against the same behavioural target, recover a similar set of regions or reveal additional structure that the linear formulation cannot express. Convergence across linear and nonlinear models would strengthen the claim that the network reflects a genuine vigour-related substrate rather than a feature of the modelling choice.
-
-The ROI-level connectivity analyses also relied on mutual information, which is a symmetric and undirected measure of statistical dependence. Although this estimator captures both linear and nonlinear relationships without distributional assumptions, it cannot distinguish driving from driven regions or characterize the direction of information flow within the network. The medication-related differences in network topology should therefore be interpreted as changes in the overall pattern of statistical dependence, not as changes in directed influence between specific nodes. Future work should apply directional approaches, such as Granger causality, dynamic causal modelling, or transfer entropy, to test whether particular nodes preferentially drive trial-wise vigour fluctuations. Such analyses could also test whether directional or graph-theoretic features of the network predict clinical severity, including MDS-UPDRS motor scores or bradykinesia subscores.
-
-Finally, the same dataset was used both to identify the vigour-related network and to characterize its properties. The optimization used cross-validated folds, and several supporting analyses, including the comparison of consecutive-trial variability against behaviour, the comparison with a motor-area pool, the medication-state network similarity analysis, and the GVS analyses, relied on metrics that were not part of the model-selection score. Nevertheless, the absence of external validation in an independent sample limits inferences about generalizability and leaves open the possibility that some features of the recovered network reflect sample-specific structure. Replication in an independent Parkinson's disease cohort, in healthy adults performing the same task, and in Parkinson's disease patients performing a different motor task will be needed to determine whether the same network emerges across samples, tasks, and analytic pipelines. The GVS analyses should also be considered exploratory and subject-level by design. The block-level GVS comparisons included repeated observations from the same participants, so observations were not fully independent. Each block also contained a small number of trials, which limits the reliability of within-block connectivity estimates. These analyses show that the network is sensitive to vestibular stimulation, but they do not identify a uniform stimulation target or therapeutic waveform. Future work should therefore test individualized stimulation parameters and evaluate whether GVS changes the same network-level properties implicated here: trial-wise stability, behavioural coupling, and cross-subject or within-subject network organization.
-
-Overall, the present study suggests that trial-wise vigour variability in Parkinson's disease should not be interpreted simply as instability of a central motor command. A relatively stable, behaviour-linked neural signal can be recovered, and this signal is organized across motor, striatal, limbic, contextual, and motivational systems. Behavioural variability may therefore partly arise downstream of central vigour-related coding, but dopamine also appears to shape the network through which this coding is expressed. This places vigour variability in Parkinson's disease between two mechanisms: a recoverable central signal that remains more stable than behaviour, and downstream or state-dependent processes that determine how consistently that signal is translated into action.
+Overall, the present study suggests that trial-wise vigour variability in PD should not be interpreted simply as instability of a central motor command. A relatively stable, behaviour-linked neural signal can be recovered, and this signal is organized across motor, striatal, limbic, contextual, and motivational systems. Behavioural variability may therefore partly arise downstream of central vigour-related coding, but dopaminergic state and vestibular stimulation also modulate the network through which this coding is expressed.
 
 \section{Conclusions}
-The present study identifies a distributed vigour-related neural projection in Parkinson's disease whose trial-wise expression is more stable than the behavioural reaction-time fluctuations it tracks. The anatomy of this projection links motor and striatal systems with temporal--limbic regions involved in value, context, salience, and action organization. Dopaminergic medication increased cross-subject convergence of this network without simply stabilizing the selected voxels, consistent with the possibility that dopaminergic state influences the organization of vigour-related network structure. Together, these findings support a model in which PD-related variability in response initiation is not solely the product of an unstable central signal. Instead, a relatively stable central vigour-related signal can be recovered, while part of the behavioural variability may arise downstream as that signal is transformed into motor output.
+The present study identifies a distributed vigour-related neural projection in Parkinson's disease whose trial-wise expression is more stable than the behavioural reaction-time fluctuations it tracks. This projection is anatomically distributed, differs from standard task activation, and shows dopaminergic-state-related strengthening of local within-ROI coupling. Exploratory GVS analyses further show that the recovered network is perturbable by vestibular stimulation, although these effects are heterogeneous and should not be interpreted as evidence for a single therapeutic stimulation pattern. Together, the findings support a model in which PD-related variability in response initiation is not solely the product of an unstable central signal. Instead, a relatively stable central vigour-related signal can be recovered, while behavioural variability may arise partly as that signal is transformed into motor output under different dopaminergic and stimulation states.
 
 \section*{Ethics Statement}
 The studies involving human participants were reviewed and approved by the Clinical Research Ethics Board at the University of British Columbia. The participants provided written informed consent to participate in this study.
@@ -643,7 +256,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{main_figures/Graphical_Abstract.pdf}
-    \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, Participants performed a reward-cued ballistic hand-squeeze task during fMRI. Each trial progressed from reward cue to variable delay and then to a Go signal that prompted a rapid grip response; reaction time and whole-brain BOLD signals were recorded during the task. \textbf{B}, Trial-wise neural responses were estimated with a GLM to obtain single-trial beta maps and BOLD-derived features. These neural features and reaction-time measures were entered into the constrained optimization framework, yielding a low-dimensional projection signal that tracked vigour fluctuations and a voxel-weight map identifying the spatial contributors to that projection. \textbf{C}, The optimization searched for a neural projection that was task-related, behaviourally relevant, spatially coherent, and relatively stable across consecutive trials.}
+    \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, Participants performed a reward-cued ballistic hand-squeeze task during fMRI. Each trial progressed from reward cue to variable delay and then to a Go signal that prompted a rapid grip response; reaction time and whole-brain BOLD signals were recorded during the task. \textbf{B}, Trial-wise neural responses were estimated with GLMsingle to obtain single-trial beta maps and BOLD-derived features. These neural features and reaction-time measures entered the constrained optimization framework, yielding a low-dimensional projection signal and a voxel-weight map. \textbf{C}, The optimization searched for a neural projection that was task engaged, behaviourally relevant, spatially coherent, and relatively stable across consecutive trials.}
     \label{fig:task_analysis_overview}
 \end{figure}
 
@@ -659,8 +272,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
         \centering
         \includegraphics[width=\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
     \end{minipage}
-
-    \caption{Validation of the optimization framework. \textbf{A}, Consecutive-trial variability was lower for the optimized projection than for reaction time. Positive behaviour-minus-projection differences indicate that the projection changed less abruptly than behaviour; paired inference used subject-level summaries derived from the retained runs. \textbf{B}, Selected voxels showed lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool and were enriched among low-variability voxels.}
+    \caption{Validation of the optimization framework. \textbf{A}, Consecutive-trial variability was lower for the optimized neural projection than for reaction time. Positive behaviour-minus-projection differences indicate that the projection changed less abruptly than behaviour; paired inference used subject-level summaries derived from the retained runs. \textbf{B}, Selected voxels showed lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool and were enriched among low-variability voxels.}
     \label{fig:optimization_validation}
 \end{figure}
 
@@ -674,14 +286,14 @@ Supplementary material for this article is provided in the accompanying Suppleme
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{main_figures/Figure2.pdf}
-    \caption{Anatomical overlap between the optimized vigour network and the standard task-activation map. Blue shows the vigour network, orange shows the task-activation map, and green marks same-voxel overlap across representative brain slices.}
+    \caption{Voxelwise overlap between the optimized vigour network and the standard task-activation map. Blue shows the vigour network, orange shows the task-activation map, and green marks same-voxel overlap across representative brain slices.}
     \label{fig:main_network_task_overlap}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{main_figures/Figure7.pdf}
-    \caption{ROI-wise anatomical comparison of the optimized vigour network, the task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. The vigour network is relatively enriched in temporal-limbic, orbitofrontal, and striatal regions, whereas the task-activation map occupies broader sensorimotor, cerebellar, parietal, and subcortical regions.}
+    \caption{ROI-wise anatomical comparison of the optimized vigour network, the standard task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. The vigour network is relatively enriched in temporal-limbic, orbitofrontal, and striatal regions, whereas the task-activation map occupies broader sensorimotor, cerebellar, parietal, and subcortical regions.}
     \label{fig:roi_task_overlap_summary}
 \end{figure}
 
@@ -713,15 +325,9 @@ Supplementary material for this article is provided in the accompanying Suppleme
         \centering
         \includegraphics[width=0.94\textwidth]{main_figures/Figure9.pdf}
     \end{minipage}
-    \caption{Exploratory GVS-related edge changes in the optimized vigour and task-activation networks. \textbf{A}, FDR-significant active-minus-sham mutual-information edge changes within the optimized vigour network, pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges indicate increased statistical dependence and blue edges indicate decreased dependence; color intensity scales with the mean edge-change magnitude. \textbf{B}, The same mutual-information analysis in the task-activation network, showing a partly distinct pattern of GVS-sensitive edges. Nodes are labeled by ROI and grouped by anatomical sector.}
+    \caption{Exploratory GVS-related mutual-information edge changes in the optimized vigour and task-activation networks. \textbf{A}, FDR-significant active-minus-sham mutual-information edge changes within the optimized vigour network, pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges indicate increased statistical dependence and blue edges indicate decreased dependence; color intensity scales with mean edge-change magnitude. \textbf{B}, The same mutual-information analysis in the task-activation network, showing a partly distinct pattern of GVS-sensitive edges. Nodes are labeled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_edge_changes}
 \end{figure}
 
 \FloatBarrier
-\clearpage
-\begingroup
-\def\SUPPLEMENTARYINCLUDED{1}
-\input{supplementary_material}
-\endgroup
-
 \end{document}

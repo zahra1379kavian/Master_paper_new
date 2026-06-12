@@ -1,9 +1,0 @@
-Build verification
-
-- main.tex compiled successfully with pdfLaTeX + BibTeX.
-- supplementary_material.tex compiled successfully with pdfLaTeX.
-- main.pdf rendered to 20 PNG pages at 150 dpi for visual inspection.
-- supplementary_material.pdf rendered to 8 PNG pages at 150 dpi for visual inspection.
-- No undefined citations or unresolved references were detected in the final LaTeX logs.
-
-Remaining author-side items are listed in README_frontiers_submission.md.

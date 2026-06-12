@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Frontiers Supplementary Material file prepared from the original appendix source.
+% Revised Frontiers Supplementary Material file.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ifdefined\SUPPLEMENTARYINCLUDED
@@ -7,15 +7,13 @@
 \documentclass[utf8]{frontiers_suppmat}
 
 \usepackage{url,hyperref,microtype}
+\hypersetup{hidelinks}
 \usepackage{booktabs,longtable,tabularx,threeparttable}
 \usepackage{rotating,pdflscape,adjustbox,makecell}
 \usepackage{array}
 \usepackage{caption}
 \usepackage{placeins}
-% \usepackage[usenames,dvipsnames]{xcolor}
-% \newcommand{\offroi}[1]{\textcolor{black}{#1}}
-% \newcommand{\onroi}[1]{\textcolor{black}{#1}}
-% \newcommand{\commonroi}[1]{\textcolor{purple}{#1}}
+\usepackage{amsmath}
 
 % Compact float spacing for dense supplementary figures and tables.
 \setlength{\floatsep}{8pt plus 2pt minus 2pt}
@@ -53,9 +51,8 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
 
-
 %##########################################################################################
-\section{Participants information}
+\section{Participant and behavioural details}
 
 \begin{table}[!htbp]
 \centering
@@ -118,8 +115,8 @@ Tremor & 3.15A--3.18
 
 %###########################################################################################
 \FloatBarrier
-\section{Behaviour Information}
-Behaviour trial flow and quality-control summary. Each subject/session/run has a total.
+\section{Behavioural quality control and reaction-time summaries}
+This section reports clinical summaries and behavioural quality-control information that support the main text without interrupting the main Results narrative.
 
 \begin{figure}[!htbp]
     \centering
@@ -165,8 +162,8 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 
 %###########################################################################################
 \FloatBarrier
-\section{GLM and GLMsingle analysis}
-Spatial distribution of Standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
+\section{Task-activation reference maps and activation-map comparisons}
+Spatial distribution of the standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
 
 \begin{figure}[!htbp]
     \centering
@@ -175,7 +172,7 @@ Spatial distribution of Standard GLM from the group-level mixed-effects analysis
     \label{fig:standard_glm}
 \end{figure}
 
-Spatial similarity between networks:
+Spatial similarity between activation-derived maps and the optimized vigour network is summarized below.
 
 \begin{figure}[!htbp]
     \centering
@@ -214,7 +211,7 @@ We tested whether the final network definition depended strongly on the voxel-we
 The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(8{,}182\) suprathreshold voxels. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
 
 \subsection{ROI-wise composition of the final network}
-I used this atlas to define ROIs in this study:
+The AAL3-derived atlas below was used to define ROIs in this study.
 
 \begin{figure}[!htbp]
     \centering
@@ -223,7 +220,7 @@ I used this atlas to define ROIs in this study:
     \label{fig:roi_atlas}
 \end{figure}
 
-The vigour-network is marked by regions' function in the figure below:
+The final vigour network is also shown by broad anatomical sector below.
 
 \begin{figure}[!htbp]
     \centering
@@ -355,9 +352,390 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
     \end{tabularx}
 \end{table}
 
+
+
 %###########################################################################################
 \FloatBarrier
-\section{Medication-state analyses}
+\section{Detailed experimental and preprocessing methods}\label{app:methods_full}
+This section contains procedural details moved from the main manuscript to keep the main story readable while preserving reproducibility.
+
+\subsection{Full galvanic vestibular stimulation protocol}
+Galvanic vestibular stimulation (GVS) was delivered continuously throughout each run using an STMISOLA constant-current stimulator (BIOPAC Systems Inc.) through $41$-mm Ag/AgCl electrodes placed bilaterally over the mastoid processes. Stimulation began before the first trial of the run. Electrode placement was verified using a $1$~Hz sinusoidal stimulus, and stimulation amplitude was individualized using a staircase procedure to determine the highest current below the threshold for superficial cutaneous sensation at the electrode site \citep{nguyen2022thresholds}. Participants were monitored throughout stimulation for discomfort or adverse effects.
+
+Eight active amplitude-modulated waveforms were generated in MATLAB using suppressed-carrier modulation. The waveforms varied in carrier frequency ($75$ or $125$~Hz) and envelope frequency ($0$, $10$, $16$, or $20$~Hz). The resulting GVS stimuli were labeled as follows: GVS1, $75$~Hz carrier and $0$~Hz envelope; GVS2, $75$~Hz carrier and $10$~Hz envelope; GVS3, $75$~Hz carrier and $16$~Hz envelope; GVS4, $75$~Hz carrier and $20$~Hz envelope; GVS5, $125$~Hz carrier and $0$~Hz envelope; GVS6, $125$~Hz carrier and $10$~Hz envelope; GVS7, $125$~Hz carrier and $16$~Hz envelope; and GVS8, $125$~Hz carrier and $20$~Hz envelope. A sham condition, in which no current was delivered ($0$~mA), was also included. These frequencies were selected to approximate typical vestibular afferent firing rates and oscillatory bands implicated in motor planning and execution.
+
+Each run was divided into nine blocks, with every block corresponding to a single stimulation condition: one of the eight active GVS waveforms or the sham condition. Each block contained $10$ trials, and the assigned stimulation condition was active throughout the full block, including the cue, delay, Go-signal, and response periods. All nine conditions were presented exactly once per run. At block transitions, the next stimulation condition began immediately, except after every third block, when a $20~s$ rest period was provided before the next condition. The order of the nine blocks was randomized independently for each run, so that the sequence of conditions differed across runs, sessions, and subjects. Participants were not informed of the stimulation order. Because stimulation conditions were presented in a blocked sequence without a dedicated washout interval between all adjacent blocks, carryover effects between successive stimulation conditions cannot be fully excluded. Randomization of block order was used to reduce systematic order effects, and GVS-related results were therefore interpreted cautiously.
+
+\subsection{Full MRI acquisition and preprocessing protocol}
+Structural and functional MRI data were acquired on a Philips $3$T Ingenia Elition X whole-body MRI scanner upgraded to an MR7700 system (Philips Healthcare, Best, The Netherlands) using a $32$-channel head coil. For each participant, a T1-weighted structural image was acquired, followed by two task-based fMRI scans, one for each run of the behavioural task.
+
+T1-weighted images were acquired using a 3D MPRAGE sequence with the following parameters: flip angle = $8^\circ$, echo time (TE) = $3.6$~ms, repetition time/shot interval (TR) = $2400$~ms, inversion time = $950$~ms, $180$ slices, field of view (FOV) = $256 \times 256 \times 180$~mm$^3$, and spatial resolution = $1$~mm$^3$ isotropic. Images were acquired with a compressed SENSE factor of $3.6$, and the acquisition time was $3{:}42$~min.
+
+Functional MRI data were acquired using echo-planar imaging (EPI). The functional acquisition protocol differed for the first three participants compared with the rest of the sample. The first three participants were scanned with a multi-echo EPI protocol, with flip angle = $77^\circ$, TE = $12$~ms, TR = $2000$~ms, $48$ slices, FOV = $240 \times 144 \times 240$~mm$^3$, spatial resolution = $3$~mm$^3$ isotropic, SENSE factor = $2$, multiband factor = $2$, and acquisition time = $14{:}22$~min. The remaining participants were scanned with a single-echo EPI protocol, with flip angle = $77^\circ$, TE = $30$~ms, TR = $1000$~ms, $51$ slices, FOV = $240 \times 153 \times 240$~mm$^3$, spatial resolution = $3$~mm$^3$ isotropic, SENSE factor = $2$, multiband factor = $3$, and acquisition time = $14{:}17$~min. To support distortion correction, two spin-echo EPI images were acquired with opposite fat-shift directions, anterior--posterior and posterior--anterior. These spin-echo images were acquired with flip angle = $77^\circ$, TE = $55$~ms, TR = $2650$~ms, $51$ slices, FOV = $240 \times 153 \times 240$~mm$^3$, spatial resolution = $3$~mm$^3$ isotropic, SENSE factor = $2$, multiband factor = $3$, and acquisition time = $5.3$~s.
+
+Image preprocessing was performed in FSL \citep{smith2004advances}. Structural images underwent bias-field correction and brain extraction. Functional images were corrected for head motion and susceptibility-induced distortions, with distortion correction referring to the correction of susceptibility-related spatial distortions in the functional images using the spin-echo images acquired with opposite fat-shift directions. No initial functional volumes were discarded during preprocessing because the scanner automatically discarded four dummy volumes before the start of saved image acquisition. Functional images were then high-pass filtered using a $100$~s cutoff, brain extracted, denoised using ICA-AROMA \citep{pruim2015ica}, and spatially smoothed with a $5$~mm full-width at half-maximum Gaussian kernel. The preprocessed functional images were then registered to each participant's structural image and normalized to standard MNI152 space.
+
+\subsection{Standard GLM task-activation reference}
+To provide a brain map of task-evoked activation, we first ran a standard GLM using FSL FEAT version 6.00 \citep{jenkinson2012fsl}. This analysis was separate from the trial-wise GLM described below and was used only to generate the standard task-activation map shown in Supplementary Figure~S4.
+
+For each run, all valid Go trials (Supplementary Figure~S1) were modeled with one event regressor. Event onsets were defined as the Go-signal times, with a duration of $2$ s and an amplitude of $1$. This regressor was convolved with FSL’s double-gamma hemodynamic response function, and a temporal derivative was included. 
+
+The first-level contrast tested the positive effect of task activity. The two runs from each subject-session were then combined using a fixed-effects model. The resulting subject-session maps were entered into a higher-level mixed-effects model using FLAME stage 1 \citep{woolrich2004multilevel, beckmann2003general}. The group model included one mean regressor and tested whether the average task response was greater than zero across the $35$ available subject-sessions. Group Z-statistic maps were thresholded using clusters formed at $Z \geq 3.1$ with a corrected cluster significance threshold of $p \leq 0.05$ \citep{worsley200114}. The thresholded group map was used as the standard task-activation map. (Supplementary Figure~S4)
+
+\subsection{Trial-wise GLM estimation and beta preprocessing details}
+Task-related BOLD responses for each trial were estimated using trial-wise general linear model (GLM) beta estimates with GLMsingle \citep{kay2013glmdenoise, prince2022improving}. Analyses were performed separately for each subject-session. Within each subject-session, the two task runs were analyzed jointly, while run identity was preserved in the design matrix and nuisance regressors.
+
+The GLM design matrix included Go-signal onset regressors with a fixed trial duration of $2$ s, corresponding to the period during which participants performed the task. Catch trials were not modeled as separate regressors and were excluded from the analysis because participants did not squeeze the bulb on these trials ($630$ of $6{,}300$ trials across all datasets). Reward-condition labels were also not included in the GLM design. To restrict the analysis to relevant tissue, background, cerebrospinal fluid (CSF), and white-matter voxels were masked out, retaining only gray-matter voxels. The initial MNI gray-matter, non-CSF candidate mask contained $91{,}781$ voxels. The mean CSF time series for each run was included as a nuisance regressor. 
+
+% Before applying GLMsingle, high-DVARS trials were identified from the preprocessed BOLD time series. For each file, the DVARS metric was robustly standardized using a median absolute deviation (MAD)-based score ($z_i$). Trials with $z_i > 3$ were labeled as high-outlier trials. The number of trials removed by this criterion was capped at $15\%$ per file to avoid excessive loss of trials while removing the largest signal-change outliers.
+
+GLMsingle was then run with HRF fitting, GLMdenoise, and fractional ridge regression enabled. HRF fitting used the default GLMsingle library of $20$ candidate HRFs, and the HRF yielding the highest variance explained was selected separately for each voxel. GLMdenoise derived additional nuisance regressors from low task-related-variance voxels using principal components analysis and selected the number of noise components by cross-validation. Fractional ridge regression was used to stabilize single-trial beta estimates. Shrinkage fractions from $0.05$ to $1.00$ in increments of $0.05$ were evaluated, and the optimal shrinkage level was selected separately for each voxel by cross-validation. Run-specific baseline terms were modeled using GLMsingle's run-wise polynomial regressors, including degree-0 intercepts and higher-order polynomial terms up to degree $\mathrm{round}(L/2)$ for a run of length $L$ minutes.
+
+A second cleaning step was then applied to the GLMsingle beta estimates. To detect outlier beta values, beta estimates were robustly normalized within each subject-session using the session-level median and MAD:
+
+\[
+\beta_{\mathrm{norm}} = \frac{\beta - \mathrm{median}(\beta)}{\mathrm{MAD}(\beta)} .
+\]
+
+Beta values with $|\beta_{\mathrm{norm}}|$ above the 99.9th percentile were flagged as beta outliers. For each voxel, the beta-outlier fraction was computed as the proportion of trials flagged as outliers. Voxels were retained when this fraction was $\leq 0.5$ and excluded when more than $50\%$ of their trials were beta outliers. This majority-trial threshold was used to remove voxels with persistently unstable beta estimates, rather than voxels with occasional large responses.
+
+This cleaning retained $91{,}701 \pm 54$ voxels on average. This corresponded to an average removal of $0.09\% \pm 0.06\%$. To assess whether this filtering disproportionately affected susceptibility-prone ventral regions, removal rates were summarized using atlas labels and ventral-position proxies. Average run-level removal was $0.20\%$ in frontal orbital cortex, $0.06\%$ in temporal pole, $0.76\%$ in inferior temporal gyrus, $0.25\%$ in the ventral bottom quartile, and $0.03\%$ in all other voxels. Thus, run-level cleaning removed very few voxels overall; removal was somewhat higher in inferior temporal and ventral-bottom voxels, but absolute removal rates remained below $1\%$ in all regions.
+
+The cleaned outputs from all subjects, sessions, and runs were then used to define a shared voxel space for group-level analysis. The coverage threshold was applied across all concatenated trial observations from all subjects, sessions, and runs, rather than separately within each subject or session. This approach was used because the group-level analysis required a common MNI-space voxel feature set across trials. Applying separate subject-level masks would have produced different voxel sets across subjects, whereas the shared mask allowed all valid trial-wise beta estimates to be aligned into one group-level matrix. The threshold was also permissive: voxels were retained if they had finite beta estimates for at least $70\%$ of all trial observations, so a voxel was not excluded simply because it was missing or unstable in a minority of subjects, sessions, or runs.
+
+The final group coverage mask contained $91{,}769$ voxels, yielding a final group beta matrix of $91{,}769$ voxels $\times$ $5{,}463$ retained trials (Supplementary Figure~S1). This mask was generated using a $70\%$ finite-coverage criterion over the source trial slots, not by intersecting voxels across all runs. The filter excluded $12$ voxels from the $91{,}781$-voxel candidate mask, retaining $99.99\%$ of candidate voxels. Subsequent analyses used the concatenated cleaned beta data in this final group voxel space.
+
+%###########################################################################################
+\FloatBarrier
+\section{Full optimization derivation and model-selection details}\label{app:optimization_full}
+
+A group-level optimization procedure was used to identify a vigour-related brain network
+(main Figure~1B,C). The aim of the optimization framework was to identify a
+voxel-weight vector that produced a projected neural signal related to trial-wise motor
+vigour while satisfying constraints on task engagement, spatial coherence, and low
+consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}^{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
+\(\mathbf{X}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_s}\), where columns are samples, the projected signal is
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}^{\mathrm{org}}
+&=
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}^{\mathrm{org}},
+\qquad
+\mathbf{w}^{\mathrm{org}}
+&\in \mathbb{R}^{N_v \times 1},
+\mathbf{y}^{\mathrm{org}}
+\in \mathbb{R}^{1 \times N_s}.
+\end{aligned}
+\label{eq:generic_projection}
+\end{equation*}
+
+Here, \(N_v\) is the number of voxels and \(N_s\) denotes the time sample of the
+neural data matrix. In this study, the same projection can be applied to two forms of neural
+data: single-trial beta estimates and trial-window BOLD time courses:
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}_{\beta}^{\mathrm{org}}
+&=
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}_{\beta}^{\mathrm{org}},
+\qquad
+\mathbf{X}_{\beta}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_{\mathrm{tr}}},
+\mathbf{y}_{\beta}^{\mathrm{org}}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tr}}}.
+\end{aligned}
+\label{eq:y_beta_org}
+\end{equation*}
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
+&=
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
+\qquad
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}} \in
+\mathbb{R}^{N_v \times N_{\mathrm{tp}}}, 
+\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
+\end{aligned}
+\label{eq:y_bold_org}
+\end{equation*}
+
+Here, $N_{\mathrm{tr}}$ is the number of trials, and \(N_{\tau}\) is the number of time
+samples. \(\mathbf{X}_{\beta}^{\mathrm{org}}\) and
+\(\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}}\) were not separate models; they were two
+representations of the neural data used by the same projection framework.
+
+Although the framework is defined in voxel space, direct optimization over all voxels was impractical because of the high dimensionality of the data and memory limitations. In addition, the task was not a simple motor task and included several task-related and non-motor processes. Therefore, reducing components that were unlikely to reflect the motor-vigour-related signal was important before optimization. Because missing values remained after beta-estimate preprocessing, the neural data were reduced using expectation-maximization principal component analysis (EMPCA) \citep{roweis1997algorithms}. A \(80\%\) cumulative explained-variance threshold initially retained $14$ components.
+
+EMPCA provided voxel-to-PC weights,
+\(\mathbf{W}_{\mathrm{pca}} \in \mathbb{R}^{N_v \times N_{\mathrm{pc}}}\). Both neural
+data matrices were projected into this common PCA space:
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{X}_{\beta}
+&=
+\mathbf{W}_{\mathrm{pca}}^\top
+\mathbf{X}_{\beta}^{\mathrm{org}},
+&
+\mathbf{X}_{\beta}
+&\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tr}}},
+\\[2pt]
+\mathbf{X}_{\mathrm{BOLD}}
+&=
+\mathbf{W}_{\mathrm{pca}}^\top
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
+&
+\mathbf{X}_{\mathrm{BOLD}}
+&\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tp}}}.
+\end{aligned}
+\label{eq:pca_inputs}
+\end{equation*}
+
+The optimization was then performed in PCA space using
+\(\mathbf{w} \in \mathbb{R}^{N_{\mathrm{pc}} \times 1}\). In this space, the projected
+beta and BOLD signals were
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}_{\beta}
+&=
+\mathbf{w}^{\top}
+\mathbf{X}_{\beta},
+&
+\mathbf{y}_{\beta}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tr}}},
+\\[2pt]
+\mathbf{y}_{\mathrm{BOLD}}
+&=
+\mathbf{w}^{\top}
+\mathbf{X}_{\mathrm{BOLD}},
+&
+\mathbf{y}_{\mathrm{BOLD}}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
+\end{aligned}
+\label{eq:y_beta_bold}
+\end{equation*}
+
+The total loss was defined using these two projected signals: the beta projection was used
+for the trial-wise beta-based terms, including behavioural relevance to motor vigour, and
+the BOLD projection was used for the consecutive-trial variability term. After
+optimization, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour-related network.
+
+The optimization model was based on four assumptions about the neural representation of motor vigour. First, the target network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
+
+\textbf{Condition 1: The projected signal should come from task-engaged voxels.}
+
+The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a high task-engaged region to contribute strongly to the projected signal:
+
+\begin{equation*}
+\begin{aligned}
+\min_{w} \sum_j \frac{w_j^2}{\left|X_{\beta,j}\right|}
+&=
+\min_{w} w^\top
+\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right)w.
+\end{aligned}
+\end{equation*}
+This gives the task-engagement loss term:
+\begin{equation*}
+\begin{aligned}
+L_{\mathrm{task}}(w)
+&= w^\top C_{\mathrm{task}}w,
+&
+C_{\mathrm{task}}
+&=
+\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right).
+\end{aligned}
+\end{equation*}
+
+Thus, $C_{\mathrm{task}}$ favours voxels with stronger task-related beta responses and discourages the model from selecting voxels with weak task engagement.
+
+\textbf{Condition 2: The projected signal should encode behavioural information.}
+
+The second condition was that the projected neural signal should be behaviourally relevant. In this study, the target behavioural variable was reaction time. Therefore, the model should find $w$ such that $y$ is strongly associated with the behavioural variable $X_{\mathrm{behav}}$:
+
+\begin{align*}
+\max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, y_{\beta}\right)^2
+&=
+\max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, w^\top X_{\beta}\right)^2
+\\[4pt]
+&=
+\max_w
+\frac{
+\left[(w^\top X_{\beta})X_{\mathrm{behav}}^\top\right]^2
+}{
+w^\top (X_{\beta}X_{\beta}^\top)w
+}
+\\[4pt]
+&=
+\max_w
+\frac{
+w^\top\left(X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top\right)w
+}{
+w^\top\left(X_{\beta}X_{\beta}^\top\right)w
+}
+\\[4pt]
+&=
+\max_w
+\frac{w^\top C_b w}{w^\top C_d w},
+\end{align*}
+where
+\begin{equation*}
+C_b = X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top,
+\qquad
+C_d = X_{\beta}X_{\beta}^\top.
+\end{equation*}
+
+Here, $C_b$ captures the component of the projected beta signal that is aligned with behaviour, while $C_d$ normalizes the association by the variance of the projected beta signal. Since the final optimization problem is written as a minimization problem, this behavioural-relevance term is later included with a negative sign.
+
+\textbf{Condition 3: The projected signal should come from a spatially coherent network.}
+
+The third condition was that the selected pattern should form a spatially coherent network rather than a scattered set of isolated voxels. It means neighbouring voxels were encouraged to have similar weights. If $E$ denotes the set of neighbouring voxel pairs, this penalty can be written as
+
+\begin{equation}
+\min_w \sum_{(p,q)\in E} (w_p-w_q)^2.
+\end{equation}
+A spatial adjacency matrix was constructed from voxel anatomy, and its graph Laplacian was used to define the spatial smoothness penalty. This gives
+
+\begin{equation}
+L_{\mathrm{smooth}}(w) = w^\top C_{\mathrm{smooth}}w,
+\qquad
+C_{\mathrm{smooth}} = L_{\mathrm{graph}}.
+\end{equation}
+
+Thus, $C_{\mathrm{smooth}}$ enforces spatial smoothness across neighbouring voxels. When the optimization is performed in PCA space, this spatial smoothness penalty is expressed in the same reduced space before optimization.
+
+\textbf{Condition 4: The projected signal should show low consecutive-trial variability.}
+
+The fourth condition was that the selected signal should exhibit low consecutive-trial variability. Variability was therefore defined as the difference between consecutive trials, rather than as variance across the full time series. This distinction is important because variance captures the overall dispersion of a signal around its mean but does not account for trial order. As a result, two projected signals may have similar variance even if one evolves smoothly across trials while the other fluctuates sharply from one trial to the next. Consecutive-trial differences, in contrast, preserve the local temporal structure of the signal and directly measure abrupt changes between neighbouring trials.
+
+This definition is motivated by the behavioural structure of motor vigour. Vigour on trial $i$ is unlikely to be statistically independent from vigour on trial $i+1$, because consecutive trials are shaped by similar physiological, attentional, and task-related states. Trials that occur close in time are therefore expected to be more similar than trials separated by longer intervals. Accordingly, a stable vigour-related neural signal should not contain large unexplained jumps between consecutive trials. This reasoning is consistent with previous work on reaction-time variability showing that standard deviation alone does not capture temporal dependency, whereas measures such as lag-one autocorrelation and successive-trial differences reveal the local structure of performance fluctuations \citep{perquin2023temporal}.
+
+A similar principle has been applied in fMRI research using mean squared successive difference (MSSD) and related measures, which quantify moment-to-moment changes in BOLD activity rather than dispersion around a global mean \citep{garrett2011importance, wehrheim2024reliability, nomi2018resting}. This approach is particularly appropriate for task fMRI, where the expected signal may change gradually over time, across task conditions, or between blocks. A global variance measure could incorrectly treat such slow task-related changes as variability, whereas a consecutive-difference penalty specifically targets local instability between consecutive trials. Thus, the low-variability term in the present model penalized large consecutive-trial changes in the projected signal while allowing slower task-related changes to remain. Boundaries between runs and blocks were excluded from this penalty because trials across these boundaries do not reflect continuous local temporal dynamics and may contain artificial discontinuities introduced by changes in run structure or task context.
+
+We need to minimize variability between consecutive trials:
+
+\begin{align}
+\min_w \sum_{i\in I_c}
+\left\|y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right\|_2^2
+&=
+\min_w \sum_{i\in I_c}
+\left(y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right)
+\left(y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+\left(w^\top X_{\mathrm{bold},i}-w^\top X_{\mathrm{bold},i+1}\right)
+\left(w^\top X_{\mathrm{bold},i}-w^\top X_{\mathrm{bold},i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+w^\top
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top
+w.
+\end{align}
+
+Here, $I_c$ denotes the set of valid consecutive-trial pairs after excluding run and block boundaries. This gives the BOLD variability loss:
+
+\begin{equation}
+\begin{aligned}
+L_{\mathrm{bold}}(w)
+&= w^\top C_{\mathrm{bold}}w,
+\\
+C_{\mathrm{bold}}
+&= \sum_{i\in I_c}
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top.
+\end{aligned}
+\end{equation}
+
+Therefore, $C_{\mathrm{bold}}$ penalizes large changes in BOLD activity between consecutive trials.
+
+The same low-variability condition was also applied to the beta estimates:
+
+\begin{align}
+\min_w \sum_{i\in I_c}
+\left\|y_{\beta,i}-y_{\beta,i+1}\right\|_2^2
+&=
+\min_w \sum_{i\in I_c}
+\left(y_{\beta,i}-y_{\beta,i+1}\right)
+\left(y_{\beta,i}-y_{\beta,i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+\left(w^\top X_{\beta,i}-w^\top X_{\beta,i+1}\right)
+\left(w^\top X_{\beta,i}-w^\top X_{\beta,i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+w^\top
+\left(X_{\beta,i}-X_{\beta,i+1}\right)
+\left(X_{\beta,i}-X_{\beta,i+1}\right)^\top
+w.
+\end{align}
+This gives the beta variability loss:
+\begin{equation}
+\begin{aligned}
+L_{\beta}(w)
+&= w^\top C_{\beta}w,
+\\
+C_{\beta}
+&= \sum_{i\in I_c}
+\left(X_{\beta,i}-X_{\beta,i+1}\right)
+\left(X_{\beta,i}-X_{\beta,i+1}\right)^\top.
+\end{aligned}
+\end{equation}
+
+Therefore, $C_{\beta}$ penalizes large changes in beta values between consecutive trials.
+
+Both BOLD and beta variability terms were included because they capture complementary sources of variability. The beta estimates reflect activation related to movement execution, so $L_{\beta}(w)$ constrains variability in the movement-related neural response. However, the task also includes other processes. These sources of variability can be encoded in the BOLD signal even when they are not fully captured by movement-related beta estimates. Therefore, $L_{\mathrm{bold}}(w)$ was also included to account for broader task-related variability encoded in the brain.
+
+\textbf{General loss function:} After defining the four conditions, the penalty terms were combined into a single total loss. The total penalty was defined as
+
+\begin{align}
+L_{\mathrm{total}}(w)
+&= \alpha_1 L_{\mathrm{task}}(w) + \alpha_2 L_{\mathrm{bold}}(w) + \alpha_3 L_{\beta}(w) + \alpha_4 L_{\mathrm{smooth}}(w)
+\nonumber = w^\top C_{\mathrm{total}}w,
+\end{align}
+where
+\begin{equation}
+C_{\mathrm{total}}
+= \alpha_1 C_{\mathrm{task}} + \alpha_2 C_{\mathrm{bold}} + \alpha_3 C_{\beta} + \alpha_4 C_{\mathrm{smooth}}.
+\end{equation}
+
+The parameters $\alpha_1$, $\alpha_2$, $\alpha_3$, and $\alpha_4$ control the relative contributions of task engagement, BOLD variability, beta variability, and spatial smoothness, respectively.
+
+The final objective combined this total penalty with behavioural relevance. The model minimized the regularization penalties while maximizing the association between the projected beta signal and reaction time:
+
+\begin{equation}
+\min_w
+\frac{\gamma w^\top C_{\mathrm{total}}w - w^\top C_b w}{w^\top C_d w}
+\quad
+\mathrm{s.t.}\ \|w\|_2=1.
+\end{equation}
+
+Here, $\gamma$ controls the balance between satisfying the regularization criteria and maximizing behavioural relevance. The denominator $w^\top C_d w$ normalizes the objective by the variance of the projected beta signal.
+
+The resulting projection was defined as
+\begin{equation}
+y = w^\top X_{\beta}.
+\end{equation}
+
+% The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimization was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
+The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularization terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD trial-to-trial variability, beta trial-to-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimized neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimization was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
+
+Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. The reason we chose this threshold is that the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (Supplementary Figure~S6). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The 90th percentile retained a distributed network across the main contributing regions while showing maximal stability relative to the reference threshold, supporting it as an appropriate cutoff for defining the vigour network. 
+
+After identifying the vigour network, we then assessed whether medication state or GVS condition modulated activity within this network, as both variables had been excluded from the optimization procedure.
+
+%###########################################################################################
+\FloatBarrier
+\section{Medication-state control analyses}
 \subsection{Control analysis: no evidence for preferential ON-state stabilization}
 
 \begin{figure}[!htbp]
@@ -367,15 +745,19 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
     \label{fig:medication_stability_control}
 \end{figure}
 
-
-
 %###########################################################################################
 \FloatBarrier
-\section{GVS-related analyses}
-\label{app:gvs}
+\section{GVS-related supplementary analyses}\label{app:gvs}
+The main manuscript reports the mutual-information GVS edge-change analysis in both the optimized vigour network and the task-activation network. The supplementary figure below shows the corresponding Spearman-rank analysis for the optimized vigour network. Spearman correlation was included because it measures monotonic rank-based association and is less sensitive to extreme beta values than Pearson correlation. As in the main analysis, active-minus-sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure19.pdf}
+    \caption{Exploratory GVS-related Spearman edge changes in the optimized vigour network. FDR-significant active-minus-sham Spearman edge changes are shown after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges indicate increased rank-based association and blue edges indicate decreased association; color intensity scales with the mean edge-change magnitude. Nodes are labeled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_spearman_edges}
+\end{figure}
 
-\ifdefined\SUPPLEMENTARYINCLUDED
-\else
+\FloatBarrier
+\bibliographystyle{Frontiers-Harvard}
+\bibliography{references}
 \end{document}
-\fi
