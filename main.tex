@@ -173,6 +173,7 @@ consecutive-trial variability. In voxel space, this projection is defined by a v
 Here, \(N_v\) is the number of voxels and \(N_s\) denotes the time sample of the
 neural data matrix. In this study, the same projection can be applied to two forms of neural
 data: single-trial beta estimates and trial-window BOLD time courses:
+
 \begin{equation*}
 \begin{aligned}
 \mathbf{y}_{\beta}^{\mathrm{org}}
@@ -237,6 +238,7 @@ data matrices were projected into this common PCA space:
 The optimization was then performed in PCA space using
 \(\mathbf{w} \in \mathbb{R}^{N_{\mathrm{pc}} \times 1}\). In this space, the projected
 beta and BOLD signals were
+
 \begin{equation*}
 \begin{aligned}
 \mathbf{y}_{\beta}
@@ -268,6 +270,7 @@ The optimization model was based on four assumptions about the neural representa
 \textbf{Condition 1: The projected signal should come from task-engaged voxels.}
 
 The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a high task-engaged region to contribute strongly to the projected signal:
+
 \begin{equation*}
 \begin{aligned}
 \min_{w} \sum_j \frac{w_j^2}{\left|X_{\beta,j}\right|}
@@ -287,11 +290,13 @@ C_{\mathrm{task}}
 \operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right).
 \end{aligned}
 \end{equation*}
+
 Thus, $C_{\mathrm{task}}$ favours voxels with stronger task-related beta responses and discourages the model from selecting voxels with weak task engagement.
 
 \textbf{Condition 2: The projected signal should encode behavioural information.}
 
 The second condition was that the projected neural signal should be behaviourally relevant. In this study, the target behavioural variable was reaction time. Therefore, the model should find $w$ such that $y$ is strongly associated with the behavioural variable $X_{\mathrm{behav}}$:
+
 \begin{align*}
 \max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, y_{\beta}\right)^2
 &=
@@ -323,20 +328,24 @@ C_b = X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top,
 \qquad
 C_d = X_{\beta}X_{\beta}^\top.
 \end{equation*}
+
 Here, $C_b$ captures the component of the projected beta signal that is aligned with behaviour, while $C_d$ normalizes the association by the variance of the projected beta signal. Since the final optimization problem is written as a minimization problem, this behavioural-relevance term is later included with a negative sign.
 
 \textbf{Condition 3: The projected signal should come from a spatially coherent network.}
 
 The third condition was that the selected pattern should form a spatially coherent network rather than a scattered set of isolated voxels. It means neighbouring voxels were encouraged to have similar weights. If $E$ denotes the set of neighbouring voxel pairs, this penalty can be written as
+
 \begin{equation}
 \min_w \sum_{(p,q)\in E} (w_p-w_q)^2.
 \end{equation}
 A spatial adjacency matrix was constructed from voxel anatomy, and its graph Laplacian was used to define the spatial smoothness penalty. This gives
+
 \begin{equation}
 L_{\mathrm{smooth}}(w) = w^\top C_{\mathrm{smooth}}w,
 \qquad
 C_{\mathrm{smooth}} = L_{\mathrm{graph}}.
 \end{equation}
+
 Thus, $C_{\mathrm{smooth}}$ enforces spatial smoothness across neighbouring voxels. When the optimization is performed in PCA space, this spatial smoothness penalty is expressed in the same reduced space before optimization.
 
 \textbf{Condition 4: The projected signal should show low consecutive-trial variability.}
@@ -369,7 +378,9 @@ w^\top
 \left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top
 w.
 \end{align}
+
 Here, $I_c$ denotes the set of valid consecutive-trial pairs after excluding run and block boundaries. This gives the BOLD variability loss:
+
 \begin{equation}
 \begin{aligned}
 L_{\mathrm{bold}}(w)
@@ -381,9 +392,11 @@ C_{\mathrm{bold}}
 \left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top.
 \end{aligned}
 \end{equation}
+
 Therefore, $C_{\mathrm{bold}}$ penalizes large changes in BOLD activity between consecutive trials.
 
 The same low-variability condition was also applied to the beta estimates:
+
 \begin{align}
 \min_w \sum_{i\in I_c}
 \left\|y_{\beta,i}-y_{\beta,i+1}\right\|_2^2
@@ -416,11 +429,13 @@ C_{\beta}
 \left(X_{\beta,i}-X_{\beta,i+1}\right)^\top.
 \end{aligned}
 \end{equation}
+
 Therefore, $C_{\beta}$ penalizes large changes in beta values between consecutive trials.
 
 Both BOLD and beta variability terms were included because they capture complementary sources of variability. The beta estimates reflect activation related to movement execution, so $L_{\beta}(w)$ constrains variability in the movement-related neural response. However, the task also includes other processes. These sources of variability can be encoded in the BOLD signal even when they are not fully captured by movement-related beta estimates. Therefore, $L_{\mathrm{bold}}(w)$ was also included to account for broader task-related variability encoded in the brain.
 
 \textbf{General loss function:} After defining the four conditions, the penalty terms were combined into a single total loss. The total penalty was defined as
+
 \begin{align}
 L_{\mathrm{total}}(w)
 &= \alpha_1 L_{\mathrm{task}}(w) + \alpha_2 L_{\mathrm{bold}}(w) + \alpha_3 L_{\beta}(w) + \alpha_4 L_{\mathrm{smooth}}(w)
@@ -431,15 +446,18 @@ where
 C_{\mathrm{total}}
 = \alpha_1 C_{\mathrm{task}} + \alpha_2 C_{\mathrm{bold}} + \alpha_3 C_{\beta} + \alpha_4 C_{\mathrm{smooth}}.
 \end{equation}
+
 The parameters $\alpha_1$, $\alpha_2$, $\alpha_3$, and $\alpha_4$ control the relative contributions of task engagement, BOLD variability, beta variability, and spatial smoothness, respectively.
 
 The final objective combined this total penalty with behavioural relevance. The model minimized the regularization penalties while maximizing the association between the projected beta signal and reaction time:
+
 \begin{equation}
 \min_w
 \frac{\gamma w^\top C_{\mathrm{total}}w - w^\top C_b w}{w^\top C_d w}
 \quad
 \mathrm{s.t.}\ \|w\|_2=1.
 \end{equation}
+
 Here, $\gamma$ controls the balance between satisfying the regularization criteria and maximizing behavioural relevance. The denominator $w^\top C_d w$ normalizes the objective by the variance of the projected beta signal.
 
 The resulting projection was defined as
@@ -447,7 +465,8 @@ The resulting projection was defined as
 y = w^\top X_{\beta}.
 \end{equation}
 
-The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimization was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
+% The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimization was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
+The optimization problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularization terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD trial-to-trial variability, beta trial-to-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimized neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimization was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
 
 Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. The reason we chose this threshold is that the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (figure \ref{fig:threshold_robustness}). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The 90th percentile retained a distributed network across the main contributing regions while showing maximal stability relative to the reference threshold, supporting it as an appropriate cutoff for defining the vigour network. 
 
