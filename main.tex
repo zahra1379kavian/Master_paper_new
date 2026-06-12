@@ -225,7 +225,7 @@ The present study identifies a distributed vigour-related neural projection in P
 The studies involving human participants were reviewed and approved by the Clinical Research Ethics Board at the University of British Columbia. The participants provided written informed consent to participate in this study.
 
 \section*{Conflict of Interest Statement}
-
+The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
 
 \section*{Author Contributions}
 
@@ -251,7 +251,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{main_figures/Graphical_Abstract.pdf}
-    \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, Participants performed a reward-cued ballistic hand-squeeze task during fMRI. Each trial progressed from reward cue to variable delay and then to a Go signal that prompted a rapid grip response; reaction time and whole-brain BOLD signals were recorded during the task. \textbf{B}, Trial-wise neural responses were estimated with GLMsingle to obtain single-trial beta maps and BOLD-derived features. These neural features and reaction-time measures entered the constrained optimization framework, yielding a low-dimensional projection signal and a voxel-weight map. \textbf{C}, The optimization searched for a neural projection that was task engaged, behaviourally relevant, spatially coherent, and relatively stable across consecutive trials.}
+    \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, Participants completed a reward-cued ballistic hand-squeeze task during fMRI. In each trial, a reward cue was followed by a variable delay and then a Go signal. The Go signal prompted a rapid grip response. Reaction time and whole-brain BOLD signals were recorded during the task. \textbf{B}, GLMsingle estimated neural responses for each trial, producing single-trial beta maps and BOLD-derived features. These neural features and reaction-time measures were entered into the constrained optimization framework. The framework produced a low-dimensional projection signal and a voxel-weight map. \textbf{C}, The optimization searched for a neural projection that was engaged by the task, related to behaviour, spatially coherent, and relatively stable across consecutive trials.}
     \label{fig:task_analysis_overview}
 \end{figure}
 
@@ -268,7 +268,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
         \centering
         \includegraphics[width=0.98\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
     \end{minipage}
-    \caption{Validation of the optimization framework. \textbf{A}, Consecutive-trial variability was lower for the optimized neural projection than for reaction time. Positive behaviour-minus-projection differences indicate that the projection changed less abruptly than behaviour; paired inference used subject-level summaries derived from the retained runs. \textbf{B}, Selected voxels showed lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool and were enriched among low-variability voxels.}
+    \caption{Validation of the optimization framework. \textbf{A}, The optimized neural projection varied less across consecutive trials than reaction time. Positive behaviour-minus-projection differences mean that the projection changed less abruptly than behaviour. Paired inference used subject-level summaries from the retained runs. \textbf{B}, Selected voxels had lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool. They were also enriched among low-variability voxels.}
     \label{fig:optimization_validation}
 \end{figure}
 
@@ -276,19 +276,19 @@ Supplementary material for this article is provided in the accompanying Suppleme
 \begin{figure}[!p]
     \centering
     \includegraphics[width=\textwidth]{main_figures/Figure1.pdf}
-    \caption{Spatial distribution of the optimized vigour-related network. Thresholded voxel weights are overlaid on representative sagittal, coronal, and axial MNI slices. Warmer colors indicate larger model-derived voxel contributions, scaled by \(10^{-3}\).}
+    \caption{Spatial distribution of the optimized vigour-related network. Thresholded voxel weights are shown on representative sagittal, coronal, and axial MNI slices. Warmer colors show larger model-derived voxel contributions, scaled by \(10^{-3}\).}
     \label{fig:main_vigour_network}
 
     \vspace{1.2em}
     \includegraphics[width=0.84\textwidth]{main_figures/Figure2.pdf}
-    \caption{Voxelwise overlap between the optimized vigour network and the standard task-activation map. Blue shows the vigour network, orange shows the task-activation map, and green marks same-voxel overlap across representative brain slices.}
+    \caption{Voxelwise overlap between the optimized vigour network and the standard task-activation map. Blue marks the vigour network, orange marks the task-activation map, and green marks same-voxel overlap across representative brain slices.}
     \label{fig:main_network_task_overlap}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{main_figures/Figure7.pdf}
-    \caption{ROI-wise anatomical comparison of the optimized vigour network, the standard task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. The vigour network is relatively enriched in temporal-limbic, orbitofrontal, and striatal regions, whereas the task-activation map occupies broader sensorimotor, cerebellar, parietal, and subcortical regions.}
+    \caption{Anatomical comparison by ROI for the optimized vigour network, the standard task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. The vigour network is more enriched in temporal-limbic, orbitofrontal, and striatal regions. The task-activation map occupies broader sensorimotor, cerebellar, parietal, and subcortical regions.}
     \label{fig:roi_task_overlap_summary}
 \end{figure}
 
@@ -304,7 +304,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
         \centering
         \includegraphics[width=0.92\textwidth]{main_figures/Figure8.pdf}
     \end{minipage}
-    \caption{Medication effects on local and distributed functional connectivity. \textbf{A}, Within-ROI and between-ROI Pearson functional connectivity for the optimized vigour network, shown for OFF and ON medication and as participant-level ON--OFF differences. Medication significantly increased intra-ROI coupling, whereas between-ROI coupling remained close to zero. \textbf{B}, The same analysis applied to the standard task-activation map. The intra-ROI versus between-ROI contrast was significant, but the individual intra-ROI and between-ROI changes were weaker than in the optimized vigour network.}
+    \caption{Medication effects on local and distributed functional connectivity. \textbf{A}, For the optimized vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF medication, for ON medication, and for participant-level ON--OFF differences. Medication significantly increased intra-ROI coupling, while between-ROI coupling stayed close to zero. \textbf{B}, The same analysis was applied to the standard task-activation map. The intra-ROI versus between-ROI contrast was significant. However, the individual intra-ROI and between-ROI changes were weaker than in the optimized vigour network.}
     \label{fig:medication_local_distributed_fc}
 \end{figure}
 
@@ -320,7 +320,7 @@ Supplementary material for this article is provided in the accompanying Suppleme
         \centering
         \includegraphics[width=0.94\textwidth]{main_figures/Figure9.pdf}
     \end{minipage}
-    \caption{Exploratory GVS-related mutual-information edge changes in the optimized vigour and task-activation networks. \textbf{A}, FDR-significant active-minus-sham mutual-information edge changes within the optimized vigour network, pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges indicate increased statistical dependence and blue edges indicate decreased dependence; color intensity scales with mean edge-change magnitude. \textbf{B}, The same mutual-information analysis in the task-activation network, showing a partly distinct pattern of GVS-sensitive edges. Nodes are labeled by ROI and grouped by anatomical sector.}
+    \caption{Exploratory GVS-related mutual-information edge changes in the optimized vigour and task-activation networks. \textbf{A}, FDR-significant active-minus-sham mutual-information edge changes are shown for the optimized vigour network. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges show increased statistical dependence, and blue edges show decreased dependence. Color intensity scales with the mean edge-change magnitude. \textbf{B}, The same mutual-information analysis is shown for the task-activation network. It shows a partly distinct pattern of GVS-sensitive edges. Nodes are labeled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_edge_changes}
 \end{figure}
 
