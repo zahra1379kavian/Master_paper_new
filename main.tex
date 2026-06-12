@@ -256,32 +256,31 @@ Supplementary material for this article is provided in the accompanying Suppleme
 \end{figure}
 
 \clearpage
-\begin{figure}[!htbp]
+\begin{figure}[!p]
     \centering
-    \begin{minipage}[t]{0.47\textwidth}
+    \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=\textwidth]{main_figures/OptimizationValidation_projection.pdf}
-    \end{minipage}\hfill
-    \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=0.88\textwidth]{main_figures/OptimizationValidation_projection.pdf}
+    \end{minipage}\par\vspace{0.8em}
+    \begin{minipage}{\textwidth}
         \noindent\textbf{B}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
+        \includegraphics[width=0.98\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
     \end{minipage}
     \caption{Validation of the optimization framework. \textbf{A}, Consecutive-trial variability was lower for the optimized neural projection than for reaction time. Positive behaviour-minus-projection differences indicate that the projection changed less abruptly than behaviour; paired inference used subject-level summaries derived from the retained runs. \textbf{B}, Selected voxels showed lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool and were enriched among low-variability voxels.}
     \label{fig:optimization_validation}
 \end{figure}
 
-\begin{figure}[!htbp]
+\clearpage
+\begin{figure}[!p]
     \centering
     \includegraphics[width=\textwidth]{main_figures/Figure1.pdf}
     \caption{Spatial distribution of the optimized vigour-related network. Thresholded voxel weights are overlaid on representative sagittal, coronal, and axial MNI slices. Warmer colors indicate larger model-derived voxel contributions, scaled by \(10^{-3}\).}
     \label{fig:main_vigour_network}
-\end{figure}
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.9\textwidth]{main_figures/Figure2.pdf}
+    \vspace{1.2em}
+    \includegraphics[width=0.84\textwidth]{main_figures/Figure2.pdf}
     \caption{Voxelwise overlap between the optimized vigour network and the standard task-activation map. Blue shows the vigour network, orange shows the task-activation map, and green marks same-voxel overlap across representative brain slices.}
     \label{fig:main_network_task_overlap}
 \end{figure}
