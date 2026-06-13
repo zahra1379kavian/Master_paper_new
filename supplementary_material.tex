@@ -748,13 +748,13 @@ After identifying the vigour network, we then assessed whether medication state 
 %###########################################################################################
 \FloatBarrier
 \section{GVS-related supplementary analyses}\label{app:gvs}
-The main manuscript reports the mutual-information GVS edge-change analysis in both the optimised vigour network and the task-activation network. The supplementary figure below shows the corresponding Spearman-rank analysis for the optimised vigour network. Spearman correlation was included because it measures monotonic rank-based association and is less sensitive to extreme beta values than Pearson correlation. As in the main analysis, active–sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
+The main manuscript reports the mutual-information GVS edge-change analysis in both the optimised vigour network and the task-activation network, together with the Pearson task-activation control analysis. The supplementary figure below shows the corresponding Pearson analysis for the optimised vigour network. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure19.pdf}
-    \caption{Exploratory GVS-related Spearman edge changes in the optimised vigour network. FDR-significant active–sham Spearman edge changes are shown after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges indicate increased rank-based association and blue edges indicate decreased association; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
-    \label{fig:gvs_spearman_edges}
+    \caption{Exploratory GVS-related Pearson edge changes in the optimised vigour network. FDR-significant active--sham Pearson edge changes are shown after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges indicate increased linear correlation and blue edges indicate decreased linear correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_pearson_edges}
 \end{figure}
 
 \FloatBarrier

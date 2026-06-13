@@ -5,6 +5,6 @@ Main changes made
 2. The main paper keeps the core story: clinical/task context, trial-wise beta estimation, compact optimisation objective, primary validation, final network anatomy, task-activation comparison, medication effects, and exploratory GVS result.
 3. The supplementary material now carries detailed clinical/behavioural tables, full MRI/acquisition/preprocessing details, GLMsingle cleaning, standard GLM details, threshold robustness, ROI composition, ablation/control maps, full optimisation derivation, and additional GVS analyses.
 4. Unsupported or confusing language about medication causing cross-subject convergence was removed or softened. The conclusion now focuses on the supported result: medication altered network organisation and strengthened local within-ROI coupling.
-5. GVS Methods now mention both mutual-information and Spearman analyses, so the main GVS Results are methodologically supported.
+5. GVS Methods now mention both mutual-information and Pearson analyses, so the main GVS Results are methodologically supported.
 6. The selected-voxel count issue is clarified: the final p90 anatomical network contains 8,182 voxels; the voxel-stability diagnostic used a metric-valid analysis mask and had 9,050 valid selected voxels.
 7. main.tex no longer contains \input{supplementary_material}; the supplement should be compiled/uploaded separately.
