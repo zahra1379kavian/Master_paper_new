@@ -106,16 +106,17 @@ Task-related responses for individual trials were estimated using GLMsingle \cit
 \subsection{Standard task-activation reference map}
 To provide a conventional task-engagement reference, we ran a standard FSL FEAT GLM separately from the trial-wise GLMsingle model. All valid Go trials were modelled with one event regressor defined at the Go-signal onset, with duration \(2\)~s and amplitude \(1\). First-level maps tested the positive effect of task activity, runs were combined within subject-session using fixed effects, and subject-session maps were entered into a group mixed-effects model using FLAME stage~1 \citep{woolrich2004multilevel,beckmann2003general}. Group maps were thresholded using clusters formed at \(Z \geq 3.1\) with corrected cluster significance \(p \leq 0.05\) \citep{worsley200114}. This thresholded map was used only as a standard task-activation reference, not as the main model. The full standard GLM map and comparisons with GLMsingle activation maps are shown in Supplementary Figures~S4 and S5.
 
+
 \subsection{Constrained optimisation framework}
-We used a group-level optimisation procedure to identify a vigour-related brain network (Figure~\ref{fig:task_analysis_overview}B,C). The purpose was to find a voxel-weight vector that combined whole-brain activity into one scalar neural projection per trial. For the trial-wise beta matrix \(X_{\beta}\), the projected signal was
+We used a group-level constrained optimisation problem to identify a vigour-related brain network (Figure~\ref{fig:task_analysis_overview}B,C). The analysis searched for a weight vector that projected multivoxel neural activity onto a single scalar signal for each trial. Let \(X_{\beta}\) denote single-trial beta matrix, with columns corresponding to trials, and let \(X_{\mathrm{BOLD}}\) denote the corresponding trial-window BOLD feature matrix. For the beta estimates, the projected neural signal was
 \begin{equation}
-y = w^\top X_{\beta},
+y_{\beta} = w^\top X_{\beta},
 \end{equation}
-where \(w\) is the weight vector and \(y\) is the projected trial-wise neural signal. The same projection framework was also applied to trial-window BOLD features to constrain local trial-to-trial instability. Because direct optimisation over all voxels was computationally impractical, beta and BOLD data were reduced with expectation-maximisation principal component analysis (EMPCA) \citep{roweis1997algorithms}. An \(80\%\) cumulative explained-variance threshold retained \(14\) components for optimisation; final weights were projected back to voxel space after model fitting.
+where \(w\) is the optimised weight vector and \(y_{\beta}\) is the trial-wise neural projection. The same weight vector was also applied to \(X_{\mathrm{BOLD}}\) to constrain local trial-to-trial instability in the BOLD signal. Because direct optimisation over all voxels was computationally impractical, beta and BOLD data were first reduced with expectation-maximisation principal component analysis (EMPCA) \citep{roweis1997algorithms}. An \(80\%\) cumulative explained-variance threshold retained \(14\) components for optimisation, and final weights were projected back to voxel space after model fitting.
 
-The model encoded four assumptions. First, the selected signal should come from voxels engaged by the task. Second, the projected beta signal should be behaviourally relevant to RT. Third, neighbouring voxels should have similar weights, producing a spatially coherent map rather than isolated scattered voxels. Fourth, the projected signal should show low consecutive-trial variability. Consecutive-trial variability was used rather than total variance because it preserves trial order and directly penalises abrupt local jumps while allowing slower task-related changes across runs or blocks. Run and block boundaries were excluded from this penalty because they do not represent continuous local temporal dynamics.
+The optimisation framework integrated these constraints as weighted penalties, allowing the final projection to balance task engagement, behavioural relevance, spatial coherence, and trial-to-trial stability. These criteria were written as quadratic terms of the form \(w^\top C w\), where each \(C\) matrix summarised one property of the data in the EMPCA-reduced space. Specifically, \(C_{\mathrm{task}}\) penalised weights assigned to weakly task-engaged activity, \(C_{\mathrm{BOLD}}\) penalised large consecutive-trial changes in the projected BOLD features, \(C_{\beta}\) penalised large consecutive-trial changes in the projected beta estimates, and \(C_{\mathrm{smooth}}\) penalised spatially isolated weights by encouraging neighbouring voxels to have similar contributions. Consecutive-trial variability was used rather than total variance because it preserves trial order and penalises abrupt local jumps while allowing slower task-related changes across runs or blocks. Run and block boundaries were excluded from this penalty because they do not represent continuous local temporal dynamics.
 
-The optimisation combined the task-engagement, BOLD variability, beta variability, and spatial-smoothness penalties into
+The four penalty terms were combined into
 \begin{equation}
 C_{\mathrm{total}}
 = \alpha_{\mathrm{task}} C_{\mathrm{task}}
@@ -123,14 +124,15 @@ C_{\mathrm{total}}
 + \alpha_{\beta} C_{\beta}
 + \alpha_{\mathrm{smooth}} C_{\mathrm{smooth}} .
 \end{equation}
-Behavioural relevance was represented by a correlation-based term linking the projected beta signal to RT. The final objective minimised penalties while maximising behavioural relevance:
+
+Behavioural relevance was represented separately. The matrix \(C_b\) encoded alignment between the projected beta signal and RT, whereas \(C_d\) encoded the variance of the projected beta signal and was used for normalisation. The final objective therefore minimised the combined penalties while maximising behavioural alignment with RT:
 \begin{equation}
 \min_w
 \frac{\gamma w^\top C_{\mathrm{total}}w - w^\top C_b w}{w^\top C_d w}
 \quad
 \mathrm{s.t.}\ \|w\|_2=1 .
 \end{equation}
-Here, \(C_b\) captures alignment between the projected beta signal and RT, \(C_d\) normalises by the projected beta variance, the \(\alpha\) values control the four penalty weights, and \(\gamma\) controls the overall balance between regularisation and behavioural relevance. Full definitions of all terms and derivations are provided in Supplementary Methods.
+Here, the \(\alpha\) values control the relative weights of the four penalty terms, and \(\gamma\) controls the overall balance between regularisation and behavioural relevance. The negative sign before \(C_b\) reflects that behavioural alignment was maximised, whereas the other terms were penalised. Full definitions of all matrices and derivations are provided in Supplementary Methods.
 
 The constrained optimisation was solved using Sequential Least Squares Programming (SLSQP) \citep{nocedal2006numerical,kraft1988software}. Hyperparameters were selected with a coarse-to-fine cross-validation procedure. In the coarse stage, candidate penalty-weight combinations were evaluated over contiguous folds using held-out absolute correlation between the optimised neural projection and behaviour. After the best coarse setting was identified, a fine search tested multiplicative perturbations around that setting. The final setting was chosen based on held-out correlation, stability across folds, and small train-test differences. For each fold, the model was fit on training data, weights were projected back into voxel space, and final voxel maps and projected signals were obtained by averaging across folds.
 
@@ -318,18 +320,13 @@ Supplementary material for this article is provided in the accompanying Suppleme
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=0.88\textwidth]{main_figures/Figure5.pdf}
+        \includegraphics[width=\textwidth]{main_figures/Figure5.pdf}
     \end{minipage}\par\vspace{0.25em}
-    \begin{minipage}[t]{0.49\textwidth}
+    \begin{minipage}[t]{\textwidth}
         \noindent\textbf{B}\par\vspace{0.2em}
         \centering
         \includegraphics[width=\linewidth]{main_figures/Figure9.pdf}
     \end{minipage}\hfill
-    \begin{minipage}[t]{0.49\textwidth}
-        \noindent\textbf{C}\par\vspace{0.2em}
-        \centering
-        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure20.pdf}
-    \end{minipage}
     \caption{Exploratory GVS-related edge changes in the optimised vigour and task-activation networks. \textbf{A}, FDR-significant active--sham mutual-information edge changes are shown for the optimised vigour network. \textbf{B}, The same mutual-information analysis is shown for the task-activation network. \textbf{C}, FDR-significant active--sham Pearson edge changes are shown for the task-activation network. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges show increased statistical dependence or linear correlation, and blue edges show decreased dependence or linear correlation. Colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_edge_changes}
 \end{figure}
