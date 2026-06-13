@@ -204,7 +204,7 @@ We tested whether the final network definition depended strongly on the voxel-we
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/OptimizationValidation_thresholds.pdf}
-    \caption{Threshold robustness analysis for the optimized vigour-related network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
+    \caption{Threshold robustness analysis for the optimized vigour network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
     \label{fig:threshold_robustness}
 \end{figure}
 
@@ -225,7 +225,7 @@ The final vigour network is also shown by broad anatomical sector below.
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure5.pdf}
-    \caption{Anatomical-sector view of the optimized vigour-related network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and colored by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
+    \caption{Anatomical-sector view of the optimized vigour network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and colored by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
     \label{fig:supp_vigour_network_anatomy}
 \end{figure}
 
@@ -276,7 +276,7 @@ The final vigour network is also shown by broad anatomical sector below.
 ROI summaries confirmed that the map included motor and non-motor components (Table~\ref{tab:roi_vigour_network} and Fig.~\ref{fig:supp_vigour_network_anatomy}). Temporal cortex contributed \(25.27\%\) of selected voxels, parietal cortex \(13.46\%\), frontal cortex \(11.38\%\), cerebellum \(7.90\%\), and orbitofrontal cortex \(7.22\%\). After normalizing by ROI size, stronger enrichment appeared in temporal-limbic and striatal regions, including the parahippocampal gyrus, amygdala, caudate, orbitofrontal cortex, and temporal cortex. Motor-related regions were also represented, including the supplementary motor area, paracentral lobule, precentral gyrus, parietal cortex, and cerebellum, but they did not dominate the ROI-normalized profile. Thus, the map contains a motor-related component, but its strongest ROI-level enrichment is distributed across temporal-limbic and associative regions rather than being confined to primary motor cortex.
 
 \subsection{Comparison with the task-engagement reference map}
-The tables below provide a compact summary of the limited overlap between the final vigour-related network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
+The tables below provide a compact summary of the limited overlap between the final vigour network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
 
 \begin{table}[!htbp]
 \centering
@@ -524,7 +524,7 @@ beta and BOLD signals were
 The total loss was defined using these two projected signals: the beta projection was used
 for the trial-wise beta-based terms, including behavioural relevance to motor vigour, and
 the BOLD projection was used for the consecutive-trial variability term. After
-optimization, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour-related network.
+optimization, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour network.
 
 The optimization model was based on four assumptions about the neural representation of motor vigour. First, the target network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
 
