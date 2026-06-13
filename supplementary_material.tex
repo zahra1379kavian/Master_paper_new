@@ -21,6 +21,7 @@
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \setlength{\abovecaptionskip}{6pt}
 \setlength{\belowcaptionskip}{4pt}
+\captionsetup[table]{font=normalsize}
 \setlength{\LTpre}{4pt}
 \setlength{\LTpost}{6pt}
 \renewcommand{\topfraction}{0.9}
@@ -176,16 +177,15 @@ Spatial similarity between activation-derived maps and the optimised vigour netw
 
 \begin{figure}[!htbp]
     \centering
-    \begin{minipage}[t]{0.39\textwidth}
+    \begin{minipage}{\textwidth}
         \centering
         \textbf{A}\par\vspace{0.1em}
-        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure7.pdf}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.56\textwidth}
+        \includegraphics[width=0.72\textwidth]{supplementary_figures/Sup_Figure7.pdf}
+    \end{minipage}\par\vspace{0.45em}
+    \begin{minipage}{\textwidth}
         \centering
         \textbf{B}\par\vspace{0.1em}
-        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure8.pdf}
+        \includegraphics[width=0.72\textwidth]{supplementary_figures/Sup_Figure8.pdf}
     \end{minipage}
     \caption{Spatial similarity between activation-derived maps and the optimised vigour network. \textbf{A}, Dice coefficient matrix comparing the standard GLM map, two GLMsingle activation maps, and the optimised vigour network. \textbf{B}, Regional composition of each map, expressed as the percentage of suprathreshold voxels assigned to each anatomical group. The vigour network showed low spatial overlap with activation-derived maps and a distinct regional profile.}
     \label{fig:model_spatial_similarity}
