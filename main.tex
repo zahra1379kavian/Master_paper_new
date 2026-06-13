@@ -141,7 +141,7 @@ We validated the solution in three ways. First, we assessed cross-validation rep
 \begin{equation}
 \sum_i \frac{(x_i-x_{i+1})^2}{x_i^2+x_{i+1}^2},
 \end{equation}
-computed after excluding run and block boundaries. Inferential statistics used subject-level summaries. Third, we tested whether selected voxels were less variable than a motor-area control pool. The control pool was defined from bilateral motor-area atlas labels after removing selected voxels, and \(1{,}000\) size-matched samples were drawn without replacement.
+computed after excluding run and block boundaries. Inferential statistics used subject-level summaries. Third, we tested whether selected voxels were less variable than a motor-area control pool. The control pool was defined from bilateral motor-area atlas labels after removing selected voxels, and \(1{,}000\) size-matched samples were drawn without replacement. The control distribution was matched to the vigour network by sample size only; samples were not additionally matched by hemisphere, ROI size, spatial location, or local smoothness.
 
 \subsection{Medication-state network analysis}
 After defining the vigour network, we tested whether dopaminergic state altered its functional organisation. Medication state was not used during network optimisation, so this analysis provided an independent characterisation of the final network. Only participants with data in both medication states were included in paired analyses (\(n=17\)). Selected voxels were assigned to atlas-defined ROIs, and the optimised voxel weights were used to compute a weighted mean beta series for each ROI. The same analysis was repeated using the standard task-activation map as a reference network.
@@ -164,7 +164,7 @@ After trial- and run-level quality control, \(18\) participants, \(35\) sessions
 \subsection{Optimisation performance: identification of a behaviour-linked low-variability signal}
 The optimised voxel-weight map was highly reproducible across cross-validation folds (ICC \(=0.978\)). The projected neural signal showed lower consecutive-trial variability than RT at the subject level, with a positive behaviour-minus-projection difference (mean difference \(=7.5\), \(95\%\) CI \([2.2,12.8]\), paired \(p = 0.008\); Figure~\ref{fig:optimization_validation}A). Thus, the optimised projection retained behavioural relevance while varying more smoothly than RT.
 
-We also tested whether the selected voxels had lower variability than a relevant motor-area comparison pool (Figure~\ref{fig:optimization_validation}B). Their mean consecutive-trial variability was \(2.50\), whereas size-matched samples from the non-selected motor pool had a mean variability of \(3.46\) and a \(95\%\) CI of \([2.76,4.38]\). The null sampling was matched by sample size only, not by hemisphere, ROI size, spatial location, or smoothness. 
+Selected voxels also showed lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool (vigour network mean \(=2.50\); control mean \(=3.46\); \(95\%\) CI \([2.76,4.38]\); Figure~\ref{fig:optimization_validation}B).
 
 Together, these analyses indicate that the model recovered a behaviour-linked neural projection with lower consecutive-trial variability than RT, supporting the presence of a stable central vigour-related component in PD.
 
