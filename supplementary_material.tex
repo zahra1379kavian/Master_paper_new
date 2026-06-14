@@ -122,7 +122,7 @@ This section reports clinical summaries and behavioural quality-control informat
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure25.pdf}
-    \caption{Reaction-time quality-control summary by participant, medication session, and run. Stacked bars show valid, missed, and invalid go trials; top and bottom panels show OFF- and ON-medication sessions, respectively. Within each participant, the left and right bars correspond to runs 1 and 2. The dashed horizontal line marks the expected number of go trials per run. Valid RT trials are go trials with finite positive RT values; missed trials are go trials flagged as no-squeeze events. Grey bars mark data without corresponding fMRI data.}
+    \caption{Reaction-time quality-control summary by participant, medication session, and run. Stacked bars show valid, missed, and invalid go trials; top and bottom panels show OFF- and ON-medication sessions, respectively. Within each participant, the left and right bars correspond to runs 1 and 2. The dashed horizontal line marks the expected number of go trials per run. Valid RT trials are go trials with finite positive RT values; missed trials are go trials flagged as no-squeeze events; invalid RT trials are go trials without finite RT values, indicating that the squeeze was not performed correctly. Grey bars mark data without corresponding fMRI data.}
     \label{fig:RT_information}
 \end{figure}
 
@@ -173,7 +173,7 @@ Spatial distribution of the standard GLM from the group-level mixed-effects anal
     \label{fig:standard_glm}
 \end{figure}
 
-Spatial similarity between activation-derived maps and the optimised vigour network is summarised below.
+Spatial similarity between activation-derived maps and the vigour network is summarised below.
 
 \begin{figure}[!htbp]
     \centering
@@ -187,7 +187,7 @@ Spatial similarity between activation-derived maps and the optimised vigour netw
         \textbf{B}\par\vspace{0.1em}
         \includegraphics[width=0.72\textwidth]{supplementary_figures/Sup_Figure8.pdf}
     \end{minipage}
-    \caption{Spatial similarity between activation-derived maps and the optimised vigour network. \textbf{A}, Dice coefficient matrix comparing the standard GLM map, two GLMsingle activation maps, and the optimised vigour network. \textbf{B}, Regional composition of each map, expressed as the percentage of suprathreshold voxels assigned to each anatomical group.}
+    \caption{Spatial similarity between activation-derived maps and the vigour network. \textbf{A}, Dice coefficient matrix comparing the standard GLM map, two GLMsingle activation maps, and the vigour network. \textbf{B}, Regional composition of each map, expressed as the percentage of suprathreshold voxels assigned to each anatomical group.}
     \label{fig:model_spatial_similarity}
 \end{figure}
 
@@ -199,18 +199,18 @@ Spatial similarity between activation-derived maps and the optimised vigour netw
 \subsection{Threshold Robustness Analysis}
 \label{app:threshold_robustness}
 
-We tested whether the final network definition depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarise the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimisation result.
+We tested whether the vigour network definition depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarise the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimisation result.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/OptimizationValidation_thresholds.pdf}
-    \caption{Threshold robustness analysis for the optimised vigour network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
+    \caption{Threshold robustness analysis for the vigour network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
     \label{fig:threshold_robustness}
 \end{figure}
 
 The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(8{,}182\) suprathreshold voxels. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
 
-\subsection{ROI-wise composition of the final network}
+\subsection{ROI-wise composition of the vigour network}
 The AAL3-derived atlas below was used to define ROIs in this study.
 
 \begin{figure}[!htbp]
@@ -220,12 +220,12 @@ The AAL3-derived atlas below was used to define ROIs in this study.
     \label{fig:roi_atlas}
 \end{figure}
 
-The final vigour network is also shown by broad anatomical sector below.
+The vigour network is also shown by broad anatomical sector below.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure5.pdf}
-    \caption{Anatomical-sector view of the optimised vigour network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and coloured by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
+    \caption{Anatomical-sector view of the vigour network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and coloured by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
     \label{fig:supp_vigour_network_anatomy}
 \end{figure}
 
@@ -276,11 +276,11 @@ The final vigour network is also shown by broad anatomical sector below.
 ROI summaries confirmed that the map included motor and non-motor components (Table~\ref{tab:roi_vigour_network} and Fig.~\ref{fig:supp_vigour_network_anatomy}). Temporal cortex contributed \(25.27\%\) of selected voxels, parietal cortex \(13.46\%\), frontal cortex \(11.38\%\), cerebellum \(7.90\%\), and orbitofrontal cortex \(7.22\%\). After normalising by ROI size, stronger enrichment appeared in temporal-limbic and striatal regions, including the parahippocampal gyrus, amygdala, caudate, orbitofrontal cortex, and temporal cortex. Motor-related regions were also represented, including the supplementary motor area, paracentral lobule, precentral gyrus, parietal cortex, and cerebellum, but they did not dominate the ROI-normalised profile. Thus, the map contains a motor-related component, but its strongest ROI-level enrichment is distributed across temporal-limbic and associative regions rather than being confined to primary motor cortex.
 
 \subsection{Comparison with the task-engagement reference map}
-The tables below provide a compact summary of the limited overlap between the final vigour network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
+The tables below provide a compact summary of the limited overlap between the vigour network and the task-engagement reference map, including both global overlap metrics and region-wise voxel counts.
 
 \begin{table}[!htbp]
 \centering
-\caption{Comparison of the full-constraint vigour network and the task-activation reference map.\label{tab:two_networks}}
+\caption{Comparison of the vigour network and the task-activation reference map.\label{tab:two_networks}}
 
 \small
 \begin{threeparttable}
@@ -297,7 +297,7 @@ The tables below provide a compact summary of the limited overlap between the fi
 Task-activation map & 21,610 & 835 (3.86\%) &
 Cerebellum/vermis and thalamic nuclei; supramarginal cortex; occipital, parietal, and insular cortex \\
 
-Full-constraint vigour network & 8,182 & 835 (10.21\%) &
+Vigour network & 8,182 & 835 (10.21\%) &
 Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex; rectus and medial/posterior orbitofrontal cortex \\
 \bottomrule
 \end{tabularx}
@@ -409,7 +409,7 @@ The final group coverage mask contained $91{,}769$ voxels, yielding a final grou
 \FloatBarrier
 \section{Full optimisation derivation and model-selection details}\label{app:optimization_full}
 
-A group-level optimisation procedure was used to identify a vigour-related brain network
+A group-level optimisation procedure was used to identify a vigour network
 (main Figure~1B,C). The aim of the optimisation framework was to identify a
 voxel-weight vector that produced a projected neural signal related to trial-wise motor
 vigour while satisfying constraints on task engagement, spatial coherence, and low
@@ -524,9 +524,9 @@ beta and BOLD signals were
 The total loss was defined using these two projected signals: the beta projection was used
 for the trial-wise beta-based terms, including behavioural relevance to motor vigour, and
 the BOLD projection was used for the consecutive-trial variability term. After
-optimisation, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the group-level vigour network.
+optimisation, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector is considered to define the vigour network.
 
-The optimisation model was based on four assumptions about the neural representation of motor vigour. First, the target network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
+The optimisation model was based on four assumptions about the neural representation of motor vigour. First, the vigour network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
 
 \textbf{Condition 1: The projected signal should come from task-engaged voxels.}
 
@@ -726,8 +726,8 @@ The resulting projection was defined as
 y = w^\top X_{\beta}.
 \end{equation}
 
-% The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimisation was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
-The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularisation terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD trial-to-trial variability, beta trial-to-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimised neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimisation was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the target network.
+% The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimisation was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the vigour network.
+The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularisation terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD trial-to-trial variability, beta trial-to-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimised neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimisation was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the vigour network.
 
 Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. The reason we chose this threshold is that the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (Supplementary Figure~S6). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The 90th percentile retained a distributed network across the main contributing regions while showing maximal stability relative to the reference threshold, supporting it as an appropriate cutoff for defining the vigour network. 
 
@@ -748,12 +748,12 @@ After identifying the vigour network, we then assessed whether medication state 
 %###########################################################################################
 \FloatBarrier
 \section{GVS-related supplementary analyses}\label{app:gvs}
-The main manuscript reports the mutual-information GVS edge-change analysis in both the optimised vigour network and the task-activation network, together with the Pearson task-activation control analysis. The supplementary figure below shows the corresponding Pearson analysis for the optimised vigour network. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
+The main manuscript reports the mutual-information GVS edge-change analysis in both the vigour network and the task-activation network, together with the Pearson task-activation control analysis. The supplementary figure below shows the corresponding Pearson analysis for the vigour network. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure19.pdf}
-    \caption{Exploratory GVS-related Pearson edge changes in the optimised vigour network. FDR-thresholded active--sham Pearson edge changes are shown after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased linear correlation and blue edges mark decreased linear correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \caption{Exploratory GVS-related Pearson edge changes in the vigour network. FDR-thresholded active--sham Pearson edge changes are shown after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased linear correlation and blue edges mark decreased linear correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_pearson_edges}
 \end{figure}
 
