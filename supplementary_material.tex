@@ -222,12 +222,13 @@ The AAL3-derived atlas below was used to define ROIs in this study.
 
 The vigour network is also shown by broad anatomical sector below.
 
-\begin{figure}[!htbp]
+\begin{figure}[!p]
     \centering
-    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure5.pdf}
+    \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{supplementary_figures/Sup_Figure5.pdf}
     \caption{Anatomical-sector view of the vigour network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and coloured by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
     \label{fig:supp_vigour_network_anatomy}
 \end{figure}
+\clearpage
 
 \begin{longtable}{@{} p{5.2cm} r r r r @{}}
     \caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. The table uses the analysis-space NIfTI p90 source mask, which contains 8,182 selected voxels after excluding cerebral white matter and brainstem voxels. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed ROI rows account for 100.00\% of selected voxels.\label{tab:roi_vigour_network}}\\
@@ -748,12 +749,23 @@ After identifying the vigour network, we then assessed whether medication state 
 %###########################################################################################
 \FloatBarrier
 \section{GVS-related supplementary analyses}\label{app:gvs}
-The main manuscript reports the mutual-information GVS edge-change analysis in both the vigour network and the task-activation network, together with the Pearson task-activation control analysis. The supplementary figure below shows the corresponding Pearson analysis for the vigour network. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
+The main manuscript reports the mutual-information GVS edge-change analysis in both the vigour network and the task-activation network. The supplementary figure below shows the corresponding Pearson analyses for both networks. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
 
-\begin{figure}[!htbp]
+The Pearson control analysis showed bidirectional GVS-related edge changes rather than a uniform increase or decrease in linear coupling. In the vigour network, significant edges were distributed across limbic-olfactory, somatomotor/cerebellar, visual, subcortical, and frontoparietal groups. In the task-activation map, significant Pearson changes also involved a broad set of motor, subcortical, visual, cingulate-temporal, and limbic-olfactory edges. Thus, the Pearson results support an edge-specific and network-dependent pattern of GVS modulation, consistent with the exploratory interpretation of the GVS analyses.
+
+\begin{figure}[!p]
     \centering
-    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure19.pdf}
-    \caption{Exploratory GVS-related Pearson edge changes in the vigour network. FDR-thresholded active-sham Pearson edge changes are shown after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased linear correlation and blue edges mark decreased linear correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{A}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure19.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure20.pdf}
+    \end{minipage}
+    \caption{Exploratory GVS-related Pearson correlation edge changes in the vigour network and task-activation map. \textbf{A}, Pearson correlation analysis for the vigour network. \textbf{B}, Pearson correlation analysis for the task-activation map. Each panel shows FDR-thresholded active--sham edge changes after pooling across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased Pearson correlation, and blue edges mark decreased Pearson correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_pearson_edges}
 \end{figure}
 
