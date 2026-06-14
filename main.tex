@@ -153,7 +153,7 @@ Voxelwise overlap between the optimised vigour network and the standard task-act
 \subsection{Medication-state network analysis}
 After defining the vigour network, we tested whether dopaminergic state altered its functional organisation. Medication state was not used during network optimisation, so this analysis provided an independent characterisation of the final network. Only participants with data in both medication states were included in paired analyses (\(n=17\)). Selected voxels were assigned to atlas-defined ROIs, and the optimised voxel weights were used to compute a weighted mean beta series for each ROI. The same analysis was repeated using the standard task-activation map as a reference network.
 
-We used two complementary undirected functional connectivity metrics: Pearson correlation, which captures linear co-fluctuation, and mutual information, which captures more general statistical dependence \citep{cover2006elements}. Mutual information was estimated after discretising each beta series into three rank-based quantile bins. Because both metrics are symmetric, related effects were interpreted as changes in statistical coupling, not causal influence.
+We used two complementary undirected functional connectivity metrics to assess medication effects: (i) mutual information, which captures more general statistical dependence, and (ii) Pearson correlation, which captures linear co-fluctuation \citep{cover2006elements}. Mutual information was estimated after discretising each beta series into three rank-based quantile bins. Because both metrics are symmetric, related effects were interpreted as changes in statistical coupling, not causal influence.
 
 First, we tested whether medication changed the overall ROI-to-ROI connectivity beyond ordinary run-to-run variability. For each participant, medication state, run, and connectivity metric, the upper-triangular ROI-pair values from the connectivity matrix were vectorized into an edge vector. Network-pattern dissimilarity between two runs was quantified using correlation distance, defined as \(1-r\), where \(r\) was the Pearson correlation between the two edge vectors. Smaller values therefore indicated more similar edge patterns, whereas larger values indicated greater dissimilarity.
 
@@ -309,7 +309,7 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{main_figures/Graphical_Abstract.pdf}
-    \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, Participants completed a reward-cued ballistic hand-squeeze task during fMRI. In each trial, a reward cue was followed by a variable delay and then a Go signal. The Go signal prompted a rapid grip response. Reaction time and whole-brain BOLD signals were recorded during the task. \textbf{B}, GLMsingle estimated neural responses for each trial, producing single-trial beta maps and BOLD-derived features. These neural features and reaction-time measures were entered into the constrained optimisation framework. The framework produced a low-dimensional projection signal and a voxel-weight map. \textbf{C}, The optimisation searched for a neural projection that was engaged by the task, related to behaviour, spatially coherent, and relatively stable across consecutive trials.}
+    \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, The task panel shows a reward cue, variable delay, Go signal, grip response, and recorded reaction-time and whole-brain BOLD measures. \textbf{B}, The analysis panel shows GLMsingle single-trial beta estimates, BOLD-derived features, reaction-time measures, and the constrained optimisation inputs and outputs. \textbf{C}, The optimisation panel shows the task-engagement, behaviour-association, spatial-coherence, and trial-to-trial stability terms used to estimate the projection signal and voxel-weight map.}
     \label{fig:task_analysis_overview}
 \end{figure}
 
@@ -326,7 +326,7 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
         \centering
         \includegraphics[width=0.98\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
     \end{minipage}
-    \caption{Validation of the optimisation framework. \textbf{A}, The optimised neural projection varied less across consecutive trials than reaction time. Positive behaviour-minus-projection differences mean that the projection changed less abruptly than behaviour. Paired inference used subject-level summaries from the retained runs. \textbf{B}, Selected voxels had lower consecutive-trial beta variability than size-matched samples from the non-selected motor-area control pool. They were also enriched among low-variability voxels.}
+    \caption{Validation displays for the optimisation framework. \textbf{A}, The paired plot compares consecutive-trial changes in the optimised neural projection with consecutive-trial changes in reaction time. Positive behaviour-minus-projection values mark cases where the behaviour change is larger than the projection change. \textbf{B}, The voxel-stability panels compare selected voxels with size-matched non-selected motor-area control samples and show the distribution of voxel beta-variability rankings.}
     \label{fig:optimization_validation}
 \end{figure}
 
@@ -346,7 +346,7 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{main_figures/Figure7.pdf}
-    \caption{Anatomical comparison by ROI for the optimised vigour network, the standard task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. The vigour network is more enriched in temporal-limbic, orbitofrontal, and striatal regions. The task-activation map occupies broader sensorimotor, cerebellar, parietal, and subcortical regions.}
+    \caption{Anatomical comparison by ROI for the optimised vigour network, the standard task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. ROI labels are grouped by anatomical sector, with separate bars for vigour, task activation, and overlap values.}
     \label{fig:roi_task_overlap_summary}
 \end{figure}
 
@@ -362,7 +362,7 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
         \centering
         \includegraphics[width=0.92\textwidth]{main_figures/Figure8.pdf}
     \end{minipage}
-    \caption{Medication effects on local and distributed functional connectivity. \textbf{A}, For the optimised vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF medication, for ON medication, and for participant-level ON–OFF differences. Medication significantly increased within-ROI coupling, while between-ROI coupling stayed close to zero. \textbf{B}, The same analysis was applied to the standard task-activation map. The within-ROI versus between-ROI contrast was significant. However, the individual within-ROI and between-ROI changes were weaker than in the optimised vigour network.}
+    \caption{Medication-state functional connectivity summaries. \textbf{A}, For the optimised vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF medication, ON medication, and participant-level ON--OFF differences. \textbf{B}, The corresponding plots show within-ROI and between-ROI Pearson functional connectivity for the standard task-activation map.}
     \label{fig:medication_local_distributed_fc}
 \end{figure}
 
@@ -378,7 +378,7 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
         \centering
         \includegraphics[width=\linewidth]{main_figures/Figure9.pdf}
     \end{minipage}\hfill
-    \caption{Exploratory GVS-related edge changes in the optimised vigour and task-activation networks. \textbf{A}, FDR-significant active--sham mutual-information edge changes are shown for the optimised vigour network. \textbf{B}, The same mutual-information analysis is shown for the task-activation network. \textbf{C}, FDR-significant active--sham Pearson edge changes are shown for the task-activation network. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges show increased statistical dependence or linear correlation, and blue edges show decreased dependence or linear correlation. Colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \caption{Exploratory GVS-related edge changes in the optimised vigour and task-activation networks. \textbf{A}, FDR-thresholded active--sham mutual-information edge changes are shown for the optimised vigour network. \textbf{B}, The same mutual-information analysis is shown for the task-activation network. \textbf{C}, FDR-thresholded active--sham Pearson edge changes are shown for the task-activation network. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence or linear correlation, and blue edges mark decreased dependence or linear correlation. Colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_edge_changes}
 \end{figure}
 
