@@ -310,7 +310,7 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{main_figures/Graphical_Abstract.pdf}
+    \includegraphics[width=\textwidth]{main_figures/Figure1.pdf}
     \caption{Overview of the behavioural task and analysis pipeline. \textbf{A}, The task panel shows a reward cue, variable delay, Go signal, grip response, and recorded reaction-time and whole-brain BOLD measures. \textbf{B}, The analysis panel shows GLMsingle single-trial beta estimates, BOLD-derived features, reaction-time measures, and the constrained optimisation inputs and outputs. \textbf{C}, The optimisation panel shows the task-engagement, behaviour-association, spatial-coherence, and trial-to-trial stability terms used to estimate the projection signal and voxel-weight map.}
     \label{fig:task_analysis_overview}
 \end{figure}
@@ -321,12 +321,12 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=0.88\textwidth]{main_figures/OptimizationValidation_projection.pdf}
+        \includegraphics[width=0.88\textwidth]{main_figures/Figure2A.pdf}
     \end{minipage}\par\vspace{0.8em}
     \begin{minipage}{\textwidth}
         \noindent\textbf{B}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=0.98\textwidth]{main_figures/OptimizationValidation_voxel_stability.pdf}
+        \includegraphics[width=0.98\textwidth]{main_figures/Figure2B.pdf}
     \end{minipage}
     \caption{Validation displays for the optimisation framework. \textbf{A}, The paired plot compares consecutive-trial changes in the optimised neural projection with consecutive-trial changes in reaction time. Positive behaviour-minus-projection values mark cases where the behaviour change is larger than the projection change. \textbf{B}, The voxel-stability panels compare selected voxels with size-matched non-selected motor-area control samples and show the distribution of voxel beta-variability rankings.}
     \label{fig:optimization_validation}
@@ -335,19 +335,19 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
 \clearpage
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{main_figures/Figure1.pdf}
+    \includegraphics[width=\textwidth]{main_figures/Figure3.pdf}
     \caption{Spatial distribution of the vigour network. Thresholded voxel weights are shown on representative sagittal, coronal, and axial MNI slices. Warmer colours show larger model-derived voxel contributions, scaled by \(10^{-3}\).}
     \label{fig:main_vigour_network}
 
     \vspace{1.2em}
-    \includegraphics[width=\textwidth]{main_figures/Figure2.pdf}
+    \includegraphics[width=\textwidth]{main_figures/Figure4.pdf}
     \caption{Voxelwise overlap between the vigour network and the standard task-activation map. Blue marks the vigour network, orange marks the task-activation map, and green marks the same-voxel overlap across representative brain slices.}
     \label{fig:main_network_task_overlap}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{main_figures/Figure7.pdf}
+    \includegraphics[width=\textwidth]{main_figures/Figure5.pdf}
     \caption{Anatomical comparison by ROI for the vigour network, the standard task-activation map, and their same-voxel overlap. Horizontal bars show the percentage of each ROI occupied by the vigour network, the task-activation map, and overlapping voxels. ROI labels are grouped by anatomical sector, with separate bars for vigour, task activation, and overlap values.}
     \label{fig:roi_task_overlap_summary}
 \end{figure}
@@ -357,12 +357,12 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=0.92\textwidth]{main_figures/Figure4.pdf}
+        \includegraphics[width=0.92\textwidth]{main_figures/Figure6A.pdf}
     \end{minipage}\par\vspace{0.35em}
     \begin{minipage}{\textwidth}
         \noindent\textbf{B}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=0.92\textwidth]{main_figures/Figure8.pdf}
+        \includegraphics[width=0.92\textwidth]{main_figures/Figure6B.pdf}
     \end{minipage}
     \caption{Medication-state functional connectivity summaries. \textbf{A}, For the vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF medication, ON medication, and participant-level ON--OFF differences. \textbf{B}, The corresponding plots show within-ROI and between-ROI Pearson functional connectivity for the standard task-activation map.}
     \label{fig:medication_local_distributed_fc}
@@ -373,12 +373,12 @@ The fitted EMPCA-space weights were sign-oriented consistently across folds and 
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=\textwidth]{main_figures/Figure5.pdf}
+        \includegraphics[width=\textwidth]{main_figures/Figure7A.pdf}
     \end{minipage}\par\vspace{0.25em}
     \begin{minipage}[t]{\textwidth}
         \noindent\textbf{B}\par\vspace{0.2em}
         \centering
-        \includegraphics[width=\linewidth]{main_figures/Figure9.pdf}
+        \includegraphics[width=\linewidth]{main_figures/Figure7B.pdf}
     \end{minipage}\hfill
     \caption{Exploratory GVS-related edge changes in the vigour network and task-activation network. \textbf{A}, FDR-thresholded active--sham mutual-information edge changes are shown for the vigour network. \textbf{B}, The same mutual-information analysis is shown for the task-activation network. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence or linear correlation, and blue edges mark decreased dependence or linear correlation. Colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_edge_changes}
