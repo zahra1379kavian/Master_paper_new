@@ -755,7 +755,7 @@ To test whether the medication-related within-versus-between-ROI FC pattern repo
 
     \vspace{0.5em}
 
-    \includegraphics[width=\linewidth]{supplementary_figures/Supp_Figure12B.pdf}
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure12B.pdf}
     \caption{Run-to-run baseline control for the medication-related functional-connectivity effect. The top row shows the vigour network, and the bottom row shows the task-activation map. Within each row, panels compare subject-level FC change between runs within session with the between-session medication-effect estimate for \textbf{A}, intra-ROI FC; \textbf{B}, between-ROI FC; and \textbf{C}, the intra-minus-between FC contrast. Grey and red points show individual subjects, paired lines connect matched values, and black markers summarize the group mean with uncertainty. In the vigour network, medication-related between-session change was significantly larger than run-to-run variability for intra-ROI FC (\(p=0.005\)) and for the intra-minus-between contrast (\(p=0.022\)), but not for between-ROI FC (\(p=0.961\)). In the task-activation map, between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.011\)) and between-ROI FC (\(p=0.015\)), with weaker evidence for the intra-minus-between contrast (\(p=0.059\)).}
     \label{fig:medication_fc_run_to_run_baseline}
 \end{figure}
@@ -768,6 +768,8 @@ Before examining edge-level connectivity changes, we tested whether active GVS r
 The main manuscript reports the mutual-information GVS edge-change analysis in both the vigour network and the task-activation network. Supplementary Figure~\ref{fig:gvs_pearson_edges} shows the corresponding Pearson analyses for both networks. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
 
 The Pearson control analysis showed bidirectional GVS-related edge changes rather than a uniform increase or decrease in linear coupling. In the vigour network, significant edges were distributed across limbic-olfactory, somatomotor/cerebellar, visual, subcortical, and frontoparietal groups. In the task-activation map, significant Pearson changes also involved a broad set of motor, subcortical, visual, cingulate-temporal, and limbic-olfactory edges. Thus, the Pearson results supported an edge-specific and network-dependent pattern of GVS modulation, consistent with the exploratory interpretation of the GVS analyses.
+
+Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averaged projected time courses by GVS condition for the vigour-network projection and the task-network signal. Supplementary Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change analysis for the task-activation map. Supplementary Figures~\ref{fig:gvs_vigour_feature_summary} and \ref{fig:gvs_task_feature_summary} show the four predefined active-minus-sham response features for the vigour-network and task-network signals, respectively.
 
 \begin{figure}[!p]
     \centering
@@ -794,6 +796,61 @@ The Pearson control analysis showed bidirectional GVS-related edge changes rathe
 \end{figure}
 
 
+
+\begin{figure}[!p]
+    \centering
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{A}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13B.pdf}
+    \end{minipage}
+    \caption{Projected time courses by GVS condition. \textbf{A}, Vigour-network projection time courses in OFF- and ON-medication sessions. \textbf{B}, Task-network signal time courses in OFF- and ON-medication sessions. Lines show condition means for sham and active GVS waveforms, displayed with vertical offsets for visual separation.}
+    \label{fig:gvs_projected_time_courses}
+\end{figure}
+
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure14.pdf}
+    \caption{Exploratory GVS-related mutual-information edge changes in the task-activation map. Active--sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_task_mi_edges}
+\end{figure}
+
+\begin{figure}[!p]
+    \centering
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{A}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure15A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure15B.pdf}
+    \end{minipage}
+    \caption{GVS-related response-feature changes in the vigour-network projection. \textbf{A}, OFF-medication session. \textbf{B}, ON-medication session. Violin plots show active-minus-sham feature values for the late-minus-early response, linear slope, maximum absolute baseline response, and peak-to-peak amplitude features. Highlighted distributions mark stimulation conditions that survived FDR correction within the displayed analysis.}
+    \label{fig:gvs_vigour_feature_summary}
+\end{figure}
+
+\begin{figure}[!p]
+    \centering
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{A}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure16A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure16B.pdf}
+    \end{minipage}
+    \caption{GVS-related response-feature changes in the task-network signal. \textbf{A}, OFF-medication session. \textbf{B}, ON-medication session. Violin plots show active-minus-sham feature values for the late-minus-early response, linear slope, maximum absolute baseline response, and peak-to-peak amplitude features. Highlighted distributions mark stimulation conditions that survived FDR correction within the displayed analysis.}
+    \label{fig:gvs_task_feature_summary}
+\end{figure}
 
 \FloatBarrier
 \bibliographystyle{Frontiers-Harvard}
