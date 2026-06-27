@@ -763,21 +763,14 @@ To test whether the medication-related within-versus-between-ROI FC pattern repo
 %###########################################################################################
 \FloatBarrier
 \section{GVS-related supplementary analyses}\label{app:gvs}
-Before examining edge-level connectivity changes, we tested whether active GVS reliably altered subject-level vigour expression (Figure~\ref{fig:gvs_vigour_expression}). The figure compares sham stimulation with active GVS across four subject-level outcomes: mean reaction time, mean projected signal, projection variability, and projection-RT coupling. Active GVS conditions were averaged within each run and compared with the sham block from the same run, then these paired differences were averaged per subject. The statistic is therefore a paired active-minus-sham comparison tested with a one-sample \(t\)-test against zero across subjects (\(n = 18\), \(df = 17\)). None of the effects reached significance: RT, \(\Delta = -2.61\)~ms, \(95\%\) CI \([-14.20, 8.98]\), \(t(17) = -0.47\), \(p = .641\); projection, \(\Delta = -0.127\), \(95\%\) CI \([-0.295, 0.040]\), \(t(17) = -1.61\), \(p = .127\); variability, \(\Delta = 0.018\), \(95\%\) CI \([-0.056, 0.092]\), \(t(17) = 0.50\), \(p = .620\); projection-RT coupling, \(\Delta z = 0.012\), \(95\%\) CI \([-0.176, 0.201]\), \(t(17) = 0.14\), \(p = .893\). The coupling statistic is based on the Fisher-\(z\)-transformed within-block correlation between trial-wise projection and RT.
-
 The main manuscript reports the mutual-information GVS edge-change analysis in both the vigour network and the task-activation network. Supplementary Figure~\ref{fig:gvs_pearson_edges} shows the corresponding Pearson analyses for both networks. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active--sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
 
 The Pearson control analysis showed bidirectional GVS-related edge changes rather than a uniform increase or decrease in linear coupling. In the vigour network, significant edges were distributed across limbic-olfactory, somatomotor/cerebellar, visual, subcortical, and frontoparietal groups. In the task-activation map, significant Pearson changes also involved a broad set of motor, subcortical, visual, cingulate-temporal, and limbic-olfactory edges. Thus, the Pearson results supported an edge-specific and network-dependent pattern of GVS modulation, consistent with the exploratory interpretation of the GVS analyses.
 
 Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averaged projected time courses by GVS condition for the vigour-network projection and the task-network signal. Supplementary Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change analysis for the task-activation map. Supplementary Figures~\ref{fig:gvs_vigour_feature_summary} and \ref{fig:gvs_task_feature_summary} show the four predefined active-minus-sham response features for the vigour-network and task-network signals, respectively.
 
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure11.pdf}
-    \caption{Active GVS versus sham effects on reaction time and projected signal. Each point shows a subject-level mean, with grey lines connecting paired sham and active GVS values within a subject. Diamonds and error bars show the across-subject mean and \(95\%\) CI. Active GVS did not significantly differ from sham for mean RT, mean projection, projection variability, or projection-RT coupling.}
-    \label{fig:gvs_vigour_expression}
-\end{figure}
-
+% Preserve downstream supplementary figure numbering after removing the GVS summary figure.
+\addtocounter{figure}{1}
 
 \begin{figure}[!p]
     \centering
