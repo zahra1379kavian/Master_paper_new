@@ -165,7 +165,7 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 \FloatBarrier
 \section{Voxel-level BOLD variability across model conditions}
 \label{app:voxel_bold_variability}
-To characterise the voxel-level varability profile of the motor-vigour network, we compared consecutive-trial BOLD variability across three voxel sets: the standard task-activation map, the motor-vigour network, and a no-variability-penalty control map derived from the same optimisation framework after removing the low-variability term. For each voxel, variability was computed using the normalised consecutive-trial metric defined in Equation~4 of the main text, with \(x_i\) corresponding to that voxel's BOLD response on trial \(i\). The summation was restricted to adjacent valid trial pairs, excluding run and block boundaries. Voxel-level values were then grouped by map and summarised using a normalised histogram and empirical cumulative distribution function (Figure~\ref{fig:voxel_bold_variability}). 
+Because local stability was included as one component of the optimisation objective, we compared the voxel-level BOLD variability profile of the final map with two reference maps: the standard task-activation map and a control map obtained from the same optimisation framework after removing the low-variability penalty. For each voxel, variability was computed using the normalised consecutive-trial metric defined in Equation~4 of the main text, with \(x_i\) corresponding to that voxel's BOLD response on trial \(i\). The summation was restricted to adjacent valid trial pairs, excluding run and block boundaries. Voxel-level values were then grouped by map and summarised using a normalised histogram and empirical cumulative distribution function (Figure~\ref{fig:voxel_bold_variability}). 
 
 \begin{figure}[!htbp]
     \centering
@@ -174,9 +174,9 @@ To characterise the voxel-level varability profile of the motor-vigour network, 
     \label{fig:voxel_bold_variability}
 \end{figure}
 
-The final motor-vigour network showed the strongest low-variability profile across the three maps. Compared with the task-activation map, its distribution was shifted toward lower consecutive-trial BOLD variability and contained a larger fraction of voxels in the very low-variability range. The no-variability-penalty control map showed an intermediate profile: its median variability was closer to the final motor-vigour network than to the task-activation map, but it contained fewer very low-variability voxels than the final network. 
+The final motor-vigour network showed the strongest low-variability profile across the three maps. Compared with the task-activation map, its distribution was shifted toward lower consecutive-trial BOLD variability and contained a larger fraction of voxels in the very low-variability range. The no-variability-penalty control map showed an intermediate profile: its median variability was closer to the final motor-vigour network than to the task-activation map, but it contained fewer very low-variability voxels than the final network. Thus, the low-variability term mainly sharpened the lower tail of the selected-voxel distribution, increasing the concentration of locally stable BOLD voxels within a solution that was also constrained by task engagement, behavioural relevance, and spatial smoothness.
 
-Summary statistics are reported in Table~\ref{tab:voxel_trial_variability}. The final motor-vigour network had the lowest median variability and the highest proportion of voxels with variability below \(0.01\). Pairwise distributional comparisons showed lower variability in the final motor-vigour network than in both the task-activation map and the no-variability-penalty control. Evidence for lower variability in the no-variability-penalty control relative to the task-activation map was weaker. 
+Summary statistics are reported in Table~\ref{tab:voxel_trial_variability}. The final motor-vigour network had the lowest median variability and the highest proportion of voxels with variability below \(0.01\). Directional voxel-level distributional comparisons showed lower variability in the final motor-vigour network than in the task-activation map, one-sided \(p=1.14\times10^{-5}\), and lower variability in the final motor-vigour network than in the no-variability-penalty control map, one-sided \(p=3.81\times10^{-6}\). By contrast, evidence for lower variability in the no-variability-penalty control map relative to the task-activation map was weak, one-sided \(p=0.135\). Because local stability contributed to the final optimisation objective and voxel-level measurements are spatially correlated, these comparisons were interpreted as supportive distributional summaries rather than as independent validation of the stability criterion.
 
 \begin{table}[!htbp]
 \centering
@@ -192,10 +192,6 @@ Without variability penalty & 0.0276 & 0.0369 & 21.7\% \\
 Final motor-vigour network & 0.0267 & 0.0418 & 27.5\% \\
 \bottomrule
 \end{tabular}
-\begin{tablenotes}[flushleft]
-\footnotesize
-\item Pairwise tests: without variability penalty \(<\) task activation, one-sided \(p=0.135\), two-sided \(p=0.270\); final motor-vigour network \(<\) task activation, one-sided \(p=1.14\times10^{-5}\), two-sided \(p=2.29\times10^{-5}\); final motor-vigour network \(<\) without variability penalty, one-sided \(p=3.81\times10^{-6}\), two-sided \(p=7.63\times10^{-6}\).
-\end{tablenotes}
 \end{threeparttable}
 \end{table}
 
