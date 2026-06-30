@@ -166,12 +166,12 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 \section{Voxel-level BOLD variability across model conditions}
 \label{app:voxel_bold_variability}
 
-We compared voxel-wise consecutive-trial BOLD variability across the task-activation network, the final motor-vigour network, and a control optimisation model fit without the low-variability penalty. For each voxel, variability was computed using the consecutive-trial BOLD variability definition in Equation~\ref{eq:bold_variability_loss}, restricted to valid adjacent trial pairs after excluding run and block boundaries. Voxels were then grouped by network or model condition, and the resulting distributions were summarised with both normalised histograms and cumulative distribution functions (Figure~\ref{fig:voxel_bold_variability}). This analysis asks whether the final network was preferentially concentrated among voxels with stable local consecutive-trial BOLD dynamics.
+We compared voxel-wise consecutive-trial BOLD variability across the task-activation network, the final motor-vigour network, and a control optimisation model fit without the low-variability penalty. For each voxel, variability was computed using the normalised consecutive-trial metric defined in Equation~4 of the main text, with \(x_i\) set to that voxel's BOLD response on trial \(i\) and the summation restricted to adjacent valid trial pairs after excluding run and block boundaries. Voxels were then grouped by network or model condition, and the resulting distributions were summarised with both normalised histograms and cumulative distribution functions (Figure~\ref{fig:voxel_bold_variability}). This analysis asks whether the final network was preferentially concentrated among voxels with stable local consecutive-trial BOLD dynamics.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure17.pdf}
-    \caption{Voxel-wise consecutive-trial BOLD variability across model conditions. Variability was computed using the consecutive-trials definition in Equation~\ref{eq:bold_variability_loss}. The normalised histogram and cumulative distribution compare voxels from the task-activation network, the final motor-vigour network, and the control model fit without the low-variability penalty.}
+    \caption{Voxel-wise consecutive-trial BOLD variability across model conditions. Variability was computed using the normalised consecutive-trial metric defined in Equation~4 of the main text. The normalised histogram and cumulative distribution compare voxels from the task-activation network, the final motor-vigour network, and the control model fit without the low-variability penalty.}
     \label{fig:voxel_bold_variability}
 \end{figure}
 
@@ -179,7 +179,7 @@ The final motor-vigour network showed the strongest concentration of low-variabi
 
 \begin{table}[!htbp]
 \centering
-\caption{Voxel-level consecutive-trial BOLD variability summary.}
+\caption{Voxel-level normalised consecutive-trial BOLD variability summary.}
 \label{tab:voxel_trial_variability}
 \begin{threeparttable}
 \begin{tabular}{lrrr}
@@ -680,7 +680,6 @@ w.
 Here, $I_c$ denotes the set of valid consecutive-trial pairs after excluding run and block boundaries. This gives the BOLD variability loss:
 
 \begin{equation}
-\label{eq:bold_variability_loss}
 \begin{aligned}
 L_{\mathrm{bold}}(w)
 &= w^\top C_{\mathrm{bold}}w,
