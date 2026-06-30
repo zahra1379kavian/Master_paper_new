@@ -31,6 +31,11 @@
 \setcounter{topnumber}{3}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{5}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{8pt plus 2pt minus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
 
 \begin{document}
 \raggedbottom
@@ -255,13 +260,12 @@ The AAL3-derived atlas below was used to define ROIs in this study.
 
 The vigour network is also shown by broad anatomical sector below.
 
-\begin{figure}[!p]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{supplementary_figures/Sup_Figure8.pdf}
     \caption{Anatomical-sector view of the vigour network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and coloured by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
     \label{fig:supp_vigour_network_anatomy}
 \end{figure}
-\clearpage
 
 \begin{longtable}{@{} p{5.2cm} r r r r @{}}
     \caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. The table uses the analysis-space NIfTI p90 source mask, which contains 8,182 selected voxels after excluding cerebral white matter and brainstem voxels. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed ROI rows account for 100.00\% of selected voxels.\label{tab:roi_vigour_network}}\\
