@@ -163,6 +163,42 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 
 %###########################################################################################
 \FloatBarrier
+\section{Voxel-level BOLD variability across model conditions}
+\label{app:voxel_bold_variability}
+
+We compared voxel-wise consecutive-trial BOLD variability across the task-activation network, the final motor-vigour network, and a control optimisation model fit without the low-variability penalty. For each voxel, variability was computed using the consecutive-trials BOLD variability definition in Equation~\ref{eq:bold_variability_loss}, restricted to valid adjacent trial pairs after excluding run and block boundaries. Voxels were then grouped by network or model condition, and the resulting distributions were summarised with both normalised histograms and cumulative distribution functions (Figure~\ref{fig:voxel_bold_variability}). This analysis asks whether the final network was preferentially concentrated among voxels with stable local consecutive-trial BOLD dynamics.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure17.pdf}
+    \caption{Voxel-wise consecutive-trial BOLD variability across model conditions. Variability was computed using the consecutive-trials definition in Equation~\ref{eq:bold_variability_loss}. The normalised histogram and cumulative distribution compare voxels from the task-activation network, the final motor-vigour network, and the control model fit without the low-variability penalty.}
+    \label{fig:voxel_bold_variability}
+\end{figure}
+
+The final motor-vigour network showed the strongest concentration of low-variability voxels, whereas the task-activation network was shifted toward higher variability values. The model fit without the low-variability penalty showed a broadly similar overall distribution to the other maps, but it contained fewer very low-variability voxels than the final motor-vigour network. The accompanying summary statistics showed that the final motor-vigour network had the lowest median variability and the highest proportion of voxels with variability below \(0.01\) (Table~\ref{tab:voxel_trial_variability}). Pairwise statistical comparisons further indicated significantly lower variability in the final motor-vigour network than in both the task-activation network and the model fit without the variability penalty.
+
+\begin{table}[!htbp]
+\centering
+\caption{Voxel-level consecutive-trial BOLD variability summary.}
+\label{tab:voxel_trial_variability}
+\begin{threeparttable}
+\begin{tabular}{lrrr}
+\toprule
+Network/model condition & Median variability & IQR & Voxels \(< 0.01\) \\
+\midrule
+Task activation & 0.0332 & 0.0427 & 18.6\% \\
+Without variability penalty & 0.0276 & 0.0369 & 21.7\% \\
+Final motor-vigour network & 0.0267 & 0.0418 & 27.5\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Pairwise tests: without variability penalty \(<\) task activation, one-sided \(p=0.135\), two-sided \(p=0.270\); final motor-vigour network \(<\) task activation, one-sided \(p=1.14\times10^{-5}\), two-sided \(p=2.29\times10^{-5}\); final motor-vigour network \(<\) without variability penalty, one-sided \(p=3.81\times10^{-6}\), two-sided \(p=7.63\times10^{-6}\).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\FloatBarrier
 \section{Task-activation reference maps and activation-map comparisons}
 Spatial distribution of the standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
 
@@ -644,6 +680,7 @@ w.
 Here, $I_c$ denotes the set of valid consecutive-trial pairs after excluding run and block boundaries. This gives the BOLD variability loss:
 
 \begin{equation}
+\label{eq:bold_variability_loss}
 \begin{aligned}
 L_{\mathrm{bold}}(w)
 &= w^\top C_{\mathrm{bold}}w,
