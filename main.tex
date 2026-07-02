@@ -118,25 +118,25 @@ For a candidate weight vector \(w\), the beta projection was
 \begin{equation}
  y_{\beta}=w^{\top}X_{\beta},
 \end{equation}
-where \(y_{\beta}\) is one scalar neural value per trial. The same weight vector was applied to \(X_{\mathrm{BOLD}}\) to quantify over-trial instability in the BOLD signal. We refer to this \(y_{\beta}\) throughout the paper as the "projection". The EMPCA weights were then projected back to voxel space, and the resulting fold-specific voxel maps were averaged to obtain the final whole-brain voxel-weight map. Voxels in the upper tail of this final map were used to define the vigour network, as described below.
+where \(y_{\beta}\) is one scalar neural value per trial. The same weight vector was applied to \(X_{\mathrm{BOLD}}\) to quantify over-trial instability in the BOLD signal \(y\). We refer to this \(y_{\beta}\) and \(y\) throughout the paper as the "projection". The EMPCA weights were then projected back to voxel space, resulting in a voxel-weight map. Voxels in the upper tail of the map were used to define the vigour network, as described below.
 
-The objective combined four penalty terms with one RT-alignment term. The four penalty-term matrices were defined as follows. \(C_{\mathrm{task}}\) is the task-engagement penalty: it assigns larger penalties to weakly task-engaged components and smaller penalties to components with stronger task-related beta responses. \(C_{\mathrm{BOLD}}\) is the consecutive-trial BOLD instability penalty, formed from squared differences between adjacent projected BOLD feature trials. \(C_{\beta}\) is the corresponding consecutive-trial beta instability penalty, formed from squared differences between adjacent single-trial beta feature vectors. \(C_{\mathrm{smooth}}\) is the spatial smoothness penalty, obtained from the voxel-neighbour graph Laplacian. Consecutive-trial variability was used instead of total variance because it preserves trial order: it penalises abrupt local changes while allowing slower changes across task context, block, or run. Run and block boundaries were excluded from the BOLD and beta instability penalties because adjacent samples across those boundaries do not represent continuous local dynamics.
+The objective combined four penalty terms with one RT-alignment penalty term. The four penalty terms were defined as follows. \(L_{\mathrm{task}}\) is the task-engagement penalty: it assigns larger penalties to weakly task-engaged components and smaller penalties to components with stronger task-related beta responses. \(L_{\mathrm{BOLD}}\) is the consecutive-trial BOLD instability penalty, formed from squared differences between adjacent projected BOLD feature trials. \(L_{\beta}\) is the corresponding consecutive-trial beta instability penalty, formed from squared differences between adjacent single-trial beta feature vectors. \(L_{\mathrm{smooth}}\) is the spatial smoothness penalty, obtained from the voxel-neighbour graph Laplacian. Consecutive-trial variability was used instead of total variance because it preserves trial order: it penalises abrupt local changes while allowing slower changes across task context, block, or run. Run and block boundaries were excluded from the BOLD and beta instability penalties because adjacent samples across those boundaries do not represent continuous local dynamics.
 
-These four regularising matrices were combined into a single penalty matrix,
+These four penalties were combined into a single total loss,
 \begin{equation}
-C_{\mathrm{pen}}=
-\alpha_{\mathrm{task}}C_{\mathrm{task}}+
-\alpha_{\mathrm{BOLD}}C_{\mathrm{BOLD}}+
-\alpha_{\beta}C_{\beta}+
-\alpha_{\mathrm{smooth}}C_{\mathrm{smooth}} .
+L_{\mathrm{total}}=
+\alpha_{\mathrm{task}}L_{\mathrm{task}}+
+\alpha_{\mathrm{BOLD}}L_{\mathrm{BOLD}}+
+\alpha_{\beta}L_{\beta}+
+\alpha_{\mathrm{smooth}}L_{\mathrm{smooth}} .
 \end{equation}
-Here, \(\alpha_{\mathrm{task}}\), \(\alpha_{\mathrm{BOLD}}\), \(\alpha_{\beta}\), and \(\alpha_{\mathrm{smooth}}\) control the relative contributions of task engagement, BOLD local stability, beta local stability, and spatial smoothness, respectively. Behavioural relevance was represented by \(C_{\mathrm{RT}}\), the matrix that captures alignment between the projected beta signal and RT. This behavioural term was normalised by \(C_{\mathrm{var}}\), the beta-signal variance matrix, so that the objective favoured RT alignment rather than simply selecting high-variance components. The final optimisation problem was
+Here, \(\alpha_{\mathrm{task}}\), \(\alpha_{\mathrm{BOLD}}\), \(\alpha_{\beta}\), and \(\alpha_{\mathrm{smooth}}\) control the relative contributions of task engagement, BOLD local stability, beta local stability, and spatial smoothness, respectively. Behavioural relevance penalty was represented by \(L_{\mathrm{RT}}\), which captures alignment between the projected beta signal and RT. This behavioural penalty term was normalised by \(L_{\mathrm{var}}\), the beta-signal variance matrix, so that the objective favoured RT alignment rather than simply selecting high-variance components. The final optimisation problem was
 \begin{equation}
 \min_{\|w\|_2=1}
-\frac{\gamma w^{\top}C_{\mathrm{pen}}w-w^{\top}C_{\mathrm{RT}}w}
-{w^{\top}C_{\mathrm{var}}w} .
+\frac{\gamma L_{\mathrm{total}} - L_{\mathrm{RT}}}
+{L_{\mathrm{var}}} .
 \end{equation}
-The negative sign before \(C_{\mathrm{RT}}\) reflects that RT alignment was maximised, whereas the other terms were penalised. The scalar \(\gamma\) controlled the overall balance between regularisation and behavioural relevance. These were graded criteria, not hard exclusion rules: a feature was not discarded because it was weak on one term; the final solution was the projection that best balanced all criteria. Compact matrix definitions are given in Appendix~A, and the full derivation is provided in the Supplementary Material.
+The negative sign before \(L_{\mathrm{RT}}\) reflects that RT alignment was maximised, whereas the other terms were penalised. The scalar \(\gamma\) controlled the overall balance between regularisation and behavioural relevance. These were graded criteria, not hard exclusion rules: a feature was not discarded because it was weak on one term; the final solution was the projection that best balanced all criteria. All defined penalty terms are in quadratic form. Their full definitions and derivation are provided in Appendix~A.
 
 The constrained optimisation was solved using Sequential Least Squares Programming (SLSQP) \citep{nocedal2006numerical,kraft1988software}. Hyperparameters were selected with a coarse-to-fine cross-validation procedure using contiguous folds. We first tested a wide range of candidate settings and then tested smaller proportional changes around the best setting from this first search. Model selection used the held-out absolute correlation between \(y_{\beta}\) and RT. The final setting was chosen using held-out RT correlation, stability across folds, and small train-test differences. For each fold, the model was fit on the training data and projected back to voxel space. The fold-specific voxel-weight maps were then averaged to obtain the final voxel-weight map and trial-wise projection. Medication state and GVS condition were not used to define the vigour network; they were analysed only after the vigour network had been estimated.
 
@@ -278,51 +278,401 @@ The datasets generated and/or analysed during the current study are available fr
 
 \clearpage
 
-\section*{Appendix A: Optimisation objective and matrix definitions}
-All optimisation terms were computed in the \(K=14\) dimensional EMPCA space used in the main analysis after centring and scaling the inputs used by the optimisation. Let \(X_{\beta}=[x_{\beta,1},\ldots,x_{\beta,T}]\in\mathbb{R}^{K\times T}\) denote the single-trial beta matrix, \(X_{\mathrm{BOLD}}=[x_{\mathrm{BOLD},1},\ldots,x_{\mathrm{BOLD},S}]\in\mathbb{R}^{K\times S}\) the corresponding trial-window BOLD feature matrix, and \(r\in\mathbb{R}^{1\times T}\) the trial-wise RT vector. For a candidate projection \(w\), \(y_{\beta}=w^{\top}X_{\beta}\).
+% \section*{Appendix A: Optimisation objective and matrix definitions}
+% All optimisation terms were computed in the \(K=14\) dimensional EMPCA space used in the main analysis after centring and scaling the inputs used by the optimisation. Let \(X_{\beta}=[x_{\beta,1},\ldots,x_{\beta,T}]\in\mathbb{R}^{K\times T}\) denote the single-trial beta matrix, \(X_{\mathrm{BOLD}}=[x_{\mathrm{BOLD},1},\ldots,x_{\mathrm{BOLD},S}]\in\mathbb{R}^{K\times S}\) the corresponding trial-window BOLD feature matrix, and \(r\in\mathbb{R}^{1\times T}\) the trial-wise RT vector. For a candidate projection \(w\), \(y_{\beta}=w^{\top}X_{\beta}\).
 
-The task-engagement penalty was defined from the component-wise task-engagement score \(s_k=T^{-1}\sum_{t=1}^{T}|X_{\beta,kt}|\):
-\begin{equation}
-C_{\mathrm{task}}=\operatorname{diag}\!\left((s+\epsilon)^{-1}\right),
-\end{equation}
-where \(\epsilon>0\) avoided division by zero. This gives larger penalties to weakly task-engaged components. 
+% The task-engagement penalty was defined from the component-wise task-engagement score \(s_k=T^{-1}\sum_{t=1}^{T}|X_{\beta,kt}|\):
+% \begin{equation}
+% C_{\mathrm{task}}=\operatorname{diag}\!\left((s+\epsilon)^{-1}\right),
+% \end{equation}
+% where \(\epsilon>0\) avoided division by zero. This gives larger penalties to weakly task-engaged components. 
 
-The consecutive-sample instability matrices were
-\begin{equation}
-C_{\mathrm{BOLD}}=\sum_{i\in\mathcal{I}_{\mathrm{BOLD}}}
-(x_{\mathrm{BOLD},i}-x_{\mathrm{BOLD},i+1})(x_{\mathrm{BOLD},i}-x_{\mathrm{BOLD},i+1})^{\top},
-\end{equation}
-\begin{equation}
-C_{\beta}=\sum_{i\in\mathcal{I}_{\beta}}
-(x_{\beta,i}-x_{\beta,i+1})(x_{\beta,i}-x_{\beta,i+1})^{\top}.
-\end{equation}
-The index sets contained valid adjacent samples after removing run and block boundaries. 
+% The consecutive-sample instability matrices were
+% \begin{equation}
+% C_{\mathrm{BOLD}}=\sum_{i\in\mathcal{I}_{\mathrm{BOLD}}}
+% (x_{\mathrm{BOLD},i}-x_{\mathrm{BOLD},i+1})(x_{\mathrm{BOLD},i}-x_{\mathrm{BOLD},i+1})^{\top},
+% \end{equation}
+% \begin{equation}
+% C_{\beta}=\sum_{i\in\mathcal{I}_{\beta}}
+% (x_{\beta,i}-x_{\beta,i+1})(x_{\beta,i}-x_{\beta,i+1})^{\top}.
+% \end{equation}
+% The index sets contained valid adjacent samples after removing run and block boundaries. 
 
-Spatial coherence was represented by a graph-Laplacian penalty. If \(W_{\mathrm{pca}}\in\mathbb{R}^{N_v\times K}\) is the EMPCA loading matrix and \(L_{\mathrm{graph}}\) is the voxel-neighbour graph Laplacian, then
+% Spatial coherence was represented by a graph-Laplacian penalty. If \(W_{\mathrm{pca}}\in\mathbb{R}^{N_v\times K}\) is the EMPCA loading matrix and \(L_{\mathrm{graph}}\) is the voxel-neighbour graph Laplacian, then
+% \begin{equation}
+% C_{\mathrm{smooth}}=W_{\mathrm{pca}}^{\top}L_{\mathrm{graph}}W_{\mathrm{pca}} .
+% \end{equation}
+
+% The behavioural-alignment and beta-variance matrices were
+% \begin{equation}
+% C_{\mathrm{RT}}=X_{\beta}r^{\top}rX_{\beta}^{\top},\qquad
+% C_{\mathrm{var}}=X_{\beta}X_{\beta}^{\top}.
+% \end{equation}
+% Thus, \(w^{\top}C_{\mathrm{RT}}w/w^{\top}C_{\mathrm{var}}w\) increases when the projected beta signal is more strongly aligned with RT. 
+
+% The total penalty and final objective were
+% \begin{equation}
+% C_{\mathrm{pen}}=
+% \alpha_{\mathrm{task}}C_{\mathrm{task}}+
+% \alpha_{\mathrm{BOLD}}C_{\mathrm{BOLD}}+
+% \alpha_{\beta}C_{\beta}+\alpha_{\mathrm{smooth}}C_{\mathrm{smooth}},
+% \end{equation}
+% \begin{equation}
+% \min_{\|w\|_2=1}
+% \frac{\gamma w^{\top}C_{\mathrm{pen}}w-w^{\top}C_{\mathrm{RT}}w}
+% {w^{\top}C_{\mathrm{var}}w} .
+% \end{equation}
+% The fitted EMPCA-space weights were sign-oriented consistently across folds and then back-projected to voxel space as \(w^{\mathrm{org}}=W_{\mathrm{pca}}w\).
+
+\section*{Appendix A: Optimisation derivation and model-selection details}\label{app:optimization_full}
+
+A group-level optimisation procedure was used to identify a vigour network
+(main Figure~1B, C). The aim of the optimisation framework was to identify a voxel-weight vector that produced a projected neural signal related to trial-wise motor vigour while satisfying constraints on task engagement, spatial coherence, and low consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}^{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
+\(\mathbf{X}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_s}\), where columns are samples, the projected signal is
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}^{\mathrm{org}}
+&=
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}^{\mathrm{org}},
+\qquad
+\mathbf{w}^{\mathrm{org}}
+&\in \mathbb{R}^{N_v \times 1},
+\mathbf{y}^{\mathrm{org}}
+\in \mathbb{R}^{1 \times N_s}.
+\end{aligned}
+\label{eq:generic_projection}
+\end{equation*}
+
+Here, \(N_v\) is the number of voxels and \(N_s\) denotes the number of time samples in the neural data matrix. In this study, the same projection can be applied to two forms of neural data: single-trial beta estimates and BOLD time courses:
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}_{\beta}^{\mathrm{org}}
+&=
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}_{\beta}^{\mathrm{org}},
+\qquad
+\mathbf{X}_{\beta}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_{\mathrm{tr}}},
+\mathbf{y}_{\beta}^{\mathrm{org}}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tr}}}.
+\end{aligned}
+\label{eq:y_beta_org}
+\end{equation*}
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
+&=
+\left(\mathbf{w}^{\mathrm{org}}\right)^\top
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
+\qquad
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}} \in
+\mathbb{R}^{N_v \times N_{\mathrm{tp}}}, 
+\mathbf{y}_{\mathrm{BOLD}}^{\mathrm{org}}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
+\end{aligned}
+\label{eq:y_bold_org}
+\end{equation*}
+
+Here, $N_{\mathrm{tr}}$ is the number of trials, and \(N_{\mathrm{tp}}\) is the number of time
+samples. \(\mathbf{X}_{\beta}^{\mathrm{org}}\) and
+\(\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}}\) were not separate models; they were two
+representations of the neural data used by the same projection framework.
+
+Although the framework is defined in voxel space, direct optimisation over all voxels was impractical because of the high dimensionality of the data and memory limitations. In addition, the task was not a simple motor task and included several task-related and non-motor processes. Therefore, reducing components that were unlikely to reflect the motor-vigour-related signal was important before optimisation. Because missing values remained after beta-estimate preprocessing, the neural data were reduced using expectation-maximisation principal component analysis (EMPCA) \citep{roweis1997algorithms}. An \(80\%\) cumulative explained-variance threshold initially retained $14$ components.
+
+EMPCA provided voxel-to-PC weights,
+\(\mathbf{W}_{\mathrm{pca}} \in \mathbb{R}^{N_v \times N_{\mathrm{pc}}}\). Both neural
+data matrices were projected into this common PCA space:
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{X}_{\beta}
+&=
+\mathbf{W}_{\mathrm{pca}}^\top
+\mathbf{X}_{\beta}^{\mathrm{org}},
+&
+\mathbf{X}_{\beta}
+&\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tr}}},
+\\[2pt]
+\mathbf{X}_{\mathrm{BOLD}}
+&=
+\mathbf{W}_{\mathrm{pca}}^\top
+\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}},
+&
+\mathbf{X}_{\mathrm{BOLD}}
+&\in \mathbb{R}^{N_{\mathrm{pc}} \times N_{\mathrm{tp}}}.
+\end{aligned}
+\label{eq:pca_inputs}
+\end{equation*}
+
+The optimisation was then performed in PCA space using
+\(\mathbf{w} \in \mathbb{R}^{N_{\mathrm{pc}} \times 1}\). In this space, the projected
+beta and BOLD signals were
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y}_{\beta}
+&=
+\mathbf{w}^{\top}
+\mathbf{X}_{\beta},
+&
+\mathbf{y}_{\beta}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tr}}},
+\\[2pt]
+\mathbf{y}_{\mathrm{BOLD}}
+&=
+\mathbf{w}^{\top}
+\mathbf{X}_{\mathrm{BOLD}},
+&
+\mathbf{y}_{\mathrm{BOLD}}
+&\in \mathbb{R}^{1 \times N_{\mathrm{tp}}}.
+\end{aligned}
+\label{eq:y_beta_bold}
+\end{equation*}
+
+The total loss was defined using these two projected signals: the beta projection was used
+for the trial-wise beta-based terms, including behavioural relevance to motor vigour, and
+the BOLD projection was used for the consecutive-trial variability term. After
+optimisation, the PCA-space weights were projected back to voxel space as $\mathbf{w}^{\mathrm{org}} = \mathbf{W}_{\mathrm{pca}} \mathbf{w}$. The resulting voxel-space weight vector was used to define the vigour network.
+
+The optimisation model was based on four assumptions about the neural representation of motor vigour. First, the vigour network should consist of voxels engaged during task performance. Second, the projected signal should encode behavioural information. Third, neighbouring voxels should show similar contributions, reflecting spatial coherence. Fourth, the selected signal should show low consecutive-trial variability. These four conditions were incorporated into the model one by one, as described below.
+
+\textbf{Condition 1: The projected signal should come from task-engaged voxels.}
+
+The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a highly task-engaged region to contribute strongly to the projected signal:
+
+\begin{equation*}
+\begin{aligned}
+\min_{w} \sum_j \frac{w_j^2}{\left|X_{\beta,j}\right|}
+&=
+\min_{w} w^\top
+\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right)w.
+\end{aligned}
+\end{equation*}
+This gives the task-engagement loss term:
+\begin{equation*}
+\begin{aligned}
+L_{\mathrm{task}}(w)
+&= w^\top C_{\mathrm{task}}w,
+&
+C_{\mathrm{task}}
+&=
+\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right).
+\end{aligned}
+\end{equation*}
+
+Thus, $C_{\mathrm{task}}$ favours voxels with stronger task-related beta responses and discourages the model from selecting voxels with weak task engagement.
+
+\textbf{Condition 2: The projected signal should encode behavioural information.}
+
+The second condition was that the projected neural signal should be behaviourally relevant. In this study, the target behavioural variable was reaction time. Therefore, the model should find $w$ such that $y$ is strongly associated with the behavioural variable $X_{\mathrm{behav}}$:
+
+\begin{align*}
+\max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, y_{\beta}\right)^2
+&=
+\max_w \operatorname{Corr}\!\left(X_{\mathrm{behav}}, w^\top X_{\beta}\right)^2
+\\[4pt]
+&=
+\max_w
+\frac{
+\left[(w^\top X_{\beta})X_{\mathrm{behav}}^\top\right]^2
+}{
+w^\top (X_{\beta}X_{\beta}^\top)w
+}
+\\[4pt]
+&=
+\max_w
+\frac{
+w^\top\left(X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top\right)w
+}{
+w^\top\left(X_{\beta}X_{\beta}^\top\right)w
+}
+\\[4pt]
+&=
+\max_w
+\frac{w^\top C_{RT} w}{w^\top C_{var} w},
+\end{align*}
+where
+\begin{equation*}
+C_{RT} = X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top,
+\qquad
+C_{var} = X_{\beta}X_{\beta}^\top.
+\end{equation*}
+
+Here, $C_{RT}$ captures the component of the projected beta signal that is aligned with behaviour, while $C_{var}$ normalises the association by the variance of the projected beta signal. Since the final optimisation problem is written as a minimisation problem, this behavioural-relevance term is later included with a negative sign.
+
+\textbf{Condition 3: The projected signal should come from a spatially coherent network.}
+
+The third condition was that the selected pattern should form a spatially coherent network rather than a scattered set of isolated voxels. This meant that neighbouring voxels were encouraged to have similar weights. If $E$ denotes the set of neighbouring voxel pairs, this penalty can be written as
+
 \begin{equation}
-C_{\mathrm{smooth}}=W_{\mathrm{pca}}^{\top}L_{\mathrm{graph}}W_{\mathrm{pca}} .
+\min_w \sum_{(p,q)\in E} (w_p-w_q)^2.
+\end{equation}
+A spatial adjacency matrix was constructed from voxel anatomy, and its graph Laplacian was used to define the spatial smoothness penalty. This gives
+
+\begin{equation}
+L_{\mathrm{smooth}}(w) = w^\top C_{\mathrm{smooth}}w,
+\qquad
+C_{\mathrm{smooth}} = L_{\mathrm{graph}}.
 \end{equation}
 
-The behavioural-alignment and beta-variance matrices were
-\begin{equation}
-C_{\mathrm{RT}}=X_{\beta}r^{\top}rX_{\beta}^{\top},\qquad
-C_{\mathrm{var}}=X_{\beta}X_{\beta}^{\top}.
-\end{equation}
-Thus, \(w^{\top}C_{\mathrm{RT}}w/w^{\top}C_{\mathrm{var}}w\) increases when the projected beta signal is more strongly aligned with RT. 
+Thus, $C_{\mathrm{smooth}}$ enforces spatial smoothness across neighbouring voxels. When the optimisation is performed in PCA space, this spatial smoothness penalty is expressed in the same reduced space before optimisation.
 
-The total penalty and final objective were
+\textbf{Condition 4: The projected signal should show low consecutive-trial variability.}
+
+The fourth condition was that the selected signal should exhibit low consecutive-trial variability. Variability was therefore defined as the difference between consecutive trials, rather than as variance across the full time series. This distinction is important because variance captures the overall dispersion of a signal around its mean but does not account for trial order. As a result, two projected signals may have similar variance even if one evolves smoothly across trials while the other fluctuates sharply from one trial to the next. Consecutive-trial differences, in contrast, preserve the local temporal structure of the signal and quantify local changes between neighbouring trials.
+
+This definition is motivated by the behavioural structure of motor vigour. Vigour on trial $i$ is unlikely to be statistically independent from vigour on trial $i+1$, because consecutive trials are shaped by similar physiological, attentional, and task-related states. Trials that occur close in time are therefore expected to be more similar than trials separated by longer intervals. Accordingly, a stable vigour-related neural signal would be expected to show fewer large unexplained jumps between consecutive trials. This reasoning is consistent with previous work on reaction-time variability showing that standard deviation alone does not capture temporal dependency, whereas measures such as lag-one autocorrelation and successive-trial differences reveal the local structure of performance fluctuations \citep{perquin2023temporal}.
+
+A similar principle has been applied in fMRI research using mean squared successive difference (MSSD) and related measures, which quantify moment-to-moment changes in BOLD activity rather than dispersion around a global mean \citep{garrett2011importance, wehrheim2024reliability, nomi2018resting}. This approach is particularly appropriate for task fMRI, where the expected signal may change gradually over time, across task conditions, or between blocks. A global variance measure could incorrectly treat such slow task-related changes as variability, whereas a consecutive-difference penalty specifically targets local instability between consecutive trials. Thus, the low-variability term in the present model penalised large consecutive-trial changes in the projected signal while allowing slower task-related changes to remain. Boundaries between runs and blocks were excluded from this penalty because trials across these boundaries do not reflect continuous local temporal dynamics and may contain artificial discontinuities introduced by changes in run structure or task context.
+
+The objective therefore minimised variability between consecutive trials:
+
+\begin{align}
+\min_w \sum_{i\in I_c}
+\left\|y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right\|_2^2
+&=
+\min_w \sum_{i\in I_c}
+\left(y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right)
+\left(y_{\mathrm{bold},i}-y_{\mathrm{bold},i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+\left(w^\top X_{\mathrm{bold},i}-w^\top X_{\mathrm{bold},i+1}\right)
+\left(w^\top X_{\mathrm{bold},i}-w^\top X_{\mathrm{bold},i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+w^\top
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top
+w.
+\end{align}
+
+Here, $I_c$ denotes the set of valid consecutive-trial pairs after excluding run and block boundaries. This gives the BOLD variability loss:
+
 \begin{equation}
-C_{\mathrm{pen}}=
-\alpha_{\mathrm{task}}C_{\mathrm{task}}+
-\alpha_{\mathrm{BOLD}}C_{\mathrm{BOLD}}+
-\alpha_{\beta}C_{\beta}+\alpha_{\mathrm{smooth}}C_{\mathrm{smooth}},
+\begin{aligned}
+L_{\mathrm{bold}}(w)
+&= w^\top C_{\mathrm{bold}}w,
+\\
+C_{\mathrm{bold}}
+&= \sum_{i\in I_c}
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)
+\left(X_{\mathrm{bold},i}-X_{\mathrm{bold},i+1}\right)^\top.
+\end{aligned}
 \end{equation}
+
+Therefore, $C_{\mathrm{bold}}$ penalises large changes in BOLD activity between consecutive trials.
+
+The same low-variability condition was also applied to the beta estimates:
+
+\begin{align}
+\min_w \sum_{i\in I_c}
+\left\|y_{\beta,i}-y_{\beta,i+1}\right\|_2^2
+&=
+\min_w \sum_{i\in I_c}
+\left(y_{\beta,i}-y_{\beta,i+1}\right)
+\left(y_{\beta,i}-y_{\beta,i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+\left(w^\top X_{\beta,i}-w^\top X_{\beta,i+1}\right)
+\left(w^\top X_{\beta,i}-w^\top X_{\beta,i+1}\right)^\top
+\nonumber\\[4pt]
+&=
+\min_w \sum_{i\in I_c}
+w^\top
+\left(X_{\beta,i}-X_{\beta,i+1}\right)
+\left(X_{\beta,i}-X_{\beta,i+1}\right)^\top
+w.
+\end{align}
+This gives the beta variability loss:
 \begin{equation}
-\min_{\|w\|_2=1}
-\frac{\gamma w^{\top}C_{\mathrm{pen}}w-w^{\top}C_{\mathrm{RT}}w}
-{w^{\top}C_{\mathrm{var}}w} .
+\begin{aligned}
+L_{\beta}(w)
+&= w^\top C_{\beta}w,
+\\
+C_{\beta}
+&= \sum_{i\in I_c}
+\left(X_{\beta,i}-X_{\beta,i+1}\right)
+\left(X_{\beta,i}-X_{\beta,i+1}\right)^\top.
+\end{aligned}
 \end{equation}
-The fitted EMPCA-space weights were sign-oriented consistently across folds and then back-projected to voxel space as \(w^{\mathrm{org}}=W_{\mathrm{pca}}w\).
+
+Therefore, $C_{\beta}$ penalises large changes in beta values between consecutive trials.
+
+Both BOLD and beta variability terms were included because they capture complementary sources of variability. The beta estimates reflect activation related to movement execution, so $L_{\beta}(w)$ constrains variability in the movement-related neural response. However, the task also includes other processes. These sources of variability can be encoded in the BOLD signal even when they are not fully captured by movement-related beta estimates. Therefore, $L_{\mathrm{bold}}(w)$ was also included to account for broader task-related variability encoded in the brain.
+
+\textbf{General loss function:} After defining the four conditions, the penalty terms were combined into a single total loss. The total penalty was defined as
+
+\begin{align}
+L_{\mathrm{total}}(w)
+&= \alpha_{\mathrm{task}} L_{\mathrm{task}}(w) + \alpha_{\mathrm{BOLD}} L_{\mathrm{bold}}(w) + \alpha_{\beta} L_{\beta}(w) + \alpha_{\mathrm{smooth}} L_{\mathrm{smooth}}(w)
+\nonumber = w^\top C_{\mathrm{total}}w,
+\end{align}
+where
+\begin{equation}
+C_{\mathrm{total}}
+= \alpha_{\mathrm{task}} C_{\mathrm{task}} + \alpha_{\mathrm{BOLD}} C_{\mathrm{bold}} + \alpha_{\beta} C_{\beta} + \alpha_{\mathrm{smooth}} C_{\mathrm{smooth}}.
+\end{equation}
+
+The parameters $\alpha_{task}$, $\alpha_{BOLD}$, $\alpha_{\beta}$, and $\alpha_{smooth}$ control the relative contributions of task engagement, BOLD variability, beta variability, and spatial smoothness, respectively.
+
+The final objective combined this total penalty with behavioural relevance. The model minimised the regularisation penalties while maximising the association between the projected beta signal and reaction time:
+
+\begin{equation}
+\min_w
+\frac{\gamma L_{total}(w) - L_{RT}(w)}{L_{var}(w)} = \frac{\gamma w^\top C_{\mathrm{total}}w - w^\top C_b w}{w^\top C_d w}
+\quad
+\mathrm{s.t.}\ \|w\|_2=1.
+\end{equation}
+
+Here, $\gamma$ controls the balance between satisfying the regularisation criteria and maximising behavioural relevance. The denominator $w^\top C_d w$ normalises the objective by the variance of the projected beta signal.
+
+The resulting projection was defined as
+\begin{equation}
+y = w^\top X_{\beta}.
+\end{equation}
+
+% The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimisation was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the vigour network.
+The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularisation terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD consecutive-trial variability, beta consecutive-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimised neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimisation was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low variability. Voxels with the largest weights were then defined as the vigour network.
+
+Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. We chose this threshold because the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (Supplementary Figure~S6). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The p90 threshold preserved the main anatomical groups while avoiding the broader p80/p85 maps and the regional loss seen at p95/p97.5. It is an appropriate cutoff for defining the vigour network.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \bibliographystyle{Frontiers-Harvard}
 \bibliography{references}
