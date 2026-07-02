@@ -157,7 +157,8 @@ Reaction times were modestly faster in the ON-medication condition than in the O
     \label{fig:RT_changes}
 \end{figure}
 
-Reward-related RT summaries are shown by participant in Figure~\ref{fig:reward_rt_by_subject}.
+Reward-related RT summaries are shown by participant in Figure~\ref{fig:reward_rt_by_subject}. To examine whether reward value consistently influenced response initiation, we compared RT between low- and high-reward trials within each participant (Figure S3). The reward-related pattern was heterogeneous across participants. Some participants showed shorter RTs on high-reward trials, consistent with greater behavioural vigour, whereas others showed little difference or a small change in the opposite direction. Only a few participant-level comparisons reached significance. Thus, reward value modulated RT in some individuals, but it did not produce a uniform reward-related RT effect across the full sample.
+
 
 \begin{figure}[H]
     \centering
@@ -215,7 +216,7 @@ Figure.~\ref{fig:standard_glm} shows the spatial distribution of the standard GL
     \label{fig:standard_glm}
 \end{figure}
 
-Spatial similarity between activation-derived maps and the vigour network is summarised below.
+Spatial similarity between activation-derived maps and the vigour network is summarised below. Figure~\ref{fig:model_spatial_similarity} compares the anatomical composition of the activation-derived maps with the vigour network. The standard GLM map and the two GLMsingle activation maps showed broadly similar anatomical profiles, with major contributions from cerebellar, occipital, parietal, and frontal regions. Their pairwise Dice coefficients were moderate, indicating that these activation-derived maps captured overlapping task-related spatial patterns. In contrast, the vigour network showed low Dice overlap with each activation-derived map (standard GLM: Dice = 0.09; GLMsingle A: Dice = 0.11; GLMsingle D: Dice = 0.10). The vigour network also showed a different regional profile, with stronger relative representation in temporal and orbitofrontal regions and less dominance of the cerebellar and occipital regions seen in the activation-derived maps. This supports the interpretation that the vigour network was not simply a subset of general task activation, but reflected a more selective pattern related to the optimisation criteria used to identify the vigour projection.
 
 \begin{figure}[H]
     \centering
@@ -253,7 +254,9 @@ We tested whether the definition of the vigour network depended strongly on the 
 The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(8{,}182\) suprathreshold voxels. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
 
 \subsection{ROI-wise composition of the vigour network}
-The AAL3-derived atlas shown in Figure~\ref{fig:roi_atlas} was used to define ROIs in this study.
+The AAL3-derived atlas shown in Figure~\ref{fig:roi_atlas} was used to define ROIs in this study. After thresholding the final voxel-weight map at the 90th percentile, suprathreshold voxels were assigned to AAL3-derived bilateral anatomical groups. These ROI labels were used only for anatomical description and ROI-level signal extraction; they did not affect the optimisation weights or the definition of the voxel-weight map.
+
+The olfactory cortex label should be interpreted cautiously. In this atlas-based summary, it refers to the AAL3 anatomical region around the ventral/anterior frontal base and should not be taken as evidence for odour-related processing.
 
 \begin{figure}[H]
     \centering
@@ -262,7 +265,12 @@ The AAL3-derived atlas shown in Figure~\ref{fig:roi_atlas} was used to define RO
     \label{fig:roi_atlas}
 \end{figure}
 
-The vigour network is shown by the broad anatomical sector below.
+The vigour network is shown by the broad anatomical sector below. The ROI-wise profile showed that the vigour network was distributed across multiple anatomical systems rather than concentrated in a single motor region. In terms of total map composition, temporal cortex made the largest contribution (25.27\%), followed by parietal cortex (13.46\%), frontal cortex (11.38\%), cerebellum (7.90\%), and orbitofrontal cortex (7.22\%). These values describe how much each ROI contributed to the selected map, so larger anatomical regions can contribute a greater number of selected voxels.
+
+To account for ROI size, we also examined the percentage of each ROI that was selected. This ROI-normalised view highlighted stronger enrichment in temporal-limbic and subcortical regions, including the amygdala (26.52\% of the ROI), parahippocampal gyrus (24.82\%), caudate (14.27\%), orbitofrontal cortex (12.60\%), hippocampus (10.66\%), paracentral lobule (10.46\%), and putamen (10.32\%). This pattern indicates that the vigour network was not simply driven by the largest cortical regions, but also included smaller regions with relatively high selected-voxel coverage.
+
+Motor-related regions were also clearly represented, including the supplementary motor area, precentral gyrus, postcentral gyrus, paracentral lobule, putamen, parietal cortex, and cerebellum. However, these regions did not dominate the ROI-normalised profile. Overall, the ROI-wise composition supports the view that the vigour network contains a motor-related component, but is broader than primary movement execution alone, extending into temporal-limbic, orbitofrontal, associative cortical, cerebellar, and subcortical regions.
+
 
 \begin{figure}[H]
     \centering
@@ -318,7 +326,10 @@ The vigour network is shown by the broad anatomical sector below.
 ROI summaries confirmed that the map included motor and non-motor components (Table~\ref{tab:roi_vigour_network} and Fig.~\ref{fig:supp_vigour_network_anatomy}). Temporal cortex contributed \(25.27\%\) of selected voxels, parietal cortex \(13.46\%\), frontal cortex \(11.38\%\), cerebellum \(7.90\%\), and orbitofrontal cortex \(7.22\%\). After normalising by ROI size, stronger enrichment appeared in temporal-limbic and striatal regions, including the parahippocampal gyrus, amygdala, caudate, orbitofrontal cortex, and temporal cortex. Motor-related regions were also represented, including the supplementary motor area, paracentral lobule, precentral gyrus, parietal cortex, and cerebellum, but they did not dominate the ROI-normalised profile. Thus, the map contained a motor-related component, but its strongest ROI-level enrichment was distributed across temporal-limbic and associative regions rather than being confined to primary motor cortex.
 
 \subsection{Comparison with the task-activation map}
-The tables below provide a compact summary of the limited overlap between the vigour network and the task-activation map, including both global overlap metrics and region-wise voxel counts.
+The tables~\ref{tab:two_networks} and \ref{tab:ablation_full_vs_task_only_roi} below provide a compact summary of the limited overlap between the vigour network and the task-activation map, including both global overlap metrics and region-wise voxel counts. The task-activation map was used as a reference for conventional task-evoked activity. This comparison asked whether the vigour network was simply a smaller subset of voxels that were active during the hand-squeeze task. Because task engagement was included in the optimisation framework, some overlap with the task-activation map was expected. However, task engagement was only one part of the model; the final vigour network was also shaped by behavioural relevance, low consecutive-trial variability, and spatial coherence.
+
+The voxelwise comparison showed that the two maps had limited same-voxel overlap. The task-activation map contained 21,610 voxels, whereas the vigour network contained 8,182 voxels. Only 835 voxels were shared, corresponding to 3.86\% of the task-activation map and 10.21\% of the vigour network. This produced a Dice coefficient of 0.056 and a Jaccard index of 0.029. The shared voxels were mainly located in regions expected to support task performance, including the putamen, cerebellar lobules, middle occipital cortex, paracentral lobule, superior parietal cortex, and postcentral gyrus. Thus, the vigour network retained a task-related motor and sensorimotor component, but most of its selected voxels did not coincide with the broader task-activation map.
+
 
 \begin{table}[!htbp]
 \centering
@@ -347,12 +358,15 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item ROI metrics: voxelwise overlap $=835$ voxels; Dice coefficient $=0.056$; Jaccard index $=0.029$.
-\item The shared voxels were concentrated most in putamen, cerebellar lobules 6/8, middle occipital cortex, paracentral lobule, superior parietal cortex, and postcentral gyrus.
+\item The shared voxels were concentrated most in the putamen, cerebellar lobules 6/8, middle occipital cortex, paracentral lobule, superior parietal cortex, and postcentral gyrus.
 \item In the GLM/GLMsingle comparison, the vigour network showed low overlap with each task-activation map: Dice $=0.09$ with standard GLM, $0.11$ with GLMsingle A, and $0.10$ with GLMsingle D.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
+The ROI-level comparison further supported this separation. The task-activation map showed broad coverage of task-responsive regions, including cerebellar, occipital, parietal, postcentral, insular, and putaminal areas. In contrast, the vigour network showed stronger relative representation in temporal-limbic and associative regions, including parahippocampal, amygdala, orbitofrontal, temporal, caudate, and hippocampal regions. Some ROIs contained voxels from both maps but showed little or no same-voxel overlap, indicating that the two maps could occupy the same broad anatomical region while selecting different local voxel patterns.
+
+This distinction was also consistent with the activation-map comparison in Fig.~\ref{fig:model_spatial_similarity}. The standard GLM map and the two GLMsingle activation maps showed moderate overlap with one another, whereas each showed low Dice overlap with the vigour network. Together, these results indicate that the vigour network was not simply a selection of the task-activation map. Rather, it reflected a more selective voxel pattern related to the optimisation criteria used to identify the vigour projection.
 
 \begin{table}
     \centering
@@ -397,6 +411,7 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
 
 
 %###########################################################################################
+\clearpage
 \FloatBarrier
 \section{Detailed experimental and preprocessing methods}\label{app:methods_full}
 This section contains procedural details moved from the main manuscript to keep the main story readable while preserving reproducibility.
@@ -776,9 +791,9 @@ After identifying the vigour network, we then assessed whether medication state 
 %###########################################################################################
 \FloatBarrier
 \section{Medication-state control analyses}
-\subsection{Control analysis: no evidence for preferential ON-state stabilisation}
+\subsection{Control analysis: medication-related connectivity-pattern changes exceeded run-to-run variation}
 
-To test whether medication-related changes in the vigour-network connectivity pattern were larger than run-to-run variation, we compared within-state run~1--run~2 distances with OFF--ON medication distances for each participant. OFF--ON distances were larger than within-state run-to-run distances for both Pearson-correlation and mutual-information patterns (Pearson: \(d = 1.15\), \(p = 0.0006\); mutual information: \(d = 0.69\), \(p = 0.0015\); Figure~S9). This suggests that the network connectivity pattern changed with dopaminergic medication more than would be expected from short-term measurement fluctuation alone.
+To test whether medication-related changes in the vigour-network connectivity pattern were larger than run-to-run variation, we compared within-state run~1-run~2 distances with OFF-ON medication distances for each participant. OFF-ON distances were larger than within-state run-to-run distances for both Pearson-correlation and mutual-information patterns (Pearson: \(d = 1.15\), \(p = 0.0006\); mutual information: \(d = 0.69\), \(p = 0.0015\); Figure~S9). This suggests that the network connectivity pattern changed with dopaminergic medication more than would be expected from short-term measurement fluctuation alone.
 
 \begin{figure}[H]
     \centering
@@ -804,29 +819,10 @@ To test whether the medication-related within-versus-between-ROI FC pattern repo
 %###########################################################################################
 \FloatBarrier
 \section{GVS-related supplementary analyses}\label{app:gvs}
-The main manuscript reports the mutual-information GVS edge-change analysis in both the vigour network and the task-activation network. Supplementary Figure~\ref{fig:gvs_pearson_edges} shows the corresponding Pearson analyses for both networks. Pearson correlation was included because it measures linear co-fluctuation between ROI beta series. As in the main analysis, active-sham edge changes were pooled across subjects, medication states, runs, and active GVS waveforms, tested using sign-flip permutation, and corrected with FDR within the metric and analysis scope \citep{benjamini1995controlling}.
+This section provides supporting analyses for the GVS results reported in the main manuscript.
 
-The Pearson control analysis showed bidirectional GVS-related edge changes rather than a uniform increase or decrease in linear coupling. In the vigour network, significant edges were distributed across limbic-olfactory, somatomotor/cerebellar, visual, subcortical, and frontoparietal groups. In the task-activation map, significant Pearson changes also involved a broad set of motor, subcortical, visual, cingulate-temporal, and limbic-olfactory edges. Thus, the Pearson results supported an edge-specific and network-dependent pattern of GVS modulation, consistent with the exploratory interpretation of the GVS analyses.
-
-Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averaged projected time courses by GVS condition for the vigour-network and the task-activation network projection. Supplementary Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change analysis for the task-activation map. Supplementary Figures~\ref{fig:gvs_vigour_feature_summary} and \ref{fig:gvs_task_feature_summary} show the four predefined active-minus-sham response features for the vigour-network and task-activation map projection, respectively.
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{\textwidth}
-        \noindent\textbf{A}\par\vspace{0.2em}
-        \centering
-        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure10A.pdf}
-    \end{minipage}\par\vspace{0.35em}
-    \begin{minipage}{\textwidth}
-        \noindent\textbf{B}\par\vspace{0.2em}
-        \centering
-        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure10B.pdf}
-    \end{minipage}
-    \caption{Exploratory GVS-related Pearson correlation edge changes in the vigour network and task-activation map. \textbf{A}, Pearson correlation analysis for the vigour network. \textbf{B}, Pearson correlation analysis for the task-activation map. Each panel shows active-sham edge changes, pooled across subjects, medication states, runs, and active GVS waveforms, that were significant after FDR correction. Orange edges mark increased Pearson correlation, and blue edges mark decreased Pearson correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
-    \label{fig:gvs_pearson_edges}
-\end{figure}
-
-
+\subsection{Projected signal time courses}
+Figure~\ref{fig:gvs_projected_time_courses} shows the averaged projected time courses for sham and GVS1-GVS8. The vigour-network projection showed stimulus- and medication-dependent differences in the shape of the signal. This descriptive plot provides the time-course context for the feature-based tests reported below. The task-activation map projection was included as a reference to test whether similar waveform changes were also present in task-active circuitry.
 
 \begin{figure}[H]
     \centering
@@ -840,17 +836,12 @@ Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averag
         \centering
         \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13B.pdf}
     \end{minipage}
-
-    \caption{Projected time courses by GVS condition. \textbf{A}, Vigour-network projection time courses in OFF- and ON-medication sessions. \textbf{B}, Task-activation projection time courses in OFF- and ON-medication sessions. Lines show condition means for sham and active GVS waveforms, displayed with vertical offsets for visual separation.}
+    \caption{Projected time courses by GVS condition. \textbf{A}, Vigour-network projected signal in the OFF- and ON-medication sessions. \textbf{B}, Task-activation map projected signal in the OFF- and ON-medication sessions. Lines show condition means for sham and active GVS waveforms. Vertical offsets are used only for visual separation.}
     \label{fig:gvs_projected_time_courses}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure14.pdf}
-    \caption{Exploratory GVS-related mutual-information edge changes in the task-activation map. Active-sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
-    \label{fig:gvs_task_mi_edges}
-\end{figure}
+\subsection{Response-feature summaries}
+Figure~\ref{fig:gvs_vigour_feature_summary} summarises the four predefined active-minus-sham response features for the vigour-network projection: late-minus-early response, linear slope, maximum absolute baseline response, and peak-to-peak amplitude. In the OFF-medication session, GVS7 showed the corrected change in the late-minus-early response feature. This matched the main behavioural result, where GVS7 was the only waveform associated with faster responses OFF medication. No vigour-network feature survived correction in the ON-medication session. This pattern supports the interpretation that the behaviourally relevant GVS waveform was also reflected in the vigour-network projection.
 
 \begin{figure}[H]
     \centering
@@ -868,6 +859,8 @@ Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averag
     \label{fig:gvs_vigour_feature_summary}
 \end{figure}
 
+Figure~\ref{fig:gvs_task_feature_summary} applies the same response-feature analysis to the task-activation map projection. This control analysis did not reproduce the GVS7-specific pattern observed in the vigour network. In the OFF-medication session, corrected effects appeared for other stimulation conditions instead, including GVS2 and GVS8 for the late-minus-early response feature and GVS6 for the maximum absolute baseline-response feature. No task-activation map feature survived correction in the ON-medication session. These results suggest that the vigour-network projection captured the behaviourally relevant GVS effect more specifically than the broader task-activation map.
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
@@ -883,6 +876,36 @@ Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averag
     \caption{GVS-related response-feature changes in the task-activation map projection. \textbf{A}, OFF-medication session. \textbf{B}, ON-medication session. Violin plots show active-minus-sham feature values for the late-minus-early response, linear slope, maximum absolute baseline response, and peak-to-peak amplitude features. Highlighted distributions mark stimulation conditions that survived FDR correction within the displayed analysis.}
     \label{fig:gvs_task_feature_summary}
 \end{figure}
+
+\subsection{Connectivity analyses}
+Figure~\ref{fig:gvs_pearson_edges} shows the Pearson correlation edge-change analysis for both the vigour network and the task-activation map. Pearson correlation was included as a linear-connectivity complement to the mutual-information analysis reported in the main manuscript. The Pearson results showed both increased and decreased active-sham edge changes, rather than a uniform shift in one direction. Significant edges were distributed across limbic-olfactory, somatomotor/cerebellar, visual, subcortical, cingulate-temporal, and frontoparietal sectors, supporting an edge-specific and network-dependent pattern of GVS modulation.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{A}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure10A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure10B.pdf}
+    \end{minipage}
+    \caption{Exploratory GVS-related Pearson correlation edge changes in the vigour network and task-activation map. \textbf{A}, Pearson correlation analysis for the vigour network. \textbf{B}, Pearson correlation analysis for the task-activation map. Each panel shows significant FDR-corrected active-sham edge changes pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased Pearson correlation, and blue edges mark decreased Pearson correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_pearson_edges}
+\end{figure}
+
+Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change analysis repeated for the task-activation map. Active GVS also changed mutual-information connectivity in the task-activation map, indicating that vestibular stimulation affected task-active circuitry more broadly. However, the pattern of significant task-activation map edges showed limited overlap with the vigour-network mutual-information edges reported in the main manuscript. This supports a cautious interpretation: GVS perturbed both networks, but the vigour network showed a partly distinct pattern of stimulation-sensitive connectivity.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure14.pdf}
+    \caption{Exploratory GVS-related mutual-information edge changes in the task-activation map. Active-sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_task_mi_edges}
+\end{figure}
+
+Together, these supplementary analyses support the main conclusion that GVS effects were not uniform across waveforms, medication states, response features, or network definitions. The vigour network appeared to capture the GVS waveform linked to faster OFF-medication responses, whereas broader connectivity changes were present in both the vigour network and the task-activation map.
 
 \FloatBarrier
 \bibliographystyle{Frontiers-Harvard}
