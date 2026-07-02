@@ -100,7 +100,7 @@ Dyskinesias interfered with ratings, n/N
 \toprule
 Domain & Items included & OFF mean $\pm$ SD & ON mean $\pm$ SD & ON–OFF mean $\pm$ SD \\
 \midrule
-Axial/signs & 3.1, 3.2, 3.9-3.14 
+Axial signs & 3.1, 3.2, 3.9-3.14 
 & $8.4 \pm 4.6$ & $7.3 \pm 4.5$ & $-1.2 \pm 1.3$ \\
 
 Rigidity & 3.3A-3.3E 
@@ -118,17 +118,17 @@ Tremor & 3.15A-3.18
 %###########################################################################################
 \FloatBarrier
 \section{Behavioural quality control and reaction-time summaries}
-This section reports clinical summaries and behavioural quality-control information that support the main text without interrupting the main Results narrative.
+This section reports clinical summaries and behavioural quality-control information supporting the main text without interrupting the main Results narrative.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure1.pdf}
-    \caption{Reaction-time quality-control summary by participant, medication session, and run. Stacked bars show valid, missed, and invalid go trials; top and bottom panels show OFF- and ON-medication sessions, respectively. Within each participant, the left and right bars correspond to runs 1 and 2. The dashed horizontal line marks the expected number of go trials per run. Valid RT trials are go trials with finite positive RT values; missed trials are go trials flagged as no-squeeze events; invalid RT trials are go trials without finite RT values, indicating that the squeeze was not performed correctly. Grey bars mark data without corresponding fMRI data.}
+    \caption{Reaction-time quality-control summary by participant, medication session, and run. Stacked bars show valid, missed, and invalid go trials; top and bottom panels show OFF- and ON-medication sessions, respectively. Within each participant, the left and right bars correspond to runs 1 and 2. The dashed horizontal line marks the expected number of go trials per run. Valid RT trials are go trials with finite positive RT values; missed trials are go trials flagged as no-squeeze events; invalid RT trials are go trials without finite RT values, indicating that the squeeze was not performed correctly. Grey bars mark run/session without corresponding fMRI data.}
     \label{fig:RT_information}
 \end{figure}
 
 
-Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT ON medication. The paired subject-level test showed a mean ON–OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggested a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation.
+Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT in the ON medication condition. The paired subject-level test showed a mean ON–OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggested a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation.
 
 \begin{figure}[!htbp]
     \centering
@@ -158,7 +158,7 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure3.pdf}
-    \caption{Reward-related reaction-time summaries by participant. Bars show mean reaction time for low- and high-reward trials within each participant. Error bars show the observed RT range from minimum to maximum. Asterisks mark Welch two-sample test annotations for high- versus low-reward trial comparisons within participant.}
+    \caption{Reward-related reaction-time summaries by participant. Bars show mean reaction time for low- and high-reward trials within each participant. Error bars show the observed RT range, from minimum to maximum. Asterisks indicate significant Welch two-sample comparisons between high- and low-reward trials within each participant.}
     \label{fig:reward_rt_by_subject}
 \end{figure}
 
@@ -174,7 +174,7 @@ Because local stability was included as one component of the optimisation object
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure17.pdf}
-    \caption{Voxel-level consecutive-trial BOLD variability in the final motor-vigour network and task activation maps. Variability was computed for each voxel using the normalised consecutive-trial metric defined in Equation~4 of the main text, after excluding adjacent trial pairs that crossed run or block boundaries. The left panel shows the normalised histogram of voxel variability values, and the right panel shows the empirical cumulative distribution function. Lower values indicate smaller local changes in voxel BOLD responses across adjacent valid trials.}
+    \caption{Voxel-level consecutive-trial BOLD variability in the final motor-vigour network and task-activation maps. Variability was computed for each voxel using the normalised consecutive-trial metric defined in Equation~4 of the main text, after excluding adjacent trial pairs that crossed run or block boundaries. The left panel shows the normalised histogram of voxel variability values, and the right panel shows the empirical cumulative distribution function. Lower values indicate smaller local changes in voxel BOLD responses across adjacent valid trials.}
     \label{fig:voxel_bold_variability}
 \end{figure}
 
@@ -191,7 +191,7 @@ Summary statistics are reported in Table~\ref{tab:voxel_trial_variability}. The 
 \toprule
 Network/model condition & Median variability & IQR & Voxels \(< 0.01\) \\
 \midrule
-Task activation & 0.0332 & 0.0427 & 18.6\% \\
+Task-activation map & 0.0332 & 0.0427 & 18.6\% \\
 Without variability penalty & 0.0276 & 0.0369 & 21.7\% \\
 Final motor-vigour network & 0.0267 & 0.0418 & 27.5\% \\
 \bottomrule
@@ -202,12 +202,12 @@ Final motor-vigour network & 0.0267 & 0.0418 & 27.5\% \\
 
 \FloatBarrier
 \section{Task-activation map and activation-map comparisons}
-Spatial distribution of the standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
+Figure.~\ref{fig:standard_glm} shows the spatial distribution of the standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.8\linewidth]{supplementary_figures/Sup_Figure4.pdf}
-    \caption{Group-level mixed-effects map. Axial brain slices show thresholded positive z-statistic values overlaid on the anatomical reference image. Warm colours represent suprathreshold values from the FEAT thresholded z-statistic image, with brighter colours reflecting higher z-values. The map is displayed at a cluster-forming threshold of $Z \geq 3.1$; R labels mark image orientation.}
+    \caption{Group-level mixed-effects map. Axial brain slices show thresholded positive z-statistic values overlaid on the anatomical reference image. Warm colours represent suprathreshold values from the FEAT thresholded z-statistic image, with brighter colours reflecting higher z-values. The map is displayed at a cluster-forming threshold of $Z \geq 3.1$; R/L labels mark image orientation.}
     \label{fig:standard_glm}
 \end{figure}
 
@@ -237,7 +237,7 @@ Spatial similarity between activation-derived maps and the vigour network is sum
 \subsection{Threshold Robustness Analysis}
 \label{app:threshold_robustness}
 
-We tested whether the vigour network definition depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarise the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimisation result.
+We tested whether the definition of the vigour network depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarise the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimisation result.
 
 \begin{figure}[!htbp]
     \centering
@@ -249,16 +249,16 @@ We tested whether the vigour network definition depended strongly on the voxel-w
 The p90 threshold provided the best balance between reducing the voxel set and preserving the main anatomical pattern. At p90, the network contained \(8{,}182\) suprathreshold voxels. More liberal thresholds retained many more voxels (\(18{,}375\) at p80 and \(13{,}782\) at p85), but did not reveal a substantially different anatomical pattern. All p90 anatomical groups were also present at p80 and p85, and the Jaccard overlap with the p90 region set remained high at p85 (\(0.95\)). In contrast, stricter thresholds began to remove regions: p95 retained \(84.2\%\) of the p90 groups, whereas p97.5 retained only \(63.2\%\).
 
 \subsection{ROI-wise composition of the vigour network}
-The AAL3-derived atlas below was used to define ROIs in this study.
+The AAL3-derived atlas shown in Figure~\ref{fig:roi_atlas} was used to define ROIs in this study.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure7.pdf}
-    \caption{AAL3-derived bilateral ROI atlas used for anatomical summaries and ROI-level signal extraction. Axial, coronal, and sagittal projections show the grouped anatomical labels used in the network, medication-state, and connectivity analyses. Colours mark the broad bilateral ROI groups used for visualisation and summary statistics. The olfactory label denotes the AAL3 anatomical region around the ventral/anterior frontal base and should not be interpreted as evidence for odour or perfume processing.}
+    \caption{AAL3-derived bilateral ROI atlas used for anatomical summaries and ROI-level signal extraction. Axial, coronal, and sagittal projections show the grouped anatomical labels used in the network, medication-state, and connectivity analyses. Colours mark the broad bilateral ROI groups used for visualisation and summary statistics. The olfactory cortex label denotes the AAL3 anatomical region around the ventral/anterior frontal base and should not be interpreted as evidence for odour or perfume processing.}
     \label{fig:roi_atlas}
 \end{figure}
 
-The vigour network is also shown by broad anatomical sector below.
+The vigour network is shown by the broad anatomical sector below.
 
 \begin{figure}[!htbp]
     \centering
@@ -268,7 +268,7 @@ The vigour network is also shown by broad anatomical sector below.
 \end{figure}
 
 \begin{longtable}{@{} p{5.2cm} r r r r @{}}
-    \caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. The table uses the analysis-space NIfTI p90 source mask, which contains 8,182 selected voxels after excluding cerebral white matter and brainstem voxels. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. The listed ROI rows account for 100.00\% of selected voxels.\label{tab:roi_vigour_network}}\\
+    \caption{ROI-wise composition of the suprathreshold vigour-related voxel-weight map shown in Fig.~\ref{fig:supp_vigour_network_anatomy}. ROIs are AAL3-derived bilateral anatomical groups and are ranked by their contribution to the selected map. \label{tab:roi_vigour_network}}\\
     \toprule
     ROI & ROI size & Selected voxels & \% ROI selected & \% of map \\
     \midrule
@@ -342,9 +342,9 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
 
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item ROI metrics: same-voxel overlap $=835$ voxels; Dice coefficient $=0.056$; Jaccard index $=0.029$.
+\item ROI metrics: voxelwise overlap $=835$ voxels; Dice coefficient $=0.056$; Jaccard index $=0.029$.
 \item The shared voxels were concentrated most in putamen, cerebellar lobules 6/8, middle occipital cortex, paracentral lobule, superior parietal cortex, and postcentral gyrus.
-\item In the GLM/GLMsingle comparison, the vigour network showed low overlap with each activation map: Dice $=0.09$ with standard GLM, $0.11$ with GLMsingle A, and $0.10$ with GLMsingle D.
+\item In the GLM/GLMsingle comparison, the vigour network showed low overlap with each task-activation map: Dice $=0.09$ with standard GLM, $0.11$ with GLMsingle A, and $0.10$ with GLMsingle D.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -352,15 +352,15 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
 
 \begin{table}
     \centering
-    \caption{ROI-level distribution of the vigour network, task-activation map, and their voxelwise overlap. The vigour network uses the NIfTI p90 source mask with 8,182 voxels; the task-activation map contains 21,610 voxels. ROI rows report total voxels in each map within each ROI, including shared voxels; these rows sum to 8,182 vigour voxels, 21,610 task-activation voxels, and 835 common voxels.}
+    \caption{ROI-level distribution of the vigour network, task-activation map, and their voxelwise overlap. The vigour network contains 8,182 voxels; the task-activation map contains 21,610 voxels. ROI rows report total voxels in each map within each ROI, including shared voxels; these rows sum to 8,182 vigour voxels, 21,610 task-activation voxels, and 835 common voxels.}
     \label{tab:ablation_full_vs_task_only_roi}
     \begin{tabularx}{\textwidth}{@{}lccc>{\raggedright\arraybackslash}X@{}}
     \toprule
     ROI &
     \makecell{Shared voxel\\n (\% ROI)} &
     \makecell{Vigour network\\n (\% ROI)} &
-    \makecell{Task activation\\n (\% ROI)} &
-    Voxel-level relation \\
+    \makecell{Task-activation map\\n (\% ROI)} &
+    Voxelwise relation \\
     \midrule
     Putamen & 118 (7.91\%) & 154 (10.32\%) & 710 (47.59\%) & Shared voxels present \\
     Pallidum & 1 (0.19\%) & 5 (0.96\%) & 171 (32.70\%) & Shared voxels present \\
@@ -369,7 +369,7 @@ Parahippocampal cortex; amygdala; middle temporal pole; inferior temporal cortex
     Postcentral & 81 (1.18\%) & 237 (3.45\%) & 1,679 (24.45\%) & Shared voxels present \\
     Amygdala & 0 (0.00\%) & 109 (26.52\%) & 0 (0.00\%) & Vigour network only in ROI \\
     Insula & 0 (0.00\%) & 13 (0.37\%) & 908 (25.73\%) & Both maps in ROI, no shared voxels \\
-    ParaHippocampal & 0 (0.00\%) & 342 (24.82\%) & 5 (0.36\%) & Both maps in ROI, no shared voxels \\
+    Parahippocampal & 0 (0.00\%) & 342 (24.82\%) & 5 (0.36\%) & Both maps in ROI, no shared voxels \\
     Occipital & 86 (0.47\%) & 278 (1.53\%) & 3,538 (19.49\%) & Shared voxels present \\
     Cerebellum & 233 (1.02\%) & 646 (2.83\%) & 4,259 (18.63\%) & Shared voxels present \\
     Temporal & 43 (0.18\%) & 2,068 (8.69\%) & 2,015 (8.46\%) & Shared voxels present \\
@@ -418,7 +418,7 @@ To provide a brain map of task-evoked activation, we first ran a standard GLM us
 
 For each run, all valid Go trials (Supplementary Figure~S1) were modelled with one event regressor. Event timing was defined relative to Go-signal onset, with a duration of $2$ s and an amplitude of $1$. This regressor was convolved with FSL’s double-gamma hemodynamic response function, and a temporal derivative was included.
 
-The first-level contrast tested the positive effect of task activity. The two runs from each subject-session were then combined using a fixed-effects model. The resulting subject-session maps were entered into a higher-level mixed-effects model using FLAME stage 1 \citep{woolrich2004multilevel, beckmann2003general}. The group model included one mean regressor and tested whether the average task response was greater than zero across the $35$ available subject-sessions. Group Z-statistic maps were thresholded using clusters formed at $Z \geq 3.1$ with a corrected cluster significance threshold of $p \leq 0.05$ \citep{worsley200114}. The thresholded group map was used as the standard task-activation map. (Supplementary Figure~S4)
+The first-level contrast tested the positive effect of task activity. The two runs from each subject-session were then combined using a fixed-effects model. The resulting subject-session maps were entered into a higher-level mixed-effects model using FLAME stage 1 \citep{woolrich2004multilevel, beckmann2003general}. The group model included one mean regressor and tested whether the average task response was greater than zero across the $35$ available subject-sessions. Group Z-statistic maps were thresholded using clusters formed at $Z \geq 3.1$ with a corrected cluster significance threshold of $p \leq 0.05$ \citep{worsley200114}. The thresholded group map was used as the standard task-activation map (Supplementary Figure~S4).
 
 \subsection{Trial-wise GLM estimation and beta preprocessing details}
 Task-related BOLD responses for each trial were estimated using trial-wise general linear model (GLM) beta estimates with GLMsingle \citep{prince2022improving}, with HRF fitting, GLMdenoise \citep{kay2013glmdenoise}, and fractional ridge regression enabled. Analyses were performed separately for each subject-session. Within each subject-session, the two task runs were analysed jointly, while run identity was preserved in the design matrix and nuisance regressors.
@@ -427,7 +427,7 @@ The GLM design matrix included Go-signal onset regressors with a fixed trial dur
 
 % Before applying GLMsingle, high-DVARS trials were identified from the preprocessed BOLD time series. For each file, the DVARS metric was robustly standardised using a median absolute deviation (MAD)-based score ($z_i$). Trials with $z_i > 3$ were labelled as high-outlier trials. The number of trials removed by this criterion was capped at $15\%$ per file to avoid excessive loss of trials while removing the largest signal-change outliers.
 
-HRF fitting used the default GLMsingle library of $20$ candidate HRFs, and the HRF yielding the highest variance explained was selected separately for each voxel. GLMdenoise derived additional nuisance regressors from low task-related-variance voxels using principal components analysis and selected the number of noise components by cross-validation. Fractional ridge regression was used to stabilise single-trial beta estimates. Shrinkage fractions from $0.05$ to $1.00$ in increments of $0.05$ were evaluated, and the optimal shrinkage level was selected separately for each voxel by cross-validation. Run-specific baseline terms were modelled using GLMsingle's run-wise polynomial regressors, including degree-0 intercepts and higher-order polynomial terms up to degree $\mathrm{round}(L/2)$ for a run of length $L$ minutes.
+HRF fitting used the default GLMsingle library of $20$ candidate HRFs, and the HRF yielding the highest variance explained was selected separately for each voxel. GLMdenoise derived additional nuisance regressors from low task-related-variance voxels using principal component analysis and selected the number of noise components by cross-validation. Fractional ridge regression was used to stabilise single-trial beta estimates. Shrinkage fractions from $0.05$ to $1.00$ in increments of $0.05$ were evaluated, and the optimal shrinkage level was selected separately for each voxel by cross-validation. Run-specific baseline terms were modelled using GLMsingle's run-wise polynomial regressors, including degree-0 intercepts and higher-order polynomial terms up to degree $\mathrm{round}(L/2) $, where $ L$ is the run length in minutes.
 
 A second cleaning step was then applied to the GLMsingle beta estimates. To detect outlier beta values, beta estimates were robustly normalised within each subject-session using the session-level median and MAD:
 
@@ -441,7 +441,7 @@ This cleaning retained $91{,}701 \pm 54$ voxels on average. This corresponded to
 
 The cleaned outputs from all subjects, sessions, and runs were then used to define a shared voxel space for group-level analysis. The coverage threshold was applied across all concatenated trial observations from all subjects, sessions, and runs, rather than separately within each subject or session. This approach was used because the group-level analysis required a common MNI-space voxel feature set across trials. Applying separate subject-level masks would have produced different voxel sets across subjects, whereas the shared mask allowed all valid trial-wise beta estimates to be aligned into one group-level matrix. The threshold was also permissive: voxels were retained if they had finite beta estimates for at least $70\%$ of all trial observations, so a voxel was not excluded simply because it was missing or unstable in a minority of subjects, sessions, or runs.
 
-The final group coverage mask contained $91{,}769$ voxels, yielding a final group beta matrix of $91{,}769$ voxels $\times$ $5{,}463$ retained trials (Supplementary Figure~S1). This mask was generated using a $70\%$ finite-coverage criterion over the source trial slots, not by intersecting voxels across all runs. The filter excluded $12$ voxels from the $91{,}781$-voxel candidate mask, retaining $99.99\%$ of candidate voxels. Subsequent analyses used the concatenated cleaned beta data in this final group voxel space.
+The final group coverage mask contained $91{,}769$ voxels, yielding a final group beta matrix of $91{,}769$ voxels $\times$ $5{,}463$ retained trials (Supplementary Figure~S1). The filter excluded $12$ voxels from the $91{,}781$-voxel candidate mask, retaining $99.99\%$ of candidate voxels. Subsequent analyses used the concatenated cleaned beta data in this final group voxel space.
 
 %###########################################################################################
 \FloatBarrier
@@ -469,9 +469,7 @@ consecutive-trial variability. In voxel space, this projection is defined by a v
 \label{eq:generic_projection}
 \end{equation*}
 
-Here, \(N_v\) is the number of voxels and \(N_s\) denotes the time sample of the
-neural data matrix. In this study, the same projection can be applied to two forms of neural
-data: single-trial beta estimates and trial-window BOLD time courses:
+Here, \(N_v\) is the number of voxels and \(N_s\) denotes the number of time samples in the neural data matrix. In this study, the same projection can be applied to two forms of neural data: single-trial beta estimates and trial-window BOLD time courses:
 
 \begin{equation*}
 \begin{aligned}
@@ -502,12 +500,12 @@ data: single-trial beta estimates and trial-window BOLD time courses:
 \label{eq:y_bold_org}
 \end{equation*}
 
-Here, $N_{\mathrm{tr}}$ is the number of trials, and \(N_{\tau}\) is the number of time
+Here, $N_{\mathrm{tr}}$ is the number of trials, and \(N_{\mathrm{tp}}\) is the number of time
 samples. \(\mathbf{X}_{\beta}^{\mathrm{org}}\) and
 \(\mathbf{X}_{\mathrm{BOLD}}^{\mathrm{org}}\) were not separate models; they were two
 representations of the neural data used by the same projection framework.
 
-Although the framework is defined in voxel space, direct optimisation over all voxels was impractical because of the high dimensionality of the data and memory limitations. In addition, the task was not a simple motor task and included several task-related and non-motor processes. Therefore, reducing components that were unlikely to reflect the motor-vigour-related signal was important before optimisation. Because missing values remained after beta-estimate preprocessing, the neural data were reduced using expectation-maximisation principal component analysis (EMPCA) \citep{roweis1997algorithms}. A \(80\%\) cumulative explained-variance threshold initially retained $14$ components.
+Although the framework is defined in voxel space, direct optimisation over all voxels was impractical because of the high dimensionality of the data and memory limitations. In addition, the task was not a simple motor task and included several task-related and non-motor processes. Therefore, reducing components that were unlikely to reflect the motor-vigour-related signal was important before optimisation. Because missing values remained after beta-estimate preprocessing, the neural data were reduced using expectation-maximisation principal component analysis (EMPCA) \citep{roweis1997algorithms}. An \(80\%\) cumulative explained-variance threshold initially retained $14$ components.
 
 EMPCA provided voxel-to-PC weights,
 \(\mathbf{W}_{\mathrm{pca}} \in \mathbb{R}^{N_v \times N_{\mathrm{pc}}}\). Both neural
@@ -568,7 +566,7 @@ The optimisation model was based on four assumptions about the neural representa
 
 \textbf{Condition 1: The projected signal should come from task-engaged voxels.}
 
-The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a high task-engaged region to contribute strongly to the projected signal:
+The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a highly task-engaged region to contribute strongly to the projected signal:
 
 \begin{equation*}
 \begin{aligned}
@@ -737,13 +735,13 @@ Both BOLD and beta variability terms were included because they capture compleme
 
 \begin{align}
 L_{\mathrm{total}}(w)
-&= \alpha_1 L_{\mathrm{task}}(w) + \alpha_2 L_{\mathrm{bold}}(w) + \alpha_3 L_{\beta}(w) + \alpha_4 L_{\mathrm{smooth}}(w)
+&= \alpha_{\mathrm{task}} L_{\mathrm{task}}(w) + \alpha_{\mathrm{BOLD}} L_{\mathrm{bold}}(w) + \alpha_{\beta} L_{\beta}(w) + \alpha_{\mathrm{smooth}} L_{\mathrm{smooth}}(w)
 \nonumber = w^\top C_{\mathrm{total}}w,
 \end{align}
 where
 \begin{equation}
 C_{\mathrm{total}}
-= \alpha_1 C_{\mathrm{task}} + \alpha_2 C_{\mathrm{bold}} + \alpha_3 C_{\beta} + \alpha_4 C_{\mathrm{smooth}}.
+= \alpha_{\mathrm{task}} C_{\mathrm{task}} + \alpha_{\mathrm{BOLD}} C_{\mathrm{bold}} + \alpha_{\beta} C_{\beta} + \alpha_{\mathrm{smooth}} C_{\mathrm{smooth}}.
 \end{equation}
 
 The parameters $\alpha_1$, $\alpha_2$, $\alpha_3$, and $\alpha_4$ control the relative contributions of task engagement, BOLD variability, beta variability, and spatial smoothness, respectively.
@@ -767,7 +765,7 @@ y = w^\top X_{\beta}.
 % The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. Trials were divided into contiguous folds for cross-validation. For each fold, the optimisation was solved independently, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low trial-to-trial variability. Voxels with the largest weights were then defined as the vigour network.
 The optimisation problem was solved under the unit-norm constraint on $w$ using the Sequential Least Squares Programming (SLSQP) algorithm \citep{nocedal2006numerical, kraft1988software}. The objective combined a behavioural relevance term with four regularisation terms. The coefficients $\alpha_{\mathrm{task}}$, $\alpha_{\mathrm{BOLD}}$, $\alpha_{\beta}$, and $\alpha_{\mathrm{smooth}}$ controlled the relative contribution of the task-engagement, BOLD consecutive-trial variability, beta consecutive-trial variability, and spatial smoothness penalties, respectively. The scalar $\gamma$ controlled the overall strength of the combined penalty terms relative to the behavioural relevance term. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. In the coarse stage, the model was evaluated over a predefined set of candidate penalty-weight combinations chosen to span weaker, balanced, and stronger weighting of the different penalties. Trials were divided into contiguous folds, and for each candidate setting the model was fit on the training folds and evaluated on the held-out fold using the absolute correlation between the optimised neural projection and behaviour. After the best-performing coarse setting was identified, a fine search was performed by testing small multiplicative perturbations around that setting, both for individual penalty weights and for the overall balance of all penalty weights. The final hyperparameter setting was chosen based on held-out correlation, with preference given to settings that showed stable performance across folds and small train-test differences. For each fold, the optimisation was then solved independently using the training data, and the resulting weights were projected back from PCA space to voxel space. Final voxel maps and projected signals were obtained by averaging across folds. The resulting weight assigned to each voxel reflected its contribution to satisfying the combined criteria of task engagement, behavioural relevance, spatial smoothness, and low variability. Voxels with the largest weights were then defined as the vigour network.
 
-Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. We chose this threshold because the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (Supplementary Figure~S6). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The 90th percentile retained a distributed network across the main contributing regions while showing maximal stability relative to the reference threshold, supporting it as an appropriate cutoff for defining the vigour network.
+Finally, we defined the vigour network as voxels whose weights exceeded the 90th percentile. We chose this threshold because the 90th percentile provided a conservative but stable compromise between spatial specificity and anatomical coverage (Supplementary Figure~S6). Lower thresholds, such as the 80th or 85th percentiles, retained substantially more voxels and therefore produced a broader, less selective network. In contrast, more stringent thresholds, particularly the 95th and 97.5th percentiles, sharply reduced the number of retained voxels and began to exclude several anatomical regions. The p90 threshold preserved the main anatomical groups while avoiding the broader p80/p85 maps and the regional loss seen at p95/p97.5. It is an appropriate cutoff for defining the vigour network.
 
 After identifying the vigour network, we then assessed whether medication state or GVS condition modulated activity within this network, as both variables had been excluded from the optimisation procedure.
 
@@ -775,6 +773,8 @@ After identifying the vigour network, we then assessed whether medication state 
 \FloatBarrier
 \section{Medication-state control analyses}
 \subsection{Control analysis: no evidence for preferential ON-state stabilisation}
+
+To test whether medication-related changes in the vigour-network connectivity pattern were larger than run-to-run variation, we compared within-state run~1--run~2 distances with OFF--ON medication distances for each participant. OFF--ON distances were larger than within-state run-to-run distances for both Pearson-correlation and mutual-information patterns (Pearson: \(d = 1.15\), \(p = 0.0006\); mutual information: \(d = 0.69\), \(p = 0.0015\); Figure~S9). This suggests that the network connectivity pattern changed with dopaminergic medication more than would be expected from short-term measurement fluctuation alone.
 
 \begin{figure}[!htbp]
     \centering
