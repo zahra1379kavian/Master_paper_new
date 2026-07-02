@@ -8,6 +8,7 @@
 \usepackage{rotating,pdflscape,adjustbox,makecell}
 \usepackage{array}
 \usepackage{caption}
+\usepackage{float}
 \usepackage{placeins}
 \usepackage{amsmath}
 
@@ -119,8 +120,9 @@ Tremor & 3.15A-3.18
 \FloatBarrier
 \section{Behavioural quality control and reaction-time summaries}
 This section reports clinical summaries and behavioural quality-control information supporting the main text without interrupting the main Results narrative.
+Figure~\ref{fig:RT_information} summarises trial-level reaction-time quality control by participant, medication session, and run.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure1.pdf}
     \caption{Reaction-time quality-control summary by participant, medication session, and run. Stacked bars show valid, missed, and invalid go trials; top and bottom panels show OFF- and ON-medication sessions, respectively. Within each participant, the left and right bars correspond to runs 1 and 2. The dashed horizontal line marks the expected number of go trials per run. Valid RT trials are go trials with finite positive RT values; missed trials are go trials flagged as no-squeeze events; invalid RT trials are go trials without finite RT values, indicating that the squeeze was not performed correctly. Grey bars mark run/session without corresponding fMRI data.}
@@ -128,9 +130,9 @@ This section reports clinical summaries and behavioural quality-control informat
 \end{figure}
 
 
-Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT in the ON medication condition. The paired subject-level test showed a mean ON–OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggested a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation.
+Reaction times were modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern was visible both in the trial-wise RT distributions, where the ON distribution was slightly shifted toward shorter latencies, and in the subject-paired means, where most participants showed lower mean RT in the ON medication condition. The paired subject-level test showed a mean ON–OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task were limited: RT was only slightly slower in run $2$ than run $1$, block position showed a mild increase in RT consistent with weak fatigue or time-on-task effects, and trial position within blocks showed no clear monotonic practice or drift pattern. Overall, the behavioural results suggested a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation. The corresponding distribution, paired-subject, and task-position summaries are shown in Figure~\ref{fig:RT_changes}.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \begin{minipage}[t]{0.55\textwidth}
         \centering
@@ -155,7 +157,9 @@ Reaction times were modestly faster in the ON-medication condition than in the O
     \label{fig:RT_changes}
 \end{figure}
 
-\begin{figure}[!htbp]
+Reward-related RT summaries are shown by participant in Figure~\ref{fig:reward_rt_by_subject}.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure3.pdf}
     \caption{Reward-related reaction-time summaries by participant. Bars show mean reaction time for low- and high-reward trials within each participant. Error bars show the observed RT range, from minimum to maximum. Asterisks indicate significant Welch two-sample comparisons between high- and low-reward trials within each participant.}
@@ -171,7 +175,7 @@ Reaction times were modestly faster in the ON-medication condition than in the O
 \label{app:voxel_bold_variability}
 Because local stability was included as one component of the optimisation objective, we compared the voxel-level BOLD variability profile of the final map with two reference maps: the standard task-activation map and a control map obtained from the same optimisation framework after removing the low-variability penalty. For each voxel, variability was computed using the normalised consecutive-trial metric defined in Equation~4 of the main text, with \(x_i\) corresponding to that voxel's BOLD response on trial \(i\). The summation was restricted to adjacent valid trial pairs, excluding run and block boundaries. Voxel-level values were then grouped by map and summarised using a normalised histogram and empirical cumulative distribution function (Figure~\ref{fig:voxel_bold_variability}). 
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure17.pdf}
     \caption{Voxel-level consecutive-trial BOLD variability in the final motor-vigour network and task-activation maps. Variability was computed for each voxel using the normalised consecutive-trial metric defined in Equation~4 of the main text, after excluding adjacent trial pairs that crossed run or block boundaries. The left panel shows the normalised histogram of voxel variability values, and the right panel shows the empirical cumulative distribution function. Lower values indicate smaller local changes in voxel BOLD responses across adjacent valid trials.}
@@ -204,7 +208,7 @@ Final motor-vigour network & 0.0267 & 0.0418 & 27.5\% \\
 \section{Task-activation map and activation-map comparisons}
 Figure.~\ref{fig:standard_glm} shows the spatial distribution of the standard GLM from the group-level mixed-effects analysis. The thresholded map indicates widespread effects across posterior and lateral cortical regions, with the strongest clusters shown in yellow-orange. 
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{supplementary_figures/Sup_Figure4.pdf}
     \caption{Group-level mixed-effects map. Axial brain slices show thresholded positive z-statistic values overlaid on the anatomical reference image. Warm colours represent suprathreshold values from the FEAT thresholded z-statistic image, with brighter colours reflecting higher z-values. The map is displayed at a cluster-forming threshold of $Z \geq 3.1$; R/L labels mark image orientation.}
@@ -213,7 +217,7 @@ Figure.~\ref{fig:standard_glm} shows the spatial distribution of the standard GL
 
 Spatial similarity between activation-derived maps and the vigour network is summarised below.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \begin{minipage}[t]{0.49\textwidth}
         \centering
@@ -239,7 +243,7 @@ Spatial similarity between activation-derived maps and the vigour network is sum
 
 We tested whether the definition of the vigour network depended strongly on the voxel-weight threshold. The threshold was varied across the voxel-weight distribution at p80, p85, p90, p95, and p97.5 (Figure~\ref{fig:threshold_robustness}). To summarise the anatomical composition of each thresholded map, suprathreshold voxels were assigned to AAL3v2 labels and then grouped into broader bilateral anatomical regions. This grouping was applied only after thresholding and did not affect the voxel weights or the optimisation result.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure6.pdf}
     \caption{Threshold robustness analysis for the vigour network. The voxel-weight threshold was varied across percentiles p80, p85, p90, p95, and p97.5. The panels show the number of retained voxels, overlap with the p90 region set, and anatomical composition of each thresholded map.}
@@ -251,7 +255,7 @@ The p90 threshold provided the best balance between reducing the voxel set and p
 \subsection{ROI-wise composition of the vigour network}
 The AAL3-derived atlas shown in Figure~\ref{fig:roi_atlas} was used to define ROIs in this study.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure7.pdf}
     \caption{AAL3-derived bilateral ROI atlas used for anatomical summaries and ROI-level signal extraction. Axial, coronal, and sagittal projections show the grouped anatomical labels used in the network, medication-state, and connectivity analyses. Colours mark the broad bilateral ROI groups used for visualisation and summary statistics. The olfactory cortex label denotes the AAL3 anatomical region around the ventral/anterior frontal base and should not be interpreted as evidence for odour or perfume processing.}
@@ -260,7 +264,7 @@ The AAL3-derived atlas shown in Figure~\ref{fig:roi_atlas} was used to define RO
 
 The vigour network is shown by the broad anatomical sector below.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{supplementary_figures/Sup_Figure8.pdf}
     \caption{Anatomical-sector view of the vigour network. The thresholded voxel-weight map is overlaid on representative sagittal, coronal, and axial MNI slices and coloured by broad anatomical sector. The map includes sensorimotor, parietal, temporal, frontal, cerebellar, occipital, and limbic/subcortical components.}
@@ -776,7 +780,7 @@ After identifying the vigour network, we then assessed whether medication state 
 
 To test whether medication-related changes in the vigour-network connectivity pattern were larger than run-to-run variation, we compared within-state run~1--run~2 distances with OFF--ON medication distances for each participant. OFF--ON distances were larger than within-state run-to-run distances for both Pearson-correlation and mutual-information patterns (Pearson: \(d = 1.15\), \(p = 0.0006\); mutual information: \(d = 0.69\), \(p = 0.0015\); Figure~S9). This suggests that the network connectivity pattern changed with dopaminergic medication more than would be expected from short-term measurement fluctuation alone.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure9.pdf}
     \caption{Medication-state control analysis for voxel-pattern stability. Subject-level paired correlation-distance plots compare within-state run 1 versus run 2 distances with ON- versus OFF-medication distances. Lines connect paired estimates from the same participant. \textbf{A}, Pearson-based consistency; \textbf{B}, mutual-information-based consistency. Separate panels show the paired distances for the displayed voxel sets.}
@@ -786,7 +790,7 @@ To test whether medication-related changes in the vigour-network connectivity pa
 \subsection{Control analysis: medication-related FC changes relative to run-to-run baseline variability}
 To test whether the medication-related within-versus-between-ROI FC pattern reported in Figure 6 exceeded ordinary short-term variability, we repeated the same subject-level FC-change analysis using within-session run-to-run differences as a baseline and compared these values with the between-session medication-effect estimate (Figure~\ref{fig:medication_fc_run_to_run_baseline}). In the vigour network, the medication-associated FC change was larger than expected from run-to-run variability primarily for intra-ROI connectivity, and the significant intra-minus-between contrast supported a spatially specific medication effect on local within-ROI coupling. In the task-activation map, between-session changes also exceeded the run-to-run baseline for intra-ROI and between-ROI FC, whereas the intra-minus-between contrast showed weaker evidence. Thus, the baseline analysis supported medication-related FC changes beyond short-term measurement fluctuation, with the local-versus-distributed specificity clearest in the vigour network.
 
-\begin{figure}[!p]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure12A.pdf}
 
@@ -806,7 +810,7 @@ The Pearson control analysis showed bidirectional GVS-related edge changes rathe
 
 Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averaged projected time courses by GVS condition for the vigour-network and the task-activation network projection. Supplementary Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change analysis for the task-activation map. Supplementary Figures~\ref{fig:gvs_vigour_feature_summary} and \ref{fig:gvs_task_feature_summary} show the four predefined active-minus-sham response features for the vigour-network and task-activation map projection, respectively.
 
-\begin{figure}[!p]
+\begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
@@ -824,31 +828,31 @@ Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averag
 
 
 
-\begin{figure}[!p]
+\begin{figure}[H]
     \centering
-        \begin{minipage}{\textwidth}
-        \noindent\textbf{B}\par\vspace{0.2em}
-        \centering
-        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13B.pdf}
-    \end{minipage}\par\vspace{0.35em}
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
         \centering
         \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \noindent\textbf{B}\par\vspace{0.2em}
+        \centering
+        \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13B.pdf}
     \end{minipage}
 
     \caption{Projected time courses by GVS condition. \textbf{A}, Vigour-network projection time courses in OFF- and ON-medication sessions. \textbf{B}, Task-activation projection time courses in OFF- and ON-medication sessions. Lines show condition means for sham and active GVS waveforms, displayed with vertical offsets for visual separation.}
     \label{fig:gvs_projected_time_courses}
 \end{figure}
 
-\begin{figure}[!p]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure14.pdf}
     \caption{Exploratory GVS-related mutual-information edge changes in the task-activation map. Active-sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_task_mi_edges}
 \end{figure}
 
-\begin{figure}[!p]
+\begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
@@ -864,7 +868,7 @@ Supplementary Figure~\ref{fig:gvs_projected_time_courses} shows the block-averag
     \label{fig:gvs_vigour_feature_summary}
 \end{figure}
 
-\begin{figure}[!p]
+\begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
         \noindent\textbf{A}\par\vspace{0.2em}
