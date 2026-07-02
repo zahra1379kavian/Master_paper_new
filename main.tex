@@ -124,17 +124,17 @@ The objective combined four penalty terms with one RT-alignment penalty term. Th
 
 These four penalties were combined into a single total loss,
 \begin{equation}
-L_{\mathrm{total}}=
-\alpha_{\mathrm{task}}L_{\mathrm{task}}+
-\alpha_{\mathrm{BOLD}}L_{\mathrm{BOLD}}+
-\alpha_{\beta}L_{\beta}+
-\alpha_{\mathrm{smooth}}L_{\mathrm{smooth}} .
+L_{\mathrm{total}}(w)=
+\alpha_{\mathrm{task}}L_{\mathrm{task}}(w)+
+\alpha_{\mathrm{BOLD}}L_{\mathrm{BOLD}}(w)+
+\alpha_{\beta}L_{\beta}(w)+
+\alpha_{\mathrm{smooth}}L_{\mathrm{smooth}}(w) .
 \end{equation}
 Here, \(\alpha_{\mathrm{task}}\), \(\alpha_{\mathrm{BOLD}}\), \(\alpha_{\beta}\), and \(\alpha_{\mathrm{smooth}}\) control the relative contributions of task engagement, BOLD local stability, beta local stability, and spatial smoothness, respectively. Behavioural relevance penalty was represented by \(L_{\mathrm{RT}}\), which captures alignment between the projected beta signal and RT. This behavioural penalty term was normalised by \(L_{\mathrm{var}}\), the beta-signal variance matrix, so that the objective favoured RT alignment rather than simply selecting high-variance components. The final optimisation problem was
 \begin{equation}
 \min_{\|w\|_2=1}
-\frac{\gamma L_{\mathrm{total}} - L_{\mathrm{RT}}}
-{L_{\mathrm{var}}} .
+\frac{\gamma L_{\mathrm{total}}(w) - L_{\mathrm{RT}} (w)}
+{L_{\mathrm{var}}(w)} .
 \end{equation}
 The negative sign before \(L_{\mathrm{RT}}\) reflects that RT alignment was maximised, whereas the other terms were penalised. The scalar \(\gamma\) controlled the overall balance between regularisation and behavioural relevance. These were graded criteria, not hard exclusion rules: a feature was not discarded because it was weak on one term; the final solution was the projection that best balanced all criteria. All defined penalty terms are in quadratic form. Their full definitions and derivation are provided in Appendix~A.
 
