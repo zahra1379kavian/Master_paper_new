@@ -53,6 +53,12 @@ $^{3}$Faculty of Medicine (Neurology), University of British Columbia, Vancouver
         \includegraphics[width=#1]{#3}
     \end{tabular}%
 }
+\newcommand{\FigureRowImageLargeLabelTight}[3]{%
+    \begin{tabular}{@{}l@{}}
+        \large\bfseries #2\\[-0.1em]
+        \includegraphics[width=#1]{#3}
+    \end{tabular}%
+}
 
 \begin{document}
 \raggedbottom
@@ -491,7 +497,7 @@ The optimisation was solved using Sequential Least Squares Programming. Hyperpar
     \end{minipage}\par\vspace{0.1em}
     \begin{minipage}{\textwidth}
         \centering
-        \FigureRowImageLargeLabel{0.92\textwidth}{Task Activation Map}{main_figures/Figure6B.pdf}
+        \FigureRowImageLargeLabelTight{0.92\textwidth}{Task Activation Map}{main_figures/Figure6B.pdf}
     \end{minipage}
     \caption{Medication-state functional connectivity summaries. For the vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF-medication, ON-medication, and participant-level ON-OFF differences. The corresponding plots show within-ROI and between-ROI Pearson functional connectivity for the standard task-activation map.}
     \label{fig:medication_local_distributed_fc}
