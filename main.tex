@@ -481,32 +481,18 @@ Since voxel-space optimisation was computationally impractical at this dimension
     \label{fig:roi_task_overlap_summary}
 \end{figure}
 
-\begin{figure}[!htbp]
-    \centering
-    \begin{minipage}{\textwidth}
-        \centering
-        \FigureRowImageLargeLabel{0.92\textwidth}{Vigour Network}{main_figures/Figure6A.pdf}
-    \end{minipage}\par\vspace{0.5em}
-    \begin{minipage}{\textwidth}
-        \centering
-        \FigureRowImageLargeLabelTight{0.92\textwidth}{Task Activation Map}{main_figures/Figure6B.pdf}
-    \end{minipage}
-    \caption{Medication-state functional connectivity summaries. For the vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF-medication, ON-medication, and participant-level ON-OFF differences. The corresponding plots show within-ROI and between-ROI Pearson functional connectivity for the standard task-activation map.}
-    \label{fig:medication_local_distributed_fc}
-\end{figure}
-
 \clearpage
 \begin{figure}[!p]
     \centering
-    \FigureRowImage{0.96\textwidth}{Reaction Time}{main_figures/Figure8A.pdf}
+    \FigureRowImage{0.96\textwidth}{Reaction Time}{main_figures/Figure6A.pdf}
 
     \vspace{0.5em}
 
-    \FigureRowImage{0.96\textwidth}{Vigour Network}{main_figures/Figure8B.pdf}
+    \FigureRowImage{0.96\textwidth}{Vigour Network}{main_figures/Figure6B.pdf}
 
     \vspace{0.5em}
 
-    \FigureRowImage{0.96\textwidth}{Task Activation Map}{main_figures/Figure8C.pdf}
+    \FigureRowImage{0.96\textwidth}{Task Activation Map}{main_figures/Figure6C.pdf}
     \caption{GVS effects on reaction time and projected signal dynamics. Top row: normalised reaction time across sham and GVS1-GVS8 conditions during medication OFF \textbf{(A)} and medication ON \textbf{(B)}; lower normalised RT indicates faster responses, and error bars show SEM. Middle row: subject-level GVS-minus-sham late-early response differences from the vigour network projected signal. Bottom row: the same late-early feature computed from the task-activation map BOLD signal. In the neural panels, violins show the subject distribution, boxes show median/IQR, and points show individual subjects after pairing each GVS waveform with sham within subject/session/run. The horizontal zero line indicates no difference from sham. Orange highlights GVS waveforms surviving multiple-comparison correction; blue indicates non-significant GVS waveform.}
     \label{fig:gvs_behaviour_network_responses}
 \end{figure}
@@ -516,6 +502,21 @@ Since voxel-space optimisation was computationally impractical at this dimension
     \includegraphics[width=\textwidth]{main_figures/Figure7.pdf}
     \caption{Exploratory GVS-related mutual-information edge changes in the vigour network. Active-sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_edge_changes}
+\end{figure}
+
+\clearpage
+\begin{figure}[!htbp]
+    \centering
+    \begin{minipage}{\textwidth}
+        \centering
+        \FigureRowImageLargeLabel{0.92\textwidth}{Vigour Network}{main_figures/Figure8A.pdf}
+    \end{minipage}\par\vspace{0.5em}
+    \begin{minipage}{\textwidth}
+        \centering
+        \FigureRowImageLargeLabelTight{0.92\textwidth}{Task Activation Map}{main_figures/Figure8B.pdf}
+    \end{minipage}
+    \caption{Medication-state functional connectivity summaries. For the vigour network, plots show within-ROI and between-ROI Pearson functional connectivity for OFF-medication, ON-medication, and participant-level ON-OFF differences. The corresponding plots show within-ROI and between-ROI Pearson functional connectivity for the standard task-activation map.}
+    \label{fig:medication_local_distributed_fc}
 \end{figure}
 
 
