@@ -53,6 +53,12 @@
 \setcounter{table}{0}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
+\providecommand{\networkrowlabel}[1]{%
+    \par\noindent\makebox[\linewidth][l]{\textbf{#1}}\par\vspace{0.08em}%
+}
+\providecommand{\networkrowpanel}[2]{%
+    \par\noindent\makebox[\linewidth][l]{\textbf{#1}\quad\textbf{#2}}\par\vspace{0.08em}%
+}
 
 %##########################################################################################
 \section{Participant and behavioural details}
@@ -803,12 +809,11 @@ To test whether the medication-related within-versus-between-ROI FC pattern repo
 
 \begin{figure}[H]
     \centering
-    \makebox[\linewidth][c]{\hspace*{-13cm}\textbf{Vigour Network}}\\[-0.05em]
+    \networkrowlabel{Vigour Network}
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure12A.pdf}
-    \vspace{0.1em}
-    \makebox[\linewidth][c]{\hspace*{-13cm} \textbf{Task-activation Map}}\\[-0.2em]
-    \includegraphics[width=\linewidth]
-    {supplementary_figures/Sup_Figure12B.pdf}
+    \par\vspace{0.3em}
+    \networkrowlabel{Task-activation Map}
+    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure12B.pdf}
     \caption{Run-to-run baseline control for the medication-related functional-connectivity effect. The top row shows the vigour network, and the bottom row shows the task-activation map. Within each row, panels compare subject-level FC change between runs within session with the between-session medication-effect estimate for \textbf{A}, intra-ROI FC; \textbf{B}, between-ROI FC; and \textbf{C}, the intra-minus-between FC contrast. Grey and red points show individual subjects, paired lines connect matched values, and black markers summarise the group mean with uncertainty. In the vigour network, medication-related between-session change was significantly larger than run-to-run variability for intra-ROI FC (\(p=0.005\)) and for the intra-minus-between contrast (\(p=0.022\)), but not for between-ROI FC (\(p=0.961\)). In the task-activation map, between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.011\)) and between-ROI FC (\(p=0.015\)), with weaker evidence for the intra-minus-between contrast (\(p=0.059\)).}
     \label{fig:medication_fc_run_to_run_baseline}
 \end{figure}
@@ -824,12 +829,12 @@ Figure~\ref{fig:gvs_projected_time_courses} shows the averaged projected time co
 \begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
-        \noindent\textbf{A}\par\vspace{0.2em}
+        \networkrowpanel{A}{Vigour Network}
         \centering
         \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13B.pdf}
     \end{minipage}\par\vspace{0.35em}
     \begin{minipage}{\textwidth}
-        \noindent\textbf{B}\par\vspace{0.2em}
+        \networkrowpanel{B}{Task-activation Map}
         \centering
         \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure13A.pdf}
     \end{minipage}
@@ -881,12 +886,12 @@ Figure~\ref{fig:gvs_pearson_edges} shows the Pearson correlation edge-change ana
 \begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
-        \noindent\textbf{A}\par\vspace{0.2em}
+        \networkrowpanel{A}{Vigour Network}
         \centering
         \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure10A.pdf}
     \end{minipage}\par\vspace{0.35em}
     \begin{minipage}{\textwidth}
-        \noindent\textbf{B}\par\vspace{0.2em}
+        \networkrowpanel{B}{Task-activation Map}
         \centering
         \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure10B.pdf}
     \end{minipage}
