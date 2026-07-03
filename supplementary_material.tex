@@ -905,7 +905,17 @@ Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change anal
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure14.pdf}
+    \begin{minipage}{\textwidth}
+    \networkrowpanel{A}{Vigour Network}
+    \centering
+    \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure14A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    
+    \begin{minipage}{\textwidth}
+    \networkrowpanel{B}{Task-activation Map}
+    \centering
+    \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure14B.pdf}
+    \end{minipage}
     \caption{Exploratory GVS-related mutual-information edge changes in the task-activation map. Active-sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
     \label{fig:gvs_task_mi_edges}
 \end{figure}
