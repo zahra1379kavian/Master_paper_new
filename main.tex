@@ -55,7 +55,7 @@ $^{3}$Faculty of Medicine (Neurology), University of British Columbia, Vancouver
 }
 \newcommand{\FigureRowImageLargeLabelTight}[3]{%
     \begin{tabular}{@{}l@{}}
-        \large\bfseries #2\\[-0.1em]
+        \large\bfseries #2\\[-0.05em]
         \includegraphics[width=#1]{#3}
     \end{tabular}%
 }
@@ -205,7 +205,7 @@ We also tested whether medication preferentially affected local within-ROI coupl
 We organise the Results in two stages. In Stage 1, we identified the vigour network and tested its stability, behavioural relevance, and separation from standard task activation. In Stage 2, we examined whether this network was modulated by dopaminergic medication and GVS stimuli.
 
 \subsection{Behavioural dataset and reaction-time profile}
-After trial- and run-level quality control, \(18\) participants, \(35\) sessions, \(70\) runs, and \(5{,}463\) Go trials were retained for behavioural and neural analyses. Mean RT was \(387.2 \pm 65.8\)~ms in the OFF-medication session and \(375.5 \pm 64.7\)~ms in the ON-medication session, and the subject-paired medication effect on mean RT was small (Figure~S2 of the Supplementary Material). Notably, although mean RT was lower ON medication, consecutive-trial RT variability was higher ON than OFF (4.04 versus 3.50). Reward effects varied across participants, with some participants showing faster responses in high-reward trials and others showing little or opposite reward-related change (Figure~S3 of the Supplementary Material).
+After trial- and run-level quality control, \(18\) participants, \(35\) sessions, \(70\) runs, and \(5{,}463\) Go trials were retained for behavioural and neural analyses. Mean RT was \(387.2 \pm 65.8\)~ms in the OFF-medication session and \(375.5 \pm 64.7\)~ms in the ON-medication session, and the subject-paired medication effect on mean RT was small (Figure~S2 of the Supplementary Material). Notably, although mean RT was lower ON medication, consecutive-trial RT variability was higher ON than OFF ($4.04$ versus $3.50$). Reward effects varied across participants, with some participants showing faster responses in high-reward trials and others showing little or opposite reward-related change (Figure~S3 of the Supplementary Material).
 
 \subsection{Stage 1: Identification and validation of the vigour network}
 This stage tested the main network-discovery claim: whether a reproducible, behaviour-linked neural network could be recovered that was more stable than RT and distinct from standard task activation.
@@ -346,56 +346,50 @@ The datasets generated and/or analysed during the current study are available fr
 % The fitted EMPCA-space weights were sign-oriented consistently across folds and then back-projected to voxel space as \(w^{\mathrm{org}}=W_{\mathrm{pca}}w\).
 
 \section*{Appendix A: Optimisation derivation and model-selection summary}
-The optimisation framework aimed to identify a voxel-weight vector that produced a projected neural signal related to trial-wise motor vigour while satisfying constraints on task engagement, spatial coherence, and low consecutive-trial variability. In voxel space, the projected signals \( \mathbf{y}_{\beta} \in \mathbb{R}^{n_{\mathrm{trials}}} \) and \( \mathbf{y}_{\mathrm{BOLD}} \in \mathbb{R}^{n_{\mathrm{time}}} \) are defined as:
-\[\mathbf{y}_{\beta} = \mathbf{w}^{\top}\mathbf{X}_{\beta} \qquad \mathbf{y}_{\mathrm{BOLD}} = \mathbf{w}^{\top}\mathbf{X}_{\mathrm{BOLD}}\]. 
-\( \mathbf{X}_{\beta} \in \mathbb{R}^{n_{\mathrm{voxels}} \times n_{\mathrm{trials}}} \) contains the single-trial beta estimates, \( \mathbf{X}_{\mathrm{BOLD}} \in \mathbb{R}^{n_{\mathrm{voxels}} \times n_{\mathrm{time}}} \) contains the BOLD time courses, and \( \mathbf{w} \in \mathbb{R}^{n_{\mathrm{voxels}}} \) denotes the model weights. The optimisation model was based on four constraints. 
-
-First, the signal should come mainly from task-engaged voxels. This term discourages the model from assigning large weights to weakly task-engaged components:
+The optimisation framework identifies a voxel-weight vector and a projected signal related to trial-wise motor vigour while satisfying constraints on task engagement, spatial coherence, and low consecutive-trial variability. In voxel space, the projected signals \( \mathbf{y}_{\beta} \in \mathbb{R}^{n_{\mathrm{trials}}} \) and \( \mathbf{y}_{\mathrm{BOLD}} \in \mathbb{R}^{n_{\mathrm{time}}} \) are defined as:
+\begin{equation*}\mathbf{y}_{\beta} = \mathbf{w}^{\top}\mathbf{X}_{\beta} \qquad \mathbf{y}_{\mathrm{BOLD}} = \mathbf{w}^{\top}\mathbf{X}_{\mathrm{BOLD}}\end{equation*}
+\( \mathbf{X}_{\beta} \in \mathbb{R}^{n_{\mathrm{voxels}} \times n_{\mathrm{trials}}} \) contains the single-trial beta estimates, \( \mathbf{X}_{\mathrm{BOLD}} \in \mathbb{R}^{n_{\mathrm{voxels}} \times n_{\mathrm{time}}} \) contains the BOLD time courses, and \( \mathbf{w} \in \mathbb{R}^{n_{\mathrm{voxels}}} \) denotes the model weights. The optimisation model was based on four constraints. First, the signal should come mainly from task-engaged voxels. This term discourages the model from assigning large weights to weakly task-engaged components. For voxel \(v\), let \(a_v=\|X_{\beta,v:}\|_2\), \(\mathbf{a}=(a_1,\ldots, a_{n_{\mathrm{voxels}}})^\top \)
+where \(X_{\beta,v:}\) is the trial-wise beta for voxel \(v\). The task-engagement penalty was 
 \[
-L_{\mathrm{task}}(w)
-=
-w^\top C_{\mathrm{task}}w,
-\qquad
-C_{\mathrm{task}}
-=
-\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right).
+L_{\mathrm{task}}(w)=w^\top C_{\mathrm{task}}w,\qquad
+C_{\mathrm{task}}=
+\left[\operatorname{diag}(\mathbf{a}+\epsilon\mathbf{1})\right]^{-1},
 \]
-Second, the projected beta signal should encode behavioural information. The behavioural variable was reaction time. Therefore, the model aimed to maximise the correlation between \(X_{\mathrm{behav}}\) and \(y_{\beta}\):
-\begin{equation}
+where \(\epsilon>0\) prevents division by zero.
+% \begin{equation}
+% L_{\mathrm{task}}(w)
+% =
+% w^\top C_{\mathrm{task}}w,
+% \qquad
+% C_{\mathrm{task}}
+% =
+% \operatorname{diag}\!\left(\left|X_{\beta}\right|\right)^{-1}
+% \end{equation}
+Second, the projected beta signal should encode behavioural information. The behavioural variable was reaction time. Therefore, the model aimed to maximise the correlation between \(X_{\mathrm{behav}}\) (RT) and \(y_{\beta}\):
+\begin{equation*}
 \max_w
 \operatorname{Corr}\!\left(X_{\mathrm{behav}}, w^\top X_{\beta}\right)^2
 =
 \frac{w^\top X_{\beta}X_{\mathrm{behav}}^\top X_{\mathrm{behav}}X_{\beta}^\top w}{w^\top X_{\beta}X_{\beta}^\top  w}
 =
-\frac{w^\top C_{\mathrm{RT}} w}{w^\top C_{\mathrm{var}} w},
-\end{equation}
+\frac{w^\top C_{\mathrm{RT}} w}{w^\top C_{\mathrm{var}} w}
+\end{equation*}
 Third, the selected voxels should form a spatially coherent network. Neighbouring voxels were encouraged to have similar weights using the spatial smoothness loss: \(L_{\mathrm{smooth}}(w) = w^\top C_{\mathrm{smooth}}w\), \(C_{\mathrm{smooth}} = L_{\mathrm{graph}}\).
 % Here, \(C_{RT}\) captures the behaviourally relevant part of the projected beta signal, and \(C_{var}\) normalises this association by the variance of the projected beta signal.
 
-Fourth, the projected signal should show low consecutive-trial variability. This condition penalised large local changes between neighbouring trials, rather than variance across the full time. For valid consecutive-trial pairs \(I_c\), the beta estimates variability loss was
-\begin{equation} 
+Fourth, the projected signal should show low consecutive-trial variability. This condition penalised large local changes between neighbouring trials, rather than variance across the full time. For valid consecutive-trial pairs \(I_c\), the beta estimate variability loss was
+\begin{equation*} 
 L_{\beta}(w) = w^\top C_{\beta}w, 
 \qquad
-C_{\beta} = \sum_{i\in I_c} \left(X_{\beta,i}-X_{\beta,i+1}\right) \left(X_{\beta,i}-X_{\beta,i+1}\right)^\top. 
-\end{equation}
+C_{\beta} = \sum_{i\in I_c} \left(X_{\beta,i}-X_{\beta,i+1}\right) \left(X_{\beta,i}-X_{\beta,i+1}\right)^\top 
+\end{equation*}
 The same low-variability condition was also applied to BOLD: \(L_{BOLD}(w) = w^\top C_{BOLD}w\). Both variability terms were included because \(L_{\beta}(w)\) constrains variability in movement-related beta responses, whereas \(L_{\mathrm{bold}}(w)\) also captures broader task-related variability present in the BOLD.
 
-% \begin{equation}
-% L_{\beta}(w)
-% =
-% w^\top C_{\beta}w,
-% \qquad
-% C_{\beta}
-% =
-% \sum_{i\in I_c}
-% \left(X_{\beta,i}-X_{\beta,i+1}\right)
-% \left(X_{\beta,i}-X_{\beta,i+1}\right)^\top.
-% \end{equation}
-
 The four penalty terms were combined into a single total loss:
-\begin{equation}
+\begin{equation*}
+\begin{split}
 L_{\mathrm{total}}(w)
-=
+&=
 \alpha_{\mathrm{task}} L_{\mathrm{task}}(w)
 +
 \alpha_{\mathrm{BOLD}} L_{\mathrm{bold}}(w)
@@ -404,23 +398,20 @@ L_{\mathrm{total}}(w)
 +
 \alpha_{\mathrm{smooth}} L_{\mathrm{smooth}}(w)
 =
-w^\top C_{\mathrm{total}}w,
-\end{equation}
-\begin{equation}
+w^\top C_{\mathrm{total}}w \\
 C_{\mathrm{total}}
-=
+&=
 \alpha_{\mathrm{task}} C_{\mathrm{task}}
 +
 \alpha_{\mathrm{BOLD}} C_{\mathrm{bold}}
 +
 \alpha_{\beta} C_{\beta}
 +
-\alpha_{\mathrm{smooth}} C_{\mathrm{smooth}}.
-\end{equation}
-
+\alpha_{\mathrm{smooth}} C_{\mathrm{smooth}}
+\end{split}
+\end{equation*}
 The final objective minimises the combined penalties while maximising behavioural relevance:
-
-\begin{equation}
+\begin{equation*}
 \min_w
 \frac{
 \gamma w^\top C_{\mathrm{total}}w
@@ -430,12 +421,12 @@ w^\top C_{RT}w
 w^\top C_{var}w
 }
 \qquad
-\mathrm{s.t.}\ \|w\|_2=1.
-\end{equation}
-
+\mathrm{s.t.}\ \|w\|_2=1
+\end{equation*}
 Here, \(\alpha_{\mathrm{task}}\), \(\alpha_{\mathrm{BOLD}}\), \(\alpha_{\beta}\), and \(\alpha_{\mathrm{smooth}}\) control the relative contribution of each penalty term, and \(\gamma\) controls the overall strength of the penalties relative to behavioural relevance. 
 
-The optimisation was solved using Sequential Least Squares Programming. Hyperparameters were selected using a coarse-to-fine cross-validation procedure. Candidate settings were fit on training folds and evaluated using held-out \(|\operatorname{Corr}(y_{\beta}, RT)|\), with preference for stable held-out performance and small train-test differences.
+The optimisation was solved with Sequential Least Squares Programming, and hyperparameters were selected by coarse-to-fine cross-validation. Candidate settings were fitted on training folds and evaluated using held-out \(|\operatorname{Corr}(y_{\beta}, RT)|\), favouring stable performance and small train-test differences. 
+Since voxel-space optimisation was computationally impractical at this dimensionality, the data were first projected into a lower-dimensional PCA subspace.
 
 
 
@@ -456,18 +447,19 @@ The optimisation was solved using Sequential Least Squares Programming. Hyperpar
 \begin{figure}[!p]
     \centering
     \begin{minipage}{\textwidth}
-        \noindent\textbf{A}\par\vspace{0.2em}
+        % \noindent\textbf{A}\par\vspace{0.2em}
         \centering
         \includegraphics[width=0.88\textwidth]{main_figures/Figure2A.pdf}
     \end{minipage}\par\vspace{0.8em}
     \begin{minipage}{\textwidth}
-        \noindent\textbf{B}\par\vspace{0.2em}
+        % \noindent\textbf{B}\par\vspace{0.2em}
         \centering
         \includegraphics[width=0.98\textwidth]{main_figures/Figure2B.pdf}
     \end{minipage}
-    \caption{Validation displays for the optimisation framework. \textbf{A}: Paired comparison of consecutive-trial variability in reaction time and in the optimised neural projection, with participant-level behaviour-minus-projection differences shown. \textbf{B}: Voxel-stability comparison between vigour-network voxels and size-matched motor-area control resamples, with voxel beta-variability rankings shown across percentile bins.}
+    \caption{Validation displays for the optimisation framework. \textbf{(A)} Subject-level consecutive-trial variability in reaction time and in the vigour-network projection. Points denote subjects and grey lines show paired subject estimates. \textbf{(B)} Within-subject behaviour-minus-projection differences. \textbf{(C)} Across variability percentile thresholds, vigour-network voxels are enriched for low consecutive-trial variability relative to motor-control voxels. \textbf{(D)} The mean normalized consecutive-trial variability of vigour-network voxels compares with the matched motor-control resampling distribution.}
     \label{fig:optimization_validation}
 \end{figure}
+
 
 \clearpage
 \begin{figure}[!p]
@@ -494,7 +486,7 @@ The optimisation was solved using Sequential Least Squares Programming. Hyperpar
     \begin{minipage}{\textwidth}
         \centering
         \FigureRowImageLargeLabel{0.92\textwidth}{Vigour Network}{main_figures/Figure6A.pdf}
-    \end{minipage}\par\vspace{0.1em}
+    \end{minipage}\par\vspace{0.5em}
     \begin{minipage}{\textwidth}
         \centering
         \FigureRowImageLargeLabelTight{0.92\textwidth}{Task Activation Map}{main_figures/Figure6B.pdf}
@@ -515,7 +507,7 @@ The optimisation was solved using Sequential Least Squares Programming. Hyperpar
     \vspace{0.5em}
 
     \FigureRowImage{0.96\textwidth}{Task Activation Map}{main_figures/Figure8C.pdf}
-    \caption{GVS effects on reaction time and projected signal dynamics. Top row: normalised reaction time across sham and GVS1-GVS8 conditions during medication OFF (A) and medication ON (B); lower normalised RT indicates faster responses, and error bars show SEM. Middle row: subject-level GVS-minus-sham late-minus-early response differences from the vigour network projected signal. Bottom row: the same late-minus-early feature computed from the task-activation map BOLD signal. In the neural panels, violins show the subject distribution, boxes show median/IQR, and points show individual subjects after pairing each GVS waveform with sham within subject/session/run. The horizontal zero line indicates no difference from sham. Orange highlights GVS waveforms surviving multiple-comparison correction; blue indicates non-significant GVS waveform.}
+    \caption{GVS effects on reaction time and projected signal dynamics. Top row: normalised reaction time across sham and GVS1-GVS8 conditions during medication OFF \textbf{(A)} and medication ON \textbf{(B)}; lower normalised RT indicates faster responses, and error bars show SEM. Middle row: subject-level GVS-minus-sham late-minus-early response differences from the vigour network projected signal. Bottom row: the same late-minus-early feature computed from the task-activation map BOLD signal. In the neural panels, violins show the subject distribution, boxes show median/IQR, and points show individual subjects after pairing each GVS waveform with sham within subject/session/run. The horizontal zero line indicates no difference from sham. Orange highlights GVS waveforms surviving multiple-comparison correction; blue indicates non-significant GVS waveform.}
     \label{fig:gvs_behaviour_network_responses}
 \end{figure}
 

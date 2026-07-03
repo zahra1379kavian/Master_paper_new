@@ -586,17 +586,21 @@ The optimisation model was based on four assumptions about the neural representa
 
 \textbf{Condition 1: The projected signal should come from task-engaged voxels.}
 
-The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to $y_{\beta}$ through its beta activity and its corresponding weight in $w$. Therefore, if a voxel has weak task-related beta activation, assigning a small weight to that voxel would allow a highly task-engaged region to contribute strongly to the projected signal:
+The first condition was that the projected signal should be generated mainly from voxels that were engaged during task performance. Each voxel contributes to \(y_{\beta}\) through its trial-wise beta activity and its corresponding weight in \(w\). Therefore, assigning a large weight to a voxel with weak task-related beta-response magnitude should be penalised, whereas voxels with stronger task-related beta responses should be penalised less.
 
-\begin{equation*}
-\begin{aligned}
-\min_{w} \sum_j \frac{w_j^2}{\left|X_{\beta,j}\right|}
-&=
-\min_{w} w^\top
-\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right)w.
-\end{aligned}
-\end{equation*}
-This gives the task-engagement loss term:
+For each voxel \(j\), we defined the voxel-wise beta-response magnitude across trials as
+\[
+a_j = \|X_{\beta,j:}\|_2
+=
+\left(\sum_{t=1}^{n_{\mathrm{trials}}} X_{\beta,jt}^{2}\right)^{1/2},
+\]
+where \(X_{\beta,j:}\) denotes the row of \(X_\beta\) corresponding to voxel
+\(j\). Collecting these values gives
+\[
+\mathbf{a} = (a_1,\ldots,a_{n_{\mathrm{voxels}}})^\top .
+\]
+The task-engagement penalty was then written as
+
 \begin{equation*}
 \begin{aligned}
 L_{\mathrm{task}}(w)
@@ -604,11 +608,13 @@ L_{\mathrm{task}}(w)
 &
 C_{\mathrm{task}}
 &=
-\operatorname{diag}\!\left(\frac{1}{\left|X_{\beta}\right|}\right).
+\left[\operatorname{diag}(\mathbf{a}+\epsilon\mathbf{1})\right]^{-1}.
 \end{aligned}
 \end{equation*}
 
-Thus, $C_{\mathrm{task}}$ favours voxels with stronger task-related beta responses and discourages the model from selecting voxels with weak task engagement.
+Thus, \(C_{\mathrm{task}}\) favours voxels with stronger task-related
+beta-response magnitude and discourages the model from selecting voxels with
+weak task engagement.
 
 \textbf{Condition 2: The projected signal should encode behavioural information.}
 
