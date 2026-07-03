@@ -811,7 +811,7 @@ To test whether medication-related changes in the vigour-network connectivity pa
 \end{figure}
 
 \subsection{Control analysis: medication-related FC changes relative to run-to-run baseline variability}
-To test whether the medication-related within-versus-between-ROI FC pattern reported in main Figure~8 exceeded ordinary short-term variability, we repeated the same subject-level FC-change analysis using within-session run-to-run differences as a baseline and compared these values with the between-session medication-effect estimate (Figure~\ref{fig:medication_fc_run_to_run_baseline}). In the vigour network, medication-related between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.005\)) and for the intra-minus-between contrast (\(p=0.022\)), but not for between-ROI FC (\(p=0.961\)). In the task-activation map, between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.011\)) and between-ROI FC (\(p=0.015\)), with weaker evidence for the intra-minus-between contrast (\(p=0.059\)). Thus, the baseline analysis supported medication-related FC changes beyond short-term measurement fluctuation, with the local-versus-distributed specificity clearest in the vigour network.
+To test whether the medication-related within-versus-between-ROI FC pattern reported in main Figure~7 exceeded ordinary short-term variability, we repeated the same subject-level FC-change analysis using within-session run-to-run differences as a baseline and compared these values with the between-session medication-effect estimate (Figure~\ref{fig:medication_fc_run_to_run_baseline}). In the vigour network, medication-related between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.005\)) and for the intra-minus-between contrast (\(p=0.022\)), but not for between-ROI FC (\(p=0.961\)). In the task-activation map, between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.011\)) and between-ROI FC (\(p=0.015\)), with weaker evidence for the intra-minus-between contrast (\(p=0.059\)). Thus, the baseline analysis supported medication-related FC changes beyond short-term measurement fluctuation, with the local-versus-distributed specificity clearest in the vigour network.
 
 \begin{figure}[H]
     \centering
@@ -889,25 +889,7 @@ Figure~\ref{fig:gvs_task_feature_summary} applies the same response-feature anal
 
 \subsection{Connectivity analyses}
 
-Figure~\ref{fig:gvs_pearson_edges} shows the Pearson correlation edge-change analysis for both the vigour network and the task-activation map. Pearson correlation was included as a linear-connectivity complement to the mutual-information analysis reported in the main manuscript. The Pearson results showed both increased and decreased active-sham edge changes, rather than a uniform shift in one direction. Significant edges were distributed across limbic-olfactory, somatomotor/cerebellar, visual, subcortical, cingulate-temporal, and frontoparietal sectors, supporting an edge-specific and network-dependent pattern of GVS modulation.
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{\textwidth}
-        \networkrowpanel{A}{Vigour Network}
-        \centering
-        \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure10A.pdf}
-    \end{minipage}\par\vspace{0.35em}
-    \begin{minipage}{\textwidth}
-        \networkrowpanel{B}{Task-activation Map}
-        \centering
-        \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure10B.pdf}
-    \end{minipage}
-    \caption{GVS-related Pearson correlation edge changes in the vigour network and task-activation map. \textbf{A}, Pearson correlation analysis for the vigour network. \textbf{B}, for the task-activation map. Each panel shows significant FDR-corrected active-sham edge changes. Orange edges mark increased Pearson correlation, and blue edges mark decreased Pearson correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
-    \label{fig:gvs_pearson_edges}
-\end{figure}
-
-Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change analysis for both the vigour network and the task-activation map. Active GVS changed mutual-information connectivity in both maps, indicating that vestibular stimulation affected network coupling beyond a single map definition. However, the pattern of significant task-activation map edges showed limited overlap with the vigour-network mutual-information edges reported in the main manuscript. This supports a cautious interpretation: GVS perturbed both networks, but the vigour network showed a partly distinct pattern of stimulation-sensitive connectivity.
+Using mutual information, active GVS produced \(156\) sham-referenced edge changes that were significant after FDR correction among \(703\) tested edges. Of these, \(46\) increased and \(110\) decreased (Figure~\ref{fig:gvs_task_mi_edges}A). The strongest decreases were observed in the left amygdala–left thalamus, left cerebellum–left putamen, and left cingulate–left thalamus. The strongest increases were observed in the left parietal cortex–left thalamus and the left putamen–left supplementary motor area. At the anatomical-sector level, decreases were most concentrated between limbic/olfactory and somatomotor/cerebellar regions, with additional decreases linking subcortical, cingulate–temporal, and somatomotor/cerebellar sectors. As a control, we repeated the mutual-information GVS edge-change analysis using the task-activation map (Figure~\ref{fig:gvs_task_mi_edges}B). GVS also produced significant changes in this task-activation network, but the pattern differed: the task-activation map showed \(134\) significant mutual-information edges, with only \(14\) mutual-information edges overlapping those in the vigour network.
 
 \begin{figure}[H]
     \centering
@@ -926,7 +908,25 @@ Figure~\ref{fig:gvs_task_mi_edges} shows the mutual-information edge-change anal
     \label{fig:gvs_task_mi_edges}
 \end{figure}
 
-Together, these supplementary analyses support the main conclusion that GVS effects were not uniform across waveforms, medication states, response features, or network definitions. The vigour network appeared to capture the GVS waveform linked to faster OFF-medication responses, whereas broader connectivity changes were present in both the vigour network and the task-activation map.
+Using Pearson correlation, active GVS produced \(194\) significant edges  (106 increases, 88 decreases; Figure~\ref{fig:gvs_pearson_edges}A). The strongest increases involved left amygdala–left paracentral lobule, right postcentral cortex–left temporal cortex, and left cerebellum–right paracentral lobule. The strongest decreases were observed in the left caudate–right frontal cortex, right amygdala–left precentral cortex, and left thalamus–left temporal cortex. As a control, we repeated the Pearson-correlation GVS edge-change analysis using the task-activation map (Figure~\ref{fig:gvs_pearson_edges}B). GVS also produced significant changes in this task-activation network, but the pattern differed: the task-activation map showed \(148\) significant Pearson edges, with only \(16\) Pearson edges overlapping those in the vigour network. The two metrics did not identify the same set of edges, consistent with the different dependencies captured by the two metrics. Although the two metrics identified different edges, both showed distributed GVS‑related changes involving limbic/olfactory, medial‑temporal, subcortical, visual, cingulate–temporal, and somatomotor/cerebellar components.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{\textwidth}
+        \networkrowpanel{A}{Vigour Network}
+        \centering
+        \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure10A.pdf}
+    \end{minipage}\par\vspace{0.35em}
+    \begin{minipage}{\textwidth}
+        \networkrowpanel{B}{Task-activation Map}
+        \centering
+        \includegraphics[width=0.91\linewidth,height=0.4\textheight,keepaspectratio]{supplementary_figures/Sup_Figure10B.pdf}
+    \end{minipage}
+    \caption{GVS-related Pearson correlation edge changes in the vigour network and task-activation map. \textbf{A}, Pearson correlation analysis for the vigour network. \textbf{B}, for the task-activation map. Each panel shows significant FDR-corrected active-sham edge changes. Orange edges mark increased Pearson correlation, and blue edges mark decreased Pearson correlation; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_pearson_edges}
+\end{figure}
+
+Together, these supplementary analyses support the main conclusion that GVS effects were not uniform across waveforms, medication states, response features, or network definitions. The vigour network appeared to capture the GVS waveform linked to faster OFF-medication responses, whereas broader connectivity changes were present in both the vigour network and the task-activation map. This supports a cautious interpretation: GVS influenced task-active circuitry broadly, but the vigour network showed a partly distinct pattern of stimulation-sensitive connectivity.
 
 \FloatBarrier
 \bibliographystyle{Frontiers-Harvard}
