@@ -134,7 +134,7 @@ This section reports clinical summaries and behavioural quality-control informat
     \label{fig:RT_information}
 \end{figure}
 
-Figure~\ref{fig:RT_changes} summarises reaction-time patterns across medication conditions and task progression. Reaction times are modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern is visible both in the trial-wise RT distributions, where the ON distribution is slightly shifted toward shorter latencies, and in the subject-paired means, where most participants show lower mean RT in the ON-medication condition. The paired subject-level test shows a mean ON–OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task are limited: RT is only slightly slower in run $2$ than run $1$, and trial position within blocks shows no clear monotonic practice or drift pattern. Overall, the behavioural results suggest a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation.
+Figure~\ref{fig:RT_changes} summarises reaction-time patterns across medication conditions and task progression. Reaction times are modestly faster in the ON-medication condition than in the OFF-medication condition. This pattern is visible both in the trial-wise RT distributions, where the ON distribution is slightly shifted toward shorter latencies, and in the subject-paired means, where most participants show lower mean RT in the ON-medication condition. The paired subject-level test shows a mean ON–OFF difference of $-13.6$ ms, $95\%$ CI $[-27.5, 0.3]$, $t(16) = -2.08$, p = $0.054$, indicating a small medication-related speeding effect that approached but did not reach conventional significance. By comparison, temporal effects within the task are limited: RT is only slightly slower in run $2$ than run $1$, and trial position within blocks shows no clear monotonic practice or drift pattern. Overall, the behavioural results suggest a small medication-associated reduction in RT, with practice, fatigue, and within-task drift contributing only modestly to RT variation.
 
 \begin{figure}[H]
     \centering
@@ -468,10 +468,10 @@ The final group coverage mask contained $91{,}769$ voxels, yielding a final grou
 
 %###########################################################################################
 \FloatBarrier
-\section*{Appendix A: Optimisation derivation and model-selection details}\label{app:optimization_full}
+\section{Optimisation derivation and model-selection details}\label{app:optimization_full}
 
 A group-level optimisation procedure identifies a vigour network
-(main Figure~\ref{fig:task_analysis_overview}B,C). The aim of the optimisation framework is to identify a voxel-weight vector that produces a projected neural signal related to trial-wise motor vigour while satisfying constraints on task engagement, spatial coherence, and low consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}^{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
+(main Figure~1B, C). The aim of the optimisation framework is to identify a voxel-weight vector that produces a projected neural signal related to trial-wise motor vigour while satisfying constraints on task engagement, spatial coherence, and low consecutive-trial variability. In voxel space, this projection is defined by a voxel-weight vector, \(\mathbf{w}^{\mathrm{org}}\), that combines voxel activity into one scalar signal at each sample. For a neural data matrix
 \(\mathbf{X}^{\mathrm{org}} \in \mathbb{R}^{N_v \times N_s}\), where columns are samples, the projected signal is
 
 \begin{equation*}
@@ -806,12 +806,12 @@ To test whether medication-related changes in the vigour-network connectivity pa
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{supplementary_figures/Sup_Figure9.pdf}
-    \caption{Medication-state control analysis for voxel-pattern stability. Subject-level paired correlation-distance plots compare within-state run 1 versus run 2 distances with ON- versus OFF-medication distances. Lines connect paired estimates from the same participant. \textbf{A}, Pearson-based consistency; \textbf{B}, mutual-information-based consistency. Separate panels show the paired distances for the displayed voxel sets.}
+    \caption{Medication-state control analysis for connectivity-pattern stability. Subject-level paired correlation-distance plots compare within-state run 1 versus run 2 distances with ON- versus OFF-medication distances. Lines connect paired estimates from the same participant. \textbf{A}, Pearson-based consistency; \textbf{B}, mutual-information-based consistency. Separate panels show the paired distances for the displayed connectivity patterns.}
     \label{fig:medication_stability_control}
 \end{figure}
 
 \subsection{Control analysis: medication-related FC changes relative to run-to-run baseline variability}
-To test whether the medication-related within-versus-between-ROI FC pattern reported in main Figure~7 exceeded ordinary short-term variability, we repeated the same subject-level FC-change analysis using within-session run-to-run differences as a baseline and compared these values with the between-session medication-effect estimate (Figure~\ref{fig:medication_fc_run_to_run_baseline}). In the vigour network, medication-related between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.005\)) and for the intra-minus-between contrast (\(p=0.022\)), but not for between-ROI FC (\(p=0.961\)). In the task-activation map, between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.011\)) and between-ROI FC (\(p=0.015\)), with weaker evidence for the intra-minus-between contrast (\(p=0.059\)). Thus, the baseline analysis supports medication-related FC changes beyond short-term measurement fluctuation, with the local-versus-distributed specificity clearest in the vigour network.
+To test whether the medication-related within-versus-between-ROI FC pattern reported in main Figure~8 exceeded ordinary short-term variability, we repeated the same subject-level FC-change analysis using within-session run-to-run differences as a baseline and compared these values with the between-session medication-effect estimate (Figure~\ref{fig:medication_fc_run_to_run_baseline}). In the vigour network, medication-related between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.005\)) and for the intra-minus-between contrast (\(p=0.022\)), but not for between-ROI FC (\(p=0.961\)). In the task-activation map, between-session change was larger than run-to-run variability for intra-ROI FC (\(p=0.011\)) and between-ROI FC (\(p=0.015\)), with weaker evidence for the intra-minus-between contrast (\(p=0.059\)). Thus, the baseline analysis supports medication-related FC changes beyond short-term measurement fluctuation, with the local-versus-distributed specificity clearest in the vigour network.
 
 \begin{figure}[H]
     \centering
@@ -865,7 +865,7 @@ Figure~\ref{fig:gvs_vigour_feature_summary} summarises the four predefined activ
         \centering
         \includegraphics[width=0.91\linewidth]{supplementary_figures/Sup_Figure15B.pdf}
     \end{minipage}
-    \caption{GVS-related response-feature changes in the vigour network and task-activation map. \textbf{A}, OFF-medication session. \textbf{B}, ON-medication session. Violin plots show active-minus-sham feature values for the late-minus-early response, linear slope, maximum absolute baseline response, and peak-to-peak amplitude features. Highlighted distributions mark stimulation conditions that survived FDR correction within the displayed analysis.}
+    \caption{GVS-related response-feature changes in the vigour network. \textbf{A}, OFF-medication session. \textbf{B}, ON-medication session. Violin plots show active-minus-sham feature values for the late-minus-early response, linear slope, maximum absolute baseline response, and peak-to-peak amplitude features. Highlighted distributions mark stimulation conditions that survived FDR correction within the displayed analysis.}
     \label{fig:gvs_vigour_feature_summary}
 \end{figure}
 
