@@ -238,7 +238,7 @@ Projected time courses suggested stimulus‑specific modulation of the vigour‑
 
 In contrast, the task-activation map projection did not mirror this behavioural specificity.  In the ON-medication session, no task-activation map response survived correction, similar to the vigour network. However, in the OFF-medication session, significant task-activation map effects appeared for other stimulation conditions (e.g., GVS2 and GVS8 for the late–early feature; GVS6 for the maximum absolute baseline‑response feature (Figure~\ref{fig:gvs_behaviour_network_responses} bottom row; Figures~S11B and S13A, B of the Supplementary Material). Thus, the stimulation condition associated with faster OFF-medication responses was reflected in the vigour-network projection, but not by the task-activation projection.
 
-We next tested whether the vigour network showed stimulation-sensitive connectivity changes distinct from those seen in the task-activation map. For each GVS waveform, each edge was compared with the matched sham edge from the same subject, medication state, and run. Because participants contributed multiple GVS conditions, observations were not fully independent; therefore, these analyses describe stimulation-sensitive edges rather than a causal therapeutic GVS effect. Detailed edge-change results are reported in the Supplementary Material section "GVS-related supplementary analyses".
+We next tested whether the vigour network showed stimulation-sensitive connectivity changes distinct from those seen in the task-activation map. Because participants contributed multiple GVS conditions, observations were not fully independent; therefore, these analyses describe stimulation-sensitive edges rather than a causal therapeutic GVS effect. Using mutual information, active GVS produced \(156\) sham-referenced edge changes that were significant after FDR correction among \(703\) tested edges (Figure~\ref{fig:gvs_edge_changes}). Using Pearson correlation, active GVS produced \(194\) significant edges (Figure~S14A of the Supplementary Material). The two metrics did not identify the same set of edges, consistent with the different dependencies captured by the two metrics. As a control, we repeated the GVS edge-change analysis using the task-activation map (Figures~S14B and S15 of the Supplementary Material). GVS also produced significant changes in this task-activation network, but the pattern differed: the task-activation map showed \(134\) significant mutual-information edges and \(148\) significant Pearson edges, with only \(14\) mutual-information edges and \(16\) Pearson edges overlapping those in the vigour network. This supports a cautious interpretation: GVS influenced task-active circuitry broadly, but the vigour network showed a partly distinct pattern of stimulation-sensitive connectivity. Detailed edge-change results are reported in the Supplementary Material.
 
 \subsubsection{Medication strengthened local coupling within the vigour network}
 We next tested whether dopaminergic medication altered vigour-network connectivity. Network-pattern dissimilarity analysis showed that connectivity patterns differed more between medication states than between repeated runs within the same state, for both Pearson- and mutual-information-based edges (Figure~S9 of the Supplementary Material).
@@ -491,7 +491,13 @@ Since voxel-space optimisation was computationally impractical at this dimension
     \label{fig:gvs_behaviour_network_responses}
 \end{figure}
 
-\clearpage
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{main_figures/Figure7.pdf}
+    \caption{Exploratory GVS-related mutual-information edge changes in the vigour network. Active-sham edge changes that were significant after FDR correction are shown separately for increased and decreased connectivity. Changes were pooled across subjects, medication states, runs, and active GVS waveforms. Orange edges mark increased statistical dependence, and blue edges mark decreased statistical dependence; colour intensity scales with the mean edge-change magnitude. Nodes are labelled by ROI and grouped by anatomical sector.}
+    \label{fig:gvs_edge_changes}
+\end{figure}
+
 \begin{figure}[!htbp]
     \centering
     \begin{minipage}{\textwidth}
