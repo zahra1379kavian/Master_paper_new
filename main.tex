@@ -9,7 +9,6 @@
 \usepackage{placeins}
 \usepackage{amsmath,amsfonts,amssymb}
 
-% Compact float spacing for the manuscript figure-caption section.
 \setlength{\floatsep}{8pt plus 2pt minus 2pt}
 \setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
@@ -82,6 +81,8 @@ In motor tasks with repetitive trials, motor vigour varies substantially from tr
 
 \tiny
 \keyFont{ \section{Keywords:} Parkinson's disease, fMRI, motor vigour, reaction-time variability, dopaminergic medication, galvanic vestibular stimulation, functional connectivity}
+
+\noindent{\small Manuscript information: Word count: 7,605; Figures: 8; Tables: 0. Language style: British English.}
 \end{abstract}
 
 \section{Introduction}
@@ -115,7 +116,7 @@ Each fMRI session consisted of two task runs, and each run included nine blocks 
 GVS (STMISOLA, BIOPAC Systems Inc.) was delivered continuously throughout each run using bilateral mastoid electrodes. Each run contained one sham block and eight active amplitude-modulated GVS blocks. The active waveforms crossed carrier frequency (\(75\) or \(125\)~Hz) with envelope frequency (\(0\), \(10\), \(16\), or \(25\)~Hz), producing GVS1-GVS8. The order of the nine stimulation conditions was randomised independently for each run. The GVS analyses are considered exploratory because stimulation was presented in short blocks, observations from the same participant were repeated, and no dedicated washout interval separated every adjacent block. Full stimulation parameters, electrode placement, thresholding, and block-order details are provided in the Supplementary Material.
 
 \subsection{MRI acquisition, preprocessing, and trial-wise beta estimation}
-Structural and functional MRI (Philips Healthcare, Best, The Netherlands) data were acquired on a Philips \(3\)T Ingenia Elition X whole-body MRI scanner upgraded to an MR7700 system (Philips Healthcare, Best, The Netherlands) using a \(32\)-channel head coil. For each participant, a T1-weighted structural image was acquired, followed by two task-based fMRI runs per medication session. Functional MRI data were acquired using an EPI sequence. The first three participants were scanned with a multi-echo EPI protocol, whereas the remaining participants were scanned with a single-echo EPI protocol. Full sequence parameters are provided in the Supplementary Material.
+Structural and functional MRI (Philips Healthcare, Best, The Netherlands) data were acquired on a \(3\)T Ingenia Elition X whole-body MRI scanner upgraded to an MR7700 system (Philips Healthcare, Best, The Netherlands) using a \(32\)-channel head coil. For each participant, a T1-weighted structural image was acquired, followed by two task-based fMRI runs per medication session. Functional MRI data were acquired using an EPI sequence. The first three participants were scanned with a multi-echo EPI protocol, whereas the remaining participants were scanned with a single-echo EPI protocol. Full sequence parameters are provided in the Supplementary Material.
 
 Image preprocessing was performed in FSL \citep{smith2004advances}. Structural images underwent bias-field correction and brain extraction. Functional images were corrected for head motion and susceptibility-induced distortion, high-pass filtered, brain extracted, denoised using ICA-AROMA \citep{pruim2015ica}, spatially smoothed with a \(5\)~mm full-width at half-maximum Gaussian kernel, registered to each participant's structural image, and normalised to MNI152 space. The scanner automatically discarded four dummy volumes before image data were saved, so no additional initial volumes were removed during preprocessing.
 
@@ -226,7 +227,7 @@ Overall, the optimised map reflects a distributed network that includes motor‑
 \subsubsection{The vigour network is distinct from standard task activation}
 We compared the vigour network with the task-activation map to test whether the vigour network is mainly a subset of the task-activation map (Figures~\ref{fig:main_network_task_overlap} and \ref{fig:roi_task_overlap_summary}). The two maps show limited same-voxel overlap. The vigour network contains \(8{,}182\) voxels, whereas the task-activation map contains \(21{,}610\) voxels. Only \(835\) voxels are shared, giving a Dice coefficient of \(0.056\) and a Jaccard index of \(0.029\).
 
-The task‑activation map broadly covers regions engaged during task performance, whereas the vigour network is more selective. Some overlap occurs in motor‑related regions—including pericentral cortex, supplementary/paracentral motor areas, putamen, cerebellum, and parietal cortex—but many regions contain both maps with little or no same‑voxel overlap. Temporal‑limbic and orbitofrontal components are more prominent in the vigour network than in the task‑activation map (Figure~\ref{fig:roi_task_overlap_summary}; Tables~S4 and S5 of the Supplementary Material).
+The task‑activation map broadly covers regions engaged during task performance, whereas the vigour network is more selective. Some overlap occurs in motor‑related regions-including pericentral cortex, supplementary/paracentral motor areas, putamen, cerebellum, and parietal cortex-but many regions contain both maps with little or no same‑voxel overlap. Temporal‑limbic and orbitofrontal components are more prominent in the vigour network than in the task‑activation map (Figure~\ref{fig:roi_task_overlap_summary}; Tables~S4 and S5 of the Supplementary Material).
 
 \subsection{Stage 2: Stimulation and medication sensitivity of the vigour network}
 After validating the network, we tested whether its functional organisation changed with dopaminergic medication and with different GVS stimuli.
@@ -236,7 +237,7 @@ Across the eight GVS waveforms, the behavioural effect of GVS depended on the me
 
 Projected time courses suggested stimulus‑specific modulation of the vigour‑network signal. Across GVS conditions, the vigour‑network projection showed distinct waveform‑ and medication‑dependent patterns (Figure~S11A of the Supplementary Material). For the \textit{late-early response} feature, GVS7 was the only GVS waveform that differed from sham in the OFF-medication session (Figure~\ref{fig:gvs_behaviour_network_responses} middle row). The negative active-minus-sham difference indicated that GVS7 reduced the late relative to the early component of the projected vigour network response. This effect was absent during the ON-medication session, in which no GVS waveform survived correction. The full vigour network feature summaries appear in Figure~S12A, B of the Supplementary Material.
 
-In contrast, the task-activation map projection did not mirror this behavioural specificity.  In the ON-medication session, no task-activation map response survived correction, similar to the vigour network. However, in the OFF-medication session, significant task-activation map effects appeared for other stimulation conditions (e.g., GVS2 and GVS8 for the late–early feature; GVS6 for the maximum absolute baseline‑response feature; Figure~\ref{fig:gvs_behaviour_network_responses} bottom row; Figures~S11B and S13A, B of the Supplementary Material). Thus, the stimulation condition associated with faster OFF-medication responses was reflected in the vigour-network projection, but not by the task-activation projection.
+In contrast, the task-activation map projection did not mirror this behavioural specificity.  In the ON-medication session, no task-activation map response survived correction, similar to the vigour network. However, in the OFF-medication session, significant task-activation map effects appeared for other stimulation conditions (e.g., GVS2 and GVS8 for the late-early feature; GVS6 for the maximum absolute baseline‑response feature; Figure~\ref{fig:gvs_behaviour_network_responses} bottom row; Figures~S11B and S13A, B of the Supplementary Material). Thus, the stimulation condition associated with faster OFF-medication responses was reflected in the vigour-network projection, but not by the task-activation projection.
 
 We next tested whether the vigour network showed stimulation-sensitive connectivity changes distinct from those seen in the task-activation map. Because participants contributed multiple GVS conditions, observations were not fully independent; therefore, these analyses describe stimulation-sensitive edges rather than a causal therapeutic GVS effect. Using mutual information, active GVS produced \(156\) sham-referenced edge changes that were significant after FDR correction among \(703\) tested edges (Figure~\ref{fig:gvs_edge_changes}). Using Pearson correlation, active GVS produced \(194\) significant edges (Figure~S14A of the Supplementary Material). The two metrics did not identify the same set of edges, consistent with the different dependencies captured by the two metrics. As a control, we repeated the GVS edge-change analysis using the task-activation map (Figures~S14B and S15 of the Supplementary Material). GVS also produced significant changes in this task-activation network, but the pattern differed: the task-activation map showed \(134\) significant mutual-information edges and \(148\) significant Pearson edges, with only \(14\) mutual-information edges and \(16\) Pearson edges overlapping those in the vigour network. This supports a cautious interpretation: GVS influenced task-active circuitry broadly, but the vigour network showed a partly distinct pattern of stimulation-sensitive connectivity. Detailed edge-change results are reported in the Supplementary Material.
 
@@ -281,7 +282,7 @@ Z.K. contributed to the study design, formal analysis, optimisation implementati
 This work was partly supported by the John Nichol Chair in Parkinson’s Research (M.J.M.) and the Canadian Institutes of Health Research (grant PJT-175305).
 
 \section*{Acknowledgments}
-We thank Martin S. Keung, Hanaa Diab, Wyatt Verchere, Juana Ayala Castaneda, and all others who helped with data recording during the project. During manuscript preparation, the authors used ChatGPT (OpenAI, GPT-5.5 Pro, accessed July 2026) for language editing and proofreading. The authors reviewed and approved all changes and are responsible for the final content.
+We thank Martin S. Keung, Hanaa Diab, Wyatt Verchere, Juana Ayala Castaneda, and all others who helped with data recording during the project. During manuscript preparation, the authors used ChatGPT (OpenAI, GPT-5.5) for language editing and proofreading. The authors reviewed and approved all changes and are responsible for the final content.
 
 \section*{Supplementary Material}
 The Supplementary Material for this article is provided in the accompanying file.
@@ -292,52 +293,6 @@ The analysis code and supporting materials are available in the GitHub repositor
 The datasets generated and/or analysed during the current study are available from the corresponding author upon reasonable request.
 
 \clearpage
-
-% \section*{Appendix A: Optimisation objective and matrix definitions}
-% All optimisation terms were computed in the \(K=14\) dimensional EMPCA space used in the main analysis after centring and scaling the inputs used by the optimisation. Let \(X_{\beta}=[x_{\beta,1},\ldots,x_{\beta,T}]\in\mathbb{R}^{K\times T}\) denote the single-trial beta matrix, \(X_{\mathrm{BOLD}}=[x_{\mathrm{BOLD},1},\ldots,x_{\mathrm{BOLD},S}]\in\mathbb{R}^{K\times S}\) the corresponding trial-window BOLD feature matrix, and \(r\in\mathbb{R}^{1\times T}\) the trial-wise RT vector. For a candidate projection \(w\), \(y_{\beta}=w^{\top}X_{\beta}\).
-
-% The task-engagement penalty was defined from the component-wise task-engagement score \(s_k=T^{-1}\sum_{t=1}^{T}|X_{\beta,kt}|\):
-% \begin{equation}
-% C_{\mathrm{task}}=\operatorname{diag}\!\left((s+\epsilon)^{-1}\right),
-% \end{equation}
-% where \(\epsilon>0\) avoided division by zero. This gives larger penalties to weakly task-engaged components.
-
-% The consecutive-sample instability matrices were
-% \begin{equation}
-% C_{\mathrm{BOLD}}=\sum_{i\in\mathcal{I}_{\mathrm{BOLD}}}
-% (x_{\mathrm{BOLD},i}-x_{\mathrm{BOLD},i+1})(x_{\mathrm{BOLD},i}-x_{\mathrm{BOLD},i+1})^{\top},
-% \end{equation}
-% \begin{equation}
-% C_{\beta}=\sum_{i\in\mathcal{I}_{\beta}}
-% (x_{\beta,i}-x_{\beta,i+1})(x_{\beta,i}-x_{\beta,i+1})^{\top}.
-% \end{equation}
-% The index sets contained valid adjacent samples after removing run and block boundaries.
-
-% Spatial coherence was represented by a graph-Laplacian penalty. If \(W_{\mathrm{pca}}\in\mathbb{R}^{N_v\times K}\) is the EMPCA loading matrix and \(L_{\mathrm{graph}}\) is the voxel-neighbour graph Laplacian, then
-% \begin{equation}
-% C_{\mathrm{smooth}}=W_{\mathrm{pca}}^{\top}L_{\mathrm{graph}}W_{\mathrm{pca}} .
-% \end{equation}
-
-% The behavioural-alignment and beta-variance matrices were
-% \begin{equation}
-% C_{\mathrm{RT}}=X_{\beta}r^{\top}rX_{\beta}^{\top},\qquad
-% C_{\mathrm{var}}=X_{\beta}X_{\beta}^{\top}.
-% \end{equation}
-% Thus, \(w^{\top}C_{\mathrm{RT}}w/w^{\top}C_{\mathrm{var}}w\) increases when the projected beta signal is more strongly aligned with RT.
-
-% The total penalty and final objective were
-% \begin{equation}
-% C_{\mathrm{pen}}=
-% \alpha_{\mathrm{task}}C_{\mathrm{task}}+
-% \alpha_{\mathrm{BOLD}}C_{\mathrm{BOLD}}+
-% \alpha_{\beta}C_{\beta}+\alpha_{\mathrm{smooth}}C_{\mathrm{smooth}},
-% \end{equation}
-% \begin{equation}
-% \min_{\|w\|_2=1}
-% \frac{\gamma w^{\top}C_{\mathrm{pen}}w-w^{\top}C_{\mathrm{RT}}w}
-% {w^{\top}C_{\mathrm{var}}w} .
-% \end{equation}
-% The fitted EMPCA-space weights were sign-oriented consistently across folds and then back-projected to voxel space as \(w^{\mathrm{org}}=W_{\mathrm{pca}}w\).
 
 \section*{Appendix A: Optimisation derivation and model-selection summary}
 The optimisation framework identifies a voxel-weight vector and a projected signal related to trial-wise motor vigour while satisfying constraints on task engagement, spatial coherence, and low consecutive-trial variability. In voxel space, the projected signals \( \mathbf{y}_{\beta} \in \mathbb{R}^{n_{\mathrm{trials}}} \) and \( \mathbf{y}_{\mathrm{BOLD}} \in \mathbb{R}^{n_{\mathrm{time}}} \) are defined as:
